@@ -1,0 +1,36 @@
+a:not([role=button]),
+[role=link] {
+    border: none;
+    text-decoration: underline;
+    font-family: serif;
+    color: blue
+}
+
+body {
+    margin: 3rem;
+    font-size: 1.25rem;
+}
+
+button {
+    font-size: 1.25rem;
+}
+
+button:not([role=link]),
+[role=button] {
+    border: solid black;
+    border-radius: 1rem;
+    padding: 0.4rem;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: white;
+    background-color: purple
+}
+
+[role=button]:hover {
+    cursor: default;
+}
+
+[role=link]:hover {
+    cursor: pointer;
+}

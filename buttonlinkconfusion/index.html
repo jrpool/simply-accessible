@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>Button and link confusion</title>
+    <meta name="description" content="Examples of buttons and links with role reversals">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="" async defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Button and link confusion</h1>
+    </header>
+    <main>
+        <h2>Introduction</h2>
+        <p>This page illustrates the confusion and error that can arise from links pretending to be buttons and buttons pretending to be links.</p>
+        <p>A link takes you to another place, but a button performs an action here.</p>
+        <p>If you focus a link by pressing the <kbd>TAB</kbd> key and then press <kbd>SPACE</kbd>, you will scroll the page. If you do the same with a button, you will press the button.</p>
+        <p>So, transvestite links and buttons mislead users not only by their appearance, but also by their behavior. Users who listen to the page with a screen reader, too, can be misled by code that assigns a role of <code>button</code> to a link or <code>link</code>            to a button.</p>
+        <h2>Real button</h2>
+        <p>
+            <button onclick="window.alert('Good job pressing the button.')">
+              Real button
+            </button>
+        </p>
+        <h2>Link claiming to be a button</h2>
+        <p>
+            <a href="https://jpdev.pro" target="_blank" role="button">Alleged button</a>.
+        </p>
+        <h2>Real link</h2>
+        <p>
+            <a href="https://jpdev.pro" target="_blank">Real link to my site</a>.
+        </p>
+        <h2>Button claiming to be a link</h2>
+        <p>
+            <button onclick="window.alert('Ha! Fooled you!')" role="link">
+            Follow me, dear!
+          </button>
+        </p>
+    </main>
+</body>
+
+</html>
