@@ -1,0 +1,29 @@
+{
+  "name": "simply-accessible",
+  "version": "1.0.0",
+  "description": "Essays about digital accessibility",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrpool/simply-accessible.git"
+  },
+  "keywords": [
+    "accessibility",
+    "user",
+    "interface",
+    "usability",
+    "web"
+  ],
+  "author": "Jonathan Pool",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jrpool/simply-accessible/issues"
+  },
+  "homepage": "https://github.com/jrpool/simply-accessible#readme",
+  "devDependencies": {
+    "jsdom": "*"
+  }
+}
