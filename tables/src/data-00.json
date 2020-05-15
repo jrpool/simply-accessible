@@ -1,4 +1,5 @@
-const info = {
+{
+  "title": "Digital Information Devices",
   "schema": {
     "records": [
       "category",
@@ -170,4 +171,4 @@ const info = {
       }
     }
   }
-};
+}
