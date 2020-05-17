@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jonathan Pool">
+    <link rel="author" href="https://jpdev.pro">
+    <meta name="creator" content="Jonathan Pool">
+    <meta name="publisher" content="Jonathan Pool">
+    <meta name="description" content="complex HTML table">
+    <meta name="keywords" content="HTML,table">
+    <title>Complex HTML table</title>
+    <link type="text/css" rel="stylesheet" href="tall-style.css">
+  </head>
+
+  <body>
+    <main>
+      <header>
+        <h1>Complex HTML table</h1>
+      </header>
+      <table>
+        <caption>Digital Information Devices</caption>
+        <thead>
+          <tr>
+            <th rowspan="2" colspan="4">Device</th>
+            <th colspan="3" id="hd0">Dimension (mm)</th>
+            <th colspan="2" id="hd1">Date</th>
+          </tr>
+          <tr>
+            <th id="hd2">Height</th>
+            <th id="hd3">Width</th>
+            <th id="hd4">Depth</th>
+            <th id="hd5">Released</th>
+            <th id="hd6">Discontinued</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th id="hd7" rowspan="7">Mobile devices</th>
+            <th id="hd8" rowspan="5">Apple-branded</th>
+            <th id="hd9" rowspan="3">iPad line</th>
+            <th id="hd10">Model 1</th>
+            <td headers="hd7 hd8 hd9 hd10 hd0 hd2">243</td>
+            <td headers="hd7 hd8 hd9 hd10 hd0 hd3">190</td>
+            <td headers="hd7 hd8 hd9 hd10 hd0 hd4">13</td>
+            <td headers="hd7 hd8 hd9 hd10 hd1 hd5">2010</td>
+            <td headers="hd7 hd8 hd9 hd10 hd1 hd6">2011</td>
+          </tr>
+          <tr>
+            <th id="hd11">Model 2</th>
+            <td headers="hd7 hd8 hd9 hd11 hd0 hd2">241</td>
+            <td headers="hd7 hd8 hd9 hd11 hd0 hd3">186</td>
+            <td headers="hd7 hd8 hd9 hd11 hd0 hd4">9</td>
+            <td headers="hd7 hd8 hd9 hd11 hd1 hd5">2011</td>
+            <td headers="hd7 hd8 hd9 hd11 hd1 hd6">2014</td>
+          </tr>
+          <tr>
+            <th id="hd12">Model 3</th>
+            <td headers="hd7 hd8 hd9 hd12 hd0 hd2">241</td>
+            <td headers="hd7 hd8 hd9 hd12 hd0 hd3">186</td>
+            <td headers="hd7 hd8 hd9 hd12 hd0 hd4">9</td>
+            <td headers="hd7 hd8 hd9 hd12 hd1 hd5">2012</td>
+            <td headers="hd7 hd8 hd9 hd12 hd1 hd6">2012</td>
+          </tr>
+          <tr>
+            <th id="hd13" rowspan="2">iPhone line</th>
+            <th id="hd14">Model 1</th>
+            <td headers="hd7 hd8 hd13 hd14 hd0 hd2">115</td>
+            <td headers="hd7 hd8 hd13 hd14 hd0 hd3">61</td>
+            <td headers="hd7 hd8 hd13 hd14 hd0 hd4">12</td>
+            <td headers="hd7 hd8 hd13 hd14 hd1 hd5">2007</td>
+            <td headers="hd7 hd8 hd13 hd14 hd1 hd6">2008</td>
+          </tr>
+          <tr>
+            <th id="hd15">Model SE</th>
+            <td headers="hd7 hd8 hd13 hd15 hd0 hd2">116</td>
+            <td headers="hd7 hd8 hd13 hd15 hd0 hd3">62</td>
+            <td headers="hd7 hd8 hd13 hd15 hd0 hd4">12</td>
+            <td headers="hd7 hd8 hd13 hd15 hd1 hd5">2009</td>
+            <td headers="hd7 hd8 hd13 hd15 hd1 hd6">2010</td>
+          </tr>
+          <tr>
+            <th id="hd16" rowspan="2">Samsung-branded</th>
+            <th id="hd17" rowspan="2">Galaxy line</th>
+            <th id="hd18">Model 0</th>
+            <td headers="hd7 hd16 hd17 hd18 hd0 hd2">115</td>
+            <td headers="hd7 hd16 hd17 hd18 hd0 hd3">56</td>
+            <td headers="hd7 hd16 hd17 hd18 hd0 hd4">12</td>
+            <td headers="hd7 hd16 hd17 hd18 hd1 hd5">2009</td>
+            <td headers="hd7 hd16 hd17 hd18 hd1 hd6">2009</td>
+          </tr>
+          <tr>
+            <th id="hd19">Model S</th>
+            <td headers="hd7 hd16 hd17 hd19 hd0 hd2">122</td>
+            <td headers="hd7 hd16 hd17 hd19 hd0 hd3">64</td>
+            <td headers="hd7 hd16 hd17 hd19 hd0 hd4">14</td>
+            <td headers="hd7 hd16 hd17 hd19 hd1 hd5">2010</td>
+            <td headers="hd7 hd16 hd17 hd19 hd1 hd6">2011</td>
+          </tr>
+          <tr>
+            <th id="hd20" rowspan="4">Stationary devices</th>
+            <th id="hd21" rowspan="4">IBM-branded</th>
+            <th id="hd22" rowspan="2">Personal Computer line</th>
+            <th id="hd23">Model 5100</th>
+            <td headers="hd20 hd21 hd22 hd23 hd0 hd2">8</td>
+            <td headers="hd20 hd21 hd22 hd23 hd0 hd3">18</td>
+            <td headers="hd20 hd21 hd22 hd23 hd0 hd4">24</td>
+            <td headers="hd20 hd21 hd22 hd23 hd1 hd5">1975</td>
+            <td headers="hd20 hd21 hd22 hd23 hd1 hd6">1982</td>
+          </tr>
+          <tr>
+            <th id="hd24">Model 5110</th>
+            <td headers="hd20 hd21 hd22 hd24 hd0 hd2">8</td>
+            <td headers="hd20 hd21 hd22 hd24 hd0 hd3">18</td>
+            <td headers="hd20 hd21 hd22 hd24 hd0 hd4">24</td>
+            <td headers="hd20 hd21 hd22 hd24 hd1 hd5">1975</td>
+            <td headers="hd20 hd21 hd22 hd24 hd1 hd6">1982</td>
+          </tr>
+          <tr>
+            <th id="hd25" rowspan="2">Power System line</th>
+            <th id="hd26">Model S914</th>
+            <td headers="hd20 hd21 hd25 hd26 hd0 hd2">173</td>
+            <td headers="hd20 hd21 hd25 hd26 hd0 hd3">482</td>
+            <td headers="hd20 hd21 hd25 hd26 hd0 hd4">770</td>
+            <td headers="hd20 hd21 hd25 hd26 hd1 hd5">2018</td>
+            <td headers="hd20 hd21 hd25 hd26 hd1 hd6"></td>
+          </tr>
+          <tr>
+            <th id="hd27">Model S922</th>
+            <td headers="hd20 hd21 hd25 hd27 hd0 hd2">87</td>
+            <td headers="hd20 hd21 hd25 hd27 hd0 hd3">482</td>
+            <td headers="hd20 hd21 hd25 hd27 hd0 hd4">767</td>
+            <td headers="hd20 hd21 hd25 hd27 hd1 hd5">2018</td>
+            <td headers="hd20 hd21 hd25 hd27 hd1 hd6"></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+
+</html>
