@@ -11,8 +11,8 @@
     "categories": [
       "Type",
       "Brand",
-      "Model",
-      "Version"
+      "Line",
+      "Model"
     ],
     "facts": {
       "colCount": 6,
@@ -91,24 +91,24 @@
     }
   },
   "data": {
-    "Mobile": {
-      "Apple": {
-        "iPad": {
-          "1": [
+    "Mobile devices": {
+      "Apple-branded": {
+        "iPad line": {
+          "Model 1": [
             243,
             190,
             13,
             2010,
             2011
           ],
-          "2": [
+          "Model 2": [
             241,
             186,
             9,
             2011,
             2014
           ],
-          "3": [
+          "Model 3": [
             241,
             186,
             9,
@@ -116,15 +116,15 @@
             2012
           ]
         },
-        "iPhone": {
-          "1": [
+        "iPhone line": {
+          "Model 1": [
             115,
             61,
             12,
             2007,
             2008
           ],
-          "SE": [
+          "Model SE": [
             116,
             62,
             12,
@@ -133,16 +133,16 @@
           ]
         }
       },
-      "Samsung": {
-        "Galaxy": {
-          "0": [
+      "Samsung-branded": {
+        "Galaxy line": {
+          "Model 0": [
             115,
             56,
             12,
             2009,
             2009
           ],
-          "S": [
+          "Model S": [
             122,
             64,
             14,
@@ -152,17 +152,17 @@
         }
       }
     },
-    "Stationary": {
-      "IBM": {
-        "Personal Computer": {
-          "5100": [
+    "Stationary devices": {
+      "IBM-branded": {
+        "Personal Computer line": {
+          "Model 5100": [
             8,
             18,
             24,
             1975,
             1982
           ],
-          "5110": [
+          "Model 5110": [
             8,
             18,
             24,
@@ -170,15 +170,15 @@
             1982
           ]
         },
-        "Power System": {
-          "S914": [
+        "Power System line": {
+          "Model S914": [
             173,
             482,
             770,
             2018,
             null
           ],
-          "S922": [
+          "Model S922": [
             87,
             482,
             767,

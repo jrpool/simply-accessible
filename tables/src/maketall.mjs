@@ -16,7 +16,7 @@ import {insertEl, insertAtts, makeStd} from './makestd.mjs';
 
 const args = process.argv.slice(2);
 
-// Validate the output file.
+// Validate the output file path.
 let destFilePath;
 if (args.length === 2 && args[1].endsWith('.html')) {
   destFilePath = args[1];

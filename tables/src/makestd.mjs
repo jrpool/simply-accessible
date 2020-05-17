@@ -1,3 +1,8 @@
+/*
+  makestd.mjs
+  Add standard contents to a table file.
+*/
+
 // Function to return an identified element.
 const elementOf = (doc, selectorOrElement) => {
   let element;
