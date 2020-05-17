@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+body {
+    margin: 3rem;
+    font-size: 1.25rem;
+}
+.rank0 {
+  font-size: 1.5rem;
+}
+.rank1 {
+  font-size: 1.3rem;
+  font-style: italic;
+}
+.rank2 {
+  font-size: 1.1rem;
+}
+table {
+  border-collapse: collapse;
+}
+td {
+  text-align: center;
+}
+td, th {
+  padding: 0.2rem 0.4rem;
+  border: 1px solid gray;
+}
+th[colspan='6'] {
+  text-align: left;
+}

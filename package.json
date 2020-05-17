@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/jrpool/simply-accessible#readme",
   "devDependencies": {
-    "jsdom": "*"
+    "jsdom": "*",
+    "pretty": "*"
   }
 }
