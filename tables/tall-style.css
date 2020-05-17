@@ -2,8 +2,13 @@
   box-sizing: border-box;
 }
 body {
-    margin: 3rem;
-    font-size: 1.25rem;
+  margin: 3rem;
+  font-size: 1.25rem;
+}
+caption {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 .rank0 {
   font-size: 1.5rem;

@@ -60,9 +60,6 @@ insertEl(doc, 'head', false, 'link', null, {
 
 // Function to process a category.
 const handleCat = (key, val, IDMap, rowGroupIDs) => {
-  console.log(
-    'Starting handleCat on ' + key + ' with ' + rowGroupIDs.join('+')
-  );
   const row = insertEl(doc, 'tbody', false, 'tr', null, {});
   if (Array.isArray(val)) {
     insertEl(doc, row, false, 'th', key, {id: `hd${++lastID}`});
@@ -70,7 +67,6 @@ const handleCat = (key, val, IDMap, rowGroupIDs) => {
     .concat(lastID)
     .map(ID => `hd${ID}`)
     .join(' ');
-    console.log('headersStart is ' + headersStart);
     for (let i = 0; i < val.length; i++) {
       const headersEnd = IDMap[i + 1].map(ID => `hd${ID}`).join(' ');
       insertEl(
