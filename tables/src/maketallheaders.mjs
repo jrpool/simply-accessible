@@ -1,7 +1,8 @@
 /*
-  maketall.mjs
-  Use a specified table-definition file to create a tall complex table.
-  Write an HTML document containing the table to a specified file.
+  maketallheaders.mjs
+  Use a specified table-definition file to create a tall complex table
+  with headers attributes. Write an HTML document containing the table
+  to a specified file.
   Arguments:
     0: table-definition file.
     1: output file.
