@@ -1,0 +1,180 @@
+{
+  "titleh1": "Complex HTML table",
+  "author": "Jonathan Pool",
+  "authorlink": "https://jpdev.pro",
+  "creator": "Jonathan Pool",
+  "publisher": "Jonathan Pool",
+  "description": "complex HTML table",
+  "keywords": "HTML,table",
+  "caption": "Digital Information Devices",
+  "schema": {
+    "categories": [
+      "Line",
+      "Model"
+    ],
+    "facts": {
+      "colCount": 6,
+      "headerRowCount": 2,
+      "headerSpecs": [
+        [
+          [
+            "Device",
+            2,
+            null,
+            []
+          ],
+          [
+            "Dimension (mm)",
+            1,
+            3,
+            [
+              1,
+              2,
+              3
+            ]
+          ],
+          [
+            "Date",
+            1,
+            2,
+            [
+              4,
+              5
+            ]
+          ]
+        ],
+        [
+          [
+            "Height",
+            1,
+            1,
+            [
+              1
+            ]
+          ],
+          [
+            "Width",
+            1,
+            1,
+            [
+              2
+            ]
+          ],
+          [
+            "Depth",
+            1,
+            1,
+            [
+              3
+            ]
+          ],
+          [
+            "Released",
+            1,
+            1,
+            [
+              4
+            ]
+          ],
+          [
+            "Discontinued",
+            1,
+            1,
+            [
+              5
+            ]
+          ]
+        ]
+      ]
+    }
+  },
+  "data": {
+    "Apple iPad line": {
+      "Model 1": [
+        243,
+        190,
+        13,
+        2010,
+        2011
+      ],
+      "Model 2": [
+        241,
+        186,
+        9,
+        2011,
+        2014
+      ],
+      "Model 3": [
+        241,
+        186,
+        9,
+        2012,
+        2012
+      ]
+    },
+    "Apple iPhone line": {
+      "Model 1": [
+        115,
+        61,
+        12,
+        2007,
+        2008
+      ],
+      "Model SE": [
+        116,
+        62,
+        12,
+        2009,
+        2010
+      ]
+    },
+    "Samsung Galaxy line": {
+      "Model 0": [
+        115,
+        56,
+        12,
+        2009,
+        2009
+      ],
+      "Model S": [
+        122,
+        64,
+        14,
+        2010,
+        2011
+      ]
+    },
+    "IBM Personal Computer line": {
+      "Model 5100": [
+        8,
+        18,
+        24,
+        1975,
+        1982
+      ],
+      "Model 5110": [
+        8,
+        18,
+        24,
+        1975,
+        1982
+      ]
+    },
+    "IBM Power System line": {
+      "Model S914": [
+        173,
+        482,
+        770,
+        2018,
+        null
+      ],
+      "Model S922": [
+        87,
+        482,
+        767,
+        2018,
+        null
+      ]
+    }
+  }
+}
