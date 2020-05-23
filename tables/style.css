@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 3rem;
+  font-size: 1.25rem;
+}
+caption {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+table {
+  border-collapse: collapse;
+}
+tbody > tr:first-child > th, tbody > tr:first-child > td {
+  border-top-width: 5px;
+}
+tbody > tr:last-child > th, tbody > tr:last-child > td {
+  border-bottom-width: 5px;
+}
+tbody th {
+  text-align: left;
+}
+td, th {
+  padding: 0.2rem 0.4rem;
+  border: 1px solid gray;
+}

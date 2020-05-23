@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jonathan Pool">
+    <link rel="author" href="https://jpdev.pro">
+    <meta name="creator" content="Jonathan Pool">
+    <meta name="publisher" content="Jonathan Pool">
+    <meta name="description" content="HTML table with stacked row group and identified headers">
+    <meta name="keywords" content="HTML,table">
+    <title>Simple HTML table</title>
+    <link type="text/css" rel="stylesheet" href="../style.css">
+  </head>
+
+  <body>
+    <main>
+      <header>
+        <h1>HTML table with stacked row group and identified headers</h1>
+      </header>
+      <table>
+        <caption>Retirement Account Types</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th id="c2">Contributions deductible</th>
+            <th id="c3">Withdrawal tax rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th id="r2" colspan="3">IRA</th>
+          </tr>
+          <tr>
+            <th id="r3">Traditional</th>
+            <td headers="r2 r3 c2">Possibly</td>
+            <td headers="r2 r3 c3">Ordinary income</td>
+          </tr>
+          <tr>
+            <th id="r4">Roth</th>
+            <td headers="r2 r4 c2">No</td>
+            <td headers="r2 r4 c3">None</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <th>Taxable</th>
+            <td>No</td>
+            <td>Variable on earnings</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+
+</html>
