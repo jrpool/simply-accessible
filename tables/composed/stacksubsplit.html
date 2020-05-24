@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jonathan Pool">
+    <link rel="author" href="https://jpdev.pro">
+    <meta name="creator" content="Jonathan Pool">
+    <meta name="publisher" content="Jonathan Pool">
+    <meta name="description" content="HTML table with stacked row group and identified headers">
+    <meta name="keywords" content="HTML,table">
+    <title>HTML heading stack split into simple tables</title>
+    <link type="text/css" rel="stylesheet" href="../style.css">
+  </head>
+
+  <body>
+    <main class="multitable">
+      <header>
+        <h1>HTML heading stack split into simple tables</h1>
+      </header>
+      <h2>Securities of Corporation XYZ</h2>
+      <h3>Stock</h3>
+      <h4>Common</h4>
+      <table>
+        <caption>Common stock prices and votes</caption>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Votes</th>
+          </tr>
+        </thead>
+        <tbody class="numeric">
+          <tr>
+            <th class="rowgroup2">Class A</th>
+            <td>$34.69</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <th class="rowgroup2">Class B</th>
+            <td>$20.33</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Preferred</h4>
+      <table>
+        <caption>Preferred stock prices and votes</caption>
+        <thead>
+          <tr>
+            <th>Price</th>
+            <th>Votes</th>
+          </tr>
+        </thead>
+        <tbody class="numeric">
+          <tr>
+            <td>$15.48</td>
+            <td>0</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Bonds</h3>
+      <table>
+        <caption>Bond prices and votes</caption>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Votes</th>
+          </tr>
+        </thead>
+        <tbody class="numeric">
+          <tr>
+            <th class="rowgroup1">4.5% due 2031-06-30</th>
+            <td>$106.40</td>
+            <td>0</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><a href="stacksubid.html">View as table</a></p>
+      <p><a href="stacksubdl.html">View as description list</a></p>
+      <p><a href="stacksubp.html">View as plain text</a></p>
+      <p><a href="../index.html">Tables: Home</a></p>
+    </main>
+  </body>
+
+</html>

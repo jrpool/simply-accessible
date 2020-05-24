@@ -26,6 +26,16 @@ h3, h4, h5 {
 h3 {
   font-style: italic;
 }
+.multitable caption {
+  margin-bottom: 0;
+  padding: 1rem;
+}
+.multitable caption, .multitable table {
+  background-color: #ddd;
+}
+.multitable table {
+  margin-left: 2rem;
+}
 .numeric td {
   text-align: right;
 }
@@ -34,6 +44,7 @@ h3 {
   font-style: italic;
 }
 .rowgroup1 {
+  padding-left: 1rem;
   font-size: 1.3rem;
 }
 .rowgroup2 {
