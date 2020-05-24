@@ -10,6 +10,36 @@ caption {
   font-size: 1.5rem;
   font-weight: bold;
 }
+dl {
+  margin: 0.5rem 0 0.5rem 2rem;
+  padding: 0.5rem;
+  border: 1px gray solid;
+  display: inline-block;
+}
+dt {
+  font-size: 1rem;
+  font-weight: 700;
+}
+h3, h4, h5 {
+  margin: 0.5rem auto;
+}
+h3 {
+  font-style: italic;
+}
+.numeric td {
+  text-align: right;
+}
+.rowgroup0 {
+  font-size: 1.5rem;
+  font-style: italic;
+}
+.rowgroup1 {
+  font-size: 1.3rem;
+}
+.rowgroup2 {
+  padding-left: 2rem;
+  font-size: 1.1rem;
+}
 table {
   border-collapse: collapse;
 }
@@ -25,4 +55,13 @@ tbody th {
 td, th {
   padding: 0.2rem 0.4rem;
   border: 1px solid gray;
+}
+.textlist h4 {
+  margin-left: 0.5rem;
+}
+.textlist h5 {
+  margin-left: 1rem;
+}
+.textlist p {
+  margin: 0.2rem 0 0.2rem 2rem;
 }

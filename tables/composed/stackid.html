@@ -9,7 +9,7 @@
     <meta name="publisher" content="Jonathan Pool">
     <meta name="description" content="HTML table with stacked row group and identified headers">
     <meta name="keywords" content="HTML,table">
-    <title>Simple HTML table</title>
+    <title>HTML table with stacked row group and identified headers</title>
     <link type="text/css" rel="stylesheet" href="../style.css">
   </head>
 
@@ -22,34 +22,35 @@
         <caption>Retirement Account Types</caption>
         <thead>
           <tr>
-            <td></td>
+            <th>Type</th>
             <th id="c2">Contributions deductible</th>
             <th id="c3">Withdrawal tax rate</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th id="r2" colspan="3">IRA</th>
+            <th id="r2" colspan="3" class="rowgroup0">IRA</th>
           </tr>
           <tr>
-            <th id="r3">Traditional</th>
+            <th id="r3" class="rowgroup1">Traditional</th>
             <td headers="r2 r3 c2">Possibly</td>
             <td headers="r2 r3 c3">Ordinary income</td>
           </tr>
           <tr>
-            <th id="r4">Roth</th>
+            <th id="r4" class="rowgroup1">Roth</th>
             <td headers="r2 r4 c2">No</td>
             <td headers="r2 r4 c3">None</td>
           </tr>
         </tbody>
         <tbody>
           <tr>
-            <th>Taxable</th>
+            <th class="rowgroup0">Taxable</th>
             <td>No</td>
             <td>Variable on earnings</td>
           </tr>
         </tbody>
       </table>
+      <p><a href="../../index.html">List of examples</a></p>
     </main>
   </body>
 

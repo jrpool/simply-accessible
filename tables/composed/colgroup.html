@@ -7,45 +7,46 @@
     <link rel="author" href="https://jpdev.pro">
     <meta name="creator" content="Jonathan Pool">
     <meta name="publisher" content="Jonathan Pool">
-    <meta name="description" content="HTML table with row group">
+    <meta name="description" content="HTML table with column group">
     <meta name="keywords" content="HTML,table">
-    <title>Simple HTML table</title>
+    <title>HTML table with grouped columns</title>
     <link type="text/css" rel="stylesheet" href="../style.css">
   </head>
 
   <body>
     <main>
       <header>
-        <h1>HTML table with row group</h1>
+        <h1>HTML table with grouped columns</h1>
       </header>
       <table>
         <caption>Retirement Account Types</caption>
         <thead>
           <tr>
-            <td colspan="2"></td>
-            <th>Contributions deductible</th>
-            <th>Withdrawal tax rate</th>
+            <th rowspan="2" scope="row">Type</th>
+            <th colspan="2">IRA</th>
+            <th rowspan="2">Taxable</th>
+          </tr>
+          <tr>
+            <th>Traditional</th>
+            <th>Roth</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th rowspan="2">IRA</th>
-            <th>Traditional</th>
+            <th>Contributions deductible</th>
             <td>Possibly</td>
+            <td>No</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <th>Withdrawal tax rate</th>
             <td>Ordinary income</td>
-          </tr>
-          <tr>
-            <th>Roth</th>
-            <td>No</td>
             <td>None</td>
-          </tr>
-          <tr>
-            <th colspan="2">Taxable</th>
-            <td>No</td>
             <td>Variable on earnings</td>
           </tr>
         </tbody>
       </table>
+      <p><a href="../../index.html">List of examples</a></p>
     </main>
   </body>
 

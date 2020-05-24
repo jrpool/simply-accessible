@@ -9,7 +9,7 @@
     <meta name="publisher" content="Jonathan Pool">
     <meta name="description" content="HTML table with stacked row group and specified scope">
     <meta name="keywords" content="HTML,table">
-    <title>Simple HTML table</title>
+    <title>HTML table with stacked row group and specified scope</title>
     <link type="text/css" rel="stylesheet" href="../style.css">
   </head>
 
@@ -22,34 +22,35 @@
         <caption>Retirement Account Types</caption>
         <thead>
           <tr>
-            <td></td>
+            <th>Type</th>
             <th>Contributions deductible</th>
             <th>Withdrawal tax rate</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th colspan="3" scope="rowgroup">IRA</th>
+            <th colspan="3" scope="rowgroup" class="rowgroup0">IRA</th>
           </tr>
           <tr>
-            <th>Traditional</th>
+            <th class="rowgroup1">Traditional</th>
             <td>Possibly</td>
             <td>Ordinary income</td>
           </tr>
           <tr>
-            <th>Roth</th>
+            <th class="rowgroup1">Roth</th>
             <td>No</td>
             <td>None</td>
           </tr>
         </tbody>
         <tbody>
           <tr>
-            <th>Taxable</th>
+            <th class="rowgroup0">Taxable</th>
             <td>No</td>
             <td>Variable on earnings</td>
           </tr>
         </tbody>
       </table>
+      <p><a href="../../index.html">List of examples</a></p>
     </main>
   </body>
 
