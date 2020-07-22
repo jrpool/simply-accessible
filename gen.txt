@@ -1,0 +1,2401 @@
+==> homeData.js <==
+/*
+  homeData.js
+  Metadata on modules required by home page.
+*/
+
+// Estimated study times
+const timeEstimates = {
+  agent: 'P5M',
+  agsize: 'P15M',
+  atechtest: 'P15M',
+  ats: 'P10M',
+  axe: 'P20M',
+  better: 'P25M',
+  cctest: 'P5M',
+  devtool: 'P15M',
+  embed: 'P15M',
+  error: 'P20M',
+  form: 'P40M',
+  here: 'P30M',
+  inputval: 'P35M',
+  intro: 'P20M',
+  lang: 'P35M',
+  layer: 'P25M',
+  layout: 'P35M',
+  link: 'P10M',
+  magtest: 'P5M',
+  markupval: 'P30M',
+  norm: 'P10M',
+  org: 'P35M',
+  size: 'P30M',
+  space: 'P15M',
+  srtest: 'P30M',
+  stake: 'P30M',
+  success: 'P10M',
+  table: 'P35M',
+  tablist: 'P20M',
+  term: 'P35M',
+  teststrat: 'P15M',
+  tree: 'P15M',
+  what: 'P25M'
+};
+
+const titles = {
+  agent: 'Our Accessibility Agents',
+  agsize: 'Accessible Size Customization',
+  atechtest: 'Testing with Assistive Technologies',
+  ats: 'Assistive Technologies',
+  axe: 'Axe-core',
+  better: 'Widening Our Lead',
+  cctest: 'Testing with Contrast Enhancers',
+  devtool: 'Developer Tools',
+  embed: 'Accessible Embedding',
+  error: 'Accessible Error Handling',
+  form: 'Accessible Forms',
+  here: 'You Are Here',
+  inputval: 'Accessible Input Validation',
+  intro: 'README',
+  lang: 'Accessible Language Identification',
+  layer: 'Accessible Layering',
+  layout: 'Accessible Layout',
+  link: 'Accessible Links',
+  magtest: 'Testing with Magnifiers',
+  markupval: 'Markup Validators',
+  norm: 'Accessibility Norms',
+  org: 'Accessible Organization',
+  size: 'Accessible Sizing',
+  space: 'Accessible Spacing',
+  srtest: 'Testing with Screen Readers',
+  stake: 'Utopia&rsquo;s Stake in Accessibility',
+  success: 'Our Success Story',
+  table: 'Accessible Tables',
+  tablist: 'Accessible Tab Lists',
+  term: 'Accessible Terminology',
+  teststrat: 'Accessibility Testing Strategies',
+  tree: 'The Accessibility Tree',
+  what: 'What Accessibility Means'
+};
+
+==> homeOnLoad.js <==
+/*
+  homeOnLoad.js
+  Add content to the home page when it is loaded.
+*/
+
+// Utility function to insert a meta element into the head element.
+const insertMeta = (name, content) (arrow) {
+  const newMeta = document.head.insertAdjacentElement(
+    'afterbegin', document.createElement('meta')
+  );
+  newMeta.setAttribute('name', name);
+  newMeta.setAttribute('content', content);
+};
+
+// Utility function to insert any element into any other element.
+const insertInto = (target, type) (arrow) target.insertAdjacentElement(
+  'afterbegin', document.createElement(type)
+);
+
+// Fill the page.
+const fillPage = () (arrow) {
+
+  // === Head ===
+
+  // Title
+  document.title = 'Table of Contents: Accessible Utopia User Interfaces';
+
+  // Link elements
+  const head = document.head;
+  let linkElement = insertInto(head, 'link');
+  linkElement.setAttribute('rel', 'author');
+  linkElement.setAttribute(
+    'href', 'http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786'
+  );
+  linkElement = insertInto(head, 'link');
+  linkElement.setAttribute('rel', 'stylesheet');
+  linkElement.setAttribute('href', 'style.css');
+
+  /*
+    Meta elements. The charset meta element must already be in the source,
+    in order for the CSS q ruleset to be correctly applied.
+  */
+  insertMeta('publisher', 'Accessibility Office, The Utopia Group');
+  insertMeta(
+    'creator',
+    'Business Platforms and Services and Accessibility Office, The Utopia Group'
+  );
+  insertMeta(
+    'keywords',
+    'Utopia,software development,accessibility,a11y,user interface'
+  );
+  insertMeta(
+    'description',
+    'Table of contents: A module on creating accessible user interfaces at Utopia'
+  );
+  insertMeta('author', 'Jonathan Pool');
+  insertMeta('viewport', 'width=device-width, initial-scale=1');
+
+  // === Main region ===
+
+  const main = document.body.querySelector('main');
+
+  // === Header element ===
+
+  const header = insertInto(main, 'header');
+
+  // Doc-info div element
+  const docInfoDiv = insertInto(header, 'div');
+  docInfoDiv.classList.add('doc-info');
+  const infoList = insertInto(docInfoDiv, 'dl');
+  let lastDd = insertInto(infoList, 'dd');
+  lastDd.textContent = 'These modules use ES2015 features supported by the Chrome browser on Windows, OS X, and Linux.';
+  let lastDt= insertInto(infoList, 'dt');
+  lastDt.textContent = 'System requirements';
+  lastDd = insertInto(infoList, 'dd');
+  lastDd = insertInto(infoList, 'dd');
+  let timeElement = insertInto(lastDd, 'time');
+  timeElement.setAttribute('itemprop', 'dateModified');
+  const revDate = '2020-04-20';
+  timeElement.setAttribute('datetime', revDate);
+
+  // Date is interpreted as UTC, so time zone must be UTC.
+  timeElement.textContent = (new Date(revDate)).toLocaleDateString(
+    'en-GB', {timeZone: 'UTC', day: 'numeric', month: 'long', year: 'numeric'}
+  );
+  lastDt = insertInto(infoList, 'dt');
+  lastDt.textContent = 'Revised';
+  lastDd = insertInto(infoList, 'dd');
+  lastDd.setAttribute('itemprop', 'version');
+  lastDd.textContent = '3.0';
+  lastDt = insertInto(infoList, 'dt');
+  lastDt.textContent = 'Version';
+  lastDd = insertInto(infoList, 'dd');
+  const authorLink = document.createElement('a');
+  authorLink.href =
+    'http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786';
+  authorLink.textContent = 'Jonathan Pool';
+  const deptLink = document.createElement('a');
+  deptLink.href = 'https://theutopiagroup.sharepoint.com/sites/ess_home';
+  deptLink.textContent = 'Business Platforms and Services';
+  const officeLink = document.createElement('a');
+  officeLink.href =
+    'http://corpsp.utopia.com/pnd/mc/Accessibility/Pages/Home.aspx';
+  officeLink.textContent = 'Accessibility Office';
+  lastDd.insertAdjacentElement('beforeend', authorLink);
+  lastDd.insertAdjacentText('beforeend', ', ');
+  lastDd.insertAdjacentElement('beforeend', deptLink);
+  lastDd.insertAdjacentText('beforeend', ' and ');
+  lastDd.insertAdjacentElement('beforeend', officeLink);
+  lastDd.insertAdjacentText('beforeend', ', The Utopia Group');
+  lastDt = insertInto(infoList, 'dt');
+  lastDt.textContent = 'Author';
+
+  // Title-view div element
+  const titleDiv = insertInto(header, 'div');
+  titleDiv.classList.add('title-view');
+  const titleH1 = insertInto(titleDiv, 'h1');
+  titleH1.setAttribute('itemprop', 'name');
+  const sharedSpan = insertInto(titleH1, 'span');
+  sharedSpan.classList.add('title', 'title-shared');
+  const sharedTitleSpan = insertInto(sharedSpan, 'span');
+  sharedTitleSpan.textContent = 'Accessible Utopia User Interfaces';
+  const uniqueSpan = insertInto(titleH1, 'span');
+  uniqueSpan.classList.add('title', 'title-unique');
+  const colonSpan = insertInto(uniqueSpan, 'span');
+  colonSpan.classList.add('covert');
+  colonSpan.textContent = ': ';
+  const uniqueTitleSpan = insertInto(uniqueSpan, 'span');
+  uniqueTitleSpan.classList.add('overt');
+  uniqueTitleSpan.textContent = 'Table of Contents';
+
+  // === Table of contents ===
+
+  const listItems = Array.from(
+    document.body.querySelectorAll('ol.contents li:not(.plain)')
+  );
+  listItems.forEach(listItem (arrow) {
+    const moduleID = listItem.textContent;
+    listItem.textContent = '';
+    const link = document.createElement('a');
+    link.href = `../mod/${moduleID}/index.html`;
+    const timeEstimate = timeEstimates[moduleID].replace(/^P|M$/g, '');
+    link.innerHTML = titles[moduleID];
+    listItem.insertAdjacentElement('afterbegin', link);
+    listItem.insertAdjacentText('beforeend', ` (${timeEstimate} minutes)`);
+  });
+};
+
+document.addEventListener('DOMContentLoaded', fillPage);
+
+==> index.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((title>(((/title>
+    (((meta charset="UTF-8">
+    (((script defer src="./homeData.js">(((/script>
+    (((script defer src="./homeOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https://schema.org/WebPage">
+    (((main>
+      (((section>
+        (((header>
+          (((h2>Introduction(((/h2>
+        (((/header>
+        (((p>This is the table of contents of (((q>Accessible Utopia User Interfaces(((/q>, a set of modules designed to train Utopia front-end developers in digital accessibility.(((/p>
+      (((/section>
+      (((section>
+        (((header>
+          (((h2>Contents(((/h2>
+        (((/header>
+        (((section>
+          (((ol class="contents">
+            (((li>intro(((/li>
+            (((li class="plain">(((a href="terms.html">Index of Terms(((/a>(((/li>
+            (((li class="plain">
+              (((a href="wcag.html">Index of WCAG Success Criteria(((/a>
+            (((/li>
+            (((li class="plain">
+              (((p>Accessibility in the World(((/p>
+              (((ol>
+                (((li>what(((/li>
+                (((li>norm(((/li>
+              (((/ol>
+            (((/li>
+            (((li class="plain">
+              (((p>Accessibility at Utopia(((/p>
+              (((ol>
+                (((li>stake(((/li>
+                (((li>success(((/li>
+                (((li>better(((/li>
+                (((li>agent(((/li>
+              (((/ol>
+            (((/li>
+            (((li class="plain">
+              (((p>Accessibility Tools(((/p>
+              (((ol>
+                (((li>ats(((/li>
+                (((li>devtool(((/li>
+                (((li>tree(((/li>
+                (((li>axe(((/li>
+                (((li>markupval(((/li>
+              (((/ol>
+            (((/li>
+            (((li class="plain">
+              (((p>Accessible Views(((/p>
+              (((ol>
+                (((li>space(((/li>
+                (((li>size(((/li>
+                (((li>table(((/li>
+              (((/ol>
+            (((/li>
+            (((li class="plain">
+              (((p>Accessible Navigation(((/p>
+              (((ol>
+                (((li>here(((/li>
+                (((li>link(((/li>
+                (((li>tablist(((/li>
+                (((li>layer(((/li>
+                (((li>embed(((/li>
+              (((/ol>
+            (((/li>
+            (((li class="plain">
+              (((p>Accessible Interaction(((/p>
+              (((ol>
+                (((li>form(((/li>
+                (((li>inputval(((/li>
+                (((li>error(((/li>
+              (((/ol>
+            (((/li>
+            (((li class="plain">
+              (((p>Accessibility Testing(((/p>
+              (((ol>
+                (((li>teststrat(((/li>
+                (((li>atechtest(((/li>
+              (((/ol>
+            (((/li>
+          (((/ol>
+        (((/section>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> index-expanded.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((script type="module" src="homeOnLoad.js">(((/script>
+    (((title>(((/title>
+  (((/head>
+  (((body itemscope itemtype="https://schema.org/WebPage">
+    (((main>
+      (((section>
+        (((header>
+          (((h2>Introduction(((/h2>
+        (((/header>
+        (((p>This is the table of contents of (((q>Accessible Utopia User Interfaces(((/q>, a set of modules designed to train Utopia front-end developers in digital accessibility.(((/p>
+      (((/section>
+      (((section>
+        (((header>
+          (((h2>Contents(((/h2>
+        (((/header>
+        (((section>
+          (((ol class="contents">
+            (((li>(((a href="../mod/intro">README(((/a>(((/li>
+            (((li>(((a href="terms.html">Index of Terms(((/a>(((/li>
+            (((li>(((a href="wcag.html">Index of WCAG Success Criteria(((/a>(((/li>
+            (((li class="group">
+              (((p>Accessibility in the World(((/p>
+              (((ol>
+                (((li>(((a href="../mod/what">What Accessibility Means(((/a>(((/li>
+                (((li>(((a href="../mod/norm">Accessibility Norms(((/a>(((/li>
+                (((li>(((a href="../mod/tech">Accessibility Technology(((/a>(((/li>
+              (((/ol>
+            (((/li>
+            (((li class="group">
+              (((p>Accessibility at Utopia(((/p>
+              (((ol>
+                (((li>(((a href="../mod/stake">
+                  Utopia&rsquo;s Stake in Accessibility
+                (((/a>(((/li>
+                (((li>(((a href="../mod/success">Our Success Story(((/a>(((/li>
+                (((li>(((a href="../mod/better">Widening Our Lead(((/a>(((/li>
+                (((li>(((a href="../mod/priority">Accessibility Priorities(((/a>(((/li>
+                (((li>(((a href="../mod/agent">Our Accessibility Agents(((/a>(((/li>
+              (((/ol>
+            (((/li>
+            (((li class="group">
+              (((p>Accessibility Tools(((/p>
+              (((ol>
+                (((li>(((a href="../mod/ats">Assistive Technologies(((/a>(((/li>
+                (((li>(((a href="../mod/devtool">Developer Tools(((/a>(((/li>
+                (((li>(((a href="../mod/tree">The Accessibility Tree(((/a>(((/li>
+                (((li>(((a href="../mod/axe">WorldSpace Attest(((/a>(((/li>
+                (((li>(((a href="../mod/wave">WAVE(((/a>(((/li>
+                (((li>(((a class="covert" data-href="../mod/vgattest">
+                  vg-accessibility-attest Module
+                (((/a>(((/li>
+                (((li>(((a href="../mod/markupval">Markup validators(((/a>(((/li>
+                (((li>(((a class="covert" data-href="../mod/vui">VUI(((/a>(((/li>
+              (((/ol>
+            (((/li>
+            (((li class="group">
+              (((p>Accessible Views(((/p>
+              (((ol>
+                (((li>(((a href="../mod/space">Accessible Spacing(((/a>(((/li>
+                (((li>(((a href="../mod/size">Accessible Sizing(((/a>(((/li>
+                (((li>
+                  (((a class="covert" data-href="../mod/layout">Accessible Layout(((/a>
+                (((/li>
+                (((li>(((a class="covert" data-href="../mod/org">
+                  Accessible Organization*
+                (((/a>(((/li>
+                (((li>
+                  (((a class="covert" data-href="../mod/color">Accessible Colors(((/a>
+                (((/li>
+                (((li>
+                  (((a class="covert" data-href="../mod/term">Explaining Abbreviations and Terms(((/a>
+                (((/li>
+                (((li>(((a class="covert" data-href="../mod/lang">
+                  Accessible Language Identification
+                (((/a>(((/li>
+                (((li>
+                  (((a class="covert" data-href="../mod/quant">
+                    Accessible Quantitative Information
+                  (((/a>(((/li>
+                (((li>
+                  (((a class="covert" data-href="../mod/comp">Accessible Comparison(((/a>
+                (((/li>
+                (((li>(((a href="../mod/table">Accessible Tables*(((/a>(((/li>
+                (((li>
+                  (((a class="covert" data-href="../mod/graph">Accessible Graphs(((/a>
+                (((/li>
+              (((/ol>
+            (((/li>
+            (((li class="group">
+              (((p>Accessible Navigation(((/p>
+              (((ol>
+                (((li>(((a class="covert" data-href="../mod/nav">(((q>Accessible Navigation Mechanisms(((/q>(((/a>(((/li>
+                (((li>(((a href="../mod/here">(((q>You Are Here(((/q>*(((/a>(((/li>
+                (((li>(((a href="../mod/link">Accessible Links(((/a>(((/li>
+                (((li>
+                  (((a href="../mod/tablist">Accessible Tab Lists*(((/a>
+                (((/li>
+                (((li>
+                  (((a href="../mod/layer">Accessible Layering*(((/a>
+                (((/li>
+                (((li>(((a href="../mod/embed">Accessible Embedding(((/a>(((/li>
+                (((li>(((a class="covert" data-href="../mod/sitenav">
+                  Accessible Site Navigation
+                (((/a>(((/li>
+              (((/ol>
+            (((/li>
+            (((li class="group">
+              (((p>Accessible Interaction(((/p>
+              (((ol>
+                (((li>(((a href="../mod/form">Accessible Forms*(((/a>(((/li>
+                (((li>(((a href="../mod/inputval">
+                  Accessible Input Validation*
+                (((/a>(((/li>
+                (((li>(((a href="../mod/error">
+                  Accessible Error Handling*
+                (((/a>(((/li>
+              (((/ol>
+            (((/li>
+            (((li class="group">
+              (((p>Accessibility Testing(((/p>
+              (((ol>
+                (((li>(((a href="../mod/teststrat">
+                  Accessibility Testing Strategies*
+                (((/a>(((/li>
+                (((li>(((a class="covert" data-href="../mod/testauto">
+                  Accessibility Testing Automation
+                (((/a>(((/li>
+                (((li>(((a href="../mod/atechtest">
+                  Testing with Assistive Technologies*
+                (((/a>(((/li>
+                (((li>(((a class="covert" data-href="../mod/emtest">
+                  Accessibility Stress Testing
+                (((/a>(((/li>
+              (((/ol>
+            (((/li>
+          (((/ol>
+          (((p>*Prioritized for early draft completion.(((/p>
+        (((/section>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> modOnLoad.js <==
+/*
+  modOnLoad.js
+  Add content to a module when it is loaded.
+  Insertion utilities use 'afterbegin', so insertions are in end-to-start order.
+*/
+
+// === Variables ===
+
+// Revised by revisionDates.js.
+// Revision dates start
+const revisionDates = {
+  'agent': '2020-03-21',
+  'agsize': '2020-03-12',
+  'atechtest': '2020-04-14',
+  'ats': '2020-03-12',
+  'axe': '2020-03-25',
+  'better': '2020-03-25',
+  'cctest': '2020-04-03',
+  'devtool': '2020-03-25',
+  'embed': '2020-04-20',
+  'error': '2020-04-11',
+  'form': '2020-04-14',
+  'here': '2020-04-14',
+  'inputval': '2020-04-20',
+  'intro': '2020-03-12',
+  'lang': '2020-03-12',
+  'layer': '2020-04-20',
+  'layout': '2020-03-12',
+  'link': '2020-04-10',
+  'magtest': '2020-04-14',
+  'markupval': '2020-04-03',
+  'norm': '2020-03-20',
+  'org': '2020-03-12',
+  'size': '2020-04-20',
+  'space': '2020-04-20',
+  'srtest': '2020-04-03',
+  'stake': '2020-03-25',
+  'success': '2020-03-26',
+  'table': '2020-04-20',
+  'tablist': '2020-04-11',
+  'term': '2020-03-12',
+  'teststrat': '2020-04-03',
+  'tree': '2020-03-25',
+  'what': '2020-03-23'
+};
+// Revision dates end
+
+// Declare the quizzes variable, to be initialized by the module's script.
+let quizzes;
+
+const moduleOrder = [
+  'intro',
+  'what',
+  'norm',
+  'stake',
+  'success',
+  'better',
+  'agent',
+  'ats',
+  'devtool',
+  'tree',
+  'axe',
+  'markupval',
+  'space',
+  'size',
+  'table',
+  'here',
+  'link',
+  'tablist',
+  'layer',
+  'embed',
+  'form',
+  'inputval',
+  'error',
+  'teststrat',
+  'atechtest',
+  'srtest',
+  'magtest',
+  'cctest'
+];
+
+const keywords =
+  'Utopia,software development,accessibility,a11y,user interface';
+
+const prerequisites = {
+  agent: ['intro'],
+  agsize: ['intro', 'devtool'],
+  atechtest: ['intro', 'devtool', 'axe', 'ats', 'teststrat'],
+  ats: ['intro'],
+  axe: ['intro', 'devtool'],
+  better: ['intro'],
+  cctest: ['intro', 'ats', 'teststrat', 'atechtest'],
+  devtool: ['intro'],
+  embed: ['intro', 'devtool'],
+  error: ['intro', 'devtool', 'axe', 'here', 'form', 'inputval'],
+  form: ['intro', 'devtool', 'tree'],
+  here: ['intro', 'devtool'],
+  inputval: ['intro', 'devtool', 'axe'],
+  intro: [],
+  lang: ['intro', 'devtool', 'axe'],
+  layer: ['intro', 'devtool', 'axe'],
+  layout: ['intro', 'devtool', 'axe'],
+  link: ['intro', 'devtool', 'axe', 'here'],
+  magtest: ['intro', 'ats', 'teststrat', 'atechtest'],
+  markupval: ['intro', 'devtool', 'axe'],
+  norm: ['intro'],
+  org: ['intro', 'devtool', 'axe'],
+  size: ['intro', 'devtool'],
+  space: ['intro', 'devtool'],
+  srtest: ['intro', 'devtool', 'axe', 'ats', 'teststrat', 'atechtest'],
+  stake: ['intro'],
+  success: ['intro'],
+  table: ['intro', 'devtool', 'axe'],
+  tablist: ['intro', 'devtool'],
+  term: ['intro', 'devtool', 'axe'],
+  teststrat: ['intro', 'devtool', 'axe'],
+  tree: ['intro', 'devtool'],
+  what: ['intro']
+};
+
+const messages = {
+  checkAnswer: 'Check answer',
+  enterAnswer: 'Enter the answer',
+  hide: 'Hide',
+  hideQuiz: 'Hide quiz',
+  hint: 'Hint',
+  nextHint: 'Next hint',
+  no: '(((span class="no">&nbsp;&nbsp;(((span class="strong">No(((/span>, please review.&nbsp;&nbsp;(((/span>',
+  partly: (correct, total) (arrow) `(((span class="no">&nbsp;&nbsp;(((span class="strong">(((/span>${correct} of ${total} correct.&nbsp;&nbsp;(((/span>`,
+  show: 'Show',
+  showQuiz: 'Test yourself',
+  yes: '(((span class="yes">&nbsp;&nbsp;(((span class="strong">Yes(((/span>, that&rsquo;s correct!&nbsp;&nbsp;(((/span>'
+};
+
+// === Functions ===
+
+// Identify an element's innermost type-specific container.
+const ancestorOf = (element, ancestorType) (arrow) {
+  let thisElement = element;
+  while (thisElement && thisElement.tagName !== ancestorType) {
+    thisElement = thisElement.parentNode;
+  }
+  if (thisElement && thisElement.tagName === ancestorType) {
+    return thisElement;
+  }
+  else {
+    return false;
+  }
+};
+
+// Listen for a click.
+const awaitClick = () (arrow) {
+  document.body.addEventListener('click', clickHandler);
+};
+
+// Listen for a form submission.
+const awaitFormSubmit = () (arrow) {
+  document.body.addEventListener('submit', formSubmitHandler);
+};
+
+// Listen for a mouse pointer depression.
+const awaitDown = () (arrow) {
+  document.body.addEventListener('mousedown', downHandler);
+};
+
+// Create a check-answer paragraph.
+const checkButtonParagraph = () (arrow) {
+  const checkParagraph = document.createElement('p');
+  checkParagraph.classList.add('p-check');
+  const checkButton = checkParagraph.appendChild(
+    document.createElement('button')
+  );
+  checkButton.setAttribute('type', 'button');
+  checkButton.classList.add('button-check');
+  checkButton.textContent = messages.checkAnswer;
+  return checkParagraph;
+};
+
+// Create a radio or checkbox input paragraph.
+const choiceParagraph = (isRadio, name, value) (arrow) {
+  const paragraph = document.createElement('p');
+  const label = document.createElement('label');
+  label.insertAdjacentHTML('afterbegin', ` ${value}`);
+  const input = document.createElement('input');
+  input.setAttribute('type', isRadio ? 'radio' : 'checkbox');
+  input.setAttribute('name', name);
+  input.setAttribute('value', value);
+  label.insertBefore(input, label.firstChild);
+  paragraph.appendChild(label);
+  return paragraph;
+};
+
+/*
+  Process button activation. Similar indication of link activation
+  would prevent the user from using keyboard shortcuts to specify the
+  target. Therefore, if a link is activated with the ENTER key, its
+  activation will be indicated only by navigation, not by a style change.
+*/
+const clickHandler = event (arrow) {
+  const target = event.target;
+  const targetType = target.tagName;
+  const targetClasses = target.classList;
+  if (targetType === 'BUTTON') {
+    const targetParagraph = ancestorOf(target, 'P');
+    const targetSection = ancestorOf(targetParagraph, 'SECTION');
+    const quizName = targetSection.id;
+    if (targetClasses.contains('button-quiz')) {
+      toggleQuiz(targetParagraph, quizName);
+    }
+    else if (targetClasses.contains('button-check')) {
+      normalizeHints();
+      diagnoseAnswer(targetParagraph, targetSection, quizName);
+    }
+    else if (targetClasses.contains('button-hint')) {
+      normalizeHints();
+      promoteHints(quizName);
+    }
+    else if (targetClasses.contains('button-nextHint')) {
+      document.getElementById(target.getAttribute('nextHintID')).focus();
+    }
+  }
+};
+
+// Classify a quiz answer as correct or incorrect.
+const diagnoseAnswer = (targetParagraph, targetSection, quizName) (arrow) {
+  const quizData = quizzes[quizName];
+  // Identify either a set of correct answers or a RegExp test.
+  const criterion = quizData.correct || quizData.test || quizData.tests;
+  const inputs = Array.from(targetSection.querySelectorAll('input'));
+  // Blank cannot be the correct answer of a t1 quiz.
+  const selectedInputs = inputs.filter(input (arrow) (
+    ['radio', 'checkbox'].includes(input.type) && input.checked
+    || input.type === 'text'
+  ));
+  let score, scoreMessage;
+  if (quizData.type === 't1') {
+    if (selectedInputs.length) {
+      const givenAnswer = selectedInputs[0].value;
+      if (quizData.correct) {
+        score = criterion.has(givenAnswer);
+      }
+      else if (quizData.test) {
+        score = criterion.test(givenAnswer);
+      }
+      else if (quizData.tests) {
+        score = criterion.some(alt (arrow) alt.test(givenAnswer));
+      }
+      else {
+        score = false;
+      }
+    }
+    else {
+      score = false;
+    }
+    scoreMessage = score ? quizData.yesMessage : quizData.noMessage;
+  }
+  else if (quizData.type === 'cn') {
+    const hits = selectedInputs.filter(
+      input (arrow) criterion.has(input.value)
+    ).length;
+    const corrects =
+      inputs.length + 2 * hits - selectedInputs.length - criterion.size;
+    if (corrects === inputs.length) {
+      scoreMessage = quizData.yesMessage;
+      score = true;
+    }
+    else {
+      scoreMessage = messages.partly(corrects, inputs.length);
+      score = false;
+    }
+  }
+  else {
+    score = selectedInputs.length === criterion.size
+      && selectedInputs.every(input (arrow) criterion.has(input.value));
+    scoreMessage = score ? quizData.yesMessage : quizData.noMessage;
+  }
+  let diagnoSpan = targetParagraph.querySelector('.p-check > span');
+  let scoreSpan;
+  if (diagnoSpan) {
+    scoreSpan = diagnoSpan.querySelector('span');
+  }
+  // If no result message is shown yet, create a container for one.
+  if (! diagnoSpan) {
+    diagnoSpan = targetParagraph.appendChild(document.createElement('span'));
+    diagnoSpan.classList = 'flex-right';
+    scoreSpan = diagnoSpan.appendChild(document.createElement('span'));
+  }
+  scoreSpan.innerText = '';
+  scoreSpan.insertAdjacentHTML('afterbegin', scoreMessage);
+  let hintButton = diagnoSpan.querySelector('button');
+  if (! score && quizData.hints) {
+    if (! hintButton) {
+      hintButton = diagnoSpan.appendChild(document.createElement('button'));
+      hintButton.type = 'button';
+      hintButton.tabIndex = '0';
+      hintButton.classList = 'button-hint';
+      hintButton.innerText = messages.hint;
+    }
+  }
+  else if (hintButton) {
+    diagnoSpan.removeChild(hintButton);
+  }
+  scoreSpan.tabIndex = '0';
+  scoreSpan.focus();
+};
+
+// Fill the page.
+const fillPage = () (arrow) {
+
+  // Identify the module identifier, removing any query parameters.
+  let url = document.URL.replace(/\?.+/, '');
+  // If the URL format is "module/":
+  if (/\/$/.test(url)) {
+    url = `${url}index.html`;
+  // Otherwise, if URL format is "module/index.html":
+  } else if (!/index.html$/.test(url)) {
+    url = `${url}/index.html`;
+  }
+  const moduleID = (/^.+\/([^/]+)\/index\.html/.exec(url))[1];
+
+  // === Insert into the head element ===
+
+  const head = document.head;
+
+  /*
+    Script element (the module's own script.js)
+    The nav.js, if any, is inserted by the index.html file.
+  */
+  scriptElement = insertInto(head, 'script');
+  scriptElement.setAttribute('src', 'script.js');
+  // Link elements
+  let linkElement = insertInto(head, 'link');
+  linkElement.setAttribute('rel', 'author');
+  linkElement.setAttribute(
+    'href', 'http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786'
+  );
+  linkElement = insertInto(head, 'link');
+  linkElement.setAttribute('rel', 'stylesheet');
+  linkElement.setAttribute('href', '../../gen/style.css');
+  /*
+    Meta elements
+    The charset meta element must already be in the source, in order for the CSS
+    q ruleset to be correctly applied.
+  */
+  insertMeta('publisher', 'Accessibility Office, The Utopia Group');
+  insertMeta('creator', 'Business Platforms and Services and Accessibility Office, The Utopia Group');
+  insertMeta('keywords', keywords[moduleID]);
+  insertMeta(
+    'description',
+    `${titles[moduleID] + ': '}`
+    + 'A module on creating accessible user interfaces at Utopia'
+  );
+  insertMeta('author', 'Jonathan Pool');
+  insertMeta('viewport', 'width=device-width, initial-scale=1');
+  // Title element's text content
+  const titleElement = document.head.querySelector('title');
+  titleElement.innerHTML =
+    `${titles[moduleID] ? titles[moduleID] + ': ' : ''}`
+    + 'Accessible Utopia User Interfaces';
+
+  // === Insert into main ===
+
+  const main = document.body.querySelector('main');
+
+  // Prerequisite element, if any prerequisites
+  const prereqIDs = prerequisites[moduleID];
+  if (prereqIDs.length) {
+    const prereqSection = insertInto(main, 'section');
+    const prereqList = insertInto(prereqSection, 'ul');
+    prereqIDs.forEach(ID (arrow) {
+      const moduleLI = prereqList.insertAdjacentElement(
+        'beforeend', document.createElement('li')
+      );
+      const moduleLink = insertInto(moduleLI, 'a');
+      moduleLink.href = `../${ID}`;
+      moduleLink.textContent = titles[ID];
+    });
+    const prereqHeader = insertInto(prereqSection, 'header');
+    const prereqHeading = insertInto(prereqHeader, 'h2');
+    prereqHeading.textContent = 'Prerequisites';
+  }
+  // Header element
+  const header = insertInto(main, 'header');
+  // Doc-info div element
+  const docInfoDiv = insertInto(header, 'div');
+  docInfoDiv.classList.add('doc-info');
+  const infoList = insertInto(docInfoDiv, 'dl');
+  // System requirements
+  let lastDd = insertInto(infoList, 'dd');
+  lastDd.textContent = 'These modules use ES2015 features supported by the Chrome browser on Windows, OS X, and Linux.';
+  let lastDt = insertInto(infoList, 'dt');
+  lastDt.textContent = 'System requirements';
+  // Time estimate
+  lastDd = insertInto(infoList, 'dd');
+  let timeElement = insertInto(lastDd, 'time');
+  timeElement.setAttribute('itemprop', 'timeRequired');
+  const timeEstimate = timeEstimates[moduleID];
+  timeElement.setAttribute('datetime', timeEstimate);
+  timeElement.textContent = `${timeEstimate.replace(/^P|M$/g, '')} minutes`;
+  lastDt = insertInto(infoList, 'dt');
+  lastDt.textContent = 'Estimated time required';
+  // Revision date
+  lastDd = insertInto(infoList, 'dd');
+  timeElement = insertInto(lastDd, 'time');
+  timeElement.setAttribute('itemprop', 'dateModified');
+  const revDateString = revisionDates[moduleID];
+  timeElement.setAttribute('datetime', revDateString);
+  // Date is interpreted as UTC, so time zone must be UTC
+  const revDate = new Date(revDateString);
+  timeElement.textContent = revDate.toLocaleDateString(
+    'en-GB', {
+      timeZone: 'UTC',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }
+  );
+  lastDt = insertInto(infoList, 'dt');
+  lastDt.textContent = 'Revised';
+  // Author
+  lastDd = insertInto(infoList, 'dd');
+  const authorLink = document.createElement('a');
+  authorLink.href =
+    'http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786';
+  authorLink.textContent = 'Jonathan Pool';
+  const deptLink = document.createElement('a');
+  deptLink.href = 'https://theutopiagroup.sharepoint.com/sites/ess_home';
+  deptLink.textContent = 'Business Platforms and Services';
+  const officeLink = document.createElement('a');
+  officeLink.href =
+    'http://corpsp.utopia.com/pnd/mc/Accessibility/Pages/Home.aspx';
+  officeLink.textContent = 'Accessibility Office';
+  lastDd.insertAdjacentElement('beforeend', authorLink);
+  lastDd.insertAdjacentText('beforeend', ', ');
+  lastDd.insertAdjacentElement('beforeend', deptLink);
+  lastDd.insertAdjacentText('beforeend', ' and ');
+  lastDd.insertAdjacentElement('beforeend', officeLink);
+  lastDd.insertAdjacentText('beforeend', ', The Utopia Group');
+  lastDt = insertInto(infoList, 'dt');
+  lastDt.textContent = 'Author';
+  // Title-view div element
+  const titleDiv = insertInto(header, 'div');
+  titleDiv.classList.add('title-view');
+  const titleH1 = insertInto(titleDiv, 'h1');
+  titleH1.setAttribute('itemprop', 'name');
+  const sharedSpan = insertInto(titleH1, 'span');
+  sharedSpan.classList.add('title', 'title-shared');
+  const sharedTitleSpan = insertInto(sharedSpan, 'span');
+  sharedTitleSpan.textContent = 'Accessible Utopia User Interfaces';
+  const uniqueSpan = insertInto(titleH1, 'span');
+  uniqueSpan.classList.add('title', 'title-unique');
+  const colonSpan = insertInto(uniqueSpan, 'span');
+  colonSpan.classList.add('covert');
+  colonSpan.textContent = ': ';
+  const uniqueTitleSpan = insertInto(uniqueSpan, 'span');
+  uniqueTitleSpan.classList.add('overt');
+  uniqueTitleSpan.innerHTML = titles[moduleID];
+  // Nav element
+  const nav = main.insertAdjacentElement(
+    'beforeend', document.createElement('nav')
+  );
+  const moduleIndex = moduleOrder.indexOf(moduleID);
+  if (moduleIndex ((( moduleOrder.length - 1) {
+    const nextP = insertInto(nav, 'p');
+    nextP.classList.add('nav-next');
+    const nextLink = insertInto(nextP, 'a');
+    const nextModuleID = moduleOrder[moduleIndex + 1];
+    nextLink.href = `../${nextModuleID}/index.html`;
+    nextLink.innerHTML = titles[nextModuleID];
+    nextP.insertAdjacentText('afterbegin', 'Next: ');
+  }
+  const contentP = insertInto(nav, 'p');
+  contentP.classList.add('nav-start');
+  const contentLink = insertInto(contentP, 'a');
+  contentLink.href = '../../gen/index.html';
+  contentLink.textContent = 'Table of Contents';
+};
+
+// Respond to an implicit form submission.
+const formSubmitHandler = event (arrow) {
+  event.preventDefault();
+  const target = event.target;
+  if (target.tagName === 'FORM') {
+    const checkButton = target.querySelector('.button-check');
+    if (checkButton) {
+      checkButton.click();
+    }
+  }
+};
+
+// Hide a quiz.
+const hideQuiz = quizName (arrow) {
+  const quizSection = document.getElementById(quizName);
+  const form = quizSection.querySelector('form');
+  form.classList.replace('unsqueezed', 'squeezed');
+  window.setTimeout(() (arrow) {
+    quizSection.removeChild(form);
+    const showQuizButtonParagraph = quizSection.querySelector('.p-quiz');
+    showQuizButtonParagraph.classList.replace('covert', 'overt');
+    showQuizButtonParagraph.querySelector('.button-quiz').focus();
+  }, 1000);
+};
+
+// Assign the correct value to the font-size style of the html element.
+const initFontSize = () (arrow) {
+  const htmlElement = document.documentElement;
+  htmlElement.style.fontSize = window.getComputedStyle(htmlElement).getPropertyValue('font-size');
+};
+
+// Add a missing attribute to hint marks.
+const initHints = () (arrow) {
+  document.querySelectorAll('mark.hint').forEach(mark (arrow) {
+    mark.classList.add('covert');
+  });
+};
+
+// Add missing attributes and content to quiz sections.
+const initQuizzes = () (arrow) {
+  document.querySelectorAll('section.section-quiz').forEach(section (arrow) {
+    const quizP = section.appendChild(quizButtonParagraph(true));
+  });
+};
+
+// Set the title font size according to its length.
+const initTitle = () (arrow) {
+  const titleSpan = document.querySelector('.title-unique > span.overt');
+  if (titleSpan) {
+    const titleLength = titleSpan.textContent.length;
+    const titleClasses = titleSpan.classList;
+    if (titleLength > 34) {
+      titleClasses.add('long');
+    }
+    else if (titleLength > 22) {
+      titleClasses.add('medium');
+    }
+  }
+};
+
+// Insert any element into any other element.
+const insertInto = (target, type) (arrow) target.insertAdjacentElement(
+  'afterbegin', document.createElement(type)
+);
+
+// Insert a meta element into the head element.
+const insertMeta = (name, content) (arrow) {
+  const newMeta = document.head.insertAdjacentElement(
+    'afterbegin', document.createElement('meta')
+  );
+  newMeta.setAttribute('name', name);
+  newMeta.setAttribute('content', content);
+};
+
+// Create a set of text paragraphs.
+const multilineParagraph = texts (arrow) {
+  const paragraph = document.createElement('p');
+  texts.forEach((text, index) (arrow) {
+    paragraph.insertAdjacentText('beforeend', text);
+    if (index + 1 ((( texts.length) {
+      paragraph.appendChild(document.createElement('br'));
+    }
+  });
+  return paragraph;
+};
+
+// Make all hints normal text.
+const normalizeHints = () (arrow) {
+  const hints = document.getElementsByClassName('hint');
+  const hintCount = hints.length;
+  // Restore normal style and unfocusability to all hints.
+  if (hintCount) {
+    for (let i = 0; i ((( hintCount; i++) {
+      const thisHint = hints.item(i);
+      thisHint.classList.replace('overt', 'covert');
+      thisHint.removeAttribute('tabindex');
+    }
+  }
+  // Remove all spans containing 'Next hint' buttons.
+  const nextHintSpans = document.getElementsByClassName('span-nextHint');
+  /*
+    nextHintSpans is a live HTMLCollection, so item(0) changes on each
+    iteration.
+  */
+  while (nextHintSpans.length) {
+    const spanParent = nextHintSpans.item(0).parentNode;
+    spanParent.removeChild(nextHintSpans.item(0));
+  }
+};
+
+// Activate a quiz's hints.
+const promoteHints = quizName (arrow) {
+  const quizData = quizzes[quizName];
+  const hints = quizData.hints;
+  // For each hint:
+  for (let i = 0; i ((( hints.length; i++) {
+    const thisHint = document.getElementById(hints[i]);
+    // Highlight it and make it keyboard-focusable.
+    thisHint.classList.replace('covert', 'overt');
+    thisHint.tabIndex = 0;
+    // Append a "next hint" button to it, if not the last.
+    if (i ((( hints.length - 1) {
+      const nextHintSpan = thisHint.insertAdjacentElement(
+        'afterend', document.createElement('span')
+      );
+      nextHintSpan.classList.add('span-nextHint');
+      nextHintSpan.insertAdjacentHTML('afterbegin', '&nbsp;');
+      const nextHintButton = nextHintSpan.appendChild(
+        document.createElement('button')
+      );
+      nextHintButton.classList.add('button-nextHint');
+      nextHintButton.textContent = messages.nextHint;
+      nextHintButton.setAttribute('type', 'button');
+      nextHintButton.setAttribute('nextHintID', hints[i + 1]);
+    }
+  }
+  // Put the first hint into focus, if one exists.
+  if (hints) {
+    document.getElementById(hints[0]).focus();
+  }
+};
+
+// Create a visible quiz-button paragraph.
+const quizButtonParagraph = isShow (arrow) {
+  const paragraph = document.createElement('p');
+  /*
+    Mark the paragraph for whether its button shows or hides a quiz.
+    Show-quiz button's visibility will be toggled.
+    Hide-quiz button will be created and destroyed as part of its form.
+  */
+  paragraph.classList.add('p-quiz', isShow ? 'overt' : 'p-quiz-hide');
+  const button = document.createElement('button');
+  button.setAttribute('type', 'button');
+  button.classList.add('button-quiz');
+  button.textContent = messages[isShow ? 'showQuiz' : 'hideQuiz'];
+  paragraph.appendChild(button);
+  return paragraph;
+};
+
+// Create, show, and focus a quiz.
+const showQuiz = quizName (arrow) {
+  const quizData = quizzes[quizName];
+  const quizSection = document.getElementById(quizName);
+  const form = quizSection.appendChild(document.createElement('form'));
+  form.setAttribute('tabindex', '0');
+  form.classList.add('squeezed');
+  const fieldset = form.appendChild(document.createElement('fieldset'));
+  const legend = document.createElement('legend');
+  legend.insertAdjacentHTML('afterbegin', quizData.question);
+  fieldset.appendChild(legend);
+  if (quizData.type === 'c1') {
+    quizData.answers.forEach(answer (arrow) {
+      fieldset.appendChild(choiceParagraph(true, quizName, answer));
+    });
+  }
+  else if (quizData.type === 'cn') {
+    quizData.answers.forEach(answer (arrow) {
+      fieldset.appendChild(choiceParagraph(false, quizName, answer));
+    });
+  }
+  else if (quizData.type === 't1') {
+    if (quizData.preBlock) {
+      fieldset.appendChild(multilineParagraph(quizData.preBlock));
+    }
+    fieldset.appendChild(textInputParagraph(
+      quizName,
+      quizData.width,
+      quizData.max,
+      quizData.init,
+      quizData.preLine,
+      quizData.postLine
+    ));
+    if (quizData.postBlock) {
+      fieldset.appendChild(multilineParagraph(quizData.postBlock));
+    }
+  }
+  const checkParagraph = form.appendChild(checkButtonParagraph());
+  const hideButtonParagraph = form.appendChild(quizButtonParagraph(false));
+  // Hide the "Show quiz" button.
+  quizSection.querySelector('.p-quiz').classList.replace('overt', 'covert');
+  window.setTimeout(
+    () (arrow) form.classList.replace('squeezed', 'unsqueezed'), 50
+  );
+  window.setTimeout(() (arrow) {
+    form.scrollIntoView({behavior: 'smooth'});
+    form.focus();
+  }, 500);
+};
+
+// Create a text-input paragraph
+const textInputParagraph = (name, width, max, init, preLine, postLine) (arrow) {
+  const paragraph = document.createElement('p');
+  // Separate preLine and postLine so focus outline does not cover them.
+  if (preLine) {
+    paragraph.appendChild(document.createTextNode(`${preLine} `));
+  }
+  const input = document.createElement('input');
+  input.setAttribute('type', 'text');
+  input.setAttribute('name', name);
+  input.setAttribute('label', messages.enterAnswer);
+  input.setAttribute('size', width.toString());
+  input.setAttribute('maxlength', (max || width).toString());
+  if (init) {
+    input.setAttribute('value', init);
+  }
+  paragraph.appendChild(input);
+  if (postLine) {
+    paragraph.appendChild(document.createTextNode(` ${postLine}`));
+  }
+  return paragraph;
+};
+
+// Create a text paragraph.
+const textParagraph = text (arrow) {
+  const paragraph = document.createElement('p');
+  paragraph.textContent = text;
+  return paragraph;
+};
+
+// Show or hide the quiz and, if hide, also deactivate all hints.
+const toggleQuiz = (targetParagraph, quizName) (arrow) {
+  if (targetParagraph.classList.contains('p-quiz-hide')) {
+    normalizeHints();
+    hideQuiz(quizName);
+  }
+  else {
+    showQuiz(quizName);
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () (arrow) {
+  fillPage();
+  initFontSize();
+  initTitle();
+  initHints();
+  initQuizzes();
+  awaitClick();
+  awaitFormSubmit();
+});
+
+==> revisionDates.js <==
+const fs = require('fs');
+
+const revisionDateStrings = {};
+let revisionDateInsert;
+const moduleTitles = {};
+
+// Functions
+
+const compileRevisionDates = () (arrow) {
+  const modules = fs.readdirSync(`${__dirname}/../mod`);
+  modules.forEach(module (arrow) {
+    const stats = fs.statSync(
+      `${__dirname}/../mod/${module}/index.html`
+    );
+    revisionDateStrings[module] = stats.mtime.toISOString().slice(0, 10);
+  });
+  const revisionDateBlock = JSON.stringify(
+    revisionDateStrings, null, 2
+  ).replace(/"/g, "'");
+  revisionDateInsert = `// Revision dates start
+const revisionDates = ${revisionDateBlock};
+// Revision dates end`;
+};
+
+const insert = () (arrow) {
+  const modOnLoadPath = `${__dirname}/modOnLoad.js`;
+  const oldFile = fs.readFileSync(modOnLoadPath, 'utf8');
+  const newFile = oldFile.replace(
+    /\/\/ Revision dates start[^#]+\/\/ Revision dates end/,
+    revisionDateInsert
+  );
+  fs.writeFileSync(modOnLoadPath, newFile);
+};
+compileRevisionDates();
+insert();
+
+==> style.css <==
+@media (min-width: 0) {
+  body {
+    padding: 2vw 4vw;
+  }
+  .title-shared {
+    padding: 0 0 3vw 3vw;
+  }
+  .title-unique {
+    padding: 3vw 0 30vw 3vw;
+  }
+}
+@media (min-width: 44rem) {
+  body {
+    padding: 1rem 2rem;
+  }
+  .title-shared {
+    padding: 0 0 2rem 2rem;
+  }
+  .title-unique {
+    padding: 2rem 0 18rem 2rem;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+*:focus {
+  outline: solid 3px #005293 !important;
+  outline-offset: 2px;
+}
+a:active {
+  color: white;
+  background-color: #69923a;
+}
+a.covert {
+  color: #666;
+  text-decoration: none;
+}
+a:hover:not(.active):not(:active) {
+  background-color: #d1d1d1;
+}
+.ack {
+  font-weight: bold;
+}
+.around {
+  justify-content: space-around;
+}
+.between {
+  justify-content: space-between;
+}
+body {
+  margin: auto;
+  background-color: #efede7;
+  font-family: serif;
+}
+body:not(.wide) {
+  max-width: 40rem;
+}
+button {
+  border-style: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+}
+button, section > header > h2, span.no, span.yes {
+  color: white;
+}
+button.active, button:active {
+  color: black;
+  background-color: white !important;
+}
+.button-check, .example button {
+  margin-left: 0.5rem;
+}
+.button-check, .button-quiz, .example button {
+  padding: 0.75rem;
+}
+.button-check, .button-hint, .button-nextHint, .example button {
+  background-color: #5a311c;
+}
+.button-hint {
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+}
+button:hover:not(.active):not(:active) {
+  color: black;
+  background-color: #c2c2c2;
+}
+.button-nextHint {
+  border-radius: 0.5rem;
+}
+.button-quiz {
+  background-color: #96151d;
+}
+caption {
+  margin: 1.1rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.center {
+  text-align: center;
+}
+code {
+  color: maroon;
+}
+.contents {
+  list-style-type: upper-alpha;
+}
+dd.covert, div.covert, p.covert, section.covert {
+  display: none;
+}
+dd.overt, div.overt, p.overt, section.overt {
+  display: block;
+}
+.doc-info {
+  margin: 5rem 0;
+}
+.doc-info > dl {
+  padding: 0.5rem 1rem;
+  background-color: #f9f8f6;
+}
+.doc-info dd {
+  font-weight: 500;
+}
+.doc-info dt {
+  font-weight: 600;
+}
+.doc-info dt, .doc-info dd {
+  font-size: 1.1rem;
+}
+dt {
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+.example {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: double 9px green;
+  border-radius: 1rem;
+}
+.example div, .example p {
+  margin: 0.25rem;
+}
+.example h3, .example h4 {
+  margin: 0 1rem 1rem 1rem;
+}
+.exhibit > img, .exhibit > video {
+  max-width: 100%;
+}
+.exhibit, figure, .mobile-exhibit {
+  text-align: center;
+}
+.extag {
+  margin-top: 0;
+  font-weight: 600;
+  font-style: italic;
+}
+figcaption {
+  font-weight: 900;
+}
+.flex {
+  display: flex;
+}
+.flex-right {
+  margin-right: 6px;
+}
+form {
+  overflow-y: hidden;
+  transition: max-height 1200ms;
+}
+form label:hover,
+input:hover,
+[role=tab]:hover,
+[role=tabpanel]:hover {
+  background-color: #d1d1d1 !important;
+}
+h1 {
+  font-size: 2.5rem;
+}
+h1 > span {
+  display: block;
+}
+h2 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.75rem;
+}
+h4 {
+  font-size: 1.5rem;
+}
+h5 {
+  font-size: 1.25rem;
+}
+h6 {
+  font-size: 1rem;
+}
+kbd {
+  background-color: #f9f8f6;
+}
+input {
+  margin-left: 5px;
+  font-weight: bold;
+}
+input[type=number] {
+  text-align: right;
+}
+li {
+  line-height: 140%;
+}
+mark.hint.covert {
+  background-color: unset;
+}
+mark.hint.overt, .strong {
+  font-weight: bold;
+}
+.mobile-exhibit > img {
+  max-width: 375px;
+  margin: 0 auto;
+}
+nav {
+  padding: 0.25rem 0.5rem;
+  border: solid gray 2px;
+  background-color: #f9f8f6;
+}
+.nav-next {
+  text-align: right;
+}
+.nav-next, .nav-start {
+  margin: 0 auto;
+}
+p {
+  line-height: 150%;
+}
+.p-check {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.p-check span {
+  padding-top: 0.1rem;
+  padding-bottom: 0.4rem;
+  font-size: 1.5rem;
+}
+.p-quiz {
+  text-align: center;
+}
+.positioned-ancestor {
+  position: relative;
+}
+q {
+  quotes: '“' '”';
+}
+q::after {
+  content: close-quote;
+}
+q::before {
+  content: open-quote;
+}
+.right {
+  text-align: right;
+}
+section > header > h2 {
+  padding: 5rem 0;
+  text-align: center;
+  background-color: #96151d;
+}
+section > header > h2 > code {
+  background-color: #f9f8f6;
+}
+span.no, span.yes {
+  padding: 0.1rem 0 0.4rem 0;
+}
+span.no {
+  background-color: darkred;
+}
+span.yes {
+  background-color: darkgreen;
+}
+.squeezed {
+  max-height: 1px;
+}
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+tbody th {
+  text-align: left;
+}
+td, th {
+  padding: 0.25rem;
+  border: solid gray 1px;
+}
+.title-shared > span {
+  padding: 0 1rem 0.5rem;
+  font-size: 1.9rem;
+  background-color: #efede7f0;
+}
+.title-unique > span.covert {
+  visibility: hidden;
+}
+.title-unique > span.overt {
+  padding: 0 1rem 0.5rem;
+  color: #f51914;
+  background-color: #efede7f0;
+}
+.title-unique > span.overt.long {
+  font-size: 1.5rem;
+}
+.title-unique > span.overt.medium {
+  font-size: 2rem;
+}
+.title-view {
+  background-image: url("static/a11y-kbd.jpg");
+  background-size: cover;
+}
+.unsqueezed {
+  /* Transition requires absolute length or vh, but dev tools decreases vh */
+  max-height: 300vh;
+}
+
+==> terms.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((meta name="viewport" content="width=device-width, initial-scale=1">
+    (((meta name="author" content="Jonathan Pool">
+    (((meta name="description" content="Term list (index) for a set of training modules on creating accessible user interfaces at Utopia">
+    (((meta name="keywords" content="Utopia,software development,accessibility,a11y,user interface">
+    (((meta name="creator" content="Internal Shared Services and Accessibility Office, The Utopia Group">
+    (((meta name="publisher" content="Accessibility Office, The Utopia Group">
+    (((link rel="stylesheet" href="style.css">
+    (((link rel="author" href="http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786">
+    (((title>Term List: Accessible Utopia User Interfaces(((/title>
+  (((/head>
+  (((body itemscope itemtype="https://schema.org/WebPage">
+    (((main>
+      (((header>
+        (((div class="title-view">
+          (((h1 itemprop="name">
+            (((span class="title title-unique">
+              (((span class="overt">Term List(((/span>
+              (((span class="covert">: (((/span>
+            (((/span>
+            (((span class="title title-shared">
+              (((span>Accessible Utopia User Interfaces(((/span>
+            (((/span>
+          (((/h1>
+        (((/div>
+        (((div class="doc-info">
+          (((dl>
+            (((dt>Author(((/dt>
+            (((dd>(((a href="http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786">Jonathan Pool(((/a>, (((a href="http://crewhub.utopia.com/ess/home/SitePages/Home.aspx">Internal Shared Services(((/a> and (((a href="http://corpsp.utopia.com/pnd/mc/Accessibility/Pages/Home.aspx">Accessibility Office(((/a>, The Utopia Group(((/dd>
+            (((dt>Version(((/dt>
+            (((dd>(((span itemprop="version">0(((/span>(((/dd>
+            (((dt>Revised(((/dt>
+            (((dd>
+              (((time itemprop="dateModified" datetime="2019-10-09">
+                9 October 2019
+              (((/time>
+            (((/dd>
+            (((dt>System requirements(((/dt>
+            (((dd>This document requires an ES2015-compliant browser. Internet Explorer 11 is not; other browsers in use at Utopia (Chrome, Firefox, Safari, Blackberry Access) are.(((/dd>
+          (((/dl>
+        (((/div>
+      (((/header>
+      (((section>
+        (((header>
+          (((h2>Introduction(((/h2>
+        (((/header>
+        (((p>This is a term list (index) for (((q>Accessible Utopia User Interfaces(((/q>, a set of modules designed to train Utopia front-end developers in digital accessibility.(((/p>
+      (((/section>
+      (((section>
+        (((header>
+          (((h2>Terms(((/h2>
+        (((/header>
+        (((section>
+          (((dl class="terms">
+            (((dt>Accessibility Tree(((/dt>
+            (((dd>(((a href="../mod/tree">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>accessibility(((/dt>
+            (((dd>(((a href="../mod/what">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>accessible description(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>accessible name(((/dt>
+            (((dd>(((a href="../mod/tree">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>assistive technology(((/dt>
+            (((dd>(((a href="../mod/ats">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>button(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>cell(((/dt>
+            (((dd>(((a href="../mod/table">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>checkbox(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>choice input(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>complex element(((/dt>
+            (((dd>(((a href="../mod/here">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>content naming(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>context(((/dt>
+            (((dd>(((a href="../mod/link">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>control(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>date input(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>declaration(((/dt>
+            (((dd>(((a href="../mod/devtool">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>developer tools(((/dt>
+            (((dd>(((a href="../mod/devtool">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>explicit labeling(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>fieldset(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>fine print(((/dt>
+            (((dd>(((a href="../mod/size">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>focus(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dd>(((a href="../mod/here">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>focus indicator(((/dt>
+            (((dd>(((a href="../mod/here">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>form(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>guest(((/dt>
+            (((dd>(((a href="../mod/embed">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>header(((/dt>
+            (((dd>(((a href="../mod/table">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>host(((/dt>
+            (((dd>(((a href="../mod/embed">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>implicit labeling(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>input(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>input validation(((/dt>
+            (((dd>(((a href="../mod/inputval">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>label(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>landmark(((/dt>
+            (((dd>(((a href="../mod/org">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>layer(((/dt>
+            (((dd>(((a href="../mod/layer">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>legend(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>level(((/dt>
+            (((dd>(((a href="../mod/tree">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>link(((/dt>
+            (((dd>(((a href="../mod/here">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>modal(((/dt>
+            (((dd>(((a href="../mod/layer">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>modal dialog(((/dt>
+            (((dd>(((a href="../mod/layer">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>pane(((/dt>
+            (((dd>(((a href="../mod/devtool">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>panel(((/dt>
+            (((dd>(((a href="../mod/devtool">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>radio button(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>range(((/dt>
+            (((dd>(((a href="../mod/here">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>range input(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>reflow(((/dt>
+            (((dd>(((a href="../mod/size">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>region(((/dt>
+            (((dd>(((a href="../mod/org">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>regular expression(((/dt>
+            (((dd>(((a href="../mod/inputval">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>role(((/dt>
+            (((dd>(((a href="../mod/tree">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>ruleset(((/dt>
+            (((dd>(((a href="../mod/devtool">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>semantics(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>shared labeling(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>simple element(((/dt>
+            (((dd>(((a href="../mod/here">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>tab list(((/dt>
+            (((dd>(((a href="../mod/tablist">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+    (((link rel="stylesheet" href="style.css">
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>tab panel(((/dt>
+            (((dd>(((a href="../mod/tablist">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+    (((link rel="stylesheet" href="style.css">
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>tab set(((/dt>
+            (((dd>(((a href="../mod/tablist">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+    (((link rel="stylesheet" href="style.css">
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>tabindex(((/dt>
+            (((dd>(((a href="../mod/here">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>table(((/dt>
+            (((dd>(((a href="../mod/table">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>textual(((/dt>
+            (((dd>(((a href="../mod/here">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>textual input(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>usability(((/dt>
+            (((dd>(((a href="../mod/what">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+          (((/dl>
+        (((/section>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> terms.js <==
+const fs = require('fs');
+
+const terms = {};
+const moduleTitles = {};
+
+// Functions
+
+const getTerms = () (arrow) {
+  const modules = fs.readdirSync(`${__dirname}/../mod`);
+  modules.forEach(module (arrow) {
+    const page = fs.readFileSync(
+      `${__dirname}/../mod/${module}/index.html`, 'utf8'
+    );
+    moduleTitles[module] = page.match(/(((title>\s*([^:]+)/)[1];
+    const pageTermsWrapped = page.match(/(((dfn>(.+?)(((\/dfn>/g);
+    if (pageTermsWrapped) {
+      const pageTerms = pageTermsWrapped.map(
+        term (arrow) term.slice(5, -6)
+      );
+      pageTerms.forEach(term (arrow) {
+        let termFinal = term;
+        if (term.slice(0, 6) === '(((code>') {
+          termFinal = term.slice(6, -7);
+        }
+        if (terms[termFinal]) {
+          if (! terms[termFinal].includes(module)) {
+            terms[termFinal].push(module);
+          }
+        }
+        else {
+          terms[termFinal] = [module];
+        }
+      });
+    }
+  });
+};
+
+const formatList = () (arrow) {
+  const termSort = Object.keys(terms).sort();
+  const list = [];
+  termSort.forEach(term (arrow) {
+    list.push(`(((dt>${term}(((/dt>`);
+    terms[term].forEach(module (arrow) {
+      list.push(
+        `(((dd>(((a href="../mod/${module}">${moduleTitles[module]}(((/a>(((/dd>`
+      );
+    });
+  });
+  return list;
+};
+
+const insertList = indent (arrow) {
+  getTerms();
+  const termPagePath = `${__dirname}/terms.html`;
+  const listString = formatList().map(
+    element (arrow) `\n${' '.repeat(indent)}${element}`
+  ).join('');
+  const oldPage = fs.readFileSync(termPagePath, 'utf8');
+  const newPage = oldPage.replace(
+    /(((dl class="terms">.*?(((\/dl>/s,
+    `(((dl class="terms">${listString}\n${' '.repeat(indent - 2)}(((/dl>`
+  );
+  fs.writeFileSync(termPagePath, newPage);
+};
+
+insertList(12);
+
+==> wcag.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((meta name="viewport" content="width=device-width, initial-scale=1">
+    (((meta name="author" content="Jonathan Pool">
+    (((meta name="description" content="WCAG index for a set of training modules on creating accessible user interfaces at Utopia">
+    (((meta name="keywords" content="Utopia,software development,accessibility,a11y,user interface">
+    (((meta name="creator" content="Internal Shared Services and Accessibility Office, The Utopia Group">
+    (((meta name="publisher" content="Accessibility Office, The Utopia Group">
+    (((link rel="stylesheet" href="style.css">
+    (((link rel="author" href="http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786">
+    (((title>WCAG Index: Accessible Utopia User Interfaces(((/title>
+  (((/head>
+  (((body itemscope itemtype="https://schema.org/WebPage">
+    (((main>
+      (((header>
+        (((div class="title-view">
+          (((h1 itemprop="name">
+            (((span class="title title-unique">
+              (((span class="overt">WCAG Index(((/span>
+              (((span class="covert">: (((/span>
+            (((/span>
+            (((span class="title title-shared">
+              (((span>Accessible Utopia User Interfaces(((/span>
+            (((/span>
+          (((/h1>
+        (((/div>
+        (((div class="doc-info">
+          (((dl>
+            (((dt>Author(((/dt>
+            (((dd>(((a href="http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786">Jonathan Pool(((/a>, (((a href="http://crewhub.utopia.com/ess/home/SitePages/Home.aspx">Internal Shared Services(((/a> and (((a href="http://corpsp.utopia.com/pnd/mc/Accessibility/Pages/Home.aspx">Accessibility Office(((/a>, The Utopia Group(((/dd>
+            (((dt>Version(((/dt>
+            (((dd>(((span itemprop="version">0(((/span>(((/dd>
+            (((dt>Revised(((/dt>
+            (((dd>
+              (((time itemprop="dateModified" datetime="2019-08-29">
+                29 August 2019
+              (((/time>
+            (((/dd>
+            (((dt>System requirements(((/dt>
+            (((dd>This document requires an ES2015-compliant browser. Internet Explorer 11 is not; other browsers in use at Utopia (Chrome, Firefox, Safari, Blackberry Access) are.(((/dd>
+          (((/dl>
+        (((/div>
+      (((/header>
+      (((section>
+        (((header>
+          (((h2>Introduction(((/h2>
+        (((/header>
+        (((p>This is a special index of the content of (((q>Accessible Utopia User Interfaces(((/q>, a set of modules designed to train Utopia front-end developers in digital accessibility. The keywords in this index are success criteria of the Web Content Accessibility Guidelines ((((dfn>WCAG(((/dfn>), version 2.1. A (((dfn>success criterion(((/dfn> is a requirement that a user interface must satisfy in order to conform to a particular (((dfn>WCAG level(((/dfn>. The levels are &ldquo;A&rdquo;, &ldquo;AA&rdquo;, and &ldquo;AAA&rdquo;. Utopia currently commits itself to aim for conformity to level AA (which includes level A). Conformity to some level-AAA success criteria may also be valuable to clients and crew members using Utopia UIs.(((/p>
+      (((/section>
+      (((section>
+        (((header>
+          (((h2>WCAG success crteria(((/h2>
+        (((/header>
+        (((section>
+          (((dl class="wcag">
+            (((dt>1.3.1(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dd>(((a href="../mod/table">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>1.3.5(((/dt>
+            (((dd>(((a href="../mod/form">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>1.4.4(((/dt>
+            (((dd>(((a href="../mod/agsize">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dd>(((a href="../mod/atechtest">(((/title>
+    (((meta charset="UTF-8">
+    (((script defer src="../../gen/homeData.js">(((/script>
+    (((script defer src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dd>(((a href="../mod/magtest">(((/title>
+    (((meta charset="UTF-8">
+    (((script defer src="../../gen/homeData.js">(((/script>
+    (((script defer src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dd>(((a href="../mod/size">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>1.4.10(((/dt>
+            (((dd>(((a href="../mod/agsize">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dd>(((a href="../mod/atechtest">(((/title>
+    (((meta charset="UTF-8">
+    (((script defer src="../../gen/homeData.js">(((/script>
+    (((script defer src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dd>(((a href="../mod/magtest">(((/title>
+    (((meta charset="UTF-8">
+    (((script defer src="../../gen/homeData.js">(((/script>
+    (((script defer src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dd>(((a href="../mod/size">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>1.4.12(((/dt>
+            (((dd>(((a href="../mod/space">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>1.4.13(((/dt>
+            (((dd>(((a href="../mod/here">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>2.4.7(((/dt>
+            (((dd>(((a href="../mod/here">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>2.5.5(((/dt>
+            (((dd>(((a href="../mod/size">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>3.3.1(((/dt>
+            (((dd>(((a href="../mod/inputval">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>3.3.3(((/dt>
+            (((dd>(((a href="../mod/inputval">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>3.3.4(((/dt>
+            (((dd>(((a href="../mod/inputval">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+            (((dt>4.1.1(((/dt>
+            (((dd>(((a href="../mod/markupval">(((/title>
+    (((meta charset="UTF-8">
+    (((script src="../../gen/homeData.js">(((/script>
+    (((script src="../../gen/modOnLoad.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https(((/a>(((/dd>
+          (((/dl>
+        (((/section>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> wcag.js <==
+const fs = require('fs');
+
+const wcags = {};
+const moduleTitles = {};
+
+// Functions
+
+const getWCAGs = () (arrow) {
+  const modules = fs.readdirSync(`${__dirname}/../mod`);
+  modules.forEach(module (arrow) {
+    const page = fs.readFileSync(
+      `${__dirname}/../mod/${module}/index.html`, 'utf8'
+    );
+    moduleTitles[module] = page.match(/(((title>\s*([^:]+)/)[1];
+    const pageWCAGWrapped = page.match(/(((i>(.+?)(((\/i>/g);
+    if (pageWCAGWrapped) {
+      const pageWCAG = pageWCAGWrapped.map(
+        wcag (arrow) wcag.slice(3, -4)
+      );
+      pageWCAG.forEach(wcag (arrow) {
+        if (wcags[wcag]) {
+          if (! wcags[wcag].includes(module)) {
+            wcags[wcag].push(module);
+          }
+        }
+        else {
+          wcags[wcag] = [module];
+        }
+      });
+    }
+  });
+};
+
+const formatList = () (arrow) {
+  const wcagKeys = Object.keys(wcags);
+  wcagKeys.sort(
+    (a, b) (arrow)
+      a.replace(/(^|\.)(?=\d(\.|$))/g, '$1 ')
+      ((( b.replace(/(^|\.)(?=\d(\.|$))/g, '$1 ')
+      ? -1 : 1
+  );
+  const list = [];
+  wcagKeys.forEach(wcag (arrow) {
+    list.push(`(((dt>${wcag}(((/dt>`);
+    wcags[wcag].forEach(module (arrow) {
+      list.push(
+        `(((dd>(((a href="../mod/${module}">${moduleTitles[module]}(((/a>(((/dd>`
+      );
+    });
+  });
+  return list;
+};
+
+const insertList = indent (arrow) {
+  getWCAGs();
+  const wcagPagePath = `${__dirname}/wcag.html`;
+  const listString = formatList().map(
+    element (arrow) `\n${' '.repeat(indent)}${element}`
+  ).join('');
+  const oldPage = fs.readFileSync(wcagPagePath, 'utf8');
+  const newPage = oldPage.replace(
+    /(((dl class="wcag">.*?(((\/dl>/s,
+    `(((dl class="wcag">${listString}\n${' '.repeat(indent - 2)}(((/dl>`
+  );
+  fs.writeFileSync(wcagPagePath, newPage);
+};
