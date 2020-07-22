@@ -1,0 +1,4143 @@
+==> formbad.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Joint account ownership information(((/title>
+    (((link rel="stylesheet" href="style.css">
+  (((/head>
+  (((body>
+    (((h3>Joint account ownership at (((a href="http://utopia.com">Utopia(((/a>(((/h3>
+    (((form>
+      (((p>
+        Name of joint owner:
+        (((input type="text" size="40" maxlength="40" required>
+      (((/p>
+      (((fieldset>
+        (((legend>
+          Form of ownership
+        (((/legend>
+        (((p>
+          (((input type="radio" name="ownform" value="common">
+          Tenancy in common
+        (((/p>
+        (((p>
+          (((input type="radio" name="ownform" value="entirety">
+          Tenancy by the entirety
+        (((/p>
+        (((p>
+          (((input type="radio" name="ownform" value="survivorship" checked>
+          Joint tenancy with rights of survivorship
+        (((/p>
+        (((button type="submit">Button(((/button>
+      (((/fieldset>
+    (((/form>
+  (((/body>
+(((/html>
+
+==> litest.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>List Element Label Test(((/title>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((main>
+      (((section>
+        (((header>
+          (((h3>Examples(((/h3>
+        (((/header>
+        (((section>
+          (((p>This is a list whose items are labeled.(((/p>
+          (((ul>
+            (((li aria-label="More important item">This is item A1.(((/li>
+            (((li aria-label="Less important item">This is item A2.(((/li>
+          (((/ul>
+          (((p>This is a list whose items contain spans that are labeled.(((/p>
+          (((ul>
+            (((li>
+              (((span aria-label="More important item">This is item B1.(((/span>
+            (((/li>
+            (((li>
+              (((span aria-label="Less important item">This is item B2.(((/span>
+            (((/li>
+          (((/ul>
+        (((/section>
+      (((/section>
+      (((section>
+        (((header>
+          (((h3>Discussion(((/h3>
+        (((/header>
+        (((section>
+          (((p>Chrome in both examples recognizes the labels and makes them the accessible names of the elements that they label. You can see the names next to the roles of those elements in the accessibility tree in the developer tools. Chrome&rsquo;s treatment is consistent with the (((a href="https://www.w3.org/TR/wai-aria/#aria-label">WAI-ARIA specification(((/a>, which permits the use of (((code>aria-label(((/code> as an attribute of any element.(((/p>
+          (((p>Although the labels are in the accessibility tree, not all assistive technologies make use of them. NVDA, JAWS, and VoiceOver all fail to announce the labels in both of the lists, even though these same screen readers announce labels when they are attributes of form controls, such as (((code>input(((/code> elements.(((/p>
+        (((/section>
+      (((/section>
+    (((/main>
+
+  (((/body>
+(((/html>
+
+==> spacingtextplain.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Disclosures(((/title>
+    (((style>
+      body {
+        max-width: 400px;
+      }
+    (((/style>
+  (((/head>
+  (((body>
+    (((main>
+      (((h1>Disclosures(((/h1>
+      (((p>Utopia average expense ratio: 0.11%. Industry average expense ratio: 0.62%. All averages are asset-weighted. Industry averages exclude Utopia. Sources: Utopia and Morningstar, Inc., as of December 31, 2017.(((/p>
+      (((p>Utopia is client-owned. As a client-owner, you own the funds that own Utopia.(((/p>
+      (((p>All investing is subject to risk, including the possible loss of the money you invest.(((/p>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> spacingtextstretched.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>[Extra-space] Disclosures(((/title>
+    (((style>
+      body {
+        max-width: 400px;
+      }
+      p {
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+      }
+    (((/style>
+  (((/head>
+  (((body>
+    (((main>
+      (((h1>[Extra-space] Disclosures(((/h1>
+      (((p>Utopia average expense ratio: 0.11%. Industry average expense ratio: 0.62%. All averages are asset-weighted. Industry averages exclude Utopia. Sources: Utopia and Morningstar, Inc., as of December 31, 2017.(((/p>
+      (((p>Utopia is client-owned. As a client-owner, you own the funds that own Utopia.(((/p>
+      (((p>All investing is subject to risk, including the possible loss of the money you invest.(((/p>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> style.css <==
+* {
+  box-sizing: border-box;
+}
+a:active {
+  color: white;
+  background-color: green;
+}
+*:focus {
+  outline: solid 3px #005293 !important;
+  outline-offset: 2px;
+}
+a:hover:not(:active) {
+  background-color: #d1d1d1;
+}
+body {
+  width: 650px;
+  margin: 0 2rem;
+  background-color: #eee;
+}
+.box {
+  padding: 0.5rem;
+  border: solid black 1px;
+}
+button {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  border-style: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #5a311c;
+}
+button:active {
+  color: black;
+  background-color: white;
+}
+button:hover:not(:active) {
+  color: black;
+  background-color: #c2c2c2;
+}
+dd.covert {
+  display: none;
+}
+dd.overt {
+  display: block;
+}
+.example {
+  margin-top: 1rem;
+  padding: 0 0.5rem 0.5rem 0.5rem;
+  border: double 9px green;
+  border-radius: 1rem;
+}
+form label:hover,
+input:hover:not(:focus),
+[role=tab]:hover,
+[role=tabpanel]:hover {
+  background-color: #d1d1d1 !important;
+}
+html {
+  font-size: 20px;
+}
+==> duplicate/builtinmodaldialog.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Built-in modal alert dialog(((/title>
+    (((script src="../../../mod/layer/nav.js">(((/script>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Built-in modal alert dialog(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((header>
+          (((h2>Communication preference(((/h2>
+        (((/header>
+        (((form>
+          (((fieldset>
+            (((legend>Please send my statements and confirmations(((/legend>
+            (((p>(((label>
+              (((input type="radio" name="compref" value="elec" checked>
+              electronically
+            (((/label>(((/p>
+            (((p>
+              (((label
+                title="Mail may make you ineligible for some fee discounts."
+              >
+                (((input
+                  type="radio"
+                  name="compref"
+                  value="mail"
+                  data-focusalert="Mail may make you ineligible for some fee discounts."
+                >
+                by mail
+              (((/label>
+            (((/p>
+            (((p class="center">
+              (((button type="button">Submit(((/button>
+            (((/p>
+          (((/fieldset>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/buttoncontentname.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Button content naming(((/title>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Button content naming(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((h2>Account termination(((/h2>
+        (((form>
+          (((p class="center">
+            (((button>Close my account(((/button>
+          (((/p>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/controldescription.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Control description(((/title>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Control description(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((h2>Verification(((/h2>
+        (((p id="ok">Do you approve the above-described transaction?(((/p>
+        (((p id="warning">Your approval of this transaction will cause an order to be placed for immediate execution and is not cancelable or rescindable. Please verify the details above before clicking this button.(((/p>
+        (((p>
+          (((button
+            id="txyes"
+            aria-labelledby="ok txyes"
+            aria-describedby="warning"
+          >
+            Yes
+          (((/button>
+          (((button id="txno" aria-labelledby="ok txno">No(((/button>
+        (((/p>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/custominputlengthval.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Custom input length validation(((/title>
+    (((script src="../../../mod/inputval/nav.js">(((/script>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Custom input length validation(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((header>
+          (((h2>Investment goals(((/h2>
+        (((/header>
+        (((form>
+          (((fieldset>
+            (((legend>In your own words:(((/legend>
+            (((p>(((label>
+              Your most important investment goals (5 to 55 characters)
+              (((input
+                id="goals"
+                type="text"
+                name="goal"
+                size="60"
+                maxlength="75"
+                data-minlength="5"
+                data-maxlength="55"
+                aria-controls="goallength"
+              >
+            (((/label>(((/p>
+            (((p id="goallength" aria-live="polite" class="strong">(((/p>
+          (((/fieldset>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/custominputmagval.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Custom input magnitude validation(((/title>
+    (((script src="../../../mod/inputval/nav.js">(((/script>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Custom input magnitude validation(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((header>
+          (((h2>Retirement plan contribution(((/h2>
+        (((/header>
+        (((form>
+          (((fieldset>
+            (((legend>What percentage (0 to 25, rounded to the nearest 0.1) of your gross compensation will you contribute to your 401(k) plan each pay period?(((/legend>
+            (((p>(((label>
+              Contribution percentage(((br>
+              (((input
+                id="contribpct"
+                class="right"
+                type="text"
+                name="contribpct"
+                size="4"
+                minlength="1"
+                maxlength="4"
+                value="4.0"
+                data-stepreciprocal="10"
+                data-min="0"
+                data-max="25"
+                aria-controls="contribval"
+              > %
+            (((/label>(((/p>
+            (((p id="contribval" aria-live="polite" class="strong">(((/p>
+          (((/fieldset>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/custompatternval.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Custom pattern validation(((/title>
+    (((script src="../../../mod/inputval/nav.js">(((/script>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Custom pattern validation(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((header>
+          (((h2>Account registration(((/h2>
+        (((/header>
+        (((form>
+          (((fieldset>
+            (((legend>Your contact information(((/legend>
+            (((p>(((label>
+              ZIP Code (5 or 9 digits)(((br>
+              (((input
+                id="zip"
+                type="text"
+                name="zip"
+                size="10"
+                minlength="5"
+                maxlength="10"
+                pattern="\d{5}(?:(?:-?)\d{4})?"
+                aria-controls="zipadvisor"
+              >
+            (((/label>(((/p>
+            (((p id="zipadvisor" aria-live="polite" class="strong">(((/p>
+          (((/fieldset>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/explicitbuttonlabel.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Explicit labeling(((/title>
+    (((script src="../../../mod/form/nav.js">(((/script>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Explicit labeling(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((h2>Fund summary(((/h2>
+        (((form>
+          (((dl class="toggleList" aria-live="polite">
+            (((dt>(((label for="vmvfx">VMVFX(((/label>(((/dt>
+            (((dd>(((label for="vmvfx">Global Minimum Volatility(((/label>(((/dd>
+            (((dd class="togglable covert">Market value: $64,387.88(((/dd>
+            (((dd class="togglable covert">Eligible for conversion(((/dd>
+            (((dd>(((button type="button" id="vmvfx">
+              (((label for="vmvfx">Details &plusmn;(((/label>
+            (((/button>(((/dd>
+          (((/dl>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/explicitinputlabel.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Explicit input labeling(((/title>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Explicit input labeling(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((h2>Fund conversion detail(((/h2>
+        (((form>
+          (((dl>
+            (((dt>(((label for="convert-vmvfx">VMVFX(((/label>(((/dt>
+            (((dd>(((label for="convert-vmvfx">
+              Global Minimum Volatility
+            (((/label>(((/dd>
+            (((dd>Market value: $64,387.88(((/dd>
+            (((dd>Eligible for conversion to Admiral Shares(((/dd>
+            (((dd>
+              (((input
+                type="checkbox"
+                id="convert-vmvfx"
+                name="yesconvert"
+                value="vmvfx"
+              >
+              (((label for="convert-vmvfx">Convert my shares of this fund to Admiral Shares(((/label>
+            (((/dd>
+          (((/dl>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/htmlinputlengthval.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>HTML5 input length validation(((/title>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>HTML5 input length validation(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((header>
+          (((h2>Investment goals(((/h2>
+        (((/header>
+        (((form>
+          (((fieldset>
+            (((legend>In your own words:(((/legend>
+            (((p>(((label>
+              Your most important investment goals (5 to 55 characters)
+              (((input
+                type="text"
+                name="goal"
+                size="60"
+                minlength="5"
+                maxlength="55"
+              >
+            (((/label>(((/p>
+            (((p class="center">(((button type="submit">Done(((/button>(((/p>
+          (((/fieldset>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/htmlinputmagval.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+ (((head>
+    (((meta charset="UTF-8">
+    (((title>HTML5 input magnitude validation(((/title>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>HTML5 input magnitude validation(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((header>
+          (((h2>[standard] Retirement plan contribution(((/h2>
+        (((/header>
+        (((form>
+          (((fieldset>
+            (((legend>What percentage (0 to 25, rounded to the nearest 0.1) of your gross compensation will you contribute to your 401(k) plan each pay period?(((/legend>
+            (((p>(((label>
+              Contribution percentage(((br>
+              (((input
+                type="number"
+                name="contribpct"
+                value="4"
+                step="0.1"
+                min="0"
+                max="25"
+              > %
+            (((/label>(((/p>
+          (((/fieldset>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/hybridinputmagval.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Hybrid input magnitude validation(((/title>
+    (((script src="../../../mod/inputval/nav.js">(((/script>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Hybrid input magnitude validation(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((header>
+          (((h2>Distributions(((/h2>
+        (((/header>
+        (((form>
+          (((fieldset>
+            (((legend>Required minimum distribution(((/legend>
+            (((p>(((label>
+              When do you want this distribution (must be after today and by the end of this year)?
+              (((input
+                id="rmddate"
+                type="date"
+                name="rmddate"
+              >
+            (((/label>(((/p>
+          (((/fieldset>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/implicitbuttonlabel.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Implicit button labeling(((/title>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Implicit button labeling(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((h2>Reminder(((/h2>
+        (((form>
+          (((p>(((label>
+            Click this button to send yourself a reminder.
+            (((button>Send(((/button>
+          (((/label>(((/p>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/implicitinputlabel.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Implicit input labeling(((/title>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Implicit input labeling(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((h2>Tax information(((/h2>
+        (((form>
+          (((p>
+            (((label>
+              Social Security Number
+              (((input type="text" size="11" maxlength="11" name="ssn">
+              (You may include or omit hyphens.)
+            (((/label>
+          (((/p>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/patternval.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Pattern validation(((/title>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Pattern validation(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((header>
+          (((h4>[standard] Account registration(((/h4>
+        (((/header>
+        (((form>
+          (((fieldset>
+            (((legend>Your identity information(((/legend>
+            (((p>(((label>
+              Social Security Number (9 digits with or without (((q>-(((/q> symbols, in format nnn-nn-nnnn or nnnnnnnnn)(((br>
+              (((input
+                id="ssn"
+                type="text"
+                name="ssn"
+                size="11"
+                minlength="9"
+                maxlength="11"
+                pattern="\d{3}(-?)\d{2}\1\d{4}"
+              >
+            (((/label>(((/p>
+          (((/fieldset>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/protocolval.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Protocol validation(((/title>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Protocol validation(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((header>
+          (((h2>Your profile(((/h2>
+        (((/header>
+        (((form>
+          (((fieldset>
+            (((legend>Contact information(((/legend>
+            (((p>(((label>
+              Email address(((br>
+              (((input id="email" type="email" name="email">
+            (((/label>(((/p>
+            (((p>(((label>
+              Website(((br>
+              (((input id="website" type="url" name="website">
+            (((/label>(((/p>
+          (((/fieldset>
+        (((/form>
+      (((/section>
+  (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/sharedbuttonlabel.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Shared button labeling(((/title>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Shared button labeling(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((h2>Confirmation(((/h2>
+        (((form>
+          (((p id="approve">Do you approve the above-described transaction?(((/p>
+          (((p>
+            (((button id="yes" aria-labelledby="approve yes">Yes(((/button>
+            (((button id="no" aria-labelledby="approve no">No(((/button>
+          (((/p>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/sharedinputlabel.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Shared input labeling(((/title>
+    (((link rel="stylesheet" href="../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Shared input labeling(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((h2>Account information(((/h2>
+        (((form>
+          (((h3 id="acctowner">Account owner(((/h3>
+          (((p>&hellip;(((/p>
+          (((p id="birth">
+            Date of birth
+            (((input
+              type="date"
+              autocomplete="bday"
+              aria-labelledby="acctowner birth"
+            >
+          (((/p>
+          (((p>&hellip;(((/p>
+        (((/form>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> duplicate/tablist.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Tab list(((/title>
+    (((script src="../../../mod/tablist/nav.js">(((/script>
+    (((link rel="stylesheet" href="../../../mod/tablist/style.css">
+    (((link rel="stylesheet" href="../../style.css">
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>Tab list(((/h1>
+    (((/header>
+    (((main>
+      (((section class="example">
+        (((header>
+          (((h2>(((label for="types">Investment types(((/label>(((/h2>
+        (((/header>
+        (((form>
+          (((label>
+            (((input id="types-hard" type="checkbox" checked>
+            Require click to select
+          (((/label>
+        (((/form>
+        (((ul id="types" role="tablist" class="tablist-hard">
+          (((li
+            id="tabmf"
+            role="tab"
+            tabindex="0"
+            aria-selected="true"
+            aria-controls="defmf"
+          >
+            Mutual fund
+          (((/li>
+          (((li
+            id="tabetf"
+            role="tab"
+            tabindex="-1"
+            aria-selected="false"
+            aria-controls="defetf"
+          >
+            Exchange-traded fund
+          (((/li>
+          (((li
+            id="tabcs"
+            role="tab"
+            tabindex="-1"
+            aria-selected="false"
+            aria-controls="defcs"
+          >
+            Common stock
+          (((/li>
+          (((li
+            id="tabps"
+            role="tab"
+            tabindex="-1"
+            aria-selected="false"
+            aria-controls="defps"
+          >
+            Preferred stock
+          (((/li>
+          (((li
+            id="tabb"
+            role="tab"
+            tabindex="-1"
+            aria-selected="false"
+            aria-controls="defb"
+          >
+            Bond
+          (((/li>
+        (((/ul>
+        (((section>
+          (((p
+            id="defmf"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tabmf"
+            class="overt">A type of investment that pools shareholder money and invests it in a variety of securities. Each investor owns shares of the fund and can buy or sell these shares at any time. Mutual funds are typically more diversified, low-cost, and convenient than investing in individual securities, and they&rsquo;re professionally managed.(((/p>
+          (((p
+            id="defetf"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tabetf"
+            class="covert">
+            A type of investment with characteristics of both mutual funds and individual stocks. ETFs are professionally managed and typically diversified, like mutual funds, but they can be bought and sold at any point during the trading day using straightforward or sophisticated strategies.
+          (((/p>
+          (((p
+            id="defcs"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tabcs"
+            class="covert">
+            An investment that represents part ownership in a corporation. Each share of stock is a proportional stake in the corporation&rsquo;s assets and profits.
+          (((/p>
+          (((p
+            id="defps"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tabps"
+            class="covert">
+            Stock that takes precedence over common stock when dividends are paid or assets are liquidated. A preferred security doesn&rsquo;t usually carry voting rights.
+          (((/p>
+          (((p
+            id="defb"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tabb"
+            class="covert">
+            A loan made to a corporation or government in exchange for regular interest payments. The bond issuer agrees to pay back the loan by a specific date. Bonds can be traded on the secondary market.
+          (((/p>
+        (((/section>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> getpseudostyle/index.html <==
+(((!DOCTYPE html>
+(((html>
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Get Pseudo-Class Style(((/title>
+    (((link rel="stylesheet" href="style.css">
+    (((script src="nav.js">(((/script>
+  (((/head>
+  (((body>
+    (((h1>Get Pseudo-Class Style(((/h1>
+      (((div class="example">
+        (((form>
+          (((fieldset>
+            (((legend>
+              On the previous page you checked (((q>Close my account(((/q>.
+            (((/legend>
+            (((p>(((label for="yesclose">
+              If you correctly checked the option and you do indeed intend to close your account now, click (((q>Yes(((/q>.
+            (((/label>(((/p>
+            (((p>(((label for="nokeep">
+              If you incorrectly checked the option and you intend to keep your account open, click (((q>No(((/q>.
+            (((/label>(((/p>
+            (((p id="warning">For your information: Closing your account will result in all of your non-cash positions being liquidated at current market prices and a check for the total cash value of your account being mailed to your address of record.(((/p>
+            (((p>
+              (((button
+                type="button"
+                name="close"
+                value="yes"
+                id="yesclose"
+                aria-describedby="warning"
+                onclick="document.getElementById('outcome').textContent = 'Your account is closed. Good-bye.'"
+                onmouseover="console.log('hovering!')"
+              >
+                Yes
+              (((/button>
+            (((/p>
+            (((p>
+              (((button
+                type="button"
+                name="close"
+                value="no"
+                id="nokeep"
+                aria-describedby="warning"
+                onclick="document.getElementById('outcome').textContent = 'Your account remains open. Nothing has changed.'"
+              >
+                No
+              (((/button>
+            (((/p>
+          (((/fieldset>
+        (((/form>
+        (((p>This example tests the functionalities of pseudo-classes and event listeners. Result: If you manually produce an event, you trigger any corresponding pseudo-class and also any corresponding event listener. But, if you programmatically produce an event, you trigger only any corresponding event listener.(((/p>
+        (((p>For example, if an element has a (((code>:hover(((/code> style and an (((code>onmouseover(((/code> listener, you can trigger both by hovering over the element, but you trigger only the listener by executing a (((code>dispatchEvent('mouseover')(((/code> method.(((/p>
+        (((p>To trigger pseudo-classes, one needs GUI automation, offered by Selenium, Robot Framework, or Watir.(((/p>
+        (((p id="outcome" style="font-size: x-large">(((/p>
+      (((/div>
+  (((/body>
+(((/html>
+
+==> getpseudostyle/nav.js <==
+/*
+=== Functions ===
+*/
+const startRepetitions = () (arrow) {
+  hoverOnce();
+  reportBgColor();
+};
+const hoverOnce = () (arrow) {
+  const yesButton = document.getElementById('yesclose');
+// const clickEvent = new MouseEvent('click');
+  // window.setTimeout(
+    // () (arrow) yesButton.dispatchEvent(clickEvent), 7000
+  // );
+  window.setTimeout(
+    () (arrow) yesButton.dispatchEvent(new Event('click')), 3000
+  );
+  window.setTimeout(
+    () (arrow) yesButton.dispatchEvent(new Event('mouseover')), 5000
+  );
+  window.setTimeout(
+    () (arrow) yesButton.dispatchEvent(new Event('mouseleave')), 11000
+  );
+};
+const reportBgColor = () (arrow) {
+  window.setInterval(
+    () (arrow) {
+      console.log(window.getComputedStyle(
+        document.getElementById('yesclose')
+      ).getPropertyValue('background-color'));
+    }, 2000
+  )
+};
+/*
+=== Page-load listeners ===
+*/
+document.addEventListener(
+  'DOMContentLoaded', startRepetitions, {
+    once: true
+  }
+);
+
+==> getpseudostyle/style.css <==
+* {
+  box-sizing: border-box;
+}
+body {
+  width: 650px;
+  margin: 0 2rem;
+  background-color: #eee;
+}
+.box {
+  padding: 0.5rem;
+  border: solid black 1px;
+}
+button {
+  width: 120px;
+  height: 90px;
+}
+.example {
+  margin-top: 1rem;
+  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+  border: double 9px green;
+  border-radius: 1rem;
+}
+*:focus {
+  outline: blue solid 3px;
+  outline-offset: 2px;
+}
+a:hover, button:hover {
+  color: white;
+  background-color: brown;
+}
+html {
+  font-size: 20px;
+}
+
+==> image/index.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((meta name="viewport" content="width=device-width, initial-scale=1">
+    (((meta name="description" content="Image inaccessibility example">
+    (((meta name="keywords" content="Utopia,software development,accessibility,a11y,user interface">
+    (((meta name="creator" content="Internal Shared Services and Accessibility Office, The Utopia Group">
+    (((meta name="publisher" content="Accessibility Office, The Utopia Group">
+    (((link rel="stylesheet" href="style.css">
+    (((link rel="stylesheet" href="../style.css">
+    (((title>[bad] Image: Example(((/title>
+  (((/head>
+  (((body>
+    (((header>
+      (((h1>[bad] Image: Example(((/h1>
+    (((/header>
+    (((div class="example">
+      (((h2>Less rote, more human(((/h2>
+      (((p>Since 2000, the mix of tasks that make up every job has changed.(((/p>
+      (((h6 class="exhibit">
+        (((img src="../../static/future-of-work.jpg" alt>
+        Sources: Utopia calculations, using data from U.S. Department of Labor O*NET OnLine (2000&ndash;2015).
+      (((/h6>
+      (((p>The image above displays the percentage change in the tasks of select jobs from 2000 to 2015. At the right are photographers. Their mix of tasks has changed by 88%. At the left of the chart is the job that&rsquo;s changed least: Economist.(((/p>
+    (((/div>
+    (((section>
+      (((p>This example is a simplified excerpt from Andy Clarke, (((a href="https://utopiablog.com/2019/05/06/coming-to-a-cubicle-near-you-human-work/">(((q>Coming to a cubicle near you: Human work(((/q>(((/a>, (((cite>Utopia Blog(((/cite>, 6 May 2019.(((/p>
+    (((/section>
+  (((/body>
+(((/html>
+
+==> image/style.css <==
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0 auto;
+  padding: 16px 32px;
+  background-color: #efede7;
+}
+.exhibit > img {
+  max-width: 100%;
+}
+h1 {
+  margin-bottom: 0.5rem;
+}
+p {
+  line-height: 150%;
+}
+q {
+  quotes: 'â€œ' 'â€';
+}
+q::after {
+  content: close-quote;
+}
+q::before {
+  content: open-quote;
+}
+
+==> imgsize/index.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((meta name="viewport" content="width=device-width, initial-scale=1">
+    (((meta name="description" content="Accessible size customization example">
+    (((meta name="keywords" content="Utopia,software development,accessibility,a11y,user interface">
+    (((meta name="creator" content="Internal Shared Services and Accessibility Office, The Utopia Group">
+    (((meta name="publisher" content="Accessibility Office, The Utopia Group">
+    (((link rel="stylesheet" href="style.css">
+    (((title>Image and Font Sizes: Example(((/title>
+  (((/head>
+  (((body>
+    (((main>
+      (((header>
+        (((h1>Image and Font Sizes: Example(((/h1>
+      (((/header>
+      (((section>
+        (((p>Both theories miss a less worrisome reality. Productivity lulls aren&rsquo;t unusual, even in eras of technological disruption. Consider the figure below. In the past 200 years, the U.S. economy has experienced at least 9 periods of what, at the time, may have been perceived as secular stagnation. Over the same 200 years, however, the inflation-adjusted value of output per hour has increased more than thirtyfold.(((/p>
+        (((figure class="font-dependent">
+          (((figcaption>Annualized growth in real GDP per capita, U.S., 1807 to 2017, over rolling 7-year periods(((/figcaption>
+          (((img src="../../static/productivity_blog.png" alt="graph of annualized growth in real GDP per capita from 1807 to 2017, reaching a minimum of &minus;4% in the 1930s and a maximum of 9% in the 1940s">
+          (((section class="notes">
+            (((p>(((strong>Note(((/strong>: Annualized growth is measured over rolling 7-year periods.(((/p>
+            (((p>(((strong>Sources(((/strong>: eh.net and Utopia.(((/p>
+            (((p>(((strong>Data(((/strong>: (((a href="https://www.measuringworth.com/datasets/usgdp/export.php?year_source=1800&year_result=2017&use[]=GDPCP">Data on real GDP per capita in the United States from 1807 to 1917(((/a> can be obtained from (((a href="https://www.measuringworth.com">MeasuringWorth(((/a>.(((/p>
+          (((/section>
+        (((/figure>
+      (((/section>
+      (((footer>
+        (((p>This content is excerpted and adapted from (((cite class="article">(((a href="https://utopiablog.com/2018/05/08/the-productivity-paradox/">(((q>The Productivity Paradox(((/q>(((/a>(((/cite> ((((cite>Utopia Blog(((/cite>, 2018), by Joseph H. Davis.(((/p>
+        (((figure class="font-independent">
+          (((figcaption>Joseph H. Davis(((/figcaption>
+          (((img src="../../static/davis_joe_210x140.jpg" alt="Joseph H. Davis">
+        (((/figure>
+      (((/footer>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> imgsize/style.css <==
+* {
+  box-sizing: border-box;
+}
+.article {
+  font-style: normal;
+}
+body {
+  margin: 0 auto;
+  padding: 16px 32px;
+  background-color: #efede7;
+}
+figcaption {
+  text-align: center;
+  margin: 0 10%;
+  font-weight: bold;
+}
+figure {
+  margin: 0;
+  text-align: center;
+}
+.font-dependent > img {
+  width: 40rem;
+}
+.font-independent > img {
+  width: 140px;
+}
+footer {
+  margin: 0 5%;
+  padding: 0 2%;
+  background-color: #f9f8f6;
+}
+h1, h2 {
+  margin-bottom: 0.5rem;
+}
+.notes > p {
+  margin: 0.25rem 0;
+}
+p {
+  line-height: 150%;
+}
+q {
+  quotes: 'â€œ' 'â€';
+}
+q::after {
+  content: close-quote;
+}
+q::before {
+  content: open-quote;
+}
+
+==> indicator/index.html <==
+(((!DOCTYPE html>
+(((html>
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>[bad] Terminate Account?(((/title>
+    (((link rel="stylesheet" href="style.css">
+  (((/head>
+  (((body>
+    (((h1>[bad] Terminate Account?(((/h1>
+      (((div class="example">
+        (((form>
+          (((fieldset>
+            (((legend>
+              On the previous page you checked (((q>Close my account(((/q>.
+            (((/legend>
+            (((p>(((label for="yesclose">
+              If you correctly checked the option and you do indeed intend to close your account now, click (((q>Yes(((/q>.
+            (((/label>(((/p>
+            (((p>(((label for="nokeep">
+              If you incorrectly checked the option and you intend to keep your account open, click (((q>No(((/q>.
+            (((/label>(((/p>
+            (((p id="warning">For your information: Closing your account will result in all of your non-cash positions being liquidated at current market prices and a check for the total cash value of your account being mailed to your address of record.(((/p>
+            (((p>
+              (((button
+                type="button"
+                name="close"
+                value="yes"
+                id="yesclose"
+                aria-describedby="warning"
+                onclick="document.getElementById('outcome').textContent = 'Your account is closed. Good-bye.'"
+              >
+                Yes
+              (((/button>
+            (((/p>
+            (((p>
+              (((button
+                type="button"
+                name="close"
+                value="no"
+                id="nokeep"
+                aria-describedby="warning"
+                onclick="document.getElementById('outcome').textContent = 'Your account remains open. Nothing has changed.'"
+              >
+                No
+              (((/button>
+            (((/p>
+          (((/fieldset>
+        (((/form>
+        (((p id="outcome" style="font-size: x-large">(((/p>
+      (((/div>
+  (((/body>
+(((/html>
+
+==> indicator/style.css <==
+* {
+  box-sizing: border-box;
+}
+body {
+  width: 650px;
+  margin: 0 2rem;
+  background-color: #eee;
+}
+.box {
+  padding: 0.5rem;
+  border: solid black 1px;
+}
+.example {
+  margin-top: 1rem;
+  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+  border: double 9px green;
+  border-radius: 1rem;
+}
+*:focus, a:hover, button:hover {
+  outline: blue solid 3px;
+  outline-offset: 2px;
+}
+html {
+  font-size: 20px;
+}
+
+==> layer/index.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((link rel="stylesheet" href="../../style.css">
+    (((link rel="stylesheet" href="style.css">
+    (((script src="nav.js">(((/script>
+    (((title>Order Submission(((/title>
+  (((/head>
+  (((body>
+    (((main>
+      (((header>
+        (((h1>Order submission(((/h1>
+      (((/header>
+      (((div class="example positioned-ancestor">
+        (((section>
+          (((header>
+            (((h2>Order details(((/h2>
+          (((/header>
+          (((dl>
+            (((dt>Type(((/dt>
+            (((dd>Purchase(((/dd>
+            (((dt>Subtype(((/dt>
+            (((dd>Limit(((/dd>
+            (((dt>Ticker symbol(((/dt>
+            (((dd>VDE(((/dd>
+            (((dt>Name(((/dt>
+            (((dd>Utopia Energy ETF(((/dd>
+            (((dt>Shares(((/dt>
+            (((dd>200(((/dd>
+            (((dt>Price per share(((/dt>
+            (((dd>$98.50(((/dd>
+            (((dt>Order good for(((/dt>
+            (((dd>30 days(((/dd>
+            (((dt>Source of funds(((/dt>
+            (((dd>Settlement fund(((/dd>
+          (((/dl>
+        (((/section>
+        (((section>
+          (((header>
+            (((h2>Action(((/h2>
+          (((/header>
+          (((div id="ack-home">
+            (((form>
+              (((fieldset>
+                (((legend>
+                  (((p>Your order is complete but not yet submitted. What do you want to do with this order?(((/p>
+                (((/legend>
+                (((div class="flex around">
+                  (((p>
+                    (((button
+                      id="submit"
+                      type="button"
+                      class="custom-confirm"
+                      aria-controls="layer0"
+                    >Submit it
+                    (((/button>
+                  (((/p>
+                  (((p>(((button id="revise" type="button">Revise it(((/button>(((/p>
+                  (((p>
+                    (((button
+                      id="cancel"
+                      type="button"
+                      class="custom-confirm"
+                      aria-controls="layer1"
+                    >
+                      Cancel it
+                    (((/button>
+                  (((/p>
+                (((/div>
+              (((/fieldset>
+            (((/form>
+          (((/div>
+        (((/section>
+        (((section id="layer0" class="layer covert" role="dialog">
+          (((form
+            id="dialog0"
+            class="layer-focus layer-middle"
+            tabindex="0"
+            aria-labelledby="dialog0-label"
+          >
+            (((div class="flex between">
+              (((p>(((button
+                class="showhide showhide-hide"
+                type="button"
+                aria-controls="dialog0"
+              >
+                Hide
+              (((/button>(((/p>
+              (((p>(((button
+                class="layer-close hidden-focus-last abort"
+                type="button"
+                aria-controls="dialog0"
+              >
+                Close
+              (((/button>(((/p>
+            (((/div>
+            (((div class="hidable overt">
+              (((fieldset>
+                (((legend>
+                  (((h3 id="dialog0-label">Caution: Submit?(((/h3>
+                  (((p>You have asked Utopia to submit this order. Submission will make the order good until it is executed, it expires, or you cancel it. Please confirm.(((/p>
+                (((/legend>
+                (((div class="flex around">
+                  (((p>(((button id="submityes" type="button">
+                    Yes, submit now
+                  (((/button>(((/p>
+                  (((p>(((button
+                    id="submitno"
+                    type="button"
+                    class="shown-focus-last abort"
+                  >
+                    No, do not submit yet
+                  (((/button>(((/p>
+                (((/div>
+              (((/fieldset>
+            (((/div>
+          (((/form>
+        (((/section>
+        (((section id="layer1" class="layer covert" role="dialog">
+          (((form
+            id="dialog1"
+            class="layer-focus layer-middle"
+            tabindex="0"
+            aria-labelledby="dialog1-label"
+          >
+            (((div class="flex between">
+              (((p>(((button
+                class="showhide showhide-hide"
+                type="button"
+                aria-controls="dialog1"
+              >
+                Hide
+              (((/button>(((/p>
+              (((p>(((button
+                class="layer-close hidden-focus-last abort"
+                type="button"
+                aria-controls="dialog1"
+              >
+                Close
+              (((/button>(((/p>
+            (((/div>
+            (((div class="hidable overt">
+              (((fieldset>
+                (((legend>
+                  (((h3 id="dialog1-label">Caution: Cancel?(((/h3>
+                  (((p>You have asked Utopia to cancel this order. Cancelation will stop the order and delete its details. Please confirm.(((/p>
+                (((/legend>
+                (((div class="flex around">
+                  (((p>(((button id="cancelyes" type="button">
+                    Yes, cancel now
+                  (((/button>(((/p>
+                  (((p>(((button
+                    id="cancelno"
+                    type="button"
+                    class="shown-focus-last abort"
+                  >
+                    No, do not cancel yet
+                  (((/button>(((/p>
+                (((/div>
+              (((/fieldset>
+            (((/div>
+          (((/form>
+        (((/section>
+      (((/div>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> layer/nav.js <==
+/*
+=== Objects ===
+*/
+const messages = {
+  hide: 'Hide',
+  layer0ack: 'You have submitted this order.',
+  layer1ack: 'You have canceled this order.',
+  show: 'Show'
+};
+/*
+=== Handlers ===
+*/
+// Launch a confirmation layer when a confirmable button is activated.
+const confirmableHandler = event (arrow) {
+  const layer = document.getElementById(
+    event.target.getAttribute('aria-controls')
+  );
+  if (layer) {
+    layer.classList.replace('covert', 'overt');
+    layer.querySelector('.layer-focus').focus();
+  }
+};
+// Close any open custom confirmation layer and take a post-layer action.
+const layerCloseHandler = (event, isAborted) (arrow) {
+  const layer = document.body.querySelector('.layer.overt');
+  const layerLauncher = document.body.querySelector(
+    `.custom-confirm[aria-controls=${layer.id}]`
+  );
+  layer.classList.replace('overt', 'covert');
+  if (isAborted) {
+    layerLauncher.focus();
+  }
+  else {
+    const ackHome = document.getElementById('ack-home');
+    const ackGarbage = ackHome.children;
+    while (ackGarbage.length) {
+      ackHome.removeChild(ackGarbage[0]);
+    }
+    const ackElement = ackHome.insertAdjacentElement(
+      'beforeend', document.createElement('h3')
+    );
+    ackElement.setAttribute('tabindex', '0');
+    ackElement.textContent = messages[`${layer.id}ack`];
+    ackElement.focus();
+  }
+};
+// Minimize or maximize a dialog on request.
+const showHideHandler = event (arrow) {
+  const button = event.target;
+  const controllee = document.getElementById(
+    button.getAttribute('aria-controls')
+  );
+  const hidables = controllee.querySelectorAll('.hidable');
+  for (let i = 0; i ((( hidables.length; i++) {
+    if (button.classList.contains('showhide-hide')) {
+      hidables[i].classList.replace('overt', 'covert');
+      controllee.classList.replace('layer-middle', 'layer-corner');
+      button.textContent = messages.show;
+      button.classList.replace('showhide-hide', 'showhide-show');
+    }
+    else {
+      hidables[i].classList.replace('covert', 'overt');
+      controllee.classList.replace('layer-corner', 'layer-middle');
+      button.textContent = messages.hide;
+      button.classList.replace('showhide-show', 'showhide-hide');
+    }
+  }
+};
+// Handle tab and escape key presses.
+const keyHandler = event (arrow) {
+  const key = event.key;
+  if (key === 'Tab' || key === 'Escape') {
+   const dialog = document.body.querySelector('.layer.overt > .layer-focus');
+    if (dialog) {
+      if (key === 'Escape') {
+        layerCloseHandler(event, true);
+      }
+      else {
+        const focalElement = document.activeElement;
+        if (dialog.contains(focalElement)) {
+          const isShifted = event.getModifierState('Shift');
+          const lastButtonSelector
+            = dialog.classList.contains('layer-middle')
+            ? 'shown-focus-last'
+            : 'hidden-focus-last';
+          if (focalElement === dialog && isShifted) {
+            event.preventDefault();
+            dialog.querySelector(`.${lastButtonSelector}`).focus();
+          }
+          else if (
+            focalElement.classList.contains(lastButtonSelector) && ! isShifted
+          ) {
+            event.preventDefault();
+            dialog.focus();
+          }
+        }
+        else {
+          event.preventDefault();
+          dialog.focus();
+        }
+      }
+    }
+  }
+};
+/*
+=== After-page-load listeners ===
+*/
+// Create listeners for clicks on confirmable buttons.
+const createConfirmableListeners = () (arrow) {
+  const confirmables = document.body.querySelectorAll('.custom-confirm');
+  for (let i = 0; i ((( confirmables.length; i++) {
+    confirmables.item(i).addEventListener('click', confirmableHandler);
+  }
+};
+// Create listeners for clicks on dialog buttons.
+const createDialogButtonListeners = () (arrow) {
+  const buttons = document.body.querySelectorAll(
+    '.layer-focus button:not(.showhide)'
+  );
+  for (let i = 0; i ((( buttons.length; i++) {
+    const button = buttons.item(i);
+    button.addEventListener('click', () (arrow) {
+      layerCloseHandler(event, button.classList.contains('abort'));
+    });
+  }
+};
+const createKeyListener = () (arrow) {
+  document.addEventListener('keydown', keyHandler)
+};
+const createShowHideListeners = () (arrow) {
+  const showHiders = document.body.querySelectorAll('.showhide');
+  for (let i = 0; i ((( showHiders.length; i++) {
+    showHiders.item(i).addEventListener('click', showHideHandler);
+  }
+};
+/*
+=== Page-load listeners ===
+*/
+document.addEventListener(
+  'DOMContentLoaded', createConfirmableListeners, {
+    once: true
+  }
+);
+document.addEventListener(
+  'DOMContentLoaded', createDialogButtonListeners, {
+    once: true
+  }
+);
+document.addEventListener(
+  'DOMContentLoaded', createKeyListener, {
+    once: true
+  }
+);
+document.addEventListener(
+  'DOMContentLoaded', createShowHideListeners, {
+    once: true
+  }
+);
+
+==> layer/popup.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((link rel="stylesheet" href="../../style.css">
+    (((link rel="stylesheet" href="style.css">
+    (((script src="nav.js">(((/script>
+    (((title>Order Submission(((/title>
+  (((/head>
+  (((body>
+    (((main>
+      (((header>
+        (((h1>Order submission(((/h1>
+      (((/header>
+      (((div class="example positioned-ancestor">
+        (((section>
+          (((header>
+            (((h2>Order details(((/h2>
+          (((/header>
+          (((dl>
+            (((dt>Type(((/dt>
+            (((dd>Purchase(((/dd>
+            (((dt>Subtype(((/dt>
+            (((dd>Limit(((/dd>
+            (((dt>Ticker symbol(((/dt>
+            (((dd>VDE(((/dd>
+            (((dt>Name(((/dt>
+            (((dd>Utopia Energy ETF(((/dd>
+            (((dt>Shares(((/dt>
+            (((dd>200(((/dd>
+            (((dt>Price per share(((/dt>
+            (((dd>$98.50(((/dd>
+            (((dt>Order good for(((/dt>
+            (((dd>30 days(((/dd>
+            (((dt>Source of funds(((/dt>
+            (((dd>Settlement fund(((/dd>
+          (((/dl>
+        (((/section>
+        (((section>
+          (((header>
+            (((h2>Action(((/h2>
+          (((/header>
+          (((div id="ack-home">
+            (((form>
+              (((fieldset>
+                (((legend>
+                  (((p>Your order is complete but not yet submitted. What do you want to do with this order?(((/p>
+                (((/legend>
+                (((div class="flex around">
+                  (((p>
+                    (((button
+                      id="submit"
+                      type="button"
+                      class="custom-confirm"
+                      aria-controls="layer0"
+                      aria-haspopup="dialog"
+                    >
+                      Submit it
+                    (((/button>
+                    (((!--Chrome a11y API mistreats aria-haspopup!-->
+                  (((/p>
+                  (((p>(((button id="revise" type="button">Revise it(((/button>(((/p>
+                 (((p>
+                    (((button
+                      id="cancel"
+                      type="button"
+                      class="custom-confirm"
+                      aria-controls="layer1"
+                    >
+                      Cancel it
+                    (((/button>
+                  (((/p>
+                (((/div>
+              (((/fieldset>
+            (((/form>
+          (((/div>
+        (((/section>
+        (((section id="layer0" class="layer covert" role="dialog">
+          (((form
+            id="dialog0"
+            class="layer-focus layer-middle"
+            tabindex="0"
+            aria-labelledby="dialog0-label"
+          >
+            (((div class="flex between">
+              (((p>(((button
+                class="showhide showhide-hide"
+                type="button"
+                aria-controls="dialog0"
+              >
+                Hide
+              (((/button>(((/p>
+              (((p>(((button
+                class="layer-close hidden-focus-last abort"
+                type="button"
+                aria-controls="dialog0"
+              >
+                Close
+              (((/button>(((/p>
+            (((/div>
+            (((div class="hidable overt">
+              (((fieldset>
+                (((legend>
+                  (((h3 id="dialog0-label">Caution: Submit?(((/h3>
+                  (((p>You have asked Utopia to submit this order. Submission will make the order good until it is executed, it expires, or you cancel it. Please confirm.(((/p>
+                (((/legend>
+                (((div class="flex around">
+                  (((p>(((button id="submityes" type="button">
+                    Yes, submit now
+                 (((/button>(((/p>
+                  (((p>(((button
+                    id="submitno"
+                    type="button"
+                    class="shown-focus-last abort"
+                  >
+                    No, do not submit yet
+                  (((/button>(((/p>
+                (((/div>
+              (((/fieldset>
+            (((/div>
+          (((/form>
+        (((/section>
+        (((section id="layer1" class="layer covert" role="dialog">
+          (((form
+            id="dialog1"
+            class="layer-focus layer-middle"
+            tabindex="0"
+            aria-labelledby="dialog1-label"
+          >
+            (((div class="flex between">
+              (((p>(((button
+                class="showhide showhide-hide"
+                type="button"
+                aria-controls="dialog1"
+              >
+                Hide
+              (((/button>(((/p>
+              (((p>(((button
+                class="layer-close hidden-focus-last abort"
+                type="button"
+                aria-controls="dialog1"
+              >
+                Close
+              (((/button>(((/p>
+            (((/div>
+            (((div class="hidable overt">
+              (((fieldset>
+                (((legend>
+                  (((h3 id="dialog1-label">Caution: Cancel?(((/h3>
+                  (((p>You have asked Utopia to cancel this order. Cancelation will stop the order and delete its details. Please confirm.(((/p>
+                (((/legend>
+                (((div class="flex around">
+                  (((p>(((button id="cancelyes" type="button">
+                    Yes, cancel now
+                  (((/button>(((/p>
+                  (((p>(((button
+                    id="cancelno"
+                    type="button"
+                    class="shown-focus-last abort"
+                  >
+                    No, do not cancel yet
+                  (((/button>(((/p>
+                (((/div>
+              (((/fieldset>
+            (((/div>
+          (((/form>
+        (((/section>
+      (((/div>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> layer/style.css <==
+form.layer-focus {
+  transition: min-width 1s ease, max-width 1s ease, top 1s ease;
+}
+h3 {
+  text-align: center;
+}
+.layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #00000030;
+}
+.layer-corner{
+  position: absolute;
+  min-width: 0;
+  max-width: 50%;
+  right: 0;
+  top: 0;
+}
+.layer-focus {
+  background-color: #f3d666e8;
+  padding: 1rem;
+  border: solid 0.5rem #66666699;
+}
+.layer-middle {
+  position: absolute;
+  min-width: 100%;
+  max-width: 100%;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+legend > h3 {
+  text-align: center;
+}
+
+==> table/cx-actual.html <==
+(((!DOCTYPE html>
+(((html
+  lang="en-US">
+(((head>
+  (((meta
+    charset="UTF-8">
+  (((title>[original] Utopia active bond funds(((/title>
+  (((meta
+    name="viewport"
+    content="width=device-width, initial-scale=1">
+  (((meta
+    name="author"
+    content="Jonathan Pool">
+  (((meta
+    name="description"
+    content="Accessible table example: part of a set of training modules on creating accessible user interfaces at Utopia">
+  (((meta
+    name="keywords"
+    content="Utopia,software development,accessibility,a11y,user interface">
+  (((meta
+    name="creator"
+    content="Internal Shared Services and Accessibility Office, The Utopia Group">
+  (((meta
+    name="publisher"
+    content="Accessibility Office, The Utopia Group">
+  (((link
+    rel="stylesheet"
+    href="style.css">
+  (((link
+    rel="author"
+    href="http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786">
+(((/head>
+(((body
+  itemscope
+  itemtype="https://schema.org/WebPage">
+(((main>
+  (((header>
+    (((h1>[original] Utopia active bond funds(((/h1>
+  (((/header>
+  (((section>
+    (((div
+      class="example">
+      (((table
+        class="complex">
+        (((tbody>
+        (((tr>
+          (((td>&nbsp;(((/td>
+          (((td colspan="2">(((b>Investor Shares(((/b>(((/td>
+          (((td colspan="2">(((b>Admiralâ„¢ Shares(((/b>(((/td>
+        (((/tr>
+        (((tr>
+          (((td>(((b>Utopia fund(((/b>(((/td>
+          (((td>Ticker(((br>symbol(((/td>
+          (((td>Expense(((br>ratio(((sup>4(((/sup>(((/td>
+          (((td>Ticker(((br>symbol(((/td>
+          (((td>Expense(((br>ratio(((sup>4(((/sup>(((/td>
+        (((/tr>
+        (((tr>
+          (((td colspan="5">(((b>Utopia active taxable bond funds (((/b>(((/td>
+        (((/tr>
+        (((tr>
+          (((td colspan="5">(((b>Treasury/agency(((/b>(((/td>
+        (((/tr>
+        (((tr>
+          (((td>GNMA(((sup>5(((/sup>(((/td>
+          (((td>VFIIX(((/td>
+          (((td>0.21%(((/td>
+          (((td>VFIJX(((/td>
+          (((td>0.11%(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Inflation-Protected Securities(((/td>
+          (((td>VIPSX(((/td>
+          (((td>0.20(((/td>
+          (((td>VAIPX(((/td>
+          (((td>0.10(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Intermediate-Term Treasury(((/td>
+          (((td>VFITX(((/td>
+          (((td>0.20(((/td>
+          (((td>VFIUX(((/td>
+          (((td>0.10(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Long-Term Treasury(((/td>
+          (((td>VUSTX(((/td>
+          (((td>0.20(((/td>
+          (((td>VUSUX(((/td>
+          (((td>0.10(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Short-Term Federal(((/td>
+          (((td>VSGBX(((/td>
+          (((td>0.20(((/td>
+          (((td>VSGDX(((/td>
+          (((td>0.10(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Short-Term Treasury(((/td>
+          (((td>VFISX(((/td>
+          (((td>0.20(((/td>
+          (((td>VFIRX(((/td>
+          (((td>0.10(((/td>
+        (((/tr>
+        (((tr>
+          (((td colspan="5">(((b>Investment-grade corporate(((/b>(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Core
+            Bond(((/td>
+          (((td>VCORX(((/td>
+          (((td>0.25%(((/td>
+          (((td>VCOBX(((/td>
+          (((td>0.13%(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Intermediate-Term Investment-Grade(((/td>
+          (((td>VFICX(((/td>
+          (((td>0.20(((/td>
+          (((td>VFIDX(((/td>
+          (((td>0.10(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Long-Term Investment-Grade(((sup>5(((/sup>(((/td>
+          (((td>VWESX(((/td>
+          (((td>0.22(((/td>
+          (((td>VWETX(((/td>
+          (((td>0.12(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Short-Term Investment-Grade(((/td>
+          (((td>VFSTX(((/td>
+          (((td>0.20(((/td>
+          (((td>VFSUX(((/td>
+          (((td>0.10(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Ultra-Short-Term Bond(((/td>
+          (((td>VUBFX(((/td>
+          (((td>0.20(((/td>
+          (((td>VUSFX(((/td>
+          (((td>0.10(((/td>
+        (((/tr>
+        (((tr>
+          (((td colspan="5">(((b>Below-investment-grade(((/b>(((/td>
+        (((/tr>
+        (((tr>
+          (((td>High-Yield Corporate(((sup>5(((/sup>(((/td>
+          (((td>VWEHX(((/td>
+          (((td>0.23%(((/td>
+          (((td>VWEAX(((/td>
+          (((td>0.13%(((/td>
+        (((/tr>
+        (((tr>
+          (((td colspan="5">(((b>Global/international(((/b>(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Emerging Markets Bond(((/td>
+          (((td>VEMBX(((/td>
+          (((td>0.60%(((/td>
+          (((td>VEGBX(((/td>
+          (((td>0.45%(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Global Credit Bond(((/td>
+          (((td>VGCIX(((/td>
+          (((td>0.35(((/td>
+          (((td>VGCAX(((/td>
+          (((td>0.25(((/td>
+        (((/tr>
+        (((tr>
+          (((td colspan="5">(((b>Utopia active municipal bond funds(((/b>(((/td>
+        (((/tr>
+        (((tr>
+          (((td colspan="5">(((b>National municipal(((/b>(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Short-Term Tax-Exempt(((/td>
+          (((td>VWSTX(((/td>
+          (((td>0.17%(((/td>
+          (((td>VWSUX(((/td>
+          (((td>0.09%(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Limited-Term Tax-Exempt(((/td>
+          (((td>VMLTX(((/td>
+          (((td>0.17(((/td>
+          (((td>VMLUX(((/td>
+          (((td>0.09(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Intermediate-Term Tax-Exempt(((/td>
+          (((td>VWITX(((/td>
+          (((td>0.17(((/td>
+          (((td>VWIUX(((/td>
+          (((td>0.09(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Long-Term Tax-Exempt(((/td>
+          (((td>VWLTX(((/td>
+          (((td>0.17(((/td>
+          (((td>VWLUX(((/td>
+          (((td>0.09(((/td>
+        (((/tr>
+        (((tr>
+          (((td>High-Yield Tax-Exempt(((/td>
+          (((td>VWAHX(((/td>
+          (((td>0.17(((/td>
+          (((td>VWALX(((/td>
+          (((td>0.09(((/td>
+        (((/tr>
+        (((tr>
+          (((td colspan="5">(((b>State municipal(((/b>(((/td>
+        (((/tr>
+        (((tr>
+          (((td>California Intermediate-Term Tax-Exempt(((/td>
+          (((td>VCAIX(((/td>
+          (((td>0.17%(((/td>
+          (((td>VCADX(((/td>
+          (((td>0.09%(((/td>
+        (((/tr>
+        (((tr>
+          (((td>California Long-Term Tax-Exempt(((/td>
+          (((td>VCITX(((/td>
+          (((td>0.17(((/td>
+          (((td>VCLAX(((/td>
+          (((td>0.09(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Massachusetts Tax-Exempt(((sup>6(((/sup>(((/td>
+          (((td>VMATX(((/td>
+          (((td>0.13(((/td>
+          (((td>â€”(((/td>
+          (((td>â€”(((/td>
+        (((/tr>
+        (((tr>
+          (((td>New Jersey Long-Term Tax-Exempt(((/td>
+          (((td>VNJTX(((/td>
+          (((td>0.17(((/td>
+          (((td>VNJUX(((/td>
+          (((td>0.09(((/td>
+        (((/tr>
+        (((tr>
+          (((td>New York Long-Term Tax-Exempt(((/td>
+          (((td>VNYTX(((/td>
+          (((td>0.17(((/td>
+          (((td>VNYUX(((/td>
+          (((td>0.09(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Ohio Long-Term Tax-Exempt(((sup>6(((/sup>(((/td>
+          (((td>VOHIX(((/td>
+          (((td>0.13(((/td>
+          (((td>â€”(((/td>
+          (((td>â€”(((/td>
+        (((/tr>
+        (((tr>
+          (((td>Pennsylvania Long-Term Tax-Exempt(((/td>
+          (((td>VPAIX(((/td>
+          (((td>0.17(((/td>
+          (((td>VPALX(((/td>
+          (((td>0.09(((/td>
+        (((/tr>
+        (((/tbody>
+      (((/table>
+    (((/div>
+  (((/section>
+(((/main>
+(((/body>
+(((/html>
+
+==> table/cx-best.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>[best] Utopia active bond funds(((/h1>
+      (((/header>(((/title>
+    (((meta name="viewport" content="width=device-width, initial-scale=1">
+    (((meta name="author" content="Jonathan Pool">
+    (((meta name="description" content="Accessible table example: part of a set of training modules on creating accessible user interfaces at Utopia">
+    (((meta name="keywords" content="Utopia,software development,accessibility,a11y,user interface">
+    (((meta name="creator" content="Internal Shared Services and Accessibility Office, The Utopia Group">
+    (((meta name="publisher" content="Accessibility Office, The Utopia Group">
+    (((link rel="stylesheet" href="style.css">
+    (((link rel="author" href="http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786">
+  (((/head>
+  (((body itemscope itemtype="https://schema.org/WebPage">
+    (((main>
+      (((header>
+        (((h1>[best] Utopia active bond funds(((/h1>
+      (((/header>
+      (((section>
+        (((div class="example">
+          (((table class="complex">
+            (((caption>Utopia active bond funds(((/caption>
+            (((colgroup>
+              (((col>
+              (((col span="2">
+              (((col span="2">
+            (((/colgroup>
+            (((thead>
+              (((tr>
+                (((th rowspan="2" scope="col" id="c">Name(((/th>
+                (((th colspan="2" scope="colgroup" id="c0">Investor Shares(((/th>
+                (((th colspan="2" scope="colgroup" id="c1">Admiralâ„¢ Shares(((/th>
+              (((/tr>
+              (((tr>
+                (((th id="c3" headers="c0">Ticker symbol(((/th>
+                (((th id="c4" headers="c0">Expense ratio (%)(((/th>
+                (((th id="c5" headers="c1">Ticker symbol(((/th>
+                (((th id="c6" headers="c1">Expense ratio (%)(((/th>
+              (((/tr>
+            (((/thead>
+            (((tbody>
+              (((tr>
+                (((th colspan="5" scope="rowgroup" id="r0" class="tbodyhead">
+                  Utopia active taxable bond funds
+                (((/th>
+              (((/tr>
+              (((tr>
+                (((th colspan="5" scope="rowgroup" id="r1" headers="r0">
+                  Treasury/agency
+                (((/th>
+              (((/tr>
+              (((tr>
+                (((th headers="c r1" id="r8">GNMA(((/th>
+                (((td headers="r8 c3">VFIIX(((/td>
+                (((td headers="r8 c4">0.21(((/td>
+                (((td headers="r8 c5">VFIJX(((/td>
+                (((td headers="r8 c6">0.11(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r1" id="r9">Inflation-Protected Securities(((/th>
+                (((td headers="r9 c3">VIPSX(((/td>
+                (((td headers="r9 c4">0.20(((/td>
+                (((td headers="r9 c5">VAIPX(((/td>
+                (((td headers="r9 c6">0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r1" id="r10">Intermediate-Term Treasury(((/th>
+                (((td headers="r10 c3">VFITX(((/td>
+                (((td headers="r10 c4">0.20(((/td>
+                (((td headers="r10 c5">VFIUX(((/td>
+                (((td headers="r10 c6">0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r1" id="r11">Long-Term Treasury(((/th>
+                (((td headers="r11 c3">VUSTX(((/td>
+                (((td headers="r11 c4">0.20(((/td>
+                (((td headers="r11 c5">VUSUX(((/td>
+                (((td headers="r11 c6">0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r1" id="r12">Short-Term Federal(((/th>
+                (((td headers="r12 c3">VSGBX(((/td>
+                (((td headers="r12 c4">0.20(((/td>
+                (((td headers="r12 c5">VSGDX(((/td>
+                (((td headers="r12 c6">0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r1" id="r13">Short-Term Treasury(((/th>
+                (((td headers="r13 c3">VFISX(((/td>
+                (((td headers="r13 c4">0.20(((/td>
+                (((td headers="r13 c5">VFIRX(((/td>
+                (((td headers="r13 c6">0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th colspan="5" scope="rowgroup" id="r2" headers="r0">
+                  Investment-grade corporate
+                (((/th>
+              (((/tr>
+              (((tr>
+                (((th headers="c r2" id="r14">Core Bond(((/th>
+                (((td headers="r14 c3">VCORX(((/td>
+                (((td headers="r14 c4">0.25(((/td>
+                (((td headers="r14 c5">VCOBX(((/td>
+                (((td headers="r14 c6">0.15(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r2" id="r15">
+                  Intermediate-Term Investment-Grade
+                (((/th>
+                (((td headers="r15 c3">VFICX(((/td>
+                (((td headers="r15 c4">0.20(((/td>
+                (((td headers="r15 c5">VFIDX(((/td>
+                (((td headers="r15 c6">0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r2" id="r16">Long-Term Investment-Grade(((/th>
+                (((td headers="r16 c3">VWESX(((/td>
+                (((td headers="r16 c4">0.22(((/td>
+                (((td headers="r16 c5">VWETX(((/td>
+                (((td headers="r16 c6">0.12(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r2" id="r17">Short-Term Investment-Grade(((/th>
+                (((td headers="r17 c3">VFSTX(((/td>
+                (((td headers="r17 c4">0.20(((/td>
+                (((td headers="r17 c5">VFSUX(((/td>
+                (((td headers="r17 c6">0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r2" id="r18">Ultra-Short-Term Bond(((/th>
+                (((td headers="r18 c3">VUBFX(((/td>
+                (((td headers="r18 c4">0.20(((/td>
+                (((td headers="r18 c5">VUSFX(((/td>
+                (((td headers="r18 c6">0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th colspan="5" scope="rowgroup" id="r3" headers="r0">
+                  Below-investment-grade
+                (((/th>
+              (((/tr>
+              (((tr>
+                (((th headers="c r3" id="r19">High-Yield Corporate(((/th>
+                (((td headers="r19 c3">VWEHX(((/td>
+                (((td headers="r19 c4">0.23(((/td>
+                (((td headers="r19 c5">VWEAX(((/td>
+                (((td headers="r19 c6">0.13(((/td>
+              (((/tr>
+              (((tr>
+                (((th colspan="5" scope="rowgroup" id="r4" headers="r0">
+                  Global/international
+                (((/th>
+              (((/tr>
+              (((tr>
+                (((th headers="c r4" id="r20">Emerging Markets Bond(((/th>
+                (((td headers="r20 c3">VEMBX(((/td>
+                (((td headers="r20 c4">0.60(((/td>
+                (((td headers="r20 c5">VEGBX(((/td>
+                (((td headers="r20 c6">0.45(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r4" id="r21">Global Credit Bond(((/th>
+                (((td headers="r21 c3">VGCIX(((/td>
+                (((td headers="r21 c4">0.35(((/td>
+                (((td headers="r21 c5">VGCAX(((/td>
+                (((td headers="r21 c6">0.25(((/td>
+              (((/tr>
+            (((/tbody>
+            (((tbody>
+              (((tr>
+                (((th colspan="5" scope="rowgroup" id="r5" class="tbodyhead">
+                  Utopia active municipal bond funds
+                (((/th>
+              (((/tr>
+              (((tr>
+                (((th colspan="5" scope="rowgroup" id="r6" headers="r5">
+                  National municipal
+                (((/th>
+              (((/tr>
+              (((tr>
+                (((th headers="c r6" id="r22">Short-Term Tax-Exempt(((/th>
+                (((td headers="r22 c3">VWSTX(((/td>
+                (((td headers="r22 c4">0.19(((/td>
+                (((td headers="r22 c5">VWSUX(((/td>
+                (((td headers="r22 c6">0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r6" id="r23">Limited-Term Tax-Exempt(((/th>
+                (((td headers="r23 c3">VMLTX(((/td>
+                (((td headers="r23 c4">0.19(((/td>
+                (((td headers="r23 c5">VMLUX(((/td>
+                (((td headers="r23 c6">0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r6" id="r24">Intermediate-Term Tax-Exempt(((/th>
+                (((td headers="r24 c3">VWITX(((/td>
+                (((td headers="r24 c4">0.19(((/td>
+                (((td headers="r24 c5">VWIUX(((/td>
+                (((td headers="r24 c6">0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r6" id="r25">Long-Term Tax-Exempt(((/th>
+                (((td headers="r25 c3">VWLTX(((/td>
+                (((td headers="r25 c4">0.19(((/td>
+                (((td headers="r25 c5">VWLUX(((/td>
+                (((td headers="r25 c6">0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r6" id="r26">High-Yield Tax-Exempt(((/th>
+                (((td headers="r26 c3">VWAHX(((/td>
+                (((td headers="r26 c4">0.19(((/td>
+                (((td headers="r26 c5">VWALX(((/td>
+                (((td headers="r26 c6">0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th colspan="5" scope="rowgroup" id="r7" headers="r5">
+                  State municipal
+                (((/th>
+              (((/tr>
+              (((tr>
+                (((th headers="c r7" id="r27">
+                  California Intermediate-Term Tax-Exempt
+                (((/th>
+                (((td headers="r27 c3">VCAIX(((/td>
+                (((td headers="r27 c4">0.19(((/td>
+                (((td headers="r27 c5">VCADX(((/td>
+                (((td headers="r27 c6">0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r7" id="r28">California Long-Term Tax-Exempt(((/th>
+                (((td headers="r28 c3">VCITX(((/td>
+                (((td headers="r28 c4">0.19(((/td>
+                (((td headers="r28 c5">VCLAX(((/td>
+                (((td headers="r28 c6">0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r7" id="r29">Massachusetts Tax-Exempt(((/th>
+                (((td headers="r29 c3">VMATX(((/td>
+                (((td headers="r29 c4">0.15(((/td>
+                (((td headers="r29 c5">â€”(((/td>
+                (((td headers="r29 c6">â€”(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r7" id="r30">New Jersey Long-Term Tax-Exempt(((/th>
+                (((td headers="r30 c3">VNJTX(((/td>
+                (((td headers="r30 c4">0.19(((/td>
+                (((td headers="r30 c5">VNJUX(((/td>
+                (((td headers="r30 c6">0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r7" id="r31">New York Long-Term Tax-Exempt(((/th>
+                (((td headers="r31 c3">VNYTX(((/td>
+                (((td headers="r31 c4">0.19(((/td>
+                (((td headers="r31 c5">VNYUX(((/td>
+                (((td headers="r31 c6">0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r7" id="r32">Ohio Long-Term Tax-Exempt(((/th>
+                (((td headers="r32 c3">VOHIX(((/td>
+                (((td headers="r32 c4">0.15(((/td>
+                (((td headers="r32 c5">â€”(((/td>
+                (((td headers="r32 c6">â€”(((/td>
+              (((/tr>
+              (((tr>
+                (((th headers="c r7" id="r33">
+                  Pennsylvania Long-Term Tax-Exempt
+                (((/th>
+                (((td headers="r33 c3">VPAIX(((/td>
+                (((td headers="r33 c4">0.19(((/td>
+                (((td headers="r33 c5">VPALX(((/td>
+                (((td headers="r33 c6">0.09(((/td>
+              (((/tr>
+            (((/tbody>
+          (((/table>
+        (((/div>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> table/cx-better.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>[better] Utopia active bond funds(((/h1>
+      (((/header>(((/title>
+    (((meta name="viewport" content="width=device-width, initial-scale=1">
+    (((meta name="author" content="Jonathan Pool">
+    (((meta name="description" content="Accessible table example: part of a set of training modules on creating accessible user interfaces at Utopia">
+    (((meta name="keywords" content="Utopia,software development,accessibility,a11y,user interface">
+    (((meta name="creator" content="Internal Shared Services and Accessibility Office, The Utopia Group">
+    (((meta name="publisher" content="Accessibility Office, The Utopia Group">
+    (((link rel="stylesheet" href="style.css">
+    (((link rel="author" href="http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786">
+  (((/head>
+  (((body itemscope itemtype="https://schema.org/WebPage">
+    (((main>
+      (((header>
+        (((h1>[better] Utopia active bond funds(((/h1>
+      (((/header>
+      (((section>
+        (((div class="example">
+          (((table class="complex">
+            (((caption>Utopia active bond funds(((/caption>
+            (((thead>
+              (((tr>
+                (((th rowspan="2">Name(((/th>
+                (((th colspan="2">Investor Shares(((/th>
+                (((th colspan="2">Admiralâ„¢ Shares(((/th>
+              (((/tr>
+              (((tr>
+                (((th>Ticker symbol(((/th>
+                (((th>Expense ratio (%)(((/th>
+                (((th>Ticker symbol(((/th>
+                (((th>Expense ratio (%)(((/th>
+              (((/tr>
+            (((/thead>
+            (((tbody>
+              (((tr>
+                (((th colspan="5" class="tbodyhead">
+                  Utopia active taxable bond funds
+                (((/th>
+              (((/tr>
+              (((tr>
+                (((th colspan="5">Treasury/agency(((/th>
+              (((/tr>
+              (((tr>
+                (((th>GNMA(((/th>
+                (((td>VFIIX(((/td>
+                (((td>0.21(((/td>
+                (((td>VFIJX(((/td>
+                (((td>0.11(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Inflation-Protected Securities(((/th>
+                (((td>VIPSX(((/td>
+                (((td>0.20(((/td>
+                (((td>VAIPX(((/td>
+                (((td>0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Intermediate-Term Treasury(((/th>
+                (((td>VFITX(((/td>
+                (((td>0.20(((/td>
+                (((td>VFIUX(((/td>
+                (((td>0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Long-Term Treasury(((/th>
+                (((td>VUSTX(((/td>
+                (((td>0.20(((/td>
+                (((td>VUSUX(((/td>
+                (((td>0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Short-Term Federal(((/th>
+                (((td>VSGBX(((/td>
+                (((td>0.20(((/td>
+                (((td>VSGDX(((/td>
+                (((td>0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Short-Term Treasury(((/th>
+                (((td>VFISX(((/td>
+                (((td>0.20(((/td>
+                (((td>VFIRX(((/td>
+                (((td>0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th colspan="5">Investment-grade corporate(((/th>
+              (((/tr>
+              (((tr>
+                (((th>Core Bond(((/th>
+                (((td>VCORX(((/td>
+                (((td>0.25(((/td>
+                (((td>VCOBX(((/td>
+                (((td>0.15(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Intermediate-Term Investment-Grade(((/th>
+                (((td>VFICX(((/td>
+                (((td>0.20(((/td>
+                (((td>VFIDX(((/td>
+                (((td>0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Long-Term Investment-Grade(((/th>
+                (((td>VWESX(((/td>
+                (((td>0.22(((/td>
+                (((td>VWETX(((/td>
+                (((td>0.12(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Short-Term Investment-Grade(((/th>
+                (((td>VFSTX(((/td>
+                (((td>0.20(((/td>
+                (((td>VFSUX(((/td>
+                (((td>0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Ultra-Short-Term Bond(((/th>
+                (((td>VUBFX(((/td>
+                (((td>0.20(((/td>
+                (((td>VUSFX(((/td>
+                (((td>0.10(((/td>
+              (((/tr>
+              (((tr>
+                (((th colspan="5">Below-investment-grade(((/th>
+              (((/tr>
+              (((tr>
+                (((th>High-Yield Corporate(((/th>
+                (((td>VWEHX(((/td>
+                (((td>0.23(((/td>
+                (((td>VWEAX(((/td>
+                (((td>0.13(((/td>
+              (((/tr>
+              (((tr>
+                (((th colspan="5">Global/international(((/th>
+              (((/tr>
+              (((tr>
+                (((th>Emerging Markets Bond(((/th>
+                (((td>VEMBX(((/td>
+                (((td>0.60(((/td>
+                (((td>VEGBX(((/td>
+                (((td>0.45(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Global Credit Bond(((/th>
+                (((td>VGCIX(((/td>
+                (((td>0.35(((/td>
+                (((td>VGCAX(((/td>
+                (((td>0.25(((/td>
+              (((/tr>
+            (((/tbody>
+            (((tbody>
+              (((tr>
+                (((th colspan="5" class="tbodyhead">
+                  Utopia active municipal bond funds
+                (((/th>
+              (((/tr>
+              (((tr>
+                (((th colspan="5">National municipal(((/th>
+              (((/tr>
+              (((tr>
+                (((th>Short-Term Tax-Exempt(((/th>
+                (((td>VWSTX(((/td>
+                (((td>0.19(((/td>
+                (((td>VWSUX(((/td>
+                (((td>0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Limited-Term Tax-Exempt(((/th>
+                (((td>VMLTX(((/td>
+                (((td>0.19(((/td>
+                (((td>VMLUX(((/td>
+                (((td>0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Intermediate-Term Tax-Exempt(((/th>
+                (((td>VWITX(((/td>
+                (((td>0.19(((/td>
+                (((td>VWIUX(((/td>
+                (((td>0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Long-Term Tax-Exempt(((/th>
+                (((td>VWLTX(((/td>
+                (((td>0.19(((/td>
+                (((td>VWLUX(((/td>
+                (((td>0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th>High-Yield Tax-Exempt(((/th>
+                (((td>VWAHX(((/td>
+                (((td>0.19(((/td>
+                (((td>VWALX(((/td>
+                (((td>0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th colspan="5">State municipal(((/th>
+              (((/tr>
+              (((tr>
+                (((th>California Intermediate-Term Tax-Exempt(((/th>
+                (((td>VCAIX(((/td>
+                (((td>0.19(((/td>
+                (((td>VCADX(((/td>
+                (((td>0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th>California Long-Term Tax-Exempt(((/th>
+                (((td>VCITX(((/td>
+                (((td>0.19(((/td>
+                (((td>VCLAX(((/td>
+                (((td>0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Massachusetts Tax-Exempt(((/th>
+                (((td>VMATX(((/td>
+                (((td>0.15(((/td>
+                (((td>â€”(((/td>
+                (((td>â€”(((/td>
+              (((/tr>
+              (((tr>
+                (((th>New Jersey Long-Term Tax-Exempt(((/th>
+                (((td>VNJTX(((/td>
+                (((td>0.19(((/td>
+                (((td>VNJUX(((/td>
+                (((td>0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th>New York Long-Term Tax-Exempt(((/th>
+                (((td>VNYTX(((/td>
+                (((td>0.19(((/td>
+                (((td>VNYUX(((/td>
+                (((td>0.09(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Ohio Long-Term Tax-Exempt(((/th>
+                (((td>VOHIX(((/td>
+                (((td>0.15(((/td>
+                (((td>â€”(((/td>
+                (((td>â€”(((/td>
+              (((/tr>
+              (((tr>
+                (((th>Pennsylvania Long-Term Tax-Exempt(((/th>
+                (((td>VPAIX(((/td>
+                (((td>0.19(((/td>
+                (((td>VPALX(((/td>
+                (((td>0.09(((/td>
+              (((/tr>
+            (((/tbody>
+          (((/table>
+        (((/div>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> table/faketable.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+(((head>
+  (((meta charset="UTF-8">
+  (((title>Fake table(((/title>
+  (((style type="text/css">
+    th, td, div.td {
+      padding: 3px 24px;
+      border: solid 2px;
+      border-color: purple;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    div.td {
+      display: table-cell;
+    }
+    div.thead {
+      display: table-header-group;
+      text-align: center;
+      font-weight: bold;
+    }
+    caption, div.caption {
+      font-weight: bold;
+      font-style: italic;
+    }
+    div.caption {
+      display: table-caption;
+      text-align: center;
+    }
+  (((/style>
+(((/head>
+(((body>
+  (((main>
+    (((h1>
+      Fake and real tables
+    (((/h1>
+    (((section style="background-color: #eee">
+      (((h2>
+        Real table
+      (((/h2>
+      (((table>
+        (((caption>
+          Real table
+        (((/caption>
+        (((thead>
+          (((tr>
+            (((th scope="col">City(((/th>(((th scope="col">State(((/th>
+          (((/tr>
+        (((/thead>
+        (((tbody>
+          (((tr>
+            (((td>Miami(((/td>(((td>Florida(((/td>
+          (((/tr>
+          (((tr>
+            (((td>Boston(((/td>(((td>Massachusetts(((/td>
+          (((/tr>
+        (((/tbody>
+      (((/table>
+    (((/section>
+    (((section style="background-color: #eee">
+      (((h2>
+        Fake table
+      (((/h2>
+      (((div style="display: table; border-collapse: collapse">
+        (((div class="caption">
+          Fake table
+        (((/div>
+        (((div class="thead">
+          (((div style="display: table-row">
+            (((div class="td">City(((/div>
+            (((div class="td">State(((/div>
+          (((/div>
+        (((/div>
+        (((div style="display: table-row-group">
+          (((div style="display: table-row">
+            (((div class="td">Miami(((/div>
+            (((div class="td">Florida(((/div>
+          (((/div>
+          (((div style="display: table-row">
+            (((div class="td">Boston(((/div>
+            (((div class="td">Massachusetts(((/div>
+          (((/div>
+       (((/div>
+      (((/div>
+    (((/section>
+  (((/main>
+(((/body>
+(((/html>
+==> table/simple-a.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Mutual Fund Comparison(((/title>
+    (((meta name="viewport" content="width=device-width, initial-scale=1">
+    (((meta name="author" content="Jonathan Pool">
+    (((meta name="description" content="Accessible table example: part of a set of training modules on creating accessible user interfaces at Utopia">
+    (((meta name="keywords" content="Utopia,software development,accessibility,a11y,user interface">
+    (((meta name="creator" content="Internal Shared Services and Accessibility Office, The Utopia Group">
+    (((meta name="publisher" content="Accessibility Office, The Utopia Group">
+    (((link rel="stylesheet" href="style.css">
+    (((link rel="author" href="http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786">
+  (((/head>
+  (((body itemscope itemtype="https://schema.org/WebPage">
+    (((main>
+      (((header>
+        (((h1>Mutual Fund Comparison(((/h1>
+      (((/header>
+      (((section>
+        (((div class="example">
+          (((table class="fundcomparison">
+            (((caption>Balanced Global Mutual Funds(((/caption>
+            (((colgroup span="2">(((/colgroup>
+            (((colgroup>
+              (((col class="important">
+              (((col>
+              (((col>
+              (((col>
+            (((/colgroup>
+            (((thead>
+              (((tr>
+                (((th>(((abbr title="ticker symbol: an abbreviation assigned to a security for trading purposes. A security&rsquo;s ticker symbol is often used in newspapers and price-quotation services. Also called a trading symbol or stock symbol.">Tkr Sym(((/abbr>(((/th>
+                (((th>Name(((/th>
+                (((th>(((abbr title="expense ratio: what it costs a mutual fund company to run a fund. The expense ratio is calculated annually and includes management fees, administrative fees, and any marketing and distribution fees. It doesn't include loads or purchase or redemption fees, if any.">(((a href="https://investor.utopia.com/expense-ratio/">Exp Ratio(((/a>(((/abbr>(((/th>
+               (((th>(((abbr title="a yield for non-money market funds that's based on a formula mandated by the Securities and Exchange Commission. It approximates the yield an investor would receive in a year by assuming that bonds in the portfolio are held to maturity, all income reinvested, and all fees and expenses factored in.">SEC Yield(((/abbr>(((/th>
+                (((th>Price(((/th>
+                (((th>(((abbr title="change: the difference in a security&rsquo;s price from one period to another. During trading hours, &ldquo;change&rdquo; refers to the difference in price since the beginning of the day; after trading hours, it compares the closing price to the previous day&rsquo;s close.">Chg$(((/abbr>(((/th>
+              (((/tr>
+            (((/thead>
+            (((tbody>
+              (((tr>
+                (((th>VGYAX(((/th>
+                (((td>(((abbr title="Utopia Global Wellesley Income Fund Admiral Shares">Global Wellesley Inc Adm(((/abbr>(((/td>
+                (((td>0.33%(((/td>
+                (((td>0.00%(((/td>
+                (((td>$24.19(((/td>
+                (((td>$0.02(((/td>
+              (((/tr>
+              (((tr>
+                (((th>VGWIX(((/th>
+                (((td>(((abbr title="Utopia Global Wellesley Income Fund Investor Shares">Global Wellesley Inc Inv(((/abbr>(((/td>
+                (((td>0.43%(((/td>
+                (((td>0.00%(((/td>
+                (((td>$19.35(((/td>
+                (((td>$0.02(((/td>
+              (((/tr>
+              (((tr>
+                (((th>VGWAX(((/th>
+                (((td>(((abbr title="Utopia Global Wellington Fund Admiral Shares">Global Wellington Admiral(((/abbr>(((/td>
+                (((td>0.36%(((/td>
+                (((td>0.00%(((/td>
+                (((td>$25.37(((/td>
+                (((td>&minus;$0.04(((/td>
+              (((/tr>
+              (((tr>
+                (((th>VGWLX(((/th>
+                (((td>(((abbr title="Utopia Global Wellington Fund Investor Shares">Global Wellington Invest(((/abbr>(((/td>
+                (((td>0.46%(((/td>
+                (((td>0.00%(((/td>
+                (((td>$20.29(((/td>
+                (((td>&minus;$0.03(((/td>
+              (((/tr>
+            (((/tbody>
+            (((tfoot>
+              (((tr class="agg">
+                (((th colspan="2">Average(((/th>
+                (((td>0.40%(((/td>
+                (((td>0.00%(((/td>
+                (((td>$22.30(((/td>
+                (((td>&minus;$0.01(((/td>
+              (((/tr>
+              (((tr class="note">(((td colspan="6">Last updated (((time datetime="2019-03-05T13:30:00-05:00">5 March 2019, 1:30 p.m. (((abbr title="Eastern Standard Time">EST(((/abbr>(((/time>(((/td>(((/tr>
+            (((/tfoot>
+          (((/table>
+        (((/div>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> table/simple-b.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Mutual Fund Comparison(((/title>
+    (((meta name="viewport" content="width=device-width, initial-scale=1">
+    (((meta name="author" content="Jonathan Pool">
+    (((meta name="description" content="Accessible table example: part of a set of training modules on creating accessible user interfaces at Utopia">
+    (((meta name="keywords" content="Utopia,software development,accessibility,a11y,user interface">
+    (((meta name="creator" content="Internal Shared Services and Accessibility Office, The Utopia Group">
+    (((meta name="publisher" content="Accessibility Office, The Utopia Group">
+    (((link rel="stylesheet" href="style.css">
+    (((link rel="author" href="http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786">
+  (((/head>
+  (((body itemscope itemtype="https://schema.org/WebPage">
+    (((main>
+      (((header>
+        (((h1>Mutual Fund Comparison(((/h1>
+      (((/header>
+      (((section>
+        (((div class="example">
+          (((table class="fundcomparison">
+            (((caption>Balanced Global Mutual Funds(((/caption>
+            (((colgroup span="2">(((/colgroup>
+            (((colgroup>
+              (((col class="important">
+              (((col>
+              (((col>
+              (((col>
+            (((/colgroup>
+            (((thead>
+              (((tr>
+                (((th>(((abbr title="ticker symbol: an abbreviation assigned to a security for trading purposes. A security&rsquo;s ticker symbol is often used in newspapers and price-quotation services. Also called a trading symbol or stock symbol.">Tkr Sym(((/abbr>(((/th>
+                (((th>Name(((/th>
+                (((th>(((abbr title="expense ratio: what it costs a mutual fund company to run a fund. The expense ratio is calculated annually and includes management fees, administrative fees, and any marketing and distribution fees. It doesn't include loads or purchase or redemption fees, if any.">(((a href="https://investor.utopia.com/expense-ratio/">Exp Ratio(((/a>(((/abbr>(((/th>
+                (((th>(((abbr title="a yield for non-money market funds that's based on a formula mandated by the Securities and Exchange Commission. It approximates the yield an investor would receive in a year by assuming that bonds in the portfolio are held to maturity, all income reinvested, and all fees and expenses factored in.">SEC Yield(((/abbr>(((/th>
+                (((th>Price(((/th>
+                (((th>(((abbr title="change: the difference in a security&rsquo;s price from one period to another. During trading hours, &ldquo;change&rdquo; refers to the difference in price since the beginning of the day; after trading hours, it compares the closing price to the previous day&rsquo;s close.">Chg$(((/abbr>(((/th>
+              (((/tr>
+            (((/thead>
+            (((tbody class="rowheaderleft">
+              (((tr>
+                (((td>VGYAX(((/td>
+                (((th>(((abbr title="Utopia Global Wellesley Income Fund Admiral Shares">Global Wellesley Inc Adm(((/abbr>(((/th>
+                (((td>0.33%(((/td>
+                (((td>0.00%(((/td>
+                (((td>$24.19(((/td>
+                (((td>$0.02(((/td>
+              (((/tr>
+              (((tr>
+                (((td>VGWIX(((/td>
+                (((th>(((abbr title="Utopia Global Wellesley Income Fund Investor Shares">Global Wellesley Inc Inv(((/abbr>(((/th>
+                (((td>0.43%(((/td>
+                (((td>0.00%(((/td>
+                (((td>$19.35(((/td>
+                (((td>$0.02(((/td>
+              (((/tr>
+              (((tr>
+                (((td>VGWAX(((/td>
+                (((th>(((abbr title="Utopia Global Wellington Fund Admiral Shares">Global Wellington Admiral(((/abbr>(((/th>
+                (((td>0.36%(((/td>
+                (((td>0.00%(((/td>
+                (((td>$25.37(((/td>
+                (((td>&minus;$0.04(((/td>
+              (((/tr>
+              (((tr>
+                (((td>VGWLX(((/td>
+                (((th>(((abbr title="Utopia Global Wellington Fund Investor Shares">Global Wellington Invest(((/abbr>(((/th>
+                (((td>0.46%(((/td>
+                (((td>0.00%(((/td>
+                (((td>$20.29(((/td>
+                (((td>&minus;$0.03(((/td>
+              (((/tr>
+            (((/tbody>
+            (((tfoot>
+              (((tr class="agg">
+                (((th colspan="2">Average(((/th>
+                (((td>0.40%(((/td>
+                (((td>0.00%(((/td>
+                (((td>$22.30(((/td>
+                (((td>&minus;$0.01(((/td>
+              (((/tr>
+              (((tr class="note">(((td colspan="6">Last updated (((time datetime="2019-03-05T13:30:00-05:00">5 March 2019, 1:30 p.m. (((abbr title="Eastern Standard Time">EST(((/abbr>(((/time>(((/td>(((/tr>
+            (((/tfoot>
+          (((/table>
+        (((/div>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> table/style.css <==
+* {
+  box-sizing: border-box;
+}
+body {
+  min-width: 28rem;
+  max-width: 50rem;
+  margin: 0 2rem;
+  background-color: #eee;
+}
+caption {
+  margin: 1.1rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.center {
+  text-align: center;
+}
+.complex > tbody > tr > th:not([colspan]) {
+  text-align: left;
+}
+.example {
+  margin-top: 1rem;
+  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+  border: double 9px green;
+  border-radius: 1rem;
+}
+.agg > td:nth-child(2),
+.agg > td:nth-child(3),
+.fundcomparison tbody td:nth-child(3),
+.fundcomparison tbody td:nth-child(4) {
+  text-align: center;
+}
+.agg > td:nth-child(4),
+.agg > td:nth-child(5),
+.fundcomparison tbody td:nth-child(5),
+.fundcomparison tbody td:nth-child(6) {
+  text-align: right;
+}
+h1 {
+  text-align: center;
+}
+html {
+  font-size: 20px;
+}
+.important {
+  background-color: #e5e8b2;
+}
+.note > td {
+  border: none;
+  padding-top: 1rem;
+  text-align: center;
+}
+.rowheaderleft th {
+  text-align: left;
+}
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+.tbodyhead {
+  font-style: italic;
+}
+td, th {
+  padding: 0.25rem 0.5rem;
+  border: solid gray 1px;
+}
+thead {
+  position: sticky;
+  top: 0;
+}
+tr.head > td {
+  text-align: center;
+  font-weight: bold;
+}
+
+==> tablehc/index.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((title>Mutual Fund Comparison(((/title>
+    (((meta name="viewport" content="width=device-width, initial-scale=1">
+    (((meta name="author" content="Jonathan Pool">
+    (((meta name="description" content="Accessible table example: part of a set of training modules on creating accessible user interfaces at Utopia">
+    (((meta name="keywords" content="Utopia,software development,accessibility,a11y,user interface">
+    (((meta name="creator" content="Internal Shared Services and Accessibility Office, The Utopia Group">
+    (((meta name="publisher" content="Accessibility Office, The Utopia Group">
+    (((link rel="stylesheet" href="../../style.css">
+    (((link rel="stylesheet" href="style.css">
+    (((link rel="author" href="http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786">
+    (((script src="../../script.js">(((/script>
+    (((script src="script.js">(((/script>
+  (((/head>
+  (((body itemscope itemtype="https://schema.org/WebPage" class="wide">
+    (((main>
+      (((header>
+        (((h1>Mutual Fund Comparison(((/h1>
+      (((/header>
+      (((section>
+        (((div class="example">
+          (((table
+            id="fctable"
+            class="fundcomparison controlled"
+            data-colctl="bgmf-cc"
+          >
+            (((caption>Balanced Global Mutual Funds(((/caption>
+            (((colgroup>
+              (((col>
+              (((col>
+            (((/colgroup>
+            (((colgroup>
+              (((col class="important">
+              (((col>
+              (((col>
+              (((col>
+            (((/colgroup>
+            (((thead>
+              (((tr>
+                (((th scope="col">(((abbr title="ticker symbol: an abbreviation assigned to a security for trading purposes. A security&rsquo;s ticker symbol is often used in newspapers and price-quotation services. Also called a trading symbol or stock symbol.">Tkr Sym(((/abbr>(((/th>
+                (((th class="controlled">Name(((/th>
+                (((th class="controlled">(((abbr title="expense ratio: what it costs a mutual fund company to run a fund. The expense ratio is calculated annually and includes management fees, administrative fees, and any marketing and distribution fees. It doesn't include loads or purchase or redemption fees, if any.">(((a href="https://investor.utopia.com/expense-ratio/">Exp Ratio(((/a>(((/abbr>(((/th>
+                (((th class="controlled">(((abbr title="minimum investment">Min Inv(((/abbr>(((/th>
+                (((th class="controlled">(((abbr title="a yield for non-money market funds that's based on a formula mandated by the Securities and Exchange Commission. It approximates the yield an investor would receive in a year by assuming that bonds in the portfolio are held to maturity, all income reinvested, and all fees and expenses factored in.">SEC Yield(((/abbr>(((/th>
+                (((th class="controlled">Price(((/th>
+                (((th class="controlled">(((abbr title="change: the difference in a security&rsquo;s price from one period to another. During trading hours, &ldquo;change&rdquo; refers to the difference in price since the beginning of the day; after trading hours, it compares the closing price to the previous day&rsquo;s close.">Chg$(((/abbr>(((/th>
+                (((th class="controlled">Total Assets ((((abbr title="millions">M(((/abbr>)(((/th>
+              (((/tr>
+            (((/thead>
+            (((tbody>
+              (((tr>
+                (((th>VGYAX(((/th>
+                (((td>(((abbr title="Utopia Global Wellesley Income Fund Admiral Shares">Global Wellesley Inc Adm(((/abbr>(((/td>
+                (((td>0.33%(((/td>
+                (((td>$50,000(((/td>
+                (((td>0.00%(((/td>
+                (((td>$24.64(((/td>
+                (((td>&minus;$0.06(((/td>
+                (((td>$450.4(((/td>
+              (((/tr>
+              (((tr>
+                (((th>VGWIX(((/th>
+                (((td>(((abbr title="Utopia Global Wellesley Income Fund Investor Shares">Global Wellesley Inc Inv(((/abbr>(((/td>
+                (((td>0.43%(((/td>
+                (((td>$3,000(((/td>
+                (((td>0.00%(((/td>
+                (((td>$19.70(((/td>
+                (((td>&minus;$0.05(((/td>
+                (((td>$450.4(((/td>
+              (((/tr>
+              (((tr>
+                (((th>VGWAX(((/th>
+                (((td>(((abbr title="Utopia Global Wellington Fund Admiral Shares">Global Wellington Admiral(((/abbr>(((/td>
+                (((td>0.36%(((/td>
+                (((td>$50,000(((/td>
+                (((td>0.00%(((/td>
+                (((td>$26.09(((/td>
+                (((td>&minus;$0.04(((/td>
+                (((td>$935.8(((/td>
+              (((/tr>
+              (((tr>
+                (((th>VGWLX(((/th>
+                (((td>(((abbr title="Utopia Global Wellington Fund Investor Shares">Global Wellington Invest(((/abbr>(((/td>
+                (((td>0.46%(((/td>
+                (((td>$3,000(((/td>
+                (((td>0.00%(((/td>
+                (((td>$20.87(((/td>
+                (((td>&minus;$0.02(((/td>
+                (((td>$935.8(((/td>
+              (((/tr>
+            (((/tbody>
+            (((tfoot>
+              (((tr class="agg">
+                (((th>Average(((/th>
+                (((td>(((/td>
+                (((td>0.40%(((/td>
+                (((td>$26,500(((/td>
+                (((td>0.00%(((/td>
+                (((td>$22.83(((/td>
+                (((td>&minus;$0.04(((/td>
+                (((td>$693.1(((/td>
+              (((/tr>
+              (((tr class="note">(((td colspan="8">Last updated (((time datetime="2019-06-13T16:00:00-04:00">13 June 2019, 4:00 p.m. (((abbr title="Eastern Daaylight Time">EDT(((/abbr>(((/time>(((/td>(((/tr>
+            (((/tfoot>
+          (((/table>
+        (((/div>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> tablehc/script.js <==
+// Constants
+messages.ccLegend = 'Which columns do you want shown?';
+// Functions
+// Column-control paragraph
+const colCtlParagraph = (tableID, colIndex, labelText) (arrow) {
+  const p = choiceParagraph(false, 'colCtl', labelText);
+  const input = p.querySelector('input');
+  input.checked = true;
+  input.addEventListener('input', () (arrow) {
+    toggleCol(tableID, colIndex, input.checked);
+  });
+  return p;
+};
+// Handlers
+// Show or hide a table column.
+const toggleCol = (tableID, colIndex, show) (arrow) {
+  const cells = document.getElementById(tableID).querySelectorAll(
+    `tr > :nth-child(${colIndex + 1})`
+  );
+  for (let i = 0; i ((( cells.length; i++) {
+    if (show) {
+      cells[i].classList.remove('covert');
+    }
+    else {
+      cells[i].classList.add('covert');
+    }
+  }
+};
+// Initializers
+// Configure column-controllable tables.
+const initColCtl = () (arrow) {
+  const ccTables = document.querySelectorAll('table.controlled');
+  for (let i = 0; i ((( ccTables.length; i++) {
+    const table = ccTables[i];
+    const controllerForm = table.insertAdjacentElement(
+      'beforebegin', document.createElement('form')
+    );
+    const controllerGroup = controllerForm.insertAdjacentElement(
+      'afterbegin', document.createElement('fieldset')
+    );
+    controllerGroup.className = 'colCtl';
+    controllerGroup.id = table.dataset.colctl;
+    const legend = controllerGroup.insertAdjacentElement(
+      'afterbegin', document.createElement('legend')
+    );
+    legend.textContent = messages.ccLegend;
+    const ctlColHeaders = table.querySelectorAll('th.controlled');
+    for (let j = 0; j ((( ctlColHeaders.length; j++) {
+      const ctlColHeader = ctlColHeaders[j];
+      const colLabel = ctlColHeader.textContent;
+      controllerGroup.insertAdjacentElement(
+        'beforeend', colCtlParagraph(table.id, ctlColHeader.cellIndex, colLabel)
+      );
+    }
+  }
+};
+// Initialize on page load.
+document.addEventListener('DOMContentLoaded', initColCtl);
+
+==> tablehc/style.css <==
+.colCtl > p {
+  margin: 0 !important;
+}
+.fundcomparison td:nth-child(3),
+.fundcomparison td:nth-child(5) {
+  text-align: center;
+}
+.fundcomparison td:nth-child(4),
+.fundcomparison td:nth-child(6),
+.fundcomparison td:nth-child(7),
+.fundcomparison td:nth-child(8) {
+  text-align: right;
+}
+.important {
+  background-color: #e5e8b2;
+}
+.note > td {
+  border: none;
+  padding-top: 1rem;
+  text-align: center;
+}
+td.covert, th.covert {
+  display: none;
+}
+
+==> tablesticky/index.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+(((head>
+  (((meta charset="UTF-8">
+  (((title>Country Diversification(((/title>
+  (((meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+  (((meta name="author" content="Jonathan Pool">
+  (((meta
+    name="description"
+    content="Accessible table example: part of a set of training modules on creating accessible user interfaces at Utopia"
+  >
+  (((meta
+    name="keywords"
+    content="Utopia,software development,accessibility,a11y,user interface"
+  >
+  (((meta
+    name="creator"
+    content="Internal Shared Services and Accessibility Office, The Utopia Group"
+  >
+  (((meta
+    name="publisher"
+    content="Accessibility Office, The Utopia Group"
+  >
+  (((link rel="stylesheet" href="../../style.css">
+  (((link rel="stylesheet" href="style.css">
+  (((link
+    rel="author"
+    href="http://crewnet.utopia.com/CrewNetPortal/CrewSearch?id=065786"
+  >
+  (((script src="script.js">(((/script>
+(((/head>
+(((body
+  itemscope
+  itemtype="https://schema.org/WebPage"
+  class="wide">
+(((main>
+  (((header>
+    (((h1>Country Diversification(((/h1>
+  (((/header>
+  (((section>
+    (((div class="example">
+      (((form id="cdCtl">
+        (((fieldset>
+          (((legend>Use these buttons to scroll within this table(((/legend>
+          (((p>(((button id="upButton" type="button">&uparrow;(((/button>(((/p>
+          (((p>
+            (((button id="leftButton" type="button">&leftarrow;(((/button>
+            (((button id="rightButton" type="button">&rightarrow;(((/button>
+          (((/p>
+          (((p>(((button id="downButton" type="button">&downarrow;(((/button>(((/p>
+        (((/fieldset>
+      (((/form>
+      (((table
+        id="cdTable"
+        aria-describedby="tableSource"
+        data-rowcount="0"
+        data-colcount="0"
+        data-startrow="0"
+        data-endrow="0"
+        data-startcol="0"
+        data-endcol="0"
+      >
+        (((caption>Country Diversification of Utopia Funds(((/caption>
+        (((thead>
+          (((tr class="fundSymbol">
+          (((/tr>
+          (((tr>
+          (((/tr>
+        (((/thead>
+        (((tbody>
+        (((/tbody>
+      (((/table>
+      (((p id="tableSource">Source: (((a href="https://advisors.utopia.com/web/c1/compare-products/">The Utopia Group(((/a>, 22 August 2019(((/p>
+    (((/div>
+  (((/section>
+(((/main>
+(((/body>
+(((/html>
+
+==> tablesticky/script.js <==
+// Constants
+const cdTableContent = {
+  source: 'https://advisors.utopia.com/web/c1/compare-products/',
+  date: '2019-08-22',
+  funds: [
+    ['BIV', 'Utopia Interm-Term Bond ETF'],
+    ['BLV', 'Utopia Long-Term Bond ETF'],
+    ['BND', 'Utopia Total Bond Market ETF'],
+    ['BNDW', 'Utopia Total World Bond ETF'],
+    ['BNDX', 'Utopia Total International Bond ETF'],
+    ['BSV', 'Utopia Short-Term Bond ETF'],
+    ['EDV', 'Utopia Extended Duration Trs ETF'],
+    ['ESGV', 'Utopia ESG US Stock ETF'],
+    ['IVOG', 'Utopia S&P Mid-Cap 400 Growth ETF'],
+    ['IVOO', 'Utopia S&P Mid-Cap 400 ETF'],
+  ],
+  countries: [
+    [
+      ['United States', '89.93%'],
+      ['United Kingdom', '1.73%'],
+      ['Japan', '1.34%'],
+      ['Canada', '1.14%'],
+      ['Supranational', '1.14%'],
+      ['Mexico', '0.75%'],
+      ['Netherlands', '0.73%'],
+      ['Germany', '0.44%'],
+      ['Australia', '0.27%'],
+      ['China', '0.26%'],
+      ['South Korea', '0.26%'],
+      ['Switzerland', '0.24%'],
+      ['Colombia', '0.24%'],
+      ['Philippines', '0.22%'],
+      ['Panama', '0.18%'],
+      ['Spain', '0.17%'],
+      ['France', '0.16%'],
+      ['Chile', '0.16%'],
+      ['Indonesia', '0.10%'],
+      ['Peru', '0.09%'],
+      ['Brazil', '0.09%'],
+      ['Uruguay', '0.08%'],
+      ['Norway', '0.07%'],
+      ['Israel', '0.06%'],
+      ['Austria', '0.05%'],
+      ['Poland', '0.05%'],
+      ['Singapore', '0.02%'],
+      ['Liberia', '0.02%'],
+      ['Jordan', '0.01%'],
+      ['Italy', '0.01%']
+    ],
+    [
+      ['United States', '90.77%'],
+      ['Canada', '1.80%'],
+      ['Mexico', '1.49%'],
+      ['United Kingdom', '1.17%'],
+      ['Netherlands', '0.96%'],
+      ['Colombia', '0.51%'],
+      ['Philippines', '0.50%'],
+      ['France', '0.28%'],
+      ['China', '0.27%'],
+      ['Uruguay', '0.26%'],
+      ['Peru', '0.25%'],
+      ['Spain', '0.24%'],
+      ['Panama', '0.21%'],
+      ['Australia', '0.18%'],
+      ['Brazil', '0.16%'],
+      ['Supranational', '0.13%'],
+      ['Indonesia', '0.11%'],
+      ['Norway', '0.11%'],
+      ['Chile', '0.10%'],
+      ['Israel', '0.08%'],
+      ['Switzerland', '0.08%'],
+      ['Japan', '0.08%'],
+      ['Germany', '0.07%'],
+      ['Italy', '0.06%'],
+      ['Hungary', '0.05%'],
+      ['South Korea', '0.05%'],
+      ['Austria', '0.03%'],
+      ['Belgium', '0.01%']
+    ],
+    [
+      ['United States', '91.96%'],
+      ['Supranational', '1.38%'],
+      ['Canada', '1.23%'],
+      ['United Kingdom', '1.04%'],
+      ['Japan', '0.59%'],
+      ['Germany', '0.59%'],
+      ['Mexico', '0.54%'],
+      ['Netherlands', '0.48%'],
+      ['Australia', '0.29%'],
+      ['Colombia', '0.19%'],
+      ['France', '0.18%'],
+      ['China', '0.17%'],
+      ['South Korea', '0.15%'],
+      ['Philippines', '0.14%'],
+      ['Switzerland', '0.14%'],
+      ['Spain', '0.11%'],
+      ['Sweden', '0.09%'],
+      ['Panama', '0.07%'],
+      ['Norway', '0.07%'],
+      ['Uruguay', '0.07%'],
+      ['Hungary', '0.07%'],
+      ['Chile', '0.06%'],
+      ['Peru', '0.06%'],
+      ['Brazil', '0.06%'],
+      ['Israel', '0.05%'],
+      ['Poland', '0.05%'],
+      ['Austria', '0.04%'],
+      ['Indonesia', '0.04%'],
+      ['Italy', '0.03%'],
+      ['Jordan', '0.01%'],
+      ['Liberia', '0.01%'],
+      ['Singapore', '0.01%'],
+      ['South Africa', '0.00%'],
+      ['Iraq', '0.00%'],
+      ['Ukraine', '0.00%'],
+      ['Tunisia', '0.00%'],
+      ['Ireland', '0.00%'],
+      ['Belgium', '0.00%'],
+      ['Finland', '0.00%']
+    ],
+    [
+      ['United States', '45.53%'],
+      ['Japan', '10.56%'],
+      ['France', '6.43%'],
+      ['Germany', '5.25%'],
+      ['United Kingdom', '4.25%'],
+      ['Italy', '3.89%'],
+      ['Canada', '3.83%'],
+      ['Spain', '2.93%'],
+      ['Netherlands', '2.39%'],
+      ['Supranational', '2.37%'],
+      ['Australia', '1.53%'],
+      ['South Korea', '1.51%'],
+      ['Belgium', '1.19%'],
+      ['Austria', '0.76%'],
+     ['Sweden', '0.75%'],
+      ['Mexico', '0.67%'],
+      ['Switzerland', '0.64%'],
+      ['Finland', '0.41%'],
+      ['Denmark', '0.41%'],
+      ['China', '0.38%'],
+      ['Ireland', '0.38%'],
+      ['Norway', '0.37%'],
+      ['Portugal', '0.36%'],
+      ['Indonesia', '0.36%'],
+      ['Thailand', '0.33%'],
+      ['Malaysia', '0.33%'],
+      ['Poland', '0.32%'],
+      ['Singapore', '0.24%'],
+      ['Luxembourg', '0.19%'],
+      ['Russia', '0.18%'],
+      ['Israel', '0.16%'],
+      ['New Zealand', '0.13%'],
+      ['Czech Republic', '0.11%'],
+      ['Hungary', '0.10%'],
+      ['Colombia', '0.09%'],
+      ['Slovakia', '0.09%'],
+      ['Jersey', '0.07%'],
+      ['Philippines', '0.07%'],
+      ['Slovenia', '0.06%'],
+      ['Chile', '0.05%'],
+      ['Romania', '0.05%'],
+      ['Panama', '0.04%'],
+      ['Peru', '0.04%'],
+      ['Cayman Islands', '0.04%'],
+      ['Uruguay', '0.03%'],
+      ['Hong Kong', '0.03%'],
+      ['Bulgaria', '0.02%'],
+      ['Guernsey', '0.02%'],
+      ['British Virgin Islands', '0.01%'],
+      ['United Arab Emirates', '0.01%'],
+      ['Lithuania', '0.01%'],
+      ['Kazakhstan', '0.01%'],
+      ['Brazil', '0.00%'],
+      ['Jordan', '0.00%'],
+      ['Liberia', '0.00%'],
+      ['Bermuda', '0.00%'],
+      ['Cyprus', '0.00%'],
+      ['Iraq', '0.00%'],
+      ['Ukraine', '0.00%'],
+      ['Croatia', '0.00%'],
+      ['Morocco', '0.00%'],
+      ['Tunisia', '0.00%'],
+      ['Latvia', '0.00%'],
+      ['Liechtenstein', '0.00%']
+    ],
+    [
+      ['Japan', '19.84%'],
+      ['France', '12.27%'],
+      ['Germany', '9.00%'],
+      ['Italy', '7.79%'],
+      ['United Kingdom', '6.91%'],
+      ['Canada', '6.19%'],
+      ['Spain', '5.51%'],
+      ['Netherlands', '4.15%'],
+      ['Supranational', '3.24%'],
+      ['United States', '2.93%'],
+      ['South Korea', '2.72%'],
+      ['Australia', '2.67%'],
+      ['Belgium', '2.34%'],
+      ['Austria', '1.37%'],
+      ['Sweden', '1.31%'],
+      ['Switzerland', '1.18%'],
+      ['Mexico', '0.79%'],
+      ['Finland', '0.79%'],
+      ['Denmark', '0.78%'],
+      ['China', '0.75%'],
+      ['Ireland', '0.72%'],
+      ['Portugal', '0.71%'],
+      ['Indonesia', '0.70%'],
+      ['Thailand', '0.66%'],
+      ['Norway', '0.66%'],
+      ['Malaysia', '0.63%'],
+      ['Poland', '0.56%'],
+      ['Singapore', '0.45%'],
+      ['Russia', '0.35%'],
+      ['Luxembourg', '0.31%'],
+      ['Israel', '0.27%'],
+      ['New Zealand', '0.23%'],
+      ['Czech Republic', '0.22%'],
+      ['Slovakia', '0.17%'],
+      ['Hungary', '0.13%'],
+      ['Jersey', '0.13%'],
+      ['Slovenia', '0.12%'],
+      ['Romania', '0.10%'],
+      ['Cayman Islands', '0.06%'],
+      ['Bulgaria', '0.04%'],
+      ['Chile', '0.04%'],
+      ['Hong Kong', '0.04%'],
+      ['British Virgin Islands', '0.03%'],
+      ['Peru', '0.02%'],
+      ['United Arab Emirates', '0.02%'],
+      ['Lithuania', '0.01%'],
+      ['Panama', '0.01%'],
+      ['Kazakhstan', '0.01%'],
+      ['Croatia', '0.01%'],
+      ['Saudi Arabia', '0.01%'],
+      ['Philippines', '0.01%'],
+      ['Bermuda', '0.01%'],
+      ['Cyprus', '0.01%'],
+      ['Colombia', '0.01%'],
+      ['Brazil', '0.00%'],
+      ['Morocco', '0.00%'],
+      ['Latvia', '0.00%'],
+      ['Liechtenstein', '0.00%']
+    ],
+    [
+      ['United States', '88.12%'],
+      ['Supranational', '3.23%'],
+      ['Canada', '1.78%'],
+      ['United Kingdom', '1.31%'],
+      ['Germany', '1.29%'],
+      ['Japan', '0.90%'],
+      ['Netherlands', '0.51%'],
+      ['Australia', '0.39%'],
+      ['Mexico', '0.32%'],
+      ['Sweden', '0.26%'],
+      ['South Korea', '0.24%'],
+      ['France', '0.23%'],
+      ['China', '0.20%'],
+      ['Switzerland', '0.16%'],
+      ['Colombia', '0.14%'],
+      ['Hungary', '0.13%'],
+      ['Israel', '0.10%'],
+      ['Poland', '0.10%'],
+      ['Norway', '0.09%'],
+      ['Austria', '0.09%'],
+      ['Spain', '0.09%'],
+      ['Italy', '0.05%'],
+      ['Chile', '0.04%'],
+      ['Brazil', '0.04%'],
+      ['Philippines', '0.03%'],
+      ['Jordan', '0.02%'],
+      ['Ukraine', '0.02%'],
+      ['Iraq', '0.02%'],
+      ['Indonesia', '0.02%'],
+      ['Liberia', '0.01%'],
+      ['South Africa', '0.01%'],
+      ['Tunisia', '0.01%'],
+      ['Uruguay', '0.01%'],
+      ['Singapore', '0.01%'],
+      ['Ireland', '0.01%']
+    ],
+    [
+      ['United States', '100.00%']
+    ],
+    [
+      ['United States', '98.36%'],
+      ['United Kingdom', '0.59%'],
+      ['China', '0.30%'],
+      ['Switzerland', '0.30%'],
+      ['Brazil', '0.08%'],
+      ['Canada', '0.06%'],
+      ['Singapore', '0.05%'],
+      ['Puerto Rico', '0.04%'],
+      ['Ireland', '0.04%'],
+      ['Russia', '0.03%'],
+      ['Sweden', '0.03%'],
+      ['British Virgin Islands', '0.03%'],
+      ['India', '0.02%'],
+      ['Israel', '0.02%'],
+      ['Netherlands', '0.02%'],
+      ['Germany', '0.01%'],
+      ['Marshall Islands', '0.01%'],
+      ['Taiwan', '0.01%'],
+      ['Monaco', '0.00%'],
+      ['Peru', '0.00%']
+    ],
+    [
+      ['United States', '99.82%'],
+      ['United Kingdom', '0.18%']
+    ],
+    [
+      ['United States', '99.81%'],
+      ['United Kingdom', '0.19%']
+    ]
+  ]
+};
+// Functions
+// Handlers
+// Show or hide a row in the body of a table.
+const toggleRow = (tableID, rowIndex, show) (arrow) {
+  const row = document.getElementById(tableID).querySelector(
+    `tbody > tr:nth-child(${rowIndex + 1})`
+  );
+  const rowClassList = row.classList;
+  if (show) {
+    rowClassList.remove('covert');
+  }
+  else {
+    rowClassList.add('covert');
+  }
+};
+// Show or hide all cells in a table column.
+const toggleCol = (tableID, colIndex, show) (arrow) {
+  // Actual cell index is 1 greater than specified, because of key column.
+  const cells = document.getElementById(tableID).querySelectorAll(
+    `tr > :nth-child(${colIndex + 2})`
+  );
+  for (let i = 0; i ((( cells.length; i++) {
+    if (show) {
+      cells[i].classList.remove('covert');
+    }
+    else {
+      cells[i].classList.add('covert');
+    }
+  }
+};
+// Return whether and how to toggle.
+const toggleHow = (index, oldRange, newRange) (arrow) {
+  if (
+    index >= oldRange[0]
+    && index (((= oldRange[1]
+    && (index ((( newRange[0] || index > newRange[1])
+  ) {
+    // It must be hidden.
+    return -1;
+  }
+  else if (
+    index >= newRange[0]
+    && index (((= newRange[1]
+    && (index ((( oldRange[0] || index > oldRange[1])
+  ) {
+    // It must be shown.
+    return 1;
+  }
+  else {
+    // It must be left unchanged.
+    return 0;
+  }
+};
+/*
+  Show and hide cells to change the view of a table.
+  Arguments:
+    tableID.
+    newParams: shown ranges (ignoring index column);
+      [start row, end row, start col, end col],
+      or existing parameter if null.
+*/
+const reshowTable = (tableID, newParams) (arrow) {
+  const cdTableData = document.getElementById(tableID).dataset;
+  const dimensions = [cdTableData.rowcount, cdTableData.colcount];
+  const oldParams = [
+    cdTableData.startrow,
+    cdTableData.endrow,
+    cdTableData.startcol,
+    cdTableData.endcol
+  ].map(param (arrow) Number.parseInt(param));
+  newTableData = newParams.map(
+    (param, index) (arrow) param === null ? oldParams[index] : param
+  );
+  cdTableData.startrow = newTableData[0];
+  cdTableData.endrow = newTableData[1];
+  cdTableData.startcol = newTableData[2];
+  cdTableData.endcol = newTableData[3];
+  for (let i = 0; i ((( dimensions[0]; i++) {
+    const rowToggleHow = toggleHow(
+      i, oldParams.slice(0, 2), newTableData.slice(0, 2)
+    );
+    if (rowToggleHow === 1) {
+      toggleRow(tableID, i, true);
+    } else if (rowToggleHow === -1) {
+      toggleRow(tableID, i, false);
+    }
+  }
+  for (let i = 0; i ((( dimensions[1]; i++) {
+    const colToggleHow = toggleHow(
+      i, oldParams.slice(2), newTableData.slice(2)
+    );
+    if (colToggleHow === 1) {
+      toggleCol(tableID, i, true);
+    }
+    else if (colToggleHow === -1) {
+      toggleCol(tableID, i, false);
+    }
+  }
+};
+// Scroll a table view up 1 row.
+const scrollUp = tableID (arrow) {
+  const oldRowRange = ['startrow', 'endrow'].map(
+    param (arrow) Number.parseInt(document.getElementById(tableID).dataset[param])
+  );
+  let newRowRange = [null, null];
+  if (oldRowRange[0] > 0) {
+    newRowRange = oldRowRange.map(index (arrow) index - 1);
+    reshowTable(tableID, [...newRowRange, null, null]);
+  }
+};
+// Scroll a table view down 1 row.
+const scrollDown = tableID (arrow) {
+  const oldRowData = ['startrow', 'endrow', 'rowcount'].map(
+    param (arrow) Number.parseInt(document.getElementById(tableID).dataset[param])
+  );
+  let newRowRange = [null, null];
+  if (oldRowData[1] ((( oldRowData[2] - 1) {
+    newRowRange = oldRowData.slice(0, 2).map(index (arrow) index + 1);
+    reshowTable(tableID, [...newRowRange, null, null]);
+  }
+};
+// Scroll a table view left 1 column.
+const scrollLeft = tableID (arrow) {
+  const oldColRange = ['startcol', 'endcol'].map(
+    param (arrow) Number.parseInt(document.getElementById(tableID).dataset[param])
+  );
+  let newColRange = [null, null];
+  if (oldColRange[0] > 0) {
+    newColRange = oldColRange.map(index (arrow) index - 1);
+    reshowTable(tableID, [null, null, ...newColRange]);
+  }
+};
+// Scroll a table view right 1 column.
+const scrollRight = tableID (arrow) {
+  const oldColData = ['startcol', 'endcol', 'colcount'].map(
+    param (arrow) Number.parseInt(document.getElementById(tableID).dataset[param])
+  );
+  let newColRange = [null, null];
+  if (oldColData[1] ((( oldColData[2] - 1) {
+    newColRange = oldColData.slice(0, 2).map(index (arrow) index + 1);
+    reshowTable(tableID, [null, null, ...newColRange]);
+  }
+};
+// Initializers
+// Populate the country-diversification table.
+const populateCDTable = rowCount (arrow) {
+  const headerRows = document.querySelectorAll('#cdTable > thead > tr');
+  const funds = cdTableContent.funds;
+  [0, 1].forEach(headerRowIndex (arrow) {
+    headerRows[headerRowIndex].insertAdjacentElement(
+      'beforeend', document.createElement('td')
+   );
+  });
+  funds.forEach(fund (arrow) {
+    const symbolHeader = headerRows[0].insertAdjacentElement(
+      'beforeend', document.createElement('th')
+    );
+    symbolHeader.textContent = fund[0];
+    const nameHeader = headerRows[1].insertAdjacentElement(
+      'beforeend', document.createElement('th')
+    );
+    nameHeader.textContent = fund[1];
+  });
+  const tbody = document.querySelector('#cdTable > tbody');
+  for (let i = 0; i ((( rowCount; i++) {
+    const tr = tbody.insertAdjacentElement(
+      'beforeend', document.createElement('tr')
+    );
+    const keyCell = tr.insertAdjacentElement(
+      'beforeend', document.createElement('td')
+    );
+    keyCell.textContent = (i + 1).toString();
+    for (let j = 0; j ((( funds.length; j++) {
+      const td = tr.insertAdjacentElement(
+        'beforeend', document.createElement('td')
+      );
+      cellData = cdTableContent.countries[j][i];
+      td.textContent = cellData ? `${cellData[0]}, ${cellData[1]}` : 'N/A';
+    }
+  }
+};
+// Populate and configure the country-diversification table.
+const initCDTable = (widthRemPerCell, heightRemPerCell) (arrow) {
+  const cdTable = document.getElementById('cdTable');
+  const cdTableData = cdTable.dataset;
+  const cdCtl = document.getElementById('cdCtl');
+  const doc = document.documentElement;
+  const pxPerRem = Number.parseInt(window.getComputedStyle(doc).fontSize, 10);
+  const widthRem = Math.floor(doc.clientWidth / pxPerRem);
+  const heightRem = Math.floor(doc.clientHeight / pxPerRem);
+  const rowShowCountMax = Math.floor(heightRem / heightRemPerCell);
+  const colShowCountMax = Math.floor(widthRem / widthRemPerCell);
+  const rowCount = Math.max(
+    ...cdTableContent.countries.map(fundCountries (arrow) fundCountries.length)
+  );
+  const colCount = cdTableContent.funds.length;
+  populateCDTable(rowCount);
+  const initialRanges = [0, rowCount - 1, 0, colCount - 1];
+  cdTableData.rowcount = rowCount;
+  cdTableData.colcount = colCount;
+  cdTableData.endrow = initialRanges[1];
+  cdTableData.endcol = initialRanges[3];
+  reshowTable('cdTable', [0, rowShowCountMax - 1, 0, colShowCountMax - 1]);
+};
+// Add listeners to scroll buttons.
+const addButtonListeners = () (arrow) {
+  document.getElementById('upButton').addEventListener('click', () (arrow) {
+    scrollUp('cdTable');
+  });
+  document.getElementById('downButton').addEventListener('click', () (arrow) {
+    scrollDown('cdTable');
+  });
+  document.getElementById('leftButton').addEventListener('click', () (arrow) {
+    scrollLeft('cdTable');
+  });
+  document.getElementById('rightButton').addEventListener('click', () (arrow) {
+    scrollRight('cdTable');
+  });
+};
+// Initialize on page load.
+document.addEventListener('DOMContentLoaded', () (arrow) {
+  initCDTable(16, 6);
+  addButtonListeners();
+}, {once: true});
+
+==> tablesticky/style.css <==
+#cdCtl {
+  text-align: center;
+}
+#cdCtl button {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  font-size: large;
+}
+td.covert, th.covert, tr.covert {
+  display: none;
+}
+
+==> validator/index.html <==
+(((!DOCTYPE html>
+(((html lang="en-US-blahblah">
+  (((head>
+    (((meta charset="UTF-8">
+    (((meta name="viewport" content="width=device-width, initial-scale=1">
+    (((meta name="description" content="HTML validator example">
+    (((meta name="keywords" content="Utopia,software development,accessibility,a11y,user interface">
+    (((meta name="creator" content="Internal Shared Services and Accessibility Office, The Utopia Group">
+    (((meta name="publisher" content="Accessibility Office, The Utopia Group">
+    (((meta purpose="not valid" content="anything at all">
+    (((link rel="stylesheet" href="style.css">
+    (((title>HTML Validator Example(((/title>
+  (((/head>
+  (((body>
+    (((main>
+      (((header>
+        (((h1>HTML Validator Example(((/h1>
+        (((h3>List of defects(((/h3>
+        (((h4>Heading defect(((/h5>
+      (((/header>
+      (((section title="mainsection" title="illustration">
+        (((p>This page illustrates the services performed by HTML validators. The page contains HTML errors and infelicities. You can discover which HTML validators catch which of them.(((/p>
+        (((p>Defects:(((/p>
+        (((ol>
+          (((li id="defect1">The (((code>lang(((/code> attribute of the (((code>html(((/code> element has an invalid value.(((/li>
+          (((li id="defect2">The (((code>head(((/code> element contains a (((code>meta(((/code> element with an invalid attribute.(((/li>
+          (((li id="defect2">This item has the same ID as the previous one.(((/li>
+          (((li>There is no (((code>h2(((/code> between the (((code>h1(((/code> and the (((code>h3(((/code>.(((/li>
+          (((li>The (((code>h4(((/code> element is closed with (((code>h5(((/code>.(((/li>
+          (((li>This section has 2 instances of the same ((((code>title(((/code>) attribute.(((/li>
+          (((li>This URL contains an invalid space: the (((a href="http:// irs.gov">Internal Revenue Service(((/a>.(((/li>
+          (((li>This sentence contains (((em>(((strong>unbalanced(((/em>(((/strong> inline element tags.(((/li>
+          (((li>The last word of this sentence is inside a (((code>code(((/code> element that is missing its closing (((code>tag.(((/li>
+          (((li role="listitem">This item has a redundant role specification.(((/li>
+          (((u>(((li>The (((code>u(((/code> element containing this element is a child of an (((code>ol(((/code> element, but no children of (((code>ol(((/code> except (((code>li(((/code> elements are valid, and (((code>li(((/code> elements must be children of (((code>ul(((/code> or (((code>ol(((/code> elements.(((/li>(((/u>
+          (((li>This sentence contains a (((big>large(((/big> word enlarged by an obsolete element.(((/li>
+        (((/ol>
+      (((/section>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> validator/style.css <==
+* {
+  box-sizing: border-box;
+}
+body {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #efede7;
+}
+h1, h2, h3, h4 {
+  margin-bottom: 0.5rem;
+}
+p {
+  line-height: 150%;
+}
+
+==> zoom/index.html <==
+(((!DOCTYPE html>
+(((html lang="en-US">
+  (((head>
+    (((meta charset="UTF-8">
+    (((meta name="viewport" content="width=device-width, initial-scale=1">
+    (((meta name="description" content="Accessible size customization example">
+    (((meta name="keywords" content="Utopia,software development,accessibility,a11y,user interface">
+    (((meta name="creator" content="Internal Shared Services and Accessibility Office, The Utopia Group">
+    (((meta name="publisher" content="Accessibility Office, The Utopia Group">
+    (((link rel="stylesheet" href="style.css">
+    (((script src="script.js">(((/script>
+    (((title>Size Customization Example(((/title>
+  (((/head>
+  (((body>
+    (((main>
+      (((header>
+        (((form class="resize">
+          (((fieldset>
+            (((legend>Content size:(((/legend>
+            (((div class="buttons">
+              (((button id="shrink" type="button">&minus;(((/button>
+              (((button id="expand" type="button">+(((/button>
+            (((/div>
+          (((/fieldset>
+        (((/form>
+        (((h1>Size Customization Example(((/h1>
+      (((/header>
+      (((section>
+        (((p>Both theories miss a less worrisome reality. Productivity lulls aren&rsquo;t unusual, even in eras of technological disruption. Consider the figure below. In the past 200 years, the U.S. economy has experienced at least 9 periods of what, at the time, may have been perceived as secular stagnation. Over the same 200 years, however, the inflation-adjusted value of output per hour has increased more than thirtyfold.(((/p>
+        (((figure class="whole-column">
+          (((figcaption>Annualized growth in real GDP per capita, U.S., 1807 to 2017, over rolling 7-year periods(((/figcaption>
+          (((section class="figures">
+            (((img src="../../static/productivity_blog.png" alt="graph of annualized growth in real GDP per capita from 1807 to 2017, reaching a minimum of &minus;4% in the 1930s and a maximum of 9% in the 1940s">
+          (((/section>
+          (((section class="figure-notes">
+            (((p>(((strong>Note(((/strong>: Annualized growth is measured over rolling 7-year periods.(((/p>
+            (((p>(((strong>Sources(((/strong>: eh.net and Utopia.(((/p>
+            (((p>(((strong>Data(((/strong>: (((a href="https://www.measuringworth.com/datasets/usgdp/export.php?year_source=1800&year_result=2017&use[]=GDPCP">Data on real GDP per capita in the United States from 1807 to 1917(((/a> can be obtained from (((a href="https://www.measuringworth.com">MeasuringWorth(((/a>.(((/p>
+          (((/section>
+        (((/figure>
+      (((/section>
+      (((footer>
+        (((p>This content is excerpted and adapted from (((cite class="article">(((a href="https://utopiablog.com/2018/05/08/the-productivity-paradox/">(((q>The Productivity Paradox(((/q>(((/a>(((/cite> ((((cite>Utopia Blog(((/cite>, 2018), by Joseph H. Davis.(((/p>
+      (((/footer>
+    (((/main>
+  (((/body>
+(((/html>
+
+==> zoom/script.js <==
+// Constants
+const htmlElement = document.documentElement;
+// Functions
+// Increase or decrease the root font size.
+const changeFontSize = isIncrease (arrow) {
+  const oldSize = Math.round(Number.parseFloat(
+    htmlElement.style.fontSize, 10
+  ));
+  if (isIncrease && oldSize ((( 64) {
+    htmlElement.style.fontSize = `${Math.round(1.2 * oldSize)}px`;
+  }
+  else if (! isIncrease && oldSize > 9) {
+    htmlElement.style.fontSize = `${Math.round(0.8 * oldSize)}px`;
+  }
+};
+// Handlers
+const buttonClickHandler = event (arrow) {
+  const targetID = event.target.id;
+  if (targetID === 'shrink') {
+    changeFontSize(false);
+  }
+  else if (targetID === 'expand')
+    changeFontSize(true);
+};
+// Initializers
+// Make the root font size an explicit style property of the html element.
+const initHTMLFont = () (arrow) {
+  htmlElement.style.fontSize
+    = window.getComputedStyle(htmlElement).getPropertyValue('font-size');
+};
+// Define a button-click listener.
+const awaitButtonClick = () (arrow) {
+  document.querySelector('form.resize .buttons').addEventListener(
+    'click', buttonClickHandler
+  );
+};
+// Initialize on page load.
+const initFunctions = () (arrow) {
+  initHTMLFont();
+  awaitButtonClick();
+};
+document.addEventListener('DOMContentLoaded', initFunctions);
+
+==> zoom/style.css <==
+* {
+  box-sizing: border-box;
+}
+.article {
+  font-style: normal;
+}
+body {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #efede7;
+}
+button {
+  font-size: 1rem;
+}
+fieldset {
+  padding: 0.5rem;
+}
+figure {
+  margin: 0;
+}
+.figure-notes > p {
+  margin: 0.3rem 0;
+}
+.figures {
+  text-align: center;
+}
+.figures > img {
+  width: 35rem;
+}
+footer {
+  margin: 0 1rem;
+  padding: 0 0.5rem;
+  background-color: #f9f8f6;
+}
+h1, h2 {
+  margin-bottom: 0.5rem;
+}
+legend {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+p {
+  line-height: 150%;
+}
+q {
+  quotes: 'â€œ' 'â€';
+}
+q::after {
+  content: close-quote;
+}
+q::before {
+  content: open-quote;
+}
+.resize {
+  justify-content: center;
+}
+.resize, .resize > fieldset > div {
+  display: flex;
+}
+.resize > fieldset > div {
+  justify-content: space-evenly;
+}
+.whole-column > figcaption {
+  text-align: center;
+  margin: 0 4rem;
+  font-weight: bold;
+}
+
+==> zoom/style-orig.css <==
+@media (min-width: 0) {
+  body, button {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 400px) {
+  body, button {
+    font-size: 1.25rem;
+  }
+}
+@media (min-width: 800px) {
+  body {
+    width: calc(480px + 20vw + 10rem);
+    max-width: 100%;
+  }
+  body, button {
+    font-size: 1.5rem;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+.article {
+  font-style: normal;
+}
+body {
+  margin: 0 auto;
+  padding: 16px 32px;
+  background-color: #efede7;
+}
+.buttons {
+  font-size: 0;
+}
+fieldset {
+  padding: 0.5rem;
+}
+figure {
+  margin: 0;
+}
+footer {
+  margin: 0 5%;
+  padding: 0 2%;
+  background-color: #f9f8f6;
+}
+h1, h2 {
+  margin-bottom: 0.5rem;
+}
+legend {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.notes > p {
+  margin: 0.25rem 0;
+}
+p {
+  line-height: 150%;
+}
+q {
+  quotes: 'â€œ' 'â€';
+}
+q::after {
+  content: close-quote;
+}
+q::before {
+  content: open-quote;
+}
+.resize {
+  justify-content: center;
+}
+.resize, .resize > fieldset > div {
+  display: flex;
+}
+.resize > fieldset > div {
+  justify-content: space-evenly;
+}
+.whole-column, .whole-column > img {
+  width: 100%;
+}
+.whole-column > figcaption {
+  text-align: center;
+  margin: 0 10%;
+  font-weight: bold;
+}
+.whole-column > img {
+  min-width: calc(400px + 10rem);
+}
