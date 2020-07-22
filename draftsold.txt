@@ -1,0 +1,913 @@
+==gThan old/planning/20180926-training-dev.txt <==
+Accessibility Office
+
+Training in Accessible User Interface Development
+
+Utopia faces increasing demands to ensure that its digital user interfaces are accessible for users with disabilities. There are competitive, reputational, regulatory, and risk-management incentives for doing this.
+
+However, hiring a contractor to make this happen could cost Utopia tens of millions of dollars, and the other usability issues with Utopia's interfaces would remain unresolved.
+
+Instead, the Accessibility Office pursues a "spot-repair and shift-left" accessibility strategy. This means helping software teams to (1) remediate the worst accessibility problems in their existing interfaces, but (2) build accessibility into their new projects from the very start.
+
+The spot-repair phase began about 4 years ago and is reaching the end of its useful life. Spot repairs are becoming more intricate and expensive, and Utopia teams are embracing new web- and app-development paradigms. Both of these trends make total redevelopment of UIs increasingly attractive.
+
+Although many developers across the enterprise are learning new front-end frameworks, libraries, and teamwork modalities, only a few (about 100, or 5%, per year) are learning to develop accessible interfaces, and even that is at a superficial level.
+
+We want to change this. We want to share more deeply and with a larger audience our know-how and our know-why. We can't monitor every new front-end project's accessibility, so we want UI developers to acquire not only accessibility techniques, but also accessibility acumen: an appreciation of the business value and technical excellence of accessibility.
+
+One element of our strategy is multimodal training. Below we outline the topics of a possible training program. Each item is the title of a possible module. The modules could constitute a course, but they could also be used as stand-alone lessons or reference sources. There are about 100 items; at an average of 20 minutes per item, including practice and testing, a course could occupy about 4 days. An on-site course could enhance learners' experience with the modules by offering expert help, discussion, and inter-learner collaboration.
+
+Current accessible-development training at Utopia consists mainly of:
+
+(1) Half of a 2-day Utopia University course, "Accessibility Fundamentals", taught by visiting experts
+
+(2) A 2-hour segment in the Utopia University course
+
+(3) Occasional 1- or 2-hour introductions offered on demand to development teams.
+
+(4) Modules created by University and made available to Utopia crew members.
+
+In our experience, these offerings have not prepared developers to autonomously make their interfaces accessible. Utopia developers, although invited to train themselves with the Deque modules, have rarely done so. We believe that more engaging and relevant training (in part making use of those same modules) would be more effective.
+
+The new modules would:
+
+(1) Be as independent as practically possible, not requiring each other as prerequisites.
+
+(2) In part be beneficial to managers, designers, and testers, as well as developers.
+
+(3) Include practice exercises and knowledge tests.
+
+(4) Insofar as possible, refer and link to (not replace) existing documents and training resources.
+
+(5) Be Utopia-specific and Utopia-relevant.
+
+(6) Offer enough technical detail for practical application.
+
+While learning styles vary, experienced software-development trainers typically argue that nobody learns to code without coding. We accordingly favor packaging the modules mostly as documents plus code: explanations with accompanying exercises that automatically check the learner's input, in the manner of FreeCodeCamp or HackerRank. As appropriate, there would be some audio and/or video content, too, such as recordings of assistive devices reading content out loud or users with disabilities navigating interfaces.
+
+The Accessibility Office has 6 crew members who would contribute to this training program. Those most involved would be Jonathan Pool, Meghna Shah, and Ellen King.
+
+We look forward to Utopia University's comments and suggestions.
+
+=========================
+
+Outline of modules in accessible development
+
+1. Introduction to accessibility
+1.1. What is accessibility?
+1.2. Why accessibility matters
+1.3. Who demands accessibility?
+1.4. Who supplies accessibility?
+1.5. Accessibility: hard and hideous, or easy and elegant?
+1.6. Expanding and competing concepts of accessibility
+1.7. Evolving technologies of accessibility
+2. Accessibility at Utopia
+2.1. Our core purpose and accessibility
+2.2. Competing with accessibility
+2.3. Complying with accessibility
+2.4. Our accessibility risks and costs
+2.5. Our accessibility opportunities
+2.6. How we organize accessibility
+2.7. Where you get accessibility support
+3. Accessibility: When is it "done"?
+3.1. International standards of accessibility
+3.2. Laws, regulations, and adjudications on accessibility
+3.3. Utopia standards of accessibility
+3.4. Accessible UI and UX: from OK to good to great
+4. Our special accessibility challenges
+4.1. Communicating financial data accessibly
+4.2. Making financial transactions accessible
+4.3. Accessibly preventing and correcting errors
+4.4. Accessible investor education
+4.5. Reconciling accessibility with privacy
+4.6. Reconciling accessibility with security
+4.7. Being international and accessible
+4.8. Making legacy interfaces accessible
+4.9. Ensuring an accessible crew experience
+5. Strategies for accessible interface production
+5.1. Inclusive, universal, and adaptive design
+5.2. Accessibly semantic HTML
+5.3. Accessible CSS
+5.4. Server-client cooperation for accessibility
+5.5. Doing agile, NGA, Shift Left, and BV@SS accessibly
+6. Making views accessible
+6.1. Sizing content accessibly
+6.2. Making text accessible
+6.3. Making graphics accessible
+6.4. Making colors accessible
+6.5. Styling activatable elements accessibly
+6.6. Making audio and video content accessible
+7. Making layouts accessible
+7.1. Making layout serialization accessible
+7.2. Making layout structure accessible
+7.3. Making page constants accessible
+8. Making tables accessible
+8.1. Accessible tabular layout
+8.2. Accessible tabular data
+8.3. Tables, graphs, and accessibility
+9. Making interactions accessible
+9.1. Accessible event handling
+9.1.1. Making event handling predictable
+9.1.2. Ensuring notice of changed context and content
+9.2. Accessible navigation
+9.2.1. Managing and showing focus accessibly
+9.2.2. Responding accessibly to button and link activation
+9.2.3. UI navigation, browser navigation, and accessibility
+9.2.4. Layers, tabs, windows, and accessibility
+9.3. Making forms accessible
+9.3.1. Making free text input accessible
+9.3.2. Making typed text input accessible
+9.3.3. Making toggling and election accessible
+9.3.4. Making selection accessible
+9.3.5. Making partitioning accessible
+9.3.6. Making authentication accessible
+10. Making documents accessible
+10.1. Generating accessible PDF files
+10.2. Editing PDF files for accessibility
+10.3. Choosing document formats for accessibility
+11. Accessibility across platforms
+11.1. Making views accessibly responsive
+11.2. Making text resizable across platforms
+11.3. Accessibility for keyboards, mice, trackpads, and fingers
+11.3. Using cross-platform development frameworks accessibly
+11.3.1. Accessible development with Angular
+11.3.2. Accessible development with React
+11.3.3. Accessible development with Vue
+11.3.4. Accessible development with Ionic
+11.3.5. Accessible development with React Native
+11.4. Leveraging accessibility features of mobile APIs
+11.4.1. Leveraging iOS API accessibility
+11.4.2. Leveraging Android API accessibility
+12. Supporting adaptations for accessibility
+12.1. Supporting magnification tools
+12.2. Supporting contrast customization
+12.3. Supporting pointerless operation
+12.4. Supporting screen readers
+13. Standardizing accessibility
+13.1. Developing enterprise accessibility standards
+13.2. Baking accessibility into shared components
+13.3. Leveraging VUI for accessibility
+14. Testing accessibility
+14.1. Human accessibility testing
+14.1.1. Accessibility testing by code inspection
+14.1.2. Youser (you playing user) testing for accessibility
+14.1.3. User testing for accessibility
+14.2. Automatic accessibility testing
+14.2.1. Accessibility linting
+14.2.2. Accessibility testing with browser extensions
+14.2.3. Accessibility testing with axe-core
+14.2.4. Creating accessibility tests with Cucumber/Gherkin
+14.2.5. Accessibility testing in CI-CD
+14.2.6. Extending the reach of automated accessibility testing
+
+=======================
+
+Details not in outline:
+
+2.2.1. Physical facilities.
+2.2.2. Conversational customer support.
+2.2.6. Paper documents.
+5.1. Branding.
+5.2. Consistency.
+5.3. Aesthetics.
+
+-It would be helpful to have a one page summary of your current state and future state, along with estimated timing expectations ? and ideally what you?re hoping to get from the session with VU.
+
+-Provide insight on the type of resources you have internally to build out the training.
+
+-Confirmation of the learning audience(s). Maybe offer a simple description of their role(s) and how they would use the learning.
+
+-Performance objectives. What will crew be doing on the job and how does it align to business goals?
+
+-An overview of the content. Not everything, but, in general, is it technical, knowledge based, etc?
+
+-What is the learning experience? (How long is it? Are crew taking it all at once? Are there reinforcement activities during and after? If so, what are they?)
+
+-Providing a link to the external provider would be helpful along with any other access to content for a quick preview.
+
+-If there?s any existing crew feedback from prior sessions, that?s always helpful as well.
+
+
+==gThan old/planning/devtrainfix.txt <==
+Mention FCC and HackerRank in proposal. Tell when done.
+
+Start with impactful example(s) of (in)a11y on the web and what developers can do about it.
+==gThan old/planning/index.html <==
+lThan!DOCTYPE htmlgThan
+lThanhtml lang="en-US"gThan
+  lThanheadgThan
+    lThanmeta charset="UTF-8"gThan
+    lThan!--lThanmeta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"gThan--gThan
+    lThantitlegThanImproved training in accessible user-interface developmentlThan/titlegThan
+    lThanlink rel="stylesheet" href="style.css"gThan
+    lThanscript src="script.js"gThanlThan/scriptgThan
+  lThan/headgThan
+  lThanbodygThan
+    lThanmaingThan
+      lThanheadergThan
+        lThanh1gThanImproved training in accessible user-interface developmentlThan/h1gThan
+        lThanpgThanJonathan PoollThan/pgThan
+        lThanpgThanRevision date: 16 October 2018lThan/pgThan
+        lThanp
+          class="center"gThanlThanlabel id="hider"gThanlThaninput type="checkbox" onclick="hideToggle(event)"gThanShow noteslThan/labelgThanlThan/pgThan
+        lThanp class="note covert"gThanNotes in this document, displayed in a small font size like this, record some related subtopics, ideas, facts, and references. They are incomplete and continue to be accumulated.lThan/pgThan
+      lThan/headergThan
+      lThansection id="summary"gThan
+        lThanh2gThanWhat&rsquo;s here?lThan/h2gThan
+        lThanpgThanThe Accessibility Office at Utopia helps the enterprise ensure that its external and internal digital interfaces are accessible. It does this, in part, by training.lThan/pgThan
+        lThanpgThanWe are planning a new, more in-depth, more Utopia-relevant training program, organized into 3 sections: design, development, and testing.lThan/pgThan
+        lThanpgThanThis document is a draft description of that program and a draft outline of the development section. Comments on these drafts are welcome and may be sent to lThana href="mailto:jonathan_pool@utopia.com"gThanJonathan PoollThan/agThan.lThan/pgThan
+        lThanp class="center"gThan
+          lThanimg
+            class="img-example"
+            src="http://corpsp.utopia.com/pnd/mc/Accessibility/SiteAssets/SitePages/Personas%20-%20George%20Roda/persona-George2.jpg"
+            alt="photograph of mobility-limited computer user"
+          gThan
+          lThanimg
+            class="img-example"
+            src="http://corpsp.utopia.com/pnd/mc/Accessibility/SiteAssets/SitePages/Personas%20-%20Ronald%20Estrabico/persona-Ronald.jpg"
+            alt="photograph of an elderly computer user looking closely to read the displayed contents, with help from another user"
+          gThan
+        lThan/pgThan
+      lThan/sectiongThan
+      lThansectiongThan
+        lThanh2gThanIntroductionlThan/h2gThan
+        lThanpgThanUtopia faces increasing demands to ensure that its digital interfaces are lThanemgThanaccessiblelThan/emgThan, i.e. usable by a broad spectrum of users, including the many with disabilities. There are competitive, reputational, regulatory, and risk-management incentives for advancing the accessibility of our external and internal interfaces.lThan/pgThan
+        lThanpgThanTeams that do traditional planning, design, development, and testing of interfaces, even with the intent of making them usable, elegant, and compelling, do not necessarily make them accessible. That requires special knowledge and tools.lThan/pgThan
+        lThanpgThanTo make accessibility a component of the new normal, Utopia has created an Accessibility Office, with a current staff of 6 crew members. The Accessibility Office uses its own staff and external consultants to pursue its mission and has adopted a &ldquo;spot-repair and shift-left&rdquo; strategy. This means helping software teams to (1) remediate the worst accessibility problems in their lThanemgThanexistinglThan/emgThan interfaces, but (2) build accessibility into their lThanemgThannewlThan/emgThan projects from the very start.lThan/pgThan
+        lThanh2gThanStrategic contextlThan/h2gThan
+        lThanpgThanThe spot-repair phase began about 3 years ago and has had a major positive impact on user experiences, but is yielding diminishing returns. When users report accessibility problems, we help teams make spot repairs, but, as a strategy of proactive accessibility, spot repairs are becoming more intricate and expensive. This makes total redevelopment of UIs increasingly attractive, bringing the shift-left phase to the fore.lThan/pgThan
+        lThanpgThanBy itself, the Accessibility Office cannot make all new UI projects accessible, nor monitor their development, so our shift-left strategy can succeed only if we help teams acquire, apply, and propagate accessibility knowledge. To this end, we aim to impart both lThanemgThanknow-howlThan/emgThan and lThanemgThanknow-whylThan/emgThan: a combination of accessibility techniques and accessibility acumen. The latter will, we expect, give teams an appreciation of the business value and technical excellence of accessibility, motivating them to develop accessibly even when nobody is looking.lThan/pgThan
+        lThanh2gThanTraininglThan/h2gThan
+        lThanh3gThanCurrent inventorylThan/h3gThan
+        lThanpgThanAccessible-interface training at Utopia consists mainly of:lThan/pgThan
+        lThanulgThan
+          lThanligThanA 2-day Utopia University course, &ldquo;Accessibility Fundamentals&rdquo;, taught by visiting experts from Deque.lThan/ligThan
+          lThanligThanA 2-hour accessibility segment in the Utopia University course, &ldquo;UI Boot Camp&rdquo;.lThan/ligThan
+          lThanligThanOccasional 1- to 2-hour introductions offered on demand to designers, developers, and testers.lThan/ligThan
+          lThanligThanWeb-based modules created by Deque University and made available to Utopia crew members.lThan/ligThan
+        lThan/ulgThan
+        lThanh3gThanObserved efficacylThan/h3gThan
+        lThanpgThanOur current training reaches about 100 persons per year. We estimate that the potential clientele is about 2,000, so we are probably not even matching the clientele turnover rate.lThan/pgThan
+        lThanp class="note covert"gThanThere are lThana href="http://crewhub.utopia.com/it/hub/Pages/ITS-by-the-Numbers.aspx"gThanabout 4,300lThan/agThan crew and contingent workers in the Information Technology and Security Division. CrewNet advanced crew searches on job skills yield about 1,400 with &ldquo;development&rdquo; and 500 with &ldquo;design&rdquo;.lThan/pgThan
+        lThanpgThanThe current training is also too superficial. In our experience, it has not prepared designers, developers, and testers to autonomously make their interfaces accessible. Utopia crew members, although invited to train themselves with the Deque modules, have rarely done so. We believe that more engaging and relevant training (in part making use of those same modules) would be more effective. We have found trainees highly attentive and engaged when we use their own and other Utopia code and interfaces as illustrative and practice material.lThan/pgThan
+        lThanh3gThanPlanned improvementslThan/h3gThan
+        lThanpgThanWe want to invest in a new, more effective training program. Its main features:lThan/pgThan
+        lThanulgThan
+          lThanligThanlThanp class="li"gThanlThanstronggThanReachlThan/stronggThan: The program will reach a larger audience.lThan/pgThanlThan/ligThan
+          lThanligThanlThanp class="li"gThanlThanstronggThanDepthlThan/stronggThan: The program will offer enough technical detail for practical application.lThan/pgThanlThan/ligThan
+          lThanligThanlThanp class="li"gThanlThanstronggThanScopelThan/stronggThan: Like the existing training, the program will combine know-how and know-why.lThan/pgThanlThan/ligThan
+          lThanligThanlThanp class="li"gThanlThanstronggThanFocuslThan/stronggThan: Module topics will be user- and function-centered, rather than method-centered, in anticipation of the lThana href="http://crewhub.utopia.com/it/hub/Pages/IT-Goals.aspx"gThanspread of agile and cross-functional collaborationlThan/agThan.lThan/pgThanlThan/ligThan
+          lThanligThanlThanp class="li"gThanlThanstronggThanModularitylThan/stronggThan: The program will consist of topical modules, each consumable in 10 to 30 minutes. They will largely be independent, enabling just-in-time learning.lThan/pgThanlThan/ligThan
+          lThanligThanlThanp class="li"gThanlThanstronggThanModalitylThan/stronggThan: The modules will be hybrids of documentation, selective audio and video recordings, tutorials, exercises, and automated tests. They can support self-training or be combined into on-site or web-mediated courses. Courses, relying on learner study of modules rather than lectures, can deliver mainly expert help, discussion, and collaborative practice.lThan/pgThanlThan/ligThan
+          lThanligThan
+            lThanp class="li"gThanlThanstronggThanLeveragelThan/stronggThan: The program will reference and incorporate, not reinvent, Deque University modules, the lThana href="http://corpsp.utopia.com/pnd/mc/Accessibility/SitePages/Home.aspx"gThanAccessibility Office&rsquo;s SharePoint documentationlThan/agThan, and other existing resources and algorithms.lThan/pgThan
+            lThanp class="note covert"gThanSee lThana href="https://www.accessibilityoz.com/ozwiki/"gThanOzWikilThan/agThan.lThan/pgThan
+            lThanp class="note covert"gThanSee lThana href="https://www.boia.org/products/lms-interactive-training/"gThanBOIA courseslThan/agThan.lThan/pgThan
+            lThanp class="note covert"gThanSee lThana href="https://siteimprove.com/en-us/resources/e-learning-courses/"gThanSiteimprove AcademylThan/agThan.lThan/pgThan
+            lThanp class="note covert"gThanSee lThana href="https://open.edx.org/"gThanOpen edXlThan/agThan (Python-based).lThan/pgThan
+            lThanp class="note covert"gThanSee lThana href="https://github.com/freeCodeCamp/freeCodeCamp/tree/master/guide/english/accessibility"gThanFreeCodeCamp accessibility guidelThan/agThan (in 6 languages).lThan/pgThan
+            lThanp class="note covert"gThanFreeCodeCamp offers lThana href="https://search.freecodecamp.org/?q=accessibility"gThan8 lessons on accessible developmentlThan/agThan.lThan/pgThan
+            lThanp class="note covert"gThanFreeCodeCamp is open-source on Github and offers lThana href="https://github.com/freeCodeCamp/freeCodeCamp/tree/master/curriculum/challenges/english/01-responsive-web-design/applied-accessibility"gThan22 lessons on accessibility within its curriculum on responsive web designlThan/agThan. All its dependencies are npm packages.lThan/pgThan
+            lThanp class="note covert"gThanlThana href="https://www.adobe.com/products/captivate/features.html"gThanAdobe CaptivatelThan/agThan apparently has no code-evaluation feature.lThan/pgThan
+            lThanp class="note covert"gThanlThana href="https://helpcenter.elearningforce.com/hc/en-us/articles/115004265785-LMS365-Quiz-Builder-Add-in-User-Guide#a_Toc526445119"gThanLMS365lThan/agThan supports only &ldquo;Multiple Choice, Multiple Answers, True or False, Free Text Answer, Ordering, Hot Spot, Matching, Gap Fill and Short Answer&rdquo;.lThan/pgThan
+          lThan/ligThan
+          lThanligThanlThanp class="li"gThanlThanstronggThanRelevancelThan/stronggThan: The program will make pervasive use of Utopia-specific and Utopia-relevant examples.lThan/pgThanlThan/ligThan
+          lThanligThanlThanp class="li"gThanlThanstronggThanAudiencelThan/stronggThan: Modules will differ in their likely clienteles. Product planners, designers, developers, testers, product owners, and managers may all find some of the modules beneficial.lThan/pgThanlThan/ligThan
+          lThanligThanlThanp class="li"gThanlThanstronggThanIterativitylThan/stronggThan: We intend to evaluate the modules by examining the results of their testing components, obtaining user judgments and suggestions, and monitoring the accessibility of interfaces before and after those who create them study accessibility with the modules. The evaluations will help us make revisions.lThan/pgThanlThan/ligThan
+        lThan/ulgThan
+        lThanh3gThanStaffinglThan/h3gThan
+        lThanpgThanThe Accessibility Office crew will contribute to this training program.lThan/pgThan
+      lThan/sectiongThan
+      lThansection id="logo"gThan
+        lThanp class="center"gThan
+          lThanimg
+            class="img-example"
+            src="http://corpsp.utopia.com/pnd/mc/Accessibility/PublishingImages/concept-overlapping-rolesandtesting.png"
+            alt="Utopia Venn-diagram accessibility logo, symbolizing that all roles contribute to accessibility"
+          gThan
+        lThan/pgThan
+      lThan/sectiongThan
+      lThansection id="devsec"gThan
+        lThanh2gThanDevelopment sectionlThan/h2gThan
+        lThanpgThanAccessible development will be the subject of one section of the proposed training program.lThan/pgThan
+        lThanpgThanThe main contributors to this section will be Jonathan Pool, Meghna Shah, and Ellen King. We estimate that it will require about 2 months to establish (i.e. adopt, adapt, or create) the technological infrastructure and templating for the development modules, and thereafter about 6 months to develop their initial versions.lThan/pgThan
+        lThanp class="note covert"gThanDoes Utopia already have, or have access to, any learning management system that could be adopted or adapted for this section? See:lThan/pgThan
+        lThanul class="covert"gThan
+          lThanligThanlThana href="http://crewhub.utopia.com/csi/TIP-PCoE/products/_layouts/15/WopiFrame.aspx?sourcedoc=/csi/TIP-PCoE/products/Runbooks/LMS%20-%20Learning%20Management%20System%20Runbook.doc&action=default"gThanPeopleSoft Learning Management System, 2007lThan/agThan.lThan/ligThan
+          lThanligThanlThana href="http://crewhub.utopia.com/csi/TIP-PCoE/products/_layouts/15/WopiFrame.aspx?sourcedoc=/csi/TIP-PCoE/products/Runbooks/LMS%20-%20Questionmark%20Perception%20Runbook.docx&action=default"gThanQuestionmark Perception, 2009lThan/agThan.lThan/ligThan
+          lThanligThanlThana href="https://www.cornerstoneondemand.com/learning-experience-platform/features"gThanCornerstonelThan/agThan. Not a platform for content creation: &ldquo;Through our strategic partnerships with over 30 e-learning content providers, we offer pre-curated content subscriptions that fit your organization&rsquo;s unique needs&rdquo;. Called lThana href="http://crewnet.utopia.com/CrewNetPortal/mvc/DurableIndex?category=perfdev.education.training.formalinformal"gThan&ldquo;Utopia&rsquo;s learning system&rdquo;lThan/agThan, but delivery-only.lThan/ligThan
+        lThan/ulgThan
+        lThanp class="note covert"gThanlThana href="http://crewnet.utopia.com/CrewNetPortal/mvc/DurableIndex?category=perfdev.education.training.formalinformal"gThanUtopia&rsquo;s main page on traininglThan/agThan says nothing about the production of training.lThan/pgThan
+        lThanpgThanOne modality that developers have found particularly engaging is automated code evaluation. A learner solves problems by iteratively writing code, getting automated advice on it, and revising the code. Platforms that have achieved great popularity with this modality include lThana href="https://www.freecodecamp.org"gThanfreeCodeCamplThan/agThan, lThana href="https://www.hackerrank.com"gThanHackerRanklThan/agThan, lThana href="https://www.topcoder.com"gThanTopCoderlThan/agThan, lThana href="https://www.coderbyte.com"gThanCoderBytelThan/agThan, lThana href="https://www.codewars.com"gThanCodeWarslThan/agThan, lThana href="https://leetcode.com"gThanLeetCodelThan/agThan, and lThana href="https://www.codecademy.com"gThanCodecademylThan/agThan. This modality may be a substantial component of the development section.lThan/pgThan
+        lThanpgThanWhether this modality will be developed and tested will depend on its cost. Utopia has no existing infrastructure powering internally designed automated software training. Therefore, the cost of this modality would include the cost of acquiring or developing and maintaining such an infrastructure.lThan/pgThan
+        lThanpgThanDevelopers may make use of the modules in various contexts. They may study multiple modules together for skill development. They may choose modules of interest from time to time. Or enhanced automated accessibility testing may route them to issue-pertinent modules for &ldquo;lThana href="https://www.checkmarx.com/products/codebashing-enterprise-application-security-training"gThancontextual traininglThan/agThan&rdquo;.lThan/pgThan
+        lThanp class="note covert"gThanSee part 6 of Michael Herman, lThana href="https://testdriven.io"gThanMicroserviceslThan/agThan, a tutorial on developing a microservice (in Python and Flask) that evaluates user code.lThan/pgThan
+      lThan/sectiongThan
+      lThansection id="devoutline"gThan
+        lThanh2gThanDevelopment section outlinelThan/h2gThan
+        lThanpgThanIn the outline below, the modules that are expected to be developed in the first round are marked with &ldquo;(1)&rdquo;.lThan/pgThan
+        lThanol class="list-primary"gThan
+          lThanligThan
+            lThanp class="li"gThanAccessibility: an introduction for developers (1)lThan/pgThan
+            lThanol class="covert"gThan
+              lThanligThan
+                lThanp class="li"gThanWhat is accessibility?lThan/pgThan
+                lThanp class="note covert"gThanSee lThana href="https://www.deque.com/accessibility-beginners-guide"gThanThe Beginner&rsquo;s Guide to AccessibilitylThan/agThan.lThan/pgThan
+                lThanp class="note covert"gThanSee lThana href="https://www.w3c.org/WAI/"gThanW3C Web Accessibility InitiativelThan/agThan.lThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/ux2/accessibility-inclusive-design/accessibility#subjective"gThanDeque discusses accessibility versus usabilitylThan/agThan: &ldquo;there is a lot of overlap between accessibility and usability. What if a website is technically "accessible" (according to the guidelines) but is highly unusable? Could you really say that such a web site is accessible? It might meet a limited definition of accessibility, but it would fail to meet the implied intent of web accessibility, which is that people with disabilities can use the web site.&rdquo;lThan/pgThan
+                lThanp class="note covert"gThanEquality-based versus access-based definitions.lThan/pgThan
+              lThan/ligThan
+              lThanligThanlThanp class="li"gThanWhy accessibility matterslThan/pgThanlThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanWho demands accessibility?lThan/pgThan
+                lThanp class="note covert"gThanSee NoCoffee visual disability simulator. Combine with a situational simulator, e.g. bright ambient light. See also ChromeLens.lThan/pgThan
+                lThanp class="note covert"gThanNot only people with disabilities. Everybody is an actual or potential user of ATs, if understood as intelligent automated agents that help users interact with other agents. E.g., almost nobody reads and understands prospectuses before investing, so an AT could read and summarize them and warn users of apparently worrying clauses in them.lThan/pgThan
+                lThanp class="note covert"gThanPermanent, temporary, and situational disabilities.lThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/fundamentals2/personas/cognitive"gThanDeque says cognitive disabilities are by far the most common kindlThan/agThan, but the lThana href="https://nccd.cdc.gov/BRFSSPrevalence/rdPage.aspx?rdReport=DPH_BRFSS.ExploreByLocation&rdProcessAction=&SaveFileGenerated=1&irbLocationType=States&islLocation=99&islState=&islCounty=&islClass=CLASS05&islTopic=TOPIC19&islYear=2016&hidLocationType=States&hidLocation=99&hidClass=CLASS05&hidTopic=TOPIC19&hidTopicName=Disability+status&hidYear=2016&irbShowFootnotes=Show&rdICL-iclIndicators=BLIND%2cDECIDE%2cDIFFALON%2cDIFFDRES%2cDIFFWALK&iclIndicators_rdExpandedCollapsedHistory=&iclIndicators=BLIND%2cDECIDE%2cDIFFALON%2cDIFFDRES%2cDIFFWALK&hidPreviouslySelectedIndicators=&DashboardColumnCount=2&rdShowElementHistory=divTopicUpdating%3dHide%2cislTopic%3dShow%2cdivYearUpdating%3dHide%2cislYear%3dShow%2c&rdScrollX=0&rdScrollY=200&rdRnd=2207"gThanCDC reports that mobility disabilities are more common than cognitive oneslThan/agThan, and lThana href="https://disabilitycompendium.org/compendium/2017-annual-disability-statistics-compendium?page=6"gThanthe U.S. Census reports that ambulatory disabilities are more common than cognitive oneslThan/agThan.lThan/pgThan
+              lThan/ligThan
+              lThanligThanlThanp class="li"gThanWho supplies accessibility?lThan/pgThanlThan/ligThan
+              lThanligThanlThanp class="li"gThanAccessibility: hard or easy?lThan/pgThanlThan/ligThan
+              lThanligThanlThanp class="li"gThanAccessibility: ugly or elegant?lThan/pgThanlThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanInclusive, universal, and adaptive ideas of accessible designlThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/ux2/accessibility-inclusive-design/universal-design#equitable-use"gThanDeque argues against separate versions for disabled userslThan/agThan, but lThana href="https://dequeuniversity.com/class/ux2/accessibility-inclusive-design/universal-design#flexibility"gThanit also argues for abundant optionality in interfaceslThan/agThan.lThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/ux2/inclusive-design/one-interface-fits-all"gThanDeque discussion of thislThan/agThan.lThan/pgThan
+                lThanp class="note covert"gThanDecision whether to differentiate UI for ATs, e.g. making content announceable with screen readers but not visible.lThan/pgThan
+                lThanp class="note covert"gThanDifferentiation techniques, including positioning of text off screen in infinitesimal boxes.lThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://uxplanet.org/a-primer-to-web-accessibility-for-designers-2c548448c612"gThanPrimer on accessible designlThan/agThan.lThan/pgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanThe future of accessibilitylThan/pgThan
+                lThanp class="note covert"gThan
+                  See lThana href="https://youtu.be/4c1lqFXHvqI"gThanlecture by David EaglemanlThan/agThan about future technologies that will permit persons without a sense to teach their brains to perceive that sense&rsquo;s signals via another sense.
+                lThan/pgThan
+              lThan/ligThan
+            lThan/olgThan
+          lThan/ligThan
+          lThanligThan
+            lThanp class="li"gThanAccessible development at Utopia (1)lThan/pgThan
+            lThanol class="covert"gThan
+              lThanligThan
+                lThanp class="li"gThanOur core purpose and accessibilitylThan/pgThan
+                lThanp class="note covert"gThanIs financial illiteracy a disability?lThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/fundamentals2/personas/cognitive"gThanDeque says math anxiety and inability to solve mathematical problems are disabilitieslThan/agThan.lThan/pgThan
+              lThan/ligThan
+              lThanligThanlThanp class="li"gThanInclusivity, diversity, and accessibilitylThan/pgThanlThan/ligThan
+              lThanligThanlThanp class="li"gThanCompeting with accessibilitylThan/pgThanlThan/ligThan
+              lThanligThanlThanp class="li"gThanComplying with accessibilitylThan/pgThanlThan/ligThan
+              lThanligThanlThanp class="li"gThanOur accessibility risks and costslThan/pgThanlThan/ligThan
+              lThanligThanlThanp class="li"gThanOur accessibility opportunitieslThan/pgThanlThan/ligThan
+              lThanligThanlThanp class="li"gThanUtopia&rsquo;s accessibility policieslThan/pgThanlThan/ligThan
+              lThanligThanlThanp class="li"gThanHow we organize accessibilitylThan/pgThanlThan/ligThan
+              lThanligThanlThanp class="li"gThanWhere you get accessibility supportlThan/pgThanlThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanOur special accessibility challengeslThan/pgThan
+                lThanolgThan
+                  lThanligThan
+                    lThanp class="li"gThanCommunicating financial data accessiblylThan/pgThan
+                    lThanp class="note covert"gThanSuccess Criterion 3.1.3.lThan/pgThan
+                    lThanp class="note covert"gThanlThancodegThanabbrlThan/codegThan with lThancodegThantitlelThan/codegThan not available for keyboard focus or disclosure, per lThana href="https://dequeuniversity.com/class/ux2/affordances/cognitive/guidelines#abbr"gThanlThan/agThan.lThan/pgThan
+                  lThan/ligThan
+                  lThanligThanlThanp class="li"gThanMaking financial transactions accessiblelThan/pgThanlThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanAccessibly preventing and correcting errorslThan/pgThan
+                    lThanp class="note covert"gThanSuccess Criterion 3.3.4.lThan/pgThan
+                  lThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanAccessible investor educationlThan/pgThan
+                    lThanp class="note covert"gThanEnrico G. De Giorgi and Ola Mahmoud, lThana href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3018421"gThan&ldquo;How Elementary is Diversification? A Study of Children's Portfolio Choice&rdquo;lThan/agThan, 2017, found experimentally that the value of diversification in counteracting risk is not intuitive.lThan/pgThan
+                    lThanp class="note covert"gThanRob Ranyard (ed.), lThancitegThanEconomic PsychologylThan/citegThan (Wiley, 2017), ch. 23 (&ldquo;Ageing and Economic Decision-Making&rdquo;), found (p. 377) that the efficacy of narrative formats and emotional foci increases with age, and recommended (p. 380) &ldquo;that [financial-literacy] interventions targeting older adults should take into account age-related declines in cognitive ability, experience-based knowledge, emotions, and motivation.&rdquo;lThan/pgThan
+                  lThan/ligThan
+                  lThanligThanlThanp class="li"gThanAccessibility, privacy, and investor protectionlThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanAccessibility and securitylThan/pgThanlThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanAccessibility and internationalizationlThan/pgThan
+                    lThanp class="note covert"gThan
+                      lThancodegThanlanglThan/codegThan attribute.
+                    lThan/pgThan
+                  lThan/ligThan
+                  lThanligThanlThanp class="li"gThanMaking legacy interfaces accessiblelThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanAccessible hiring, onboarding, and crew experiencelThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanManaging accessible projectslThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanRoles, collaboration, and specialization for accessibilitylThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanRemediation versus reimplementation for accessibilitylThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanDoing agile, NGA, Shift Left, BV@SS, and journeys accessiblylThan/pgThanlThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanStandardizing accessibilitylThan/pgThan
+                    lThanolgThan
+                      lThanligThanlThanp class="li"gThanDeveloping enterprise accessibility standardslThan/pgThanlThan/ligThan
+                      lThanligThan
+                        lThanp class="li"gThanBaking accessibility into shared componentslThan/pgThan
+                        lThanp class="note covert"gThan
+                          lThana href="https://inclusive-components.design"gThanInclusive ComponentslThan/agThan (recommended by Marcy Sutton, Deque).
+                        lThan/pgThan
+                      lThan/ligThan
+                      lThanligThanlThanp class="li"gThanAccessible brandinglThan/pgThanlThan/ligThan
+                    lThan/olgThan
+                  lThan/ligThan
+                lThan/olgThan
+              lThan/ligThan
+            lThan/olgThan
+          lThan/ligThan
+          lThanligThan
+            lThanp class="li"gThanBasic principles of accessible codelThan/pgThan
+            lThanp class="note covert"gThanDeque outlines developer training main topics as keyboard navigability, images, forms, and structure. Of these, keyboard navigability accounts for about 40% of accessibility problems, per Denis Boudreau, 25 October 2018.lThan/pgThan
+            lThanolgThan
+              lThanligThan
+                lThanp class="li"gThanThe rules of accessibilitylThan/pgThan
+                lThanol class="covert"gThan
+                  lThanligThan
+                    lThanp class="li"gThanInternational standards of accessibilitylThan/pgThan
+                    lThanol class="covert"gThan
+                      lThanligThanlThanp class="li"gThanThe DOM and the AOMlThan/pgThanlThan/ligThan
+                      lThanligThanlThanp class="li"gThanThe accessibility APIlThan/pgThanlThan/ligThan
+                      lThanligThanlThanp class="li"gThanThe accessibility TreelThan/pgThanlThan/ligThan
+                      lThanligThanlThanp class="li"gThanWCAGlThan/pgThanlThan/ligThan
+                      lThanligThanlThanp class="li"gThanARIAlThan/pgThanlThan/ligThan
+                    lThan/olgThan
+                  lThan/ligThan
+                  lThanligThanlThanp class="li"gThanLaws, regulations, and adjudications on accessibilitylThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanUtopia standards of accessibilitylThan/pgThanlThan/ligThan
+                lThan/olgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanBest practices in accessible developmentlThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/fundamentals2/summary"gThanDeque advises, &ldquo;Don't be satisfied with "good enough" or compliant.&rdquo;lThan/agThan lThana href="https://dequeuniversity.com/class/ux2/accessibility-inclusive-design/accessibility#guidelines"gThanDeque further says &ldquo;the guidelines don't cover every last aspect of accessibility.&rdquo;lThan/agThan And lThana href="https://dequeuniversity.com/class/ux2/accessibility-inclusive-design/accessibility#guidelines"gThanit also says that WCAG underrepresents the needs of users with cognitive disabilitieslThan/agThan.lThan/pgThan
+                lThanp class="note covert"gThanlThana href="http://a11y-style-guide.com/"gThanA11Y Style GuidelThan/agThan.lThan/pgThan
+                lThanol class="covert"gThan
+                  lThanligThan
+                    lThanp class="li"gThanAccessibly semantic HTMLlThan/pgThan
+                    lThanp class="note covert"gThanHTML5 rather than lThancodegThandivlThan/codegThan + ARIA.lThan/pgThan
+                    lThanp class="note covert"gThanUnique lThancodegThanidlThan/codegThan values and element attributes.lThan/pgThan
+                    lThanp class="note covert"gThanClosing-tag syntax compliance.lThan/pgThan
+                    lThanp class="note covert"gThanlThancodegThantitlelThan/codegThan value descriptive and identical to visible title.lThan/pgThan
+                    lThanp class="note covert"gThanlThancodegThantitlelThan/codegThan value begins with differentiator.lThan/pgThan
+                  lThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanAccessible CSSlThan/pgThan
+                    lThanp class="note covert"gThan
+                      See lThana href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/CSS_and_JavaScript#CSS"gThan&ldquo;CSS and JavaScript accessibility best practices&rdquo;lThan/agThan.
+                    lThan/pgThan
+                    lThanp class="note covert"gThanDoctrine that accessibility should be CSS-independent.lThan/pgThan
+                  lThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanAccessible JavaScriptlThan/pgThan
+                    lThanp class="note covert"gThan
+                      See lThana href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/CSS_and_JavaScript#JavaScript"gThan&ldquo;CSS and JavaScript accessibility best practices&rdquo;lThan/agThan.
+                    lThan/pgThan
+                  lThan/ligThan
+                lThan/olgThan
+              lThan/ligThan
+            lThan/olgThan
+          lThan/ligThan
+          lThanligThan
+            lThanp class="li"gThanChecking designs for accessibilitylThan/pgThan
+            lThanolgThan
+              lThanligThan
+                lThanp class="li"gThanIs the layout accessible?lThan/pgThan
+                lThanol class="covert"gThan
+                  lThanligThan
+                    lThanp class="li"gThanAccessibly serializable?lThan/pgThan
+                    lThanp class="note covert"gThanThe concept of visual order: meaning?lThan/pgThan
+                    lThanp class="note covert"gThanlThancodegThantabindexlThan/codegThan values: accessibility effects of positive values.lThan/pgThan
+                    lThanp class="note covert"gThanDimensionality and complexity in space and time (including animation, flashing, blinking). lThana href="https://dequeuniversity.com/class/fundamentals2/personas/cognitive"gThanInterferes with comprehension for users with Down syndromelThan/agThan.lThan/pgThan
+                  lThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanStructure accessible?lThan/pgThan
+                    lThanp class="note covert"gThanHTML5 structural elements (a.k.a. sections, layout elements, regions, or landmarks). See lThana href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure"gThanMDN Web DocslThan/agThan.lThan/pgThan
+                    lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/ux2/affordances/audio-structural/page#ideal-landmarks"gThanDeque recommends a sparse structurelThan/agThan, typically with only 3 top-level landmarks: lThancodegThanheaderlThan/codegThan, lThancodegThanmainlThan/codegThan, and lThancodegThanfooterlThan/codegThan, and with the lThancodegThanheaderlThan/codegThan element containing only 2 more landmarks: lThancodegThannavlThan/codegThan and lThancodegThansearchlThan/codegThan.lThan/pgThan
+                    lThanp class="note covert"gThanExplain options for naming landmarks; cf. lThana href="https://dequeuniversity.com/class/semantic-structure2/landmarks/creating-landmarks"gThanDequelThan/agThan.lThan/pgThan
+                    lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/semantic-structure2/landmarks/best-practices#limit-of-type-per-page"gThanDeque advises, &ldquo;the HMTL 5 specification allows multiple instances of the equivalent landmarks: lThancodegThanheaderlThan/codegThan, lThancodegThanmainlThan/codegThan, and lThancodegThanfooterlThan/codegThan. The official restriction is only on ARIA landmarks. Even so, it is appropriate in most web designs to have only one each of these landmarks, whether they are specified using ARIA or HTML 5.&rdquo;lThan/agThanlThan/pgThan
+                    lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/ux2/affordances/audio-structural/page#ideal-headings"gThanDeque recommendslThan/agThan 1 lThancodegThanh1lThan/codegThan element per page, treating a dialog as a page.lThan/pgThan
+                    lThanp class="note covert"gThanlThana href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML_sections_and_outlines#Defining_headings"gThanMDN Web DocslThan/agThan endorses 1 lThancodegThanh1lThan/codegThan element per section, explaining that this allows sections to be arbitrarily embeddable.lThan/pgThan
+                    lThanp class="note covert"gThanSimplicity. lThana href="https://dequeuniversity.com/class/ux2/affordances/cognitive/key-concepts#visual-interface"gThanDeque advises, &ldquo;Each web page should have one main task or feature&rdquo;lThan/agThan.lThan/pgThan
+                    lThanp class="note covert"gThanSimplicity. lThana href="https://dequeuniversity.com/class/ux2/affordances/cognitive/key-concepts#visual-interface"gThanDeque also advises that &ldquo;the visual interface around [the page&rsquo;s main] task or feature should be minimal.&rdquo;lThan/agThanlThan/pgThan
+                    lThanp class="note covert"gThanSimplicity. lThana href="https://dequeuniversity.com/class/visual-design2/summary"gThanDeque also adviseslThan/agThan that &ldquo;The layout SHOULD have only one main visual focus&rdquo; and &ldquo;The design SHOULD draw attention to the intended visual focus.lThan/pgThan
+                  lThan/ligThan
+                  lThanligThanlThanp class="li"gThanAccessibly responsive?lThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanTabular layout accessible?lThan/pgThanlThan/ligThan
+                lThan/olgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanAre the sizes accessible?lThan/pgThan
+                lThanp class="note covert"gThanIn the lThancodegThanmeta name="viewport" content="height = u, width=v, initial-scale=w, minimum-scale=x, maximum-scale=y, user-scalable=z"lThan/codegThan element,  lThancodegThanmaximum-scalelThan/codegThan not lThancodegThan1lThan/codegThan and lThancodegThanuser-scalablelThan/codegThan not lThancodegThannolThan/codegThan.lThan/pgThan
+                lThanp class="note covert"gThanlThancodegThanremlThan/codegThan sizing.lThan/pgThan
+                lThanp class="note covert"gThanText size doublable without impairment.lThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/ux2/checklist"gThanDeque says, &ldquo;Is the design optimized for all zoom states? Simplify the design as much as possible, eliminating horizontal scrolling.&rdquo;lThan/agThan But it does not say how to do that.lThan/pgThan
+                lThanp class="note covert"gThanFont size an example of accessibility necessity that is ignored by WCAG. If 2 points, WCAG would let user increase it to 4 points, but still illegible. Accessibility is more than WCAG compliance.lThan/pgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanIs the text accessible?lThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/fundamentals2/personas/reading"gThanUsers with dyslexia benefit from alternative non-textlThan/agThan.lThan/pgThan
+                lThanp class="note covert"gThanLine height.lThan/pgThan
+                lThanp class="note covert"gThanJustification.lThan/pgThan
+                lThanp class="note covert"gThanLetter case; all-caps, small caps.lThan/pgThan
+                lThanp class="note covert"gThanColumn width.lThan/pgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanAre the images accessible?lThan/pgThan
+                lThanp class="note covert"gThanlThancodegThanaltlThan/codegThan, lThancodegThanlongdesclThan/codegThan (now facing deprecation), lThancodegThantitlelThan/codegThan (a global attribute), lThancodegThanaria-labellThan/codegThan, lThancodegThanaria-labelledbylThan/codegThan, and lThancodegThanaria-describedbylThan/codegThan attributes of lThancodegThanimglThan/codegThan element.lThan/pgThan
+                lThanp class="note covert"gThanlThancodegThanfigurelThan/codegThan element.lThan/pgThan
+                lThanp class="note covert"gThanConflicting preferences for image description.lThan/pgThan
+                lThanp class="note covert"gThanSVG.lThan/pgThan
+                lThanp class="note covert"gThanBackground images.lThan/pgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanAre the colors accessible?lThan/pgThan
+                lThanp class="note covert"gThan
+                  See lThana href="https://webaim.org/resources/linkcontrastchecker/"gThantool that checks link-color accessibilitylThan/agThan.
+                lThan/pgThan
+                lThanp class="note covert"gThanReasons for nonreliance on color for semantic representation: color-blindness, UA color calibration differences, UA hardware color rendering differences, user adjustments to contrast and monochromaticity, color perception effects of ambient light conditions.lThan/pgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanAre the links and controls accessible?lThan/pgThan
+                lThanp class="note covert"gThanSize large enough to be reliably clicked or touched.lThan/pgThan
+                lThanp class="note covert"gThanLabeling.lThan/pgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanIs the audio and video content accessible?lThan/pgThan
+                lThanp class="note covert"gThanSpeech-to-text automation: lThana href="https://support.google.com/docs/answer/4492226?hl=en#"gThanVoice TypinglThan/agThan, Windows Speech Recognition, OS X Dictation, lThana href="https://www.globalme.net/blog/the-present-future-of-speech-recognition"gThanA Complete Guide to Speech Recognition TechnologylThan/agThan.lThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/ux2/affordances/silent-visual#multimedia"gThanDeque recommends WebVTT and format customizationlThan/agThan.lThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/ux2/affordances/silent-visual#sign"gThanDeque says sign language is better than captions for many deaf userslThan/agThan.lThan/pgThan
+                lThanp class="note covert"gThanAutomatic captioning in Microsoft Streams.lThan/pgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanAre data presented accessibly?lThan/pgThan
+                lThanp class="note covert"gThanlThana href="http://www.readabilityformulas.com/free-readability-formula-tests.php"gThanReadability formulaslThan/agThan.lThan/pgThan
+                lThanol class="covert"gThan
+                  lThanligThan
+                    lThanp class="li"gThanTime-series datalThan/pgThan
+                    lThanp class="note covert"gThan
+                      Donald J. Wheeler, lThancitegThanUnderstanding Variation: The Key to Managing ChaoslThan/citegThan, 2nd edn (SPC Press, 2000), argues that people often mismanage work processes because they present time-series data (to themselves) inappropriately. He says they typically compare the latest amount with one other amount, such as the immediately prior one or the amount from a month or a year earlier, ignoring the whole series of amounts in between. By doing that, he says, they wrongly interpret the 2-item comparison as signaling progress or regress, when, most often, it merely reflects normal variation, i.e. &ldquo;noise&rdquo;. He advocates inspecting extended series of data to identify the upper and lower bounds of the noise, allowing us to pay attention only to the amounts beyond those bounds, i.e. the &ldquo;signals&rdquo;. Then we can work to diagnose signals and respond to the forces causing them.
+                    lThan/pgThan
+                    lThanp class="note covert"gThan
+                      The pattern of 2-item comparison is common in the financial services industry, e.g. in the reporting of changes in the prices of securities.
+                    lThan/pgThan
+                  lThan/ligThan
+                  lThanligThanlThanp class="li"gThanPartition datalThan/pgThanlThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThan2-dimensional datalThan/pgThan
+                    lThanp class="note covert"gThanCaptions.lThan/pgThan
+                    lThanp class="note covert"gThanRow and column headers.lThan/pgThan
+                    lThanp class="note covert"gThan
+                      Donald J. Wheeler, lThancitegThanUnderstanding Variation: The Key to Managing ChaoslThan/citegThan, 2nd edn (SPC Press, 2000), on pp. 5&ndash;6 says: &ldquo;While tables of values may be used to present all of the relevant data, they are not easy to summarize. It is difficult to digest the information contained in tables of numbers. &hellip; The human mind just does not do a very good job of absorbing large amounts of data. &hellip; tables present an abundance of extraneous details. &hellip; The solution to these problems lies in a shift from a digital representation of data to a form that is more friendly to humans&mdash;graphs.&rdquo;
+                    lThan/pgThan
+                    lThanp class="note covert"gThan
+                      However, Edward R. Tufte, lThancitegThanThe Visual Representation of Quantitative InformationlThan/citegThan, 2nd edition (Graphics Press, 2001), in chapter 2 (&ldquo;Graphical Integrity&rdquo;) describes how graphical representations of quantitative information can be deceptive.
+                    lThan/pgThan
+                  lThan/ligThan
+                  lThanligThanlThanp class="li"gThanMulti-dimensional datalThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanSummaries of datalThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanQuery controls for datalThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanChoosing numeric, graphic, and infographic formatslThan/pgThanlThan/ligThan
+                lThan/olgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanAre the interactions accessible?lThan/pgThan
+                lThanolgThan
+                  lThanligThan
+                    lThanp class="li"gThanTiminglThan/pgThan
+                    lThanp class="note covert"gThan20-second warning time for time extension per WCAG, but lThana href="https://dequeuniversity.com/class/fundamentals2/personas/motor"gThanDeque recommends 120 seconds or morelThan/agThan.lThan/pgThan
+                  lThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanMulti-stage interactionslThan/pgThan
+                    lThanp class="note covert"gThanDesigning processes so that users are not required to remember earlier stages.lThan/pgThan
+                  lThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanEvent handlinglThan/pgThan
+                    lThanol class="covert"gThan
+                      lThanligThanlThanp class="li"gThanMaking event handling accessibly predictablelThan/pgThanlThan/ligThan
+                      lThanligThanlThanp class="li"gThanGiving accessible notice of changed context and contentlThan/pgThanlThan/ligThan
+                      lThanligThanlThanp class="li"gThanPreserving accessible user control over eventslThan/pgThanlThan/ligThan
+                    lThan/olgThan
+                  lThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanNavigationlThan/pgThan
+                    lThanol class="covert"gThan
+                      lThanligThan
+                        lThanp class="li"gThanEfficiencylThan/pgThan
+                        lThanp class="note covert"gThanEnsure that the target of the skip link is focusable. If not already, give it a tabindex="-1" attribute. It can be the lThancodegThanmainlThan/codegThan element. lThana href="https://dequeuniversity.com/class/semantic-structure2/within-pages/skip-navigation#skip-link-functinoal"gThanDeque explains whylThan/agThan.lThan/pgThan
+                        lThanp class="note covert"gThanBenefits of durably visible skip links.lThan/pgThan
+                        lThanp class="note covert"gThanTables of contents, e.g. in lThancodegThanheaderlThan/codegThan element. lThana href="https://dequeuniversity.com/class/semantic-structure2/within-pages/page-toc"gThanRecommended by DequelThan/agThan.lThan/pgThan
+                      lThan/ligThan
+                      lThanligThan
+                        lThanp class="li"gThanPredictabilitylThan/pgThan
+                        lThanp class="note covert"gThanA link&rsquo;s accessible name can consist of the value of the lThancodegThanaltlThan/codegThan attribute of an image that is the content of the link.lThan/pgThan
+                        lThanp class="note covert"gThanLink accessible names&rsquo; self-sufficiency.lThan/pgThan
+                        lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/semantic-structure2/links/external-windows-files"gThanMethods for defining link metadatalThan/agThan.lThan/pgThan
+                        lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/ux2/affordances/cognitive/guidelines#navigation"gThanDeque recommends not deleting the current page from the navigation list, even if its link status is deletedlThan/agThan.lThan/pgThan
+                      lThan/ligThan
+                      lThanligThan
+                        lThanp class="li"gThanFocuslThan/pgThan
+                        lThanp class="note covert"gThanReliance on a browser focus indicator versus provision of a reliably visible one.lThan/pgThan
+                      lThan/ligThan
+                      lThanligThanlThanp class="li"gThanResponse to button and link activationlThan/pgThanlThan/ligThan
+                      lThanligThan
+                        lThanp class="li"gThanUI navigation and browser navigationlThan/pgThan
+                        lThanp class="note covert"gThanPage: an obsolete concept?lThan/pgThan
+                      lThan/ligThan
+                      lThanligThanlThanp class="li"gThanLayers, tabs, and windowslThan/pgThanlThan/ligThan
+                    lThan/olgThan
+                  lThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanFormslThan/pgThan
+                    lThanol class="covert"gThan
+                      lThanligThan
+                        lThanp class="li"gThanSearchlThan/pgThan
+                        lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/ux2/affordances/tactile-structural#ideal"gThanDeque recommends using terms users will expectlThan/agThan (e.g., &ldquo;staff&rdquo; instead of &ldquo;crew&rdquo;.lThan/pgThan
+                      lThan/ligThan
+                      lThanligThan
+                        lThanp class="li"gThanFree text inputlThan/pgThan
+                        lThanp class="note covert"gThanUnreliability of contrast and durability of placeholders.lThan/pgThan
+                      lThan/ligThan
+                      lThanligThan
+                        lThanp class="li"gThanType-constrained inputlThan/pgThan
+                        lThanp class="note covert"gThanHave browser perform intra-field validation? lThana href="https://dequeuniversity.com/class/ux2/affordances/cognitive/key-concepts#feedback"gThanDeque sayslThan/agThan it is the fastest type and thus good, but may be lost on users of screen readers, and enforcement of required fields interferes with exploratory navigation.lThan/pgThan
+                      lThan/ligThan
+                      lThanligThanlThanp class="li"gThanToggling and electionlThan/pgThanlThan/ligThan
+                      lThanligThanlThanp class="li"gThanSelection among optionslThan/pgThanlThan/ligThan
+                      lThanligThan
+                        lThanp class="li"gThanDecisions about amountslThan/pgThan
+                        lThanp class="note covert"gThanSuccess Criterion 3.3.4.lThan/pgThan
+                      lThan/ligThan
+                      lThanligThanlThanp class="li"gThanPartitioninglThan/pgThanlThan/ligThan
+                      lThanligThan
+                        lThanp class="li"gThanAuthenticationlThan/pgThan
+                        lThanp class="note covert"gThanDeliberate difficulty (e.g. CAPTCHAs) vs. cognitive and experiential disabilities.lThan/pgThan
+                      lThan/ligThan
+                      lThanligThanlThanp class="li"gThanAgency decisionslThan/pgThanlThan/ligThan
+                      lThanligThan
+                        lThanp class="li"gThanForm-input error handlinglThan/pgThan
+                        lThanp class="note covert"gThanError diagnosislThan/pgThan
+                        lThanp class="note covert"gThanError-message positioninglThan/pgThan
+                        lThanp class="note covert"gThanError-message notificationlThan/pgThan
+                        lThanp class="note covert"gThanError-message stylinglThan/pgThan
+                      lThan/ligThan
+                    lThan/olgThan
+                  lThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanHelplThan/pgThan
+                    lThanp class="note covert"gThanHelp icons.lThan/pgThan
+                    lThanp class="note covert"gThanResponse to help invocation.lThan/pgThan
+                    lThanp class="note covert"gThanTelephone routing.lThan/pgThan
+                    lThanp class="note covert"gThanTelephone support.lThan/pgThan
+                  lThan/ligThan
+                lThan/olgThan
+              lThan/ligThan
+            lThan/olgThan
+          lThan/ligThan
+          lThanligThan
+            lThanp class="li"gThanAccessible implementationlThan/pgThan
+            lThanolgThan
+              lThanligThan
+                lThanp class="li"gThanProviding required support for assistive technologieslThan/pgThan
+                lThanp class="note covert"gThanlThancodegThanlanglThan/codegThan attribute of lThancodegThanhtmllThan/codegThan element.lThan/pgThan
+              lThan/ligThan
+              lThanligThanlThanp class="li"gThanServer and client accessibility roleslThan/pgThanlThan/ligThan
+              lThanligThanlThanp class="li"gThanMaking single-page applications accessiblelThan/pgThanlThan/ligThan
+              lThanligThanlThanp class="li"gThanShowing and hiding accessiblylThan/pgThanlThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanImplementing navigation accessibly (1)lThan/pgThan
+                lThanp class="note covert"gThanlThancodegThantabindexlThan/codegThan requirements and best practices.lThan/pgThan
+              lThan/ligThan
+              lThanligThanlThanp class="li"gThanImplementing responsiveness accessiblylThan/pgThanlThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanMaking text accessibly resizablelThan/pgThan
+                lThanp class="note covert"gThanMaking reflow happen where not natively supported. Reflow also called liquid layout.lThan/pgThan
+                lThanp class="note covert"gThanSee post by Jonathan Avila in IAAP Connections, 2018-10-13. Inter alia, &ldquo;Mobile browsers except for Dolphin on Android don't support reflow.&rdquo;lThan/pgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanImplementing tables accessibly (1)lThan/pgThan
+                lThanp class="note covert"gThanConditions under which cell headings must be specified per-cell.lThan/pgThan
+                lThanp class="note covert"gThanCaptions and sections.lThan/pgThan
+                lThanp class="note covert"gThanlThancodegThantdlThan/codegThan element header references.lThan/pgThan
+                lThanp class="note covert"gThanlThancodegThanthlThan/codegThan element scopes.lThan/pgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanImplementing forms accessibly (1)lThan/pgThan
+                lThanp class="note covert"gThanTyped input: where to validate?lThan/pgThan
+                lThanp class="note covert"gThanChoice among labeling syntaxes.lThan/pgThan
+                lThanp class="note covert"gThanGrouping controls with lThancodegThanfieldsetlThan/codegThan elements, labeling groups with lThancodegThanlegendlThan/codegThan elements, and labeling option groups with lThancodegThannamelThan/codegThan attributes.lThan/pgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanMaking accessibility performantlThan/pgThan
+                lThanp class="note covert"gThanSlow and expensive transmission, thus video, audio, and image size limitation.lThan/pgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanChoosing and using frameworks accessiblylThan/pgThan
+                lThanolgThan
+                  lThanligThanlThanp class="li"gThanUsing CSS grid and flexbox accessiblylThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanUsing Bootstrap accessiblylThan/pgThanlThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanAccessible development with AngularlThan/pgThan
+                    lThanp class="note covert"gThanAngular MateriallThan/pgThan
+                  lThan/ligThan
+                  lThanligThanlThanp class="li"gThanAccessible development with ReactlThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanAccessible development with VuelThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanAccessible development with IoniclThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanAccessible development with React NativelThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanLeveraging VUI for accessibilitylThan/pgThanlThan/ligThan
+                lThan/olgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanLeveraging accessibility features of mobile APIslThan/pgThan
+                lThanol class="covert"gThan
+                  lThanligThanlThanp class="li"gThaniOSlThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanAndroidlThan/pgThanlThan/ligThan
+                lThan/olgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanGenerating accessible documentslThan/pgThan
+                lThanol class="covert"gThan
+                  lThanligThanlThanp class="li"gThanPDF fileslThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanEditing PDF files for accessibilitylThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanChoosing document formats for accessibilitylThan/pgThanlThan/ligThan
+                lThan/olgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanGenerating accessible messageslThan/pgThan
+                lThanol class="covert"gThan
+                  lThanligThanlThanp class="li"gThanemaillThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanSMSlThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanSocial-media messageslThan/pgThanlThan/ligThan
+                lThan/olgThan
+              lThan/ligThan
+            lThan/olgThan
+          lThan/ligThan
+          lThanligThan
+            lThanp class="li"gThanVerifying accessibilitylThan/pgThan
+            lThanolgThan
+              lThanligThan
+                lThanp class="li"gThanAutomatic accessibility testing of web interfaceslThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/ux2/accessibility-inclusive-design/accessibility#guidelines"gThanDeque says &ldquo;the guidelines were written to be objectively testable, which means that all of the subjective aspects of accessibility were purposely excluded from the guidelines.&rdquo;lThan/agThan. But in fact some WCAG 2 guidelines are subjective.lThan/pgThan
+                lThanp class="note covert"gThanlThana href="http://webdriver.io/"gThanWebdriverIOlThan/agThan.lThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://github.com/DevExpress/testcafe"gThanTestcafelThan/agThan.lThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://blog.hichroma.com/introducing-chromatic-ui-testing-for-react-c5cc01a79aaa"gThanChromaticlThan/agThan.lThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://applitools.com/"gThanApplitoolslThan/agThan.lThan/pgThan
+                lThanp class="note covert"gThanlThana href="https://github.com/paypal/AATT"gThanAATTlThan/agThan.lThan/pgThan
+                lThanp class="note covert"gThanlThana href="http://webdriver.io/"gThanWebdriverIOlThan/agThan.lThan/pgThan
+                lThanol class="covert"gThan
+                  lThanligThanlThanp class="li"gThanAccessibility lintinglThan/pgThanlThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanAccessibility testing with web serviceslThan/pgThan
+                    lThanp class="note covert"gThanlThana href="https://www.powermapper.com/products/sortsite/checks/accessibility-checks/"gThanPowerMapperlThan/agThan.lThan/pgThan
+                  lThan/ligThan
+                  lThanligThanlThanp class="li"gThanAccessibility testing with browser extensionslThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanAccessibility testing with axe-corelThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanCreating unit tests for accessibilitylThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanCreating integration tests for accessibilitylThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanCreating end-to-end tests for accessibilitylThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanAccessibility regression management in CI-CDlThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanAccessibility experimentation in productionlThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanGenerating and mining analytics for accessibility insightslThan/pgThanlThan/ligThan
+                lThan/olgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanAutomatic accessibility testing of native interfaceslThan/pgThan
+                lThanol class="covert"gThan
+                  lThanligThanlThanp class="li"gThanTesting native iOS apps for accessibilitylThan/pgThanlThan/ligThan
+                  lThanligThanlThanp class="li"gThanTesting native Android apps for accessibilitylThan/pgThanlThan/ligThan
+                lThan/olgThan
+              lThan/ligThan
+              lThanligThan
+                lThanp class="li"gThanHuman accessibility testinglThan/pgThan
+                lThanol class="covert"gThan
+                  lThanligThanlThanp class="li"gThanInspecting code for accessibilitylThan/pgThanlThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanTesting with device variation and simulationlThan/pgThan
+                    lThanp class="note covert"gThanMouseless use precludes hovering.lThan/pgThan
+                  lThan/ligThan
+                  lThanligThanlThanp class="li"gThanTesting with keyboard navigationlThan/pgThanlThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanTesting with assistive technologieslThan/pgThan
+                    lThanol class="covert"gThan
+                      lThanligThanlThanp class="li"gThanKeyboards, mice, trackpads, and fingerslThan/pgThanlThan/ligThan
+                      lThanligThanlThanp class="li"gThanMagnification toolslThan/pgThanlThan/ligThan
+                      lThanligThanlThanp class="li"gThanContrast customizationlThan/pgThanlThan/ligThan
+                      lThanligThan
+                        lThanp class="li"gThanScreen readerslThan/pgThan
+                        lThanp class="note covert"gThanStandard assumption: If a user cannot read and needs text oralized, the producer is not responsible for doing that.lThan/pgThan
+                        lThanp class="note covert"gThanlThancodegThanlanglThan/codegThan attribute.lThan/pgThan
+                        lThanp class="note covert"gThanWhich text properties do screen readers announce? Italics, bold face, size, font family, decoration, indentation, justification, other position? E.g., code rendered in monospace font visually indistinguishable from code marked as lThancodegThancodelThan/codegThan, but only the latter is identified by ATs (or is even it?).lThan/pgThan
+                        lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/ux2/affordances/tactile-structural#multimedia"gThanDeque says that screen readers don&rsquo;t resume descriptions after being pausedlThan/agThan.lThan/pgThan
+                        lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/ux2/affordances/cognitive/key-concepts#auditory-cues"gThanDeque warns that audio would collide with screen-reader outputlThan/agThan.lThan/pgThan
+                        lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/semantic-structure2/within-pages/"gThanDeque says screen readers provide navigation help unavailable to persons not using themlThan/agThan.lThan/pgThan
+                        lThanolgThan
+                          lThanligThanlThanp class="li"gThanNVDAlThan/pgThanlThan/ligThan
+                          lThanligThanlThanp class="li"gThanJAWSlThan/pgThanlThan/ligThan
+                          lThanligThanlThanp class="li"gThanVoiceOver on OS XlThan/pgThanlThan/ligThan
+                          lThanligThanlThanp class="li"gThanVoiceOver on iOSlThan/pgThanlThan/ligThan
+                          lThanligThanlThanp class="li"gThanTalkBacklThan/pgThanlThan/ligThan
+                        lThan/olgThan
+                      lThan/ligThan
+                      lThanligThan
+                        lThanp class="li"gThanBraille outputlThan/pgThan
+                        lThanp class="note covert"gThanlThana href="https://dequeuniversity.com/class/ux2/affordances/tactile-structural#ideal"gThanDeque says braille reading is slower than visual reading or screen-reader hearinglThan/agThan.lThan/pgThan
+                      lThan/ligThan
+                    lThan/olgThan
+                  lThan/ligThan
+                  lThanligThan
+                    lThanp class="li"gThanEnd-user accessibility testinglThan/pgThan
+                    lThanp class="note covert"gThanlThana href="https://www.applause.com/usability/"gThanApplauselThan/agThan.lThan/pgThan
+                  lThan/ligThan
+                lThan/olgThan
+              lThan/ligThan
+            lThan/olgThan
+          lThan/ligThan
+        lThan/olgThan
+      lThan/sectiongThan
+    lThan/maingThan
+  lThan/bodygThan
+lThan/htmlgThan
+==gThan old/planning/script.js <==
+const hideToggle = event (arrow) {
+  const showingWanted = event.target.checked;
+  const togglees
+    = document.getElementsByClassName(showingWanted ? 'covert' : 'overt');
+  /*
+   Toggle each element to be toggled and update the list of them, until
+   none remains.
+  */
+  while (togglees.length) {
+    const classList = togglees[0].classList;
+    classList.remove(showingWanted ? 'covert' : 'overt');
+    classList.add(showingWanted ? 'overt' : 'covert');
+  }
+};
+==gThan old/planning/style.css <==
+body {
+  margin: 0;
+  max-width: 680px;
+}
+.center {
+  text-align: center;
+}
+code {
+  font-weight: 900;
+  color: #611;
+}
+.covert {
+  display: none;
+}
+header, section {
+  padding: 0 2rem;
+}
+#hider {
+  border: solid 0.1rem #333;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+}
+html {
+  font-size: 20px;
+}
+.img-example {
+  max-height: 10rem;
+}
+.li {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.list-primary {
+   list-style-type: upper-latin;
+}
+.list-primary gThan li {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #611;
+}
+.list-primary gThan li gThan ol {
+  list-style-type: decimal;
+}
+.list-primary gThan li gThan ol gThan li gThan ol {
+  list-style-type: lower-latin;
+}
+#logo {
+  padding: 0.5rem 4rem;
+  background-color: darkolivegreen;
+}
+.note {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: normal;
+  color: #111;
+}
+ol {
+  font-size: 1rem;
+  font-weight: normal;
+  color: black;
+}
+#outline {
+  padding: 0.5rem 2rem;
+  background-color: #eee;
+}
+.overt, .overt ol {
+  display: block;
+  font-size: 0.7rem;
+}
+#summary {
+  padding: 0.5rem 4rem 1rem 4rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: linen;
+}
