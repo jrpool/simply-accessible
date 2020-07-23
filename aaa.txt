@@ -1,0 +1,155 @@
+Summary
+This is a proposal for work on the automation of digital accessibility auditing.
+Introduction
+Digital accessibility is a type of validity. Inaccessible digital user interfaces (UIs) are invalid, violating W3C standards and, in some situations, national and subnational statutes and regulations. Inaccessible UIs create risks of, among other things, erroneous financial transactions by clients, loss of clients, reputational damage, and litigation costs. Such UIs are also a form of technical debt.
+Training is part of the remedy for causes of risk, but is not sufficient. Tests and controls are also invoked to guard against causes of risk. Tests prevent, detect, and/or correct defects. Controls test the tests.
+Why automate?
+UIs are changing with increasing frequency as UI production becomes increasingly agile. In addition, UIs are becoming more dynamic as personalization and real-time experimentation techniques become more powerful. The result is that UIs increasingly vary across both time and session.
+If a UI were invariant, one could test it once and never test it again. Labor-intensive tests would be expensive, but automating them might be even more expensive. Once UIs are continously changing, human-powered testing becomes feasible on only a small sample of their manifestations, and the probability of test-escaping failures grows large. Test automation becomes essential.
+Test automation is also widely accepted as a good and necessary part of quality assurance.
+How to automate?
+Some accessibility testing is generic, and there are both commercial and open-source tools performing such testing. In general it is efficient to use such tools instead of inventing alternatives to them.
+Most accessibility features, however, are not testable with existing tools, in part for these reasons:
+1.	Each accessibility feature can be achieved in multiple ways.
+2.	There are unique enterprise, divisional, departmental, and project design and implementation accessibility standards.
+3.	The demand for accessibility testing tools has not been great enough to motivate the addition of some potential tests to existing tools.
+4.	Some accessibility features are not testable without the use of assistive technologies, and the automation of testing with assistive technologies can be complex and expensive.
+5.	Some accessibility features are vaguely defined and therefore difficult to automatically test for.
+Therefore, a reasonable automated accessibility testing strategy involves both procured test suites and home-built tests.
+Auditing versus testing
+Accessibility testing is generally performed by developers and testers on their own products. Accessibility auditing is generally performed by a central organization (typically the Accessibility Office) on products that the auditors have not created, do not control, do not understand the construction of, and may even not be able to touch. Thus, automating accessibility auditing is much more complex than automating accessibility testing. Some tools useful for the creation of automated accessibility tests may be inadequate for the automation of accessibility auditing.
+The special difficulties of accessibility auditing are receiving attention from the W3C. It has recently revised a working paper on this topic, “Challenges with Accessibility Guidelines Conformance and Testing, and Approaches for Mitigating Them”, at: https://www.w3.org/TR/2020/WD-accessibility-conformance-challenges-20200619/
+History
+In pursuit of this goal, the department obtained approval for a standardization project titled “Automated Web Accessibility Validation” (VPM01590). As a result of that project, Utopia licensed WorldSpace Attest from Deque and a scripting component of it named “Aget”. The Accessibility Office used and promoted these products until 2020, when it replaced them with Axe and ARC.
+A new strategy
+Utopia’s embrace of “new ways of working” and agile development arises in part from the recognition that long-term plans tend to go awry, slow progress, and waste resources. The fate of WorldSpace Attest illustrates this: It was licensed in the hope of widespread adoption, but the above-cited “directive” was never issued and voluntary adoption was rare.
+A strategy more aligned with new ways of working environment could conduct inexpensive experimental mini-projects, each requiring about a day or less of effort. The purposes of such experiments chould include:
+•	To learn more about how to reach the applicable UIs. This includes how to crawl Utopia sites; whether some UIs are not reachable by links; how to trigger variable states of UIs; how to transcend proxy, authentication, authorization, and account-status barriers; whether the existing ARC crawler can be profitably leveraged; and how to audit hybrid and native mobile applications.
+•	To learn more about the measurement of accessibility properties in an auditing context. Some accessibility properties are currently audited with human-powered testing; which of these can easily be automated? Other properties are not being audited; which of these can be easily and beneficially audited?
+•	To learn more about how auditing results can be used. How should they be aggregated? How can individuals and units responsible for discovered defects be identified? What reporting formats and levels of detail are useful for guiding the work of the Accessibility Office and informing other participants in the management of accessibility risks?
+•	To decrease the cost and increase the speed and coverage of accessibility measurement. For this purpose, one can seek to automate the measurement of facts currently measured in labor-intensive non-automated ways, and to measure automatically facts that are currently not measured at all.
+•	To make human auditing more enjoyable. Josephine Udo-Utun and Gouri Duggi advise that the most time-consuming and annoying facts that they seek to measure during comprehensive evaluations are facts about tables.
+•	To check on procured auditing tools. The accuracy of procured tools should not be assumed, so some defects measured by procured tools should be measured again by custom tools.
+•	To improve holistic accessibility awareness, beyond pure violations. Accessible user experiences depend on over-all page simplicity and inter-page consistency, for example. Measuring indicators of such properties could give the Accessibility Office the ability to know and show how the general accessibility health of the digital assets is progressing, and what aspects of training and coaching deserve emphasis. Comprehensive knowledge of the states of, and changes in, accessibility properties could support decisions about standardization and efforts to obtain and maintain conformity.
+What to measure
+Selected types of accessibility defects are listed below, which could be automatically measured, with various (and currently not well known) degrees of difficulty. Although the strategy proposed above includes the remeasurement of defects measured by procured tools, the defect types listed below include only those not measured by Axe. The ARC ruleset has not been reviewed for this report.
+Each defect type that violates a WCAG 2.1 success criterion is prefixed with that success criterion’s ID.
+Some defects are styled with bold, red text. These are defects in groups of defects that have been most often discovered during evaluations of websites by the Accessibility Office. The data on which this classification is based are appended to this proposal.
+Violations of WCAG 2.1 AA not yet automated by Axe
+•	1.1.1: the alternative text of an image fails to describe the image information
+•	1.3.1: a table with the role “presentation” is a table of data
+•	1.3.1: a table without the role “presentation” is not a table of data
+•	1.3.1: a table fails to have an accessible name
+•	1.3.1: a table header cell is not coded as a header cell
+•	1.3.1: a table cell not containing a header is coded as a header cell
+•	1.3.1: a table header cell is not associated with cells it is a header of
+•	1.3.1: a table header cell is associated with cells it is not a header of
+•	1.3.1: a table row containing footer information is not in a “tfoot” element
+•	1.3.1: the text of a heading is not a true heading
+•	1.3.1: the text of a non-heading is a true heading
+•	1.3.1: the description of a form control’s purpose and effect is not the control’s label
+•	1.3.1: the instructions for a group of radio buttons is not the group’s caption
+•	1.3.3: an instruction relies on color
+•	1.3.3: an instruction relies on spatial position
+•	1.3.3: an instruction relies on a style property
+•	1.3.3: a negative number is intelligible only visually
+•	1.3.5: an autocomplete attribute is missing where required
+•	1.3.5: an autocomplete value fails to match the input purpose
+•	1.4.1: a graph uses color coding
+•	1.4.1: a table uses color coding
+•	1.4.4: a text container truncates its content on zoom
+•	1.4.5: an image contains an image of text
+•	1.4.10: horizontal scrolling is necessary in narrow windows
+•	1.4.11: a UI component has inadequate contrast with its background
+•	1.4.13: a popup is not dismissable without a focus or hover change
+•	1.4.13: a popup disappears when hovered over
+•	1.4.13: a popup disappears spontaneously
+•	2.1.1: a link is not TAB-focusable
+•	2.1.1: a link is not ENTER-activatable
+•	2.1.1: a form control is not properly keyboard-focusable
+•	2.1.1: a radio button is not properly arrow-key-selectable
+•	2.1.1: a checkbox is not SPACE-togglable
+•	2.1.1: a tablist not properly keyboard-navigable
+•	2.1.1: a tab is not properly keyboard-selectable
+•	2.1.1: a button is not standardly keyboard-activatable
+•	2.1.1: a modal dialog leaks focus on keyboard navigation
+•	2.1.2: a modal dialog is not button-dismissable
+•	2.1.2: a modal dialog is not ESCAPE-dismissable
+•	2.2.2: a movement cannot be stopped, paused, or hidden with the keyboard
+•	2.2.2: an auto-updating cannot be stopped, paused, or hidden with the keyboard
+•	2.2.3: a time deadline is imposed
+•	2.2.4: an interruption cannot be prevented with the keyboard
+•	2.3.1: a content flashes more than 3 times in a second
+•	2.4.2: the document title deviates irregularly from the principal heading
+•	2.4.2: the document title fails to describe the document
+•	2.4.2: the document title does not place the most specific part first
+•	2.4.3: the focus order conflicts with the logic of the document
+•	2.4.3: the focus order conflicts with the spatial layout
+•	2.4.4: a link’s accessible name fails to describe its purpose
+•	2.4.4: two links with distinct destinations have an identical accessible name
+•	2.4.4: two adjacent links have an identical destination
+•	2.4.5: a document can be found with only one type of navigation
+•	2.4.5: a search mechanism fails to find an accurately queried resource
+•	2.4.6: a heading fails to describe a topic or purpose
+•	2.4.6: a heading describes a topic or purpose different from the content it heads
+•	2.4.6: a label fails to describe a topic or purpose
+•	2.4.6: a label describes a topic or purpose different from the element it labels
+•	2.4.7: a focused element has no visible focus indicator
+•	2.4.7: a focused element has a focus indicator that is not easily visible
+•	2.4.7: a focused element’s focus indicator is not distinguishable from another state indicator
+•	2.4.8: the document title fails to identify the website
+•	2.4.8: the navigation banner fairs to identify the currently selected topic group
+•	2.5.1: an instruction instructs the user to drag, swipe, rotate, or multiply tap
+•	2.5.2: a button is activated when a pointer is depressed on it
+•	2.5.2: a button is activated when a pointer depressed on it is released elsewhere
+•	3.1.1, 3.1.2: a “lang” attribute has an invalid region code
+•	3.1.1: a text content in a non-page language has no “lang” attribute
+•	3.2.1: when a UI component is focused, the context changes
+•	3.2.2: when a UI component’s state changes but it is not activated, the context changes
+•	3.2.3: the navigation banners of 2 pages on a site differ
+•	3.2.4: 2 links on a site differ in style
+•	3.2.4: 2 buttons on a site differ in style
+•	3.2.4: a link has a style making it confusable with another element type
+•	3.2.4: a button has a style making it confusable with another element type
+•	3.2.4: 2 radio buttons on a site differ in style
+•	3.2.4: 2 checkboxes on a site differ in style
+•	3.2.4: 2 text inputs on a site differ in style
+•	3.2.4: 2 search inputs on a site differ in style
+•	3.2.4: 2 breadcrumbs on a site differ in style
+•	3.2.4: 2 headings at the same level on a site differ in style
+•	3.2.4: 2 error messages on a site differ in style
+•	3.2.4: 2 other components with the same functionality on a site differ in style
+•	3.2.4: a form control or link in a table prevents table-mode navigation
+•	3.3.1: an error message is solely nontextual
+•	3.3.1: an error message fails to identify an error
+•	3.3.2: the label of a form control fails to describe the control’s purpose and effect
+•	3.3.2: the label of a form control fails to state the control’s format requirements
+•	3.3.2: the label of a form control disappears while the control is being operated
+•	3.3.3: the reason for the invalidity of an input is not disclosed
+•	3.3.4: a form fails to let the user reverse, check, or confirm a financial or legal input
+•	4.1.1: an element requiring an end tag has none
+•	4.1.1: there is an improper nesting of elements
+•	4.1.1: an element contains 2 attributes with the same name
+•	4.1.3: a status message is not coded as such
+Violations of WCAG 2.1 AAA not yet automated by Axe
+•	2.5.5: a click target is smaller than 44px by 44px
+•	3.1.3: a technical term is used without a definition
+•	3.1.4: an abbreviation is used without a definition
+Violations of Utopia accessibility standards
+•	a web page omits a link to the corporate accessibility statement
+•	an HTML document fails to conform to the HTML5 specification
+•	a table’s accessible name is not the text content of a “caption” element
+•	a group of radio buttons is not in a “fieldset” element with a “legend” element
+•	a form control is not in a “form” element.
+•	a form is submittable only implicitly
+•	a form control or its label has no visible hover indicator
+What to start with
+It makes sense to start experimenting with measurements of often-found defects that testers dislike testing for and that are easy to automate.
+However, classifying measurements by difficulty is problematic, because trial and error are necessary and because rough measurements can be much easier than accurate measurements. For example, consider the first defect: “1.1.1: the alternative text of an image fails to describe the image information”. Some blatant defects of this type can be easily measured, while many subtle ones require much effort. It seems unwise to try to plan an optimal sequence of measurement experiments. Instead, it is reasonable to consider impact and difficulty but ta engage in exploratory trials, sometimes deliberately trying to measure what seems difficult, so as to learn more about the true costs.
+When to audit
+Agile software production and maintenance is made more difficult if auditing is infrequent. Controls that validate auditing methods might reasonably be periodic, but the audits themselves will be most effective if they are continuous. Ideally, accessibility defects are detected so soon after they appear that it is easy to identify why they occur, who needs to correct them, how the corrections should be made, and what measures will help prevent recurrences.
+This conclusion is based on the assumption that software development is not regulated so as to make automated accessibility testing mandatory. This, it cannot be assumed that any accessibility defects have been prevented from entering into live user interfaces.
+Example
+As an example of a mini-project, I have begun to explore some currently available testing tools as candidates for use in the automation of accessibility audits.
+One tentative finding is that unit-testing tools, including Jsdom, Jest, and Karma, and integration-testing tools without full browser automation capabilities, such as Cypress, appear inadequate for accessibility auditing, leaving full browser automation tools, such as Electron, WebdriverIO, and Selenium Webdriver, as the most promising candidates, despite the slow execution that arises from full browser automation.
+Another tentative finding is that automatically crawling Utopia sites and gathering data on accessibility properties is, for at least some properties, feasible.
