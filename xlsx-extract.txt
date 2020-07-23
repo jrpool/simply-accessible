@@ -1,0 +1,32 @@
+/*
+  extract.js
+  Extract data from workbooks.
+  Argument: serial number to start from, or 0 if none.
+*/
+// Imports
+const fs = require('fs');
+const glob = require('glob');
+const xlsx = require('xlsx');
+
+/*
+  Identify an array of all applicable file paths, i.e. .xlsx, .xlsb, and
+  .xlsm files, except those with names, or in directories with names,
+  starting with "_".
+*/
+let serial = process.argv[2] || 0;
+console.log('Assembling file paths');
+const filePaths = glob.sync('C:pathtoparent/**/*.xls{x,b,m}')
+.sort()
+.filter(path => {
+  const excludable = /regex/.test(path);
+  if (excludable) {
+    console.log(`Excluding ${path}`);
+    return false;
+  }
+  else {
+    return true;
+  }
+})
+.slice(serial);
+console.log(`${filePaths.length} file paths assembled`);
+...
