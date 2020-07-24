@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>Joint Ownership Designation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="nav.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="skip">
+        <a href="#main-start">Skip to page content</a>
+      </nav>
+      <nav class="banner">
+        <ul>
+          <li><a
+            href="https://investor.vanguard.com/home"
+          >Home</a></li>
+          <li><a
+            href="https://personal.vanguard.com/us/MyHome"
+          >My&nbsp;Accounts</a></li>
+          <li><a
+            href="https://investor.vanguard.com/investing"
+          >Investing</a></li>
+          <li><a
+            href="https://investor.vanguard.com/financial-advisor/financial-advice"
+          >Advice</a></li>
+          <li><a
+            href="https://investor.vanguard.com/investing/news-perspectives"
+          >News</a></li>
+          <li><a
+            href="https://investor.vanguard.com/investing/why-vanguard"
+          >Benefits</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <header>
+        <h1 id="main-start" tabindex="-1">Joint Ownership Designation</h1>
+      </header>
+      <section>
+        <h2>Introduction</h2>
+        <p>You have designated this account as a joint account. You and one other person will jointly own it. Please provide the details below.</p>
+      </section>
+      <section>
+        <h2>Definitions</h2>
+        <p>Here are definitions of the forms of ownership. The definitions are on a <strong>non-Vanguard site</strong>. Each definition will open in a <strong>new tab or window</strong>.</p>
+        <ul>
+          <li>
+            <a
+              href="https://www.law.cornell.edu/wex/tenancy_in_common"
+              target="_blank"
+            ><dfn>tenancy in common</dfn></a>
+          </li>
+          <li>
+            <a
+              href="https://www.law.cornell.edu/wex/tenancy_by_the_entirety"
+              target="_blank"
+            ><dfn>tenancy by the entirety</dfn></a>
+          </li>
+          <li>
+            <a
+              href="https://www.law.cornell.edu/wex/right_of_survivorship"
+              target="_blank"
+            ><dfn>joint tenancy with rights of survivorship</dfn></a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Form</h2>
+        <p>Please complete and submit this form.</p>
+        <form id="form-main">
+          <fieldset>
+            <legend>Form of ownership of this account</legend>
+            <p>
+              <label>
+                <input
+                  type="radio"
+                  name="ownership-form"
+                  value="tenancy-in-common"
+                  checked
+                >
+                <span>Tenancy in common</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input
+                  type="radio"
+                  name="ownership-form"
+                  value="tenancy-by-entirety"
+                >
+                <span>Tenancy by the entirety</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input
+                  type="radio"
+                  name="ownership-form"
+                  value="tenancy-rights-survivorship"
+                >
+                <span>Joint tenancy with rights of survivorship</span>
+              </label>
+            </p>
+          </fieldset>
+          <p>
+            <label>
+              <span>Name of joint owner (required: 3 to 50 characters)</span>
+              <input
+                id="name"
+                type="text"
+                size="40"
+                minlength="3"
+                maxlength="50"
+                required
+              >
+            </label>
+          </p>
+          <p class="center"><button id="submit">Submit</button></p>
+        </form>
+        <p id="ack" role="status"></p>
+      </section>
+    </main>
+  </body>
+</html>
