@@ -1,0 +1,28 @@
+A11y meetup
+
+Ryan Dudek:
+
+See CSS prefers-... media queries to adapt to users' expressed preferences for dark mode, reduced motion, etc.
+CSS "inert" property: new, not yet supported. Usable with modals.
+
+2nd speaker (Nathan .E. Lilly)
+
+There are plugins for ESLint that apply axe-core.
+
+stylelint-a11y is a set of custom linting rules for a11y. One example: a rule that requires an h1 with tabindex=-1, motivated by VoiceOver bug that requires this to make skip-nav link work.
+
+jest-axe uses axe-core and usable with jest.
+
+storybook is a tool for code reviews and includes an a11y add-on
+
+cf axe-android, axe-ios
+
+automated testing catches c. 25% of issues.
+
+Test in VMs on whichever OS you are not using.
+
+Make a11y a precondition for production.
+
+Make testing pervasive during dev process (including in the code editor), so developers can't escape the results.
+
+Make a11y a requirement for all developers, not 1 specialist.
