@@ -1,0 +1,342 @@
+Attest versus Siteimprove versus ARC
+10 February 2020
+Jonathan Pool
+Introduction
+Which browser-based accessibility checker is best: axe (or its commercial counterpart WorldSpace Attest), Siteimprove, or ARC Toolkit?
+A first comparison was performed on the web page:
+Attest was configured to report errors at WCAG 2.1 level AA and poor practices. Siteimprove was configured to report errors at WCAG level AA and warnings. ARC Toolkit was configured to report visible and hidden errors and warnings.
+Attest was version 2.8.0, with axe ruleset version 3.4.1, updated on 18 December 2019. Siteimprove was version 125, updated on 15 November 2019. ARC Toolkit was version 3.3.2.0, updated on ??????.
+
+
+Summary of findings
+Error (!) or warning (?)
+SC
+WA
+SI
+ARC
+True
+Notes
+Image without alt!
+1.1.1
+0
+1
+1
+Semi
+img in display:none div
+Image with alt=""?
+1.1.1
+0
+1
+0
+No
+decorative
+aria-label value?
+1.1.1
+0
+27
+0
+Yes
+values not understandable
+HTML formatting!
+1.3.1
+0
+1
+0
+Semi
+display:none iframe 
+No required child of role!
+1.3.1
+3
+0
+0
+Yes
+tablist without tab child
+Indistinguishable nav landmarks!
+1.3.1
+1
+3
+0
+Yes
+3 elements
+Content not in landmark!
+1.3.1
+1
+11
+0
+Yes
+11 elements
+Table without caption?
+1.3.1
+0
+1
+0
+Yes
+table needs caption
+Table header association?
+1.3.1
+0
+128
+0
+Yes
+table headers mis-scoped
+Landmark type?
+1.3.1
+0
+9
+0
+Yes
+some landmarks misused
+aria-describedby value?
+1.3.1
+0
+11
+0
+No
+values OK
+Misuse of br for p?
+1.3.1
+0
+0
+1
+Semi
+br has display:none style
+Empty list?
+1.3.1
+0
+0
+1
+No
+list not empty
+Duplicate ID!
+1.3.1, 4.1.1
+7
+41
+49
+Yes
+20 elements in WA
+Duplicate active-element ID!
+1.3.1, 4.1.1
+6
+0
+0
+Yes
+24 elements
+Text in strong element?
+1.3.3
+0
+0
+1
+Yes
+importance hidden from ATs
+Description hidden from ATs?
+1.3.3
+0
+0
+1
+Semi
+display:none
+Link has title attribute?
+1.3.3
+0
+0
+2
+Yes
+title not keyboard-accessible
+Only color indicates link!
+1.4.1
+0
+1
+0
+Yes
+Except on hover or focus
+Low-contrast text?
+1.4.3
+2
+0
+1
+No
+contrast OK
+Images contain text?
+1.4.5
+0
+2
+0
+No
+no text in images
+Timing adjustable?
+2.2.1
+0
+1
+0
+No
+no time limit
+No navigation bypass!
+2.4.1
+0
+1
+0
+Yes
+exception not satisfied
+Focus order meaningful?
+2.4.3
+0
+36
+0
+Yes
+focus order blocks operation
+Duplicate link text!
+2.4.4
+0
+35
+0
+Yes
+
+No link text!
+2.4.4
+0
+0
+1
+Semi
+link hidden
+Link without href attribute?
+2.4.4
+0
+0
+5
+Yes
+links misused for tabs
+Inactive element focusable!
+2.4.4
+0
+0
+6
+Yes
+links misused for tabs
+aria-label value?
+2.4.4
+0
+2
+0
+No
+values OK
+Missing autocomplete attribute?
+3.2.2
+0
+0
+13
+No
+checkboxes inapplicable
+No button text!
+3.3.2
+0
+0
+2
+Semi
+buttons hidden
+Conflicting label types?
+3.3.2
+0
+0
+13
+Semi
+overrides exist
+Invisible field label!
+3.3.2
+0
+13
+13
+Yes
+invisible controls focusable 
+Iframe without title!
+4.1.2
+0
+1
+1
+Semi
+display:none iframe
+Invalid ARIA!
+4.1.2
+0
+6
+0
+Semi
+tablist aria-controls OK; menu-item aria-expanded not OK
+role value?
+4.1.2
+0
+28
+0
+Yes
+some values wrong
+Invalid ARIA attribute!
+4.1.2
+4
+0
+4
+Yes
+no id "navBody"
+aria-label attribute on div!
+4.1.2
+0
+0
+22
+Semi
+valid, but gibberish
+Invalid element role!
+N/A
+1
+0
+0
+No
+valid
+No main landmark!
+N/A
+1
+0
+0
+Yes
+
+Legend:
+* SC = WCAG success criterion
+* WA = WorldSpaceAttest error count
+* SI = Siteimprove error count
+* ARC = ARC error count
+* True = whether the reported errors were true errors
+
+Comparison
+Attest found some issues that Siteimprove and ARC did not find:
+* "tablist" elements that had no "tab" children
+* Absence of a "main" landmark element
+Siteimprove found some issues that Attest and ARC did not find:
+* A link distinguishable from the surrounding text only by color
+* Multiple links going to different destinations but with identical texts
+* Elements with role="menuitem" but with invalid aria-expanded attributes
+ARC found some issues that Attest and Siteimprove did not find:
+* Text marked important by an inline element not accessible to assistive technologies
+* Dubious use of "br" element
+* Description hidden from assistive technologies
+* Links without text
+* Buttons without text
+* Texts of "title" attributes not accessible in keyboard navigation
+* Links without destinations
+* Inactive elements focusable
+* Conflicting label types on same elements
+* Use of "aria-label" attribute on dubious elements
+Attest wrongly found a non-error:
+* role="button" claimed invalid on "h2" element, but not invalid
+Siteimprove wrongly found a non-error:
+* Elements with role="tablist" and "aria-controls" attributes, claimed to be invalid on those elements, but not invalid
+Siteimprove found a quasi-non-error:
+* Three errors that would have been true, except that the elements had style property "display: none" (however, if one assumes that the "display" property is sometimes changed to a value other than "none", then those errors would become true, so identifying them is probably beneficial)
+ARC did not wrongly find any non-errors.
+All three tools failed to find errors more serious than the ones they found, such as:
+* Invisible focusable elements
+* Nonheadings coded as headings
+* Non-tablists coded as tablists
+* A menu that can be opened but not closed with a keyboard
+* A table with row-group headers coded as column headers and associated with unrelated cells
+* A layer that prevents users from seeing focusable elements in the main content
+Siteimprove and ARC offer more comprehensive warnings (i.e. things to check that the tool cannot decide on) than Attest. In this case, Siteimprove gave 11 warnings, of which 7 warned of actual errors. ARC gave 9 warnings, of which 7 warned of actual errors. Attest gave 1 warning, and it did not warn of any actual errors. Warnings may act as page-specific checklists, helping developers not to overlook likely error causes.
+Siteimprove has a more efficient user interface than ARC or Attest. The UIs are similar, but Siteimprove shows the user all the applicable WCAG success-criterion IDs and the A or AA levels in the main results window. Attest, however, forces the user to click on an error type to get a detail pane, and then click on the "Learn more" link in the detail pane to get an external page, in order to see each individual error's WCAG success criterion. Even then, Attest never shows the A or AA level. ARC provides no links to either success criterion IDs or A or AA levels.
+The comparison could be extended to more pages. This page, however, contains a table, a form, layer, and hidable regions, so it is reasonably representative.
+The classification of error and warning results was approximate, in the interest of comparability and time-saving. This report is not precise enough to be used for claims of defects in any of the tools described.
