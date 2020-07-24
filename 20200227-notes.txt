@@ -1,0 +1,44 @@
+20200227 A11y Meetup
+
+Virtual cursor and headings are the main strategies for users of screen readers, not tab
+
+PWD often need features rarely needed by others and therefore not made easily available. E.g. riders needing to communicate with drivers before they arrive.
+
+Remote studies requiring authentication or other gauntlets risky, because user difficulties often require on-site help.
+
+Studies without facilitators similarly risky.
+
+Multiple disabilities often coexist, so multi-disability subjects should be included.
+
+Clients are impressed when they can see users with disabilities trying to use their products.
+
+Talking aloud not feasible when users use screen readers.
+
+Pay with gift cards so the compensation is not classified as income and therefore does not threaten eligibility for income-tested benefits. [!!!]
+
+Level Access has a database of > 500 subjects.
+
+Survey Monkey and Google Forms are accessible. Survey Monkey is HIPAA-certified.
+
+Ratio of facilitators to subjects should be 1:1.
+
+5-8 subjects is a reasonable sample size for a study of a similar profile.
+
+45-60 minutes is a reasonable session duration.
+
+Expect tiring; offer breaks.
+
+PWD usually take much longer to accomplish any task. Expect this when planning.
+
+Make tasks independent, so failure at one does not imperil another.
+
+Zoom is the most accessible remote conferencing platform, so best for remote usability studies, including sound from screen readers with "Share computer sound" turned on. Zoom etc. do not convey magnification of computers, but do of mobile devices.
+
+Studies in users' own locations have great advantages.
+
+For rapid test-and/revise feedback, get a panel of regulars with a regular schedule of consultations.
+
+To simulate on-site observation, ask subjects to turn on cameras.
+
+Screen readers act partly like subjects talking out loud, at least about where they are and what actions they take.
+
