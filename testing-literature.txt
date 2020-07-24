@@ -1,0 +1,6 @@
+    - https://netbasal.com/simulating-events-in-angular-unit-tests-5482618cd6c6
+    - https://stackoverflow.com/questions/41135875/unable-to-simulate-keypress-event-in-angular-2-unit-test-jasmine
+    - https://akcasoy.wordpress.com/2017/12/06/jasmine-angular-test-hostlistener-dispatching-keyboard-events/
+    - https://stackoverflow.com/questions/44696018/how-do-i-check-if-my-element-has-been-focused-in-a-unit-test-in-angular-4/46671822
+    - https://medium.com/@bencabanes/angular-component-testing-with-examples-7c52b2b7035e
+    - https://semaphoreci.com/community/tutorials/testing-components-in-angular-2-with-jasmine
