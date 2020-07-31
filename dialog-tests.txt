@@ -1,0 +1,296 @@
+const {JSDOM} = require('jsdom');
+const path = require('path');
+const options = {
+  resources: 'usable',
+  runScripts: 'dangerously'
+};
+const testCounts = [0, 0, 0];
+const pass = '✅passed: ';
+const fail = '❌FAILED: ';
+const na = '❓N/A: ';
+const results = () => {
+  console.log(
+    `\nTotal:
+    All: ${testCounts.reduce((sum, count) => sum + count)}
+    ${pass}${testCounts[0]}
+    ${fail}${testCounts[1]}
+    ${na}${testCounts[2]}`
+  );
+}
+// Test methods.
+const test = {
+  // Element has an attribute with a specified value.
+  hasAttr: (elLabel, el, atName, atValue) => {
+    if (el) {
+      const value = el.getAttribute(atName);
+      const ok = value === atValue;
+      console.log(
+        ok ?
+        `${pass}${elLabel} ${atName} is “${atValue}”` :
+        `${fail}${elLabel} ${atName} should be “${atValue}” but ${
+          value ? 'is “' + value + '”' : 'is empty'
+        }`
+      );
+      testCounts[ok ? 0 : 1]++;
+    }
+    else {
+      console.log(`${na}${elLabel} does not exist`);
+      testCounts[2]++;
+    }
+  },
+  // Element has a class list that includes a specified class.
+  hasClass: (elLabel, el, cl) => {
+    if (el) {
+      const clList = el.classList;
+      const ok = clList.contains(cl);
+      console.log(
+        ok ?
+        `${pass}${elLabel} has the class “${cl}”` :
+        `${fail}${elLabel} should have the class “${cl}” but does not`
+      );
+      testCounts[ok ? 0 : 1]++;
+    }
+    else {
+      console.log(`${na}${elLabel} does not exist`);
+      testCounts[2]++;
+    }
+  },
+  // Computed style of element has a specified property with a specified value.
+  hasStyle: (win, elLabel, el, sName, sValue) => {
+    if (el) {
+      const value = win.getComputedStyle(el)[sName];
+      const ok = value === sValue;
+      console.log(
+        ok ?
+        `${pass}${elLabel} style ${sName} is “${sValue}”` :
+        `${fail}${elLabel} style ${sName} should be “${sValue}” but ${
+          value ? 'is “' + value + '”' : 'is empty'
+        }`
+      );
+      testCounts[ok ? 0 : 1]++;
+    }
+    else {
+      console.log(`${na}${elLabel} does not exist`);
+      testCounts[2]++;
+    }
+  },
+  // Trimmed text content of element is a specified string.
+  hasText: (elLabel, el, tValue) => {
+    if (el) {
+      const value = el.textContent.trim();
+      const ok = value === tValue;
+      console.log(
+        ok ?
+        `${pass}${elLabel} text content is “${tValue}”` :
+        `${fail}${elLabel} text content should be “${tValue}” but ${
+          value ? 'is “' + value +'”': 'is empty'
+        }`
+      );
+      testCounts[ok ? 0 : 1]++;
+    }
+    else {
+      console.log(`${na}${elLabel} does not exist`);
+      testCounts[2]++;
+    }
+  },
+  // Two specified values are identical.
+  is: (aLabel, a, b) => {
+    if (a) {
+      const ok = a === b;
+      console.log(
+        ok ?
+        `${pass}${aLabel} is “${b}”` :
+        `${fail}${aLabel} should be “${b}” but ${a ? 'is “' + a + '”': 'is empty'}`
+      );
+      testCounts[ok ? 0 : 1]++;
+    }
+    else {
+      console.log(`${na}${aLabel} does not exist`);
+      testCounts[2]++;
+    }
+  }
+};
+// Documents to be tested.
+const testTargetSpecs = [
+  {
+    pathParts: ['good'],
+    label: 'good'
+  },
+  {
+    pathParts: ['bad'],
+    label: 'bad'
+  }
+];
+testTargetSpecs.forEach((testTargetSpec, index) => {
+  const targetLabel = testTargetSpec.label;
+  const targetDialogLabel = `${targetLabel} dialog`;
+  JSDOM.fromFile(
+    path.resolve(__dirname, ...testTargetSpec.pathParts, 'index.html'), options
+  ).then(dom => {
+    const win = dom.window;
+    const doc = win.document;
+    const form = doc.getElementById('form-main');
+    const ownerJTRS = doc.querySelector(
+      'input[value=tenancy-rights-survivorship'
+    );
+    const nameInput = doc.getElementById('name');
+    const ack = doc.getElementById('ack');
+    const shader = doc.getElementById('shader0');
+    const dialog = doc.getElementById('dialog0');
+    const yesButton = doc.getElementById('submityes');
+    const noButton = doc.getElementById('submitno');
+    const dialogHeading = doc.querySelector('#dialog0 h3');
+    const dialogLegend = doc.querySelector('#dialog0 > form > fieldset > legend');
+    const hideButton = doc.getElementById('hide');
+    const showButton = doc.getElementById('show');
+    const tab = new win.KeyboardEvent('keydown', {key: 'Tab'});
+    const shiftTab = new win.KeyboardEvent(
+      'keydown', {key: 'Tab', shiftKey: true}
+    );
+    const esc = new win.KeyboardEvent('keydown', {key: 'Escape'});
+    console.log(`\n${targetLabel} window not yet loaded.`);
+    test.hasClass(`${targetLabel} shader`, shader, 'clear');
+    test.hasAttr(targetDialogLabel, dialog, 'aria-modal', 'true');
+    test.hasAttr(targetDialogLabel, dialog, 'role', 'alertdialog');
+    test.hasClass(targetDialogLabel, dialog, 'covert');
+    const dialogLabelID = dialog.getAttribute('aria-labelledby');
+    const dialogLabel = doc.getElementById(dialogLabelID);
+    const dialogLabelText = dialogLabel ? dialogLabel.textContent : null;
+    test.is(`${targetDialogLabel} label`, dialogLabelText, 'Confirm or cancel?');
+    test.hasText(`${targetDialogLabel} level-3 heading`, dialogHeading, 'Confirm or cancel?');
+    test.hasAttr(`${targetDialogLabel} hide button`, hideButton, 'aria-expanded', 'true');
+    test.hasAttr(`${targetLabel} reiteration container`, ack, 'role', 'status');
+    win.onload = (() => {
+      console.log(`\n${targetLabel} window loaded.`);
+      // Stylesheets and scripts have now been applied to the DOM.
+      test.hasClass(targetDialogLabel, dialog, 'covert');
+      test.hasStyle(win, targetDialogLabel, dialog, 'padding', '1rem');
+      test.hasStyle(win, targetDialogLabel, dialog, 'paddingTop', '1rem');
+      test.hasStyle(
+        win,
+        targetDialogLabel,
+        dialog,
+        'borderColor',
+        'rgba(102, 102, 102, 0.5)'
+      );
+      test.hasStyle(
+        win,
+        targetDialogLabel,
+        dialog,
+        'backgroundColor',
+        'rgba(243, 214, 102, 0.9)'
+      );
+      test.hasStyle(
+        win,
+        `${targetDialogLabel} yes button`,
+        yesButton,
+        'backgroundColor',
+        'rgb(150, 21, 29)'
+      );
+      ['min-width', 'min-height'].forEach(minDimension => {
+        ['yesButton', 'noButton', 'hideButton'].forEach(buttonName => {
+          test.hasStyle(
+            win, buttonName.replace('B', ' b'), eval(buttonName), minDimension, '44px'
+          );
+        });
+      });
+      const dialogFieldset = dialogLegend ? dialogLegend.parentElement : null;
+      const fieldsetButtons =
+        dialogFieldset ?
+        Array.from(dialogFieldset.querySelectorAll('button')) :
+        null;
+      test.is(
+        'first fieldset button text content',
+        fieldsetButtons ? fieldsetButtons[0].textContent.trim(): null,
+        'No, I wish to wait'
+      );
+      test.is(
+        'second fieldset button text content',
+        fieldsetButtons ? fieldsetButtons[1].textContent.trim() : null,
+        'Yes, I confirm this decision'
+      );
+      ownerJTRS.checked = true;
+      console.log('# Chose JTRS ownership.');
+      nameInput.value = 'Van Guard';
+      console.log('# Entered the co-owner name Van Guard.');
+      form.submit();
+      console.log('# Submitted the form.');
+      test.hasClass(`${targetLabel} shader`, shader, 'shaded');
+      test.hasStyle(
+        win, `${targetLabel} shader`, shader, 'position', 'fixed'
+      );
+      test.hasStyle(
+        win, `${targetLabel} shader`, shader, 'height', '100%'
+      );
+      test.hasStyle(win, targetLabel, dialog, 'minWidth', '80vw');
+      test.hasText(
+        `${targetDialogLabel} legend`,
+        dialogLegend,
+        'Van Guard will be joint owner, under joint tenancy with rights of survivorship. Confirm?'
+      );
+      test.hasText(
+        `${targetDialogLabel} focused element`, doc.activeElement, 'Hide'
+      );
+      hideButton.click();
+      console.log('# Minimized the dialog.');
+      test.hasStyle(win, targetDialogLabel, dialog, 'minWidth', '0');
+      test.hasText(
+        `${targetLabel} focused element`, doc.activeElement, 'Show'
+      );
+      test.hasAttr(`${targetDialogLabel} show button`, showButton, 'aria-expanded', 'false');
+      doc.getElementById('show').click();
+      console.log('# Unminimized the dialog.');
+      test.hasStyle(win, targetDialogLabel, dialog, 'minWidth', '80vw');
+      test.hasText(
+        `${targetLabel} focused element`, doc.activeElement, 'Hide'
+      );
+      doc.dispatchEvent(shiftTab);
+      console.log('# Navigated backward from the hide button.');
+      // Jsdom ignores this, so leaves focus unchanged unless handled.
+      test.hasText(
+        `${targetLabel} focused element`,
+        doc.activeElement,
+        'Yes, I confirm this decision'
+      );
+      yesButton.focus();
+      doc.dispatchEvent(tab);
+      console.log('# Navigated forward from confirmation button.');
+      // Jsdom ignores this, so leaves focus unchanged unless handled.
+      test.hasText(
+        `${targetLabel} focused element`,
+        doc.activeElement,
+        'Hide'
+      );
+      doc.dispatchEvent(esc);
+      console.log('# Dismissed the dialog with Escape.');
+      test.hasStyle(win, targetDialogLabel, dialog, 'display', 'none');
+      test.hasText(
+        `${targetLabel} acknowledgement`,
+        ack,
+        'You have canceled this joint owner designation.'
+      );
+      form.submit();
+      console.log('# Submitted the form again.');
+      test.hasStyle(win, targetDialogLabel, dialog, 'minWidth', '80vw');
+      noButton.click();
+      console.log(
+        '# Dismissed the dialog with the cancelation button'
+      );
+      test.hasText(
+        `${targetLabel} acknowledgement`,
+        ack,
+        'You have canceled this joint owner designation.'
+      );
+      test.hasText(
+        `${targetLabel} focused element`, doc.activeElement, 'Submit'
+      );
+      // Output the total counts if this is the last source file.
+      if (index === testTargetSpecs.length - 1) {
+        setTimeout(results, 100);
+      }
+      else {
+        setTimeout(() => '',200);
+      }
+    });
+  });
+});
