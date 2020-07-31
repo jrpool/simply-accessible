@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>Pier to Pier | Vanguard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Pier to Pier</h1>
+        <p class="subtitle">Cross-campus ride matching</p>
+      </header>
+      <section id="home" class="view overt">
+        <p><button class="planRequest" type="button">Plan a trip</button></p>
+        <p><button class="tripsRequest" type="button">Your trips</button></p>
+      </section>
+      <section id="plan" class="view covert">
+        <header>
+          <h2>Plan a trip</h2>
+        </header>
+        <form id="planForm">
+          <div class="flex">
+            <p>
+              <label>
+                From:
+                <select class="pierList" id="planFrom" size="10" required>
+                </select>
+              </label>
+            </p>
+            <p>
+              <label>
+                To:
+                <select class="pierList" id="planTo" size="10" required>
+                </select>
+              </label>
+            </p>
+            <p>
+              <label>
+                Date:
+                <input id="planDate" type="date" required>
+              </label>
+            </p>
+            <p>
+              <label>
+                Departure time:
+                <input id="planTime" type="time" required>
+              </label>
+            </p>
+            <fieldset id="planRole" class="radioGroup">
+              <legend>You:</legend>
+              <p>
+                <label>
+                  <input name="planRole" type="radio" value="drive" required>
+                  will be driving
+                </label>
+                <br>
+                <label>
+                  <input name="planRole" type="radio" value="ride">
+                  want a ride
+                </label>
+              </p>
+            </fieldset>
+            <p>
+              <label>
+                Your UID:
+                <input
+                        id="planUID"
+                        type="text"
+                        size="4"
+                        maxlength="4"
+                        value="u"
+                        pattern="^[uU][A-Za-z0-9]{3}$"
+                >
+              </label>
+            </p>
+          </div>
+          <p><button id="planSubmit" type="submit">Submit</button></p>
+        </form>
+      </section>
+      <section id="planAck" class="view covert">
+        <header>
+          <h2>You have planned a trip</h2>
+        </header>
+        <p><button class="planRequest" type="button">Plan another trip</button></p>
+        <p><button class="tripsRequest" type="button">Your trips</button></p>
+      </section>
+      <section id="trips" class="view covert">
+        <header>
+          <h2>Your trips</h2>
+        </header>
+        <form>
+          <p>
+            <label>
+              Your UID:
+              <input
+                      id="tripsUID"
+                      name="uid"
+                      type="text"
+                      size="4"
+                      maxlength="4"
+                      value="u"
+                      pattern="^[uU][A-Za-z0-9]{3}$"
+              >
+            </label>
+          </p>
+          <p><button id="tripsUIDSubmit" type="submit">Submit</button></p>
+          <p><button class="planRequest" type="button">Plan a trip</button></p>
+        </form>
+        <section id="tripLists">
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
