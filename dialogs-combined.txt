@@ -1,0 +1,1115 @@
+$ tail -vn +1 **/*.*
+==> bad/index.html <==
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Joint Ownership Designation</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="nav.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="skip" title="skip navigation">
+        <a href="#main-start">Skip to page content</a>
+      </nav>
+      <nav class="banner" title="site navigation">
+        <ul>
+          <li><a
+            href="https://investor.vanguard.com/home"
+          >Home</a></li>
+          <li><a
+            href="https://personal.vanguard.com/us/MyHome"
+          >My&nbsp;Accounts</a></li>
+          <li><a
+            href="https://investor.vanguard.com/investing"
+          >Investing</a></li>
+          <li><a
+            href="https://investor.vanguard.com/financial-advisor/financial-advice"
+          >Advice</a></li>
+          <li><a
+            href="https://investor.vanguard.com/investing/news-perspectives"
+          >News</a></li>
+          <li><a
+            href="https://investor.vanguard.com/investing/why-vanguard"
+          >Benefits</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <header>
+        <h1 id="main-start" tabindex="-1">Joint Ownership Designation</h1>
+      </header>
+      <section>
+        <h2>Introduction</h2>
+        <p>You have designated this account as a joint account. You and one other person will jointly own it. Please provide the details below.</p>
+      </section>
+      <section>
+        <h2>Definitions</h2>
+        <p>Here are definitions of the forms of ownership. The definitions are on a <strong>non-Vanguard site</strong>. Each definition will open in a <strong>new tab or window</strong>.</p>
+        <ul>
+          <li>
+            <a
+              href="https://www.law.cornell.edu/wex/tenancy_in_common"
+              target="_blank"
+            >tenancy in common</a>
+          </li>
+          <li>
+            <a
+              href="https://www.law.cornell.edu/wex/tenancy_by_the_entirety"
+              target="_blank"
+            >tenancy by the entirety</a>
+          </li>
+          <li>
+            <a
+              href="https://www.law.cornell.edu/wex/right_of_survivorship"
+              target="_blank"
+            >joint tenancy with rights of survivorship</a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Form</h2>
+        <p>Please complete and submit this form.</p>
+        <form id="form-main">
+          <fieldset>
+            <legend>Form of ownership of this account</legend>
+            <p>
+              <label>
+                <input
+                  type="radio"
+                  name="ownership-form"
+                  value="tenancy-in-common"
+                  checked
+                >
+                <span>Tenancy in common</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input
+                  type="radio"
+                  name="ownership-form"
+                  value="tenancy-by-entirety"
+                >
+                <span>Tenancy by the entirety</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input
+                  type="radio"
+                  name="ownership-form"
+                  value="tenancy-rights-survivorship"
+                >
+                <span>Joint tenancy with rights of survivorship</span>
+              </label>
+            </p>
+          </fieldset>
+          <p>
+            <label>
+              <span>Name of joint owner (required: 3 to 50 characters)</span>
+              <input
+                id="name"
+                type="text"
+                size="40"
+                minlength="3"
+                maxlength="50"
+                required
+              >
+            </label>
+          </p>
+          <p class="center"><button id="submit">Submit</button></p>
+        </form>
+        <p id="ack"></p>
+        <div id="shader0" class="clear">
+          <div
+            id="dialog0"
+            class="dialog middle covert"
+          >
+            <h3>Confirm or cancel?</h3>
+            <form>
+              <p class="center">
+                <button
+                  id="hide"
+                  class="overt-inline"
+                  type="button"
+                >
+                  Hide
+                </button>
+                <button
+                  id="show"
+                  class="covert"
+                  type="button"
+                >
+                  Show
+                </button>
+              </p>
+              <h4>You have specified a joint owner and a form of ownership. Confirm?</h4>
+              <div class="flex around">
+                <p><button id="submityes" type="button">Yes</button></p>
+                <p><button id="submitno" type="button" class="abort">No</button></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
+==> bad/nav.js <==
+/*
+=== Objects ===
+*/
+const messages = {
+  hide: 'Hide',
+  noack: 'Canceled.',
+  show: 'Show',
+  yesack: 'Submitted.'
+};
+/*
+=== Handlers ===
+*/
+// Remove any confirmation message.
+const removeAck = () => {
+  const ackContainer = document.getElementById('ack');
+  if (ackContainer.textContent) {
+    ackContainer.textContent= '';
+  }
+};
+// Launch a confirmation dialog when the form is submitted.
+const submissionHandler = event => {
+  event.preventDefault();
+  removeAck();
+  document.getElementById('shader0').classList.replace('clear', 'shaded');
+  document.getElementById('dialog0').classList.replace('covert', 'overt');
+  document.getElementById('submityes').focus();
+};
+// Close any open custom confirmation dialog and take a post-dialog action.
+const dialogCloseHandler = isAborted => {
+  document.getElementById('dialog0').classList.replace('overt', 'covert');
+  document.getElementById('form-main').setAttribute('aria-expanded', 'false');
+  document.getElementById('shader0').classList.replace('shaded', 'clear');
+  const ack = document.getElementById('ack');
+  ack.innerHTML = messages[isAborted ? 'noack' : 'yesack'];
+  try {
+    ack.scrollIntoView(true);
+  }
+  catch(error) {
+    console.log('scrollIntoView is not supported by this environment.');
+  }
+};
+// Minimize or maximize a dialog on request.
+const showHideHandler = event => {
+  const button = event.target;
+  const dialog = document.getElementById('dialog0');
+  const hideButton = document.getElementById('hide');
+  const showButton = document.getElementById('show');
+  const hidables = Array.from(dialog.querySelectorAll('.hidable'));
+  button.classList.replace('overt-inline', 'covert');
+  if (button.id === 'hide') {
+    showButton.classList.replace('covert', 'overt-inline');
+    hideButton.classList.replace('overt-inline', 'covert');
+    hidables.forEach(hidable => {
+      hidable.classList.replace('overt', 'covert');
+    });
+    dialog.classList.replace('middle', 'corner');
+    showButton.focus();
+  }
+  else {
+    hideButton.classList.replace('covert', 'overt-inline');
+    showButton.classList.replace('overt-inline', 'covert');
+    hidables.forEach(hidable => {
+      hidable.classList.replace('covert', 'overt');
+    });
+    dialog.classList.replace('corner', 'middle');
+    hideButton.focus();
+  }
+};
+/*
+=== After-page-load listeners ===
+*/
+// Listeners for user actions
+const createListeners = () => {
+  // Process a form submission.
+  document.getElementById('form-main').addEventListener(
+    'submit', submissionHandler
+  );
+  // Process a button-actuated dialog dismissal.
+  Array.from(
+    document.body.querySelectorAll('#submityes, #submitno')
+  ).forEach(yesNoButton => {
+    yesNoButton.addEventListener('click', () => {
+      dialogCloseHandler(yesNoButton.classList.contains('abort'));
+    });
+  });
+  // Handle minimization and maximization of the dialog.
+  ['hide', 'show'].forEach(buttonID => {
+    document.getElementById(buttonID).addEventListener(
+      'click', showHideHandler
+    );
+  });
+  // When the user changes any input, remove the acknowledgement.
+  Array.from(
+    document.querySelectorAll('input[type=radio]')
+  ).forEach(radioButton => {
+    radioButton.addEventListener('change', removeAck);
+  });
+  document.getElementById('name').addEventListener('input', removeAck);
+};
+/*
+=== Page-load listener ===
+*/
+document.addEventListener('DOMContentLoaded', createListeners, {once: true});
+
+==> bad/style.css <==
+* {
+  box-sizing: border-box;
+}
+a:hover, label:hover > span {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+}
+body {
+  max-width: 40rem;
+  padding: 2vw 4vw
+}
+button {
+  border: none;
+  border-radius: 0.5rem;
+  color: rgb(255, 255, 255);
+  background-color: rgb(150, 21, 29);
+}
+button:hover {
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: rgb(150, 21, 29);
+}
+button:hover, label:hover > input {
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+}
+.center {
+  text-align: center;
+}
+.corner{
+  position: absolute;
+  min-width: 0;
+  max-width: 50%;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+.covert {
+  display: none;
+}
+.dialog {
+  transition: min-width 1s ease, max-width 1s ease, top 1s ease, right 1s ease;
+  background-color: rgba(243, 214, 102, 0.9);
+  padding: 1rem;
+  border: solid 0.5rem rgba(102, 102, 102, 0.5);
+}
+.dialog > h3 {
+  text-align: center;
+}
+*:focus {
+  outline-width: 0.2rem;
+  outline-offset: 0.2rem;
+  outline-style: solid;
+  outline-color: rgb(0, 0, 255);
+}
+#form-main > p > label {
+  display: block;
+}
+input[type=radio] {
+  margin-right: 0.5rem;
+}
+h4 {
+  text-align: center;
+}
+.middle {
+  position: absolute;
+  min-width: 80vw;
+  max-width: 80vw;
+  max-height: 80vh;
+  right: 10vw;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: scroll;
+}
+nav.banner {
+  background-color: rgb(150, 21, 29);
+}
+nav.banner > ul {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+nav.banner > ul > li {
+  margin: 0 0.5rem;
+  list-style-type: none;
+}
+nav.banner > ul > li > a {
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+}
+nav.banner > ul > li > a:focus {
+  outline-color: rgb(255, 255, 255);
+}
+.overt {
+  display: block;
+}
+.overt-inline {
+  display: inline;
+}
+q {
+  quotes: '“' '”';
+}
+q::after {
+  content: close-quote;
+}
+q::before {
+  content: open-quote;
+}
+.shaded {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+==> good/index.html <==
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Joint Ownership Designation</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="nav.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="skip" title="skip navigation">
+        <a href="#main-start">Skip to page content</a>
+      </nav>
+      <nav class="banner" title="site navigation">
+        <ul>
+          <li><a
+            href="https://investor.vanguard.com/home"
+          >Home</a></li>
+          <li><a
+            href="https://personal.vanguard.com/us/MyHome"
+          >My&nbsp;Accounts</a></li>
+          <li><a
+            href="https://investor.vanguard.com/investing"
+          >Investing</a></li>
+          <li><a
+            href="https://investor.vanguard.com/financial-advisor/financial-advice"
+          >Advice</a></li>
+          <li><a
+            href="https://investor.vanguard.com/investing/news-perspectives"
+          >News</a></li>
+          <li><a
+            href="https://investor.vanguard.com/investing/why-vanguard"
+          >Benefits</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <header>
+        <h1 id="main-start" tabindex="-1">Joint Ownership Designation</h1>
+      </header>
+      <section>
+        <h2>Introduction</h2>
+        <p>You have designated this account as a joint account. You and one other person will jointly own it. Please provide the details below.</p>
+      </section>
+      <section>
+        <h2>Definitions</h2>
+        <p>Here are definitions of the forms of ownership. The definitions are on a <strong>non-Vanguard site</strong>. Each definition will open in a <strong>new tab or window</strong>.</p>
+        <ul>
+          <li>
+            <a
+              href="https://www.law.cornell.edu/wex/tenancy_in_common"
+              target="_blank"
+            >tenancy in common</a>
+          </li>
+          <li>
+            <a
+              href="https://www.law.cornell.edu/wex/tenancy_by_the_entirety"
+              target="_blank"
+            >tenancy by the entirety</a>
+          </li>
+          <li>
+            <a
+              href="https://www.law.cornell.edu/wex/right_of_survivorship"
+              target="_blank"
+            >joint tenancy with rights of survivorship</a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Form</h2>
+        <p>Please complete and submit this form.</p>
+        <form id="form-main">
+          <fieldset>
+            <legend>Form of ownership of this account</legend>
+            <p>
+              <label>
+                <input
+                  type="radio"
+                  name="ownership-form"
+                  value="tenancy-in-common"
+                  checked
+                >
+                <span>Tenancy in common</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input
+                  type="radio"
+                  name="ownership-form"
+                  value="tenancy-by-entirety"
+                >
+                <span>Tenancy by the entirety</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input
+                  type="radio"
+                  name="ownership-form"
+                  value="tenancy-rights-survivorship"
+                >
+                <span>Joint tenancy with rights of survivorship</span>
+              </label>
+            </p>
+          </fieldset>
+          <p>
+            <label>
+              <span>Name of joint owner (required: 3 to 50 characters)</span>
+              <input
+                id="name"
+                type="text"
+                size="40"
+                minlength="3"
+                maxlength="50"
+                required
+              >
+            </label>
+          </p>
+          <p class="center"><button id="submit">Submit</button></p>
+        </form>
+        <p id="ack" role="status"></p>
+        <div id="shader0" class="clear">
+          <div
+            id="dialog0"
+            role="alertdialog"
+            aria-modal="true"
+            class="dialog middle covert"
+            aria-labelledby="dialog0-heading"
+          >
+            <h3 id="dialog0-heading">Confirm or cancel?</h3>
+            <form>
+              <p class="center">
+                <button
+                  id="hide"
+                  class="overt-inline"
+                  type="button"
+                  aria-controls="dialog0"
+                  aria-expanded="true"
+                >
+                  Hide
+                </button>
+                <button
+                  id="show"
+                  class="covert"
+                  type="button"
+                  aria-controls="dialog0"
+                  aria-expanded="false"
+                >
+                  Show
+                </button>
+              </p>
+              <fieldset class="hidable overt">
+                <legend id="dialog0-legend"></legend>
+                <div class="flex around">
+                  <p>
+                    <button
+                      id="submitno"
+                      type="button"
+                      class="abort"
+                    >
+                      No, I wish to wait
+                    </button>
+                  </p>
+                  <p>
+                    <button
+                      id="submityes"
+                      type="button"
+                    >
+                      Yes, I confirm this decision
+                    </button>
+                  </p>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
+==> good/nav.js <==
+/*
+=== Objects ===
+*/
+const messages = {
+  hide: 'Hide',
+  noack: 'You have <strong>canceled</strong> this joint owner designation.',
+  show: 'Show',
+  yesack: 'You have <strong>submitted</strong> this joint owner designation. This designation will become effective upon approval by the designated joint owner and any current joint owner.'
+};
+/*
+=== Handlers ===
+*/
+// Remove any confirmation message.
+const removeAck = () => {
+  const ackContainer = document.getElementById('ack');
+  if (ackContainer.textContent) {
+    ackContainer.textContent= '';
+  }
+};
+// Launch a confirmation dialog when the form is submitted.
+const submissionHandler = event => {
+  event.preventDefault();
+  removeAck();
+  const jointOwnerRaw = document.getElementById('name').value;
+  const jointOwner = jointOwnerRaw.replace(/[^-., \w]/g, '*');
+  const ownership = Array.from(
+    document.querySelectorAll('input[type=radio]')
+  ).filter(input => input.checked)[0].nextElementSibling.textContent;
+  const confirmMessage =
+    `${jointOwner} will be joint owner, under ${ownership.toLowerCase()}. Confirm?`;
+  document.getElementById('dialog0-legend').textContent = confirmMessage;
+  document.getElementById('shader0').classList.replace('clear', 'shaded');
+  document.getElementById('dialog0').classList.replace('covert', 'overt');
+  document.getElementById('hide').focus();
+};
+// Close any open custom confirmation dialog and take a post-dialog action.
+const dialogCloseHandler = isAborted => {
+  document.getElementById('dialog0').classList.replace('overt', 'covert');
+  document.getElementById('form-main').setAttribute('aria-expanded', 'false');
+  document.getElementById('shader0').classList.replace('shaded', 'clear');
+  const ack = document.getElementById('ack');
+  ack.innerHTML = messages[isAborted ? 'noack' : 'yesack'];
+  try {
+    ack.scrollIntoView(true);
+  }
+  catch(error) {
+    console.log('scrollIntoView is not supported by this environment.');
+  }
+  document.getElementById('submit').focus();
+};
+// Minimize or maximize a dialog on request.
+const showHideHandler = event => {
+  const button = event.target;
+  const dialog = document.getElementById('dialog0');
+  const hideButton = document.getElementById('hide');
+  const showButton = document.getElementById('show');
+  const hidables = Array.from(dialog.querySelectorAll('.hidable'));
+  button.classList.replace('overt-inline', 'covert');
+  if (button.id === 'hide') {
+    showButton.classList.replace('covert', 'overt-inline');
+    hideButton.classList.replace('overt-inline', 'covert');
+    [showButton, hideButton].forEach(button => {
+      button.setAttribute('aria-expanded', 'false');
+    });
+    hidables.forEach(hidable => {
+      hidable.classList.replace('overt', 'covert');
+    });
+    dialog.classList.replace('middle', 'corner');
+    showButton.focus();
+  }
+  else {
+    hideButton.classList.replace('covert', 'overt-inline');
+    showButton.classList.replace('overt-inline', 'covert');
+    [showButton, hideButton].forEach(button => {
+      button.setAttribute('aria-expanded', 'true');
+    });
+    hidables.forEach(hidable => {
+      hidable.classList.replace('covert', 'overt');
+    });
+    dialog.classList.replace('corner', 'middle');
+    hideButton.focus();
+  }
+};
+// Handle tab and escape key presses.
+const keyHandler = event => {
+  const key = event.key;
+  if (['Tab', 'Escape'].includes(key)) {
+    const dialog = document.body.querySelector('#dialog0.overt');
+    // If a dialog is open:
+    if (dialog) {
+      // Dismiss it on ESC.
+      if (key === 'Escape') {
+        dialogCloseHandler(true);
+      }
+      // Navigation among its displayed buttons on TAB.
+      else if (key === 'Tab') {
+        const focalElement = document.activeElement;
+        const dialogButtons = Array.from(dialog.querySelectorAll(
+          'button.overt-inline, fieldset.overt button'
+        ));
+        const lastDialogButton = dialogButtons[dialogButtons.length - 1];
+        // event.getModifierState('Shift') should be equivalent, but fails.
+        const isShifted = event.shiftKey;
+        if (focalElement === dialogButtons[0] && isShifted) {
+          event.preventDefault();
+          lastDialogButton.focus();
+        }
+        else if (
+          focalElement === lastDialogButton && ! isShifted
+        ) {
+          event.preventDefault();
+          dialogButtons[0].focus();
+        }
+      }
+    }
+  }
+};
+/*
+=== After-page-load listeners ===
+*/
+// Listeners for user actions
+const createListeners = () => {
+  // Process a form submission.
+  document.getElementById('form-main').addEventListener(
+    'submit', submissionHandler
+  );
+  // Process a button-actuated dialog dismissal.
+  Array.from(
+    document.body.querySelectorAll('#submityes, #submitno')
+  ).forEach(yesNoButton => {
+    yesNoButton.addEventListener('click', () => {
+      dialogCloseHandler(yesNoButton.classList.contains('abort'));
+    });
+  });
+  // Handle TAB and ESC keys when the dialog is open.
+  document.addEventListener('keydown', keyHandler);
+  // Handle minimization and maximization of the dialog.
+  ['hide', 'show'].forEach(buttonID => {
+    document.getElementById(buttonID).addEventListener(
+      'click', showHideHandler
+    );
+  });
+  // When the user changes any input, remove the acknowledgement.
+  Array.from(
+    document.querySelectorAll('input[type=radio]')
+  ).forEach(radioButton => {
+    radioButton.addEventListener('change', removeAck);
+  });
+  document.getElementById('name').addEventListener('input', removeAck);
+};
+/*
+=== Page-load listener ===
+*/
+document.addEventListener('DOMContentLoaded', createListeners, {once: true});
+
+==> good/style.css <==
+* {
+  box-sizing: border-box;
+}
+a:hover, label:hover > span {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+}
+body {
+  max-width: 40rem;
+  padding: 2vw 4vw
+}
+button {
+  min-height: 44px;
+  min-width: 44px;
+  border: none;
+  border-radius: 0.5rem;
+  color: rgb(255, 255, 255);
+  background-color: rgb(150, 21, 29);
+}
+button:hover {
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: rgb(150, 21, 29);
+}
+button:hover, label:hover > input {
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+}
+.center {
+  text-align: center;
+}
+.corner{
+  position: absolute;
+  min-width: 0;
+  max-width: 50%;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+.covert {
+  display: none;
+}
+.dialog {
+  transition: min-width 1s ease, max-width 1s ease, top 1s ease, right 1s ease;
+  background-color: rgba(243, 214, 102, 0.9);
+  padding: 1rem;
+  border: solid 0.5rem rgba(102, 102, 102, 0.5);
+}
+.dialog > h3 {
+  text-align: center;
+}
+fieldset > p > label {
+  display: flex;
+  align-items: center;
+}
+*:focus {
+  outline-width: 0.2rem;
+  outline-offset: 0.2rem;
+  outline-style: solid;
+  outline-color: rgb(0, 0, 255);
+}
+#form-main > p > label {
+  display: block;
+}
+#form-main > p > label, input[type=radio] {
+  min-height: 44px;
+  min-width: 44px;
+}
+input[type=radio] {
+  margin-right: 0.5rem;
+}
+legend {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.middle {
+  position: absolute;
+  min-width: 80vw;
+  max-width: 80vw;
+  max-height: 80vh;
+  right: 10vw;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: scroll;
+}
+nav.banner {
+  background-color: rgb(150, 21, 29);
+}
+nav.banner > ul {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+nav.banner > ul > li {
+  margin: 0 0.5rem;
+  list-style-type: none;
+}
+nav.banner > ul > li > a {
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+}
+nav.banner > ul > li > a:focus {
+  outline-color: rgb(255, 255, 255);
+}
+.overt {
+  display: block;
+}
+.overt-inline {
+  display: inline;
+}
+q {
+  quotes: '“' '”';
+}
+q::after {
+  content: close-quote;
+}
+q::before {
+  content: open-quote;
+}
+.shaded {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+==> native/index.html <==
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>Joint Ownership Designation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="nav.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="skip">
+        <a href="#main-start">Skip to page content</a>
+      </nav>
+      <nav class="banner">
+        <ul>
+          <li><a
+            href="https://investor.vanguard.com/home"
+          >Home</a></li>
+          <li><a
+            href="https://personal.vanguard.com/us/MyHome"
+          >My&nbsp;Accounts</a></li>
+          <li><a
+            href="https://investor.vanguard.com/investing"
+          >Investing</a></li>
+          <li><a
+            href="https://investor.vanguard.com/financial-advisor/financial-advice"
+          >Advice</a></li>
+          <li><a
+            href="https://investor.vanguard.com/investing/news-perspectives"
+          >News</a></li>
+          <li><a
+            href="https://investor.vanguard.com/investing/why-vanguard"
+          >Benefits</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <header>
+        <h1 id="main-start" tabindex="-1">Joint Ownership Designation</h1>
+      </header>
+      <section>
+        <h2>Introduction</h2>
+        <p>You have designated this account as a joint account. You and one other person will jointly own it. Please provide the details below.</p>
+      </section>
+      <section>
+        <h2>Definitions</h2>
+        <p>Here are definitions of the forms of ownership. The definitions are on a <strong>non-Vanguard site</strong>. Each definition will open in a <strong>new tab or window</strong>.</p>
+        <ul>
+          <li>
+            <a
+              href="https://www.law.cornell.edu/wex/tenancy_in_common"
+              target="_blank"
+            ><dfn>tenancy in common</dfn></a>
+          </li>
+          <li>
+            <a
+              href="https://www.law.cornell.edu/wex/tenancy_by_the_entirety"
+              target="_blank"
+            ><dfn>tenancy by the entirety</dfn></a>
+          </li>
+          <li>
+            <a
+              href="https://www.law.cornell.edu/wex/right_of_survivorship"
+              target="_blank"
+            ><dfn>joint tenancy with rights of survivorship</dfn></a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Form</h2>
+        <p>Please complete and submit this form.</p>
+        <form id="form-main">
+          <fieldset>
+            <legend>Form of ownership of this account</legend>
+            <p>
+              <label>
+                <input
+                  type="radio"
+                  name="ownership-form"
+                  value="tenancy-in-common"
+                  checked
+                >
+                <span>Tenancy in common</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input
+                  type="radio"
+                  name="ownership-form"
+                  value="tenancy-by-entirety"
+                >
+                <span>Tenancy by the entirety</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input
+                  type="radio"
+                  name="ownership-form"
+                  value="tenancy-rights-survivorship"
+                >
+                <span>Joint tenancy with rights of survivorship</span>
+              </label>
+            </p>
+          </fieldset>
+          <p>
+            <label>
+              <span>Name of joint owner (required: 3 to 50 characters)</span>
+              <input
+                id="name"
+                type="text"
+                size="40"
+                minlength="3"
+                maxlength="50"
+                required
+              >
+            </label>
+          </p>
+          <p class="center"><button id="submit">Submit</button></p>
+        </form>
+        <p id="ack" role="status"></p>
+      </section>
+    </main>
+  </body>
+</html>
+
+==> native/nav.js <==
+/*
+=== Utilities ===
+*/
+const messages = {
+  hide: 'Hide',
+  noack: 'You have <strong>canceled</strong> this joint owner designation.',
+  show: 'Show',
+  yesack: 'You have <strong>submitted</strong> this joint owner designation.'
+};
+const confirmPrompt = (ownership, name) => {
+  const preText = 'Please confirm or cancel your designation of (A) ';
+  const midText = ' as a joint owner and (B) ';
+  const postText = ' as the form of ownership.';
+  return `${preText}${name}${midText}${ownership.toLowerCase()}${postText}`;
+};
+/*
+=== Handlers ===
+*/
+// Remove any confirmation message.
+const removeAck = () => {
+  const ackContainer = document.getElementById('ack');
+  if (ackContainer.textContent) {
+    ackContainer.textContent= '';
+  }
+};
+// Launch a confirmation dialog when the form is submitted.
+const submissionHandler = event => {
+  event.preventDefault();
+  removeAck();
+  const ownership = Array.from(
+    document.querySelectorAll('input[type=radio]')
+  ).filter(input => input.checked)[0].nextElementSibling.textContent;
+  const name = document.getElementById('name').value;
+  // Start new event loop; otherwise the dialog interrupts removeAck();
+  setTimeout(() => {
+    const decision = window.confirm(confirmPrompt(ownership, name));
+    // Display an acknowledgement of the user's decision.
+    document.getElementById('ack').innerHTML = messages[
+      decision ? 'yesack' : 'noack'
+    ];
+  });
+};
+/*
+=== After-page-load listeners ===
+*/
+const createListeners = () => {
+  // Process a form submission.
+  document.getElementById('form-main').addEventListener(
+    'submit', submissionHandler
+  );
+  // When the user changes any input, remove the acknowledgement.
+  Array.from(
+    document.querySelectorAll('input[type=radio]')
+  ).forEach(radioButton => {
+    radioButton.addEventListener('change', removeAck);
+  });
+  document.getElementById('name').addEventListener('input', removeAck);
+};
+/*
+=== Page-load listener ===
+*/
+document.addEventListener('DOMContentLoaded', createListeners, {once: true});
+
+==> native/style.css <==
+* {
+  box-sizing: border-box;
+}
+a:hover, label:hover > span {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+}
+body {
+  max-width: 40rem;
+  padding: 2vw 4vw
+}
+button {
+  height: 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: rgb(255, 255, 255);
+  background-color: rgb(150, 21, 29);
+}
+button:hover {
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: rgb(150, 21, 29);
+}
+button:hover, label:hover > input {
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+}
+.center {
+  text-align: center;
+}
+*:focus {
+  outline-width: 0.2rem;
+  outline-offset: 0.2rem;
+  outline-style: solid;
+  outline-color: rgb(0, 0, 255);
+}
+legend {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+nav.banner {
+  background-color: rgb(150, 21, 29);
+}
+nav.banner > ul {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+nav.banner > ul > li {
+  margin: 0 0.5rem;
+  list-style-type: none;
+}
+nav.banner > ul > li > a {
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+}
+nav.banner > ul > li > a:focus {
+  outline-color: rgb(255, 255, 255);
+}
+q {
+  quotes: '“' '”';
+}
+q::after {
+  content: close-quote;
+}
+q::before {
+  content: open-quote;
+}
