@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jonathan Pool">
+    <link rel="author" href="http://crewnet..com/CrewNetPortal/CrewSearch?id=065786">
+    <meta name="creator" content="Business Platforms and Services">
+    <meta name="publisher" content="Accessibility Office">
+    <meta name="description" content="Accessible dialog workshop">
+    <meta name="keywords" content="HTML,dialog,layer,accessibility">
+    <link rel="stylesheet" href="../../style.css">
+    <title>Dialog Workshop</title>
+  </head>
+  <body>
+    <header>
+      <h1>Dialog Workshop</h1>
+    </header>
+    <section>
+      <header>
+        <figure>
+          <img
+            src="../../gen/assets/a11y-kbd.jpg"
+            alt="keyboards matter for accessibility"
+            width="75%"
+          >
+        </figure>
+        <h2>Introduction</h2>
+      </header>
+      <p><strong>Dialogs</strong> (also called <q>layers</q>) are a pervasive feature of  user interfaces.  websites manage complex transactions that often require temporary auxiliary interactions. They include disclosures, details, warnings, requests for information, and requests for confirmation or cancelation. Designers of Vanguard UIs often decide to use dialogs as vehicles for such auxiliary interactions.</p>
+      <p>A dialog is often a tool to <strong>accomplish</strong> accessibility, but, at the same time, a dialog can <strong>interfere with</strong> accessibility. In this workshop you will learn how to deal with this paradox and make auxiliary interactions more accessible.</p>
+    </section>
+    <section>
+      <header><h2>Preparation</h2></header>
+      <p>To do the debugging and coding in this workshop, you need:</p>
+      <ul>
+        <li>A Bitbucket account </li>
+        <li>A code editor (e.g., WebStorm, VS Code, Atom, XCode) on your computer</li>
+        <li>A bash command-line interface (CLI) (e.g., Git Bash, Windows Terminal, OS X terminal, terminal built into code editor) on your computer</li>
+        <li>The current Vanguard version of node.js (v12.13.0 or later) on your computer (<code>node --version</code>)</li>
+      </ul>
+      <p>If you don&rsquo;t have those prerequisites, you can still watch, view the code, and participate in the discussion.</p>
+      <p>If you have the prerequisites:</p>
+      <ol>
+        <li>Visit the <a href="https://bitbucket.opst.c1..com/users/uqxq/repos/workshops/browse" target="_blank">workshops repository</a>.</li>
+        <li>Fork the repository to your own Bitbucket project (<q>Create fork</q>).</li>
+        <li>Clone your fork to your local computer (<q>Clone</q> in Bitbucket, copy the URL, then <code>git clone [pasted URL]</code> in your CLI).</li>
+        <li>Make your clone&rsquo;s directory your working directory (<code>cd workshops</code>).</li>
+        <li>Install the dependencies (<code>npm install</code>).</li>
+        <li>Open the <code>workshops</code> directory in your code editor.</li>
+      </ol>
+    </section>
+    <section>
+      <header><h2>Native dialogs</h2></header>
+      <section>
+        <header><h3>How they work</h3></header>
+        <p>To interrupt an activity and grab the user&rsquo;s attention, JavaScript provides native dialogs of three kinds: alert, confirm, and prompt.</p>
+        <p>For an example of such a native dialog, open <code>ex/dialogs/examples/native/index.html</code> with a browser (not Internet Explorer) in your local repository. (If you have not cloned the repository, browse to <a href="https://bitbucket.opst.c1.vanguard.com/pages/~UQXQ/workshops/master/browse/ex/dialogs/examples/native/index.html" target="_blank">the original on Bitbucket</a>.)</p>
+        <p>When a user submits this form, a confirmation dialog appears, stating what the user has chosen and asking the user to confirm or cancel this choice. Try it yourself.</p>
+        <p>That behavior conforms to <a href="https://www.w3.org/TR/WCAG21/#error-prevention-legal-financial-data" target="_blank">WCAG Success Criterion 3.3.4</a>, which says that a UI must let the user reverse, check, or confirm a financial or legal decision.</p>
+        <p>Choosing either the <q>OK</q> or the <q>Cancel</q> button, or pressing the <kbd>Escape</kbd> key, dismisses the dialog, returns the focus to the submission button, and displays a message stating what the user has just done. Those three behaviors also conform to <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal" target="_blank">standard accessibility practices</a>.</p>
+        <p>To support users who consume the UI by interacting with a screen reader, the final message is coded as a <code>status</code> message. A standard-compliant screen reader monitors status messages and orally announces them when they appear. That is another feature conforming to <a href="https://www.w3.org/TR/wai-aria/#status" target="_blank">an accessibility standard</a>.</p>
+        <p>Inspect the code to see how these features are implemented:</p>
+        <ul>
+          <li>The <code>confirmPrompt()</code> function in <code>ex/dialogs/examples/native/nav.js</code> creates a text for the confirmation dialog that describes the user&rsquo;s decision.</li>
+          <li>The <code>window.confirm()</code> method call on line 36 of <code>nav.js</code> opens the confirmation dialog.</li>
+          <li>The code on lines 38 to 40 of <code>nav.js</code> puts the correct status message into the HTML element whose ID is <code>ack</code> once the user chooses one or the other button.</li>
+          <li>On the web page, <code>ex/dialogs/examples/native/index.html</code>, the <code>p</code> element with the ID <code>ack</code> near the end has <code>role="status"</code>, which allows the text content of that element to be announced by a screen reader whenever the text content changes.</li>
+        </ul>
+      </section>
+      <section>
+        <header><h3>How they don&rsquo;t work</h3></header>
+        <p>So far, so good, but there are accessibility problems with native dialogs:</p>
+        <ol>
+          <li>The native dialogs are, by design, modal. In other words, while they are open, they monopolize the user interaction. But some browsers&rsquo; implementations of native dialogs fail to achieve modality. Firefox and Safari both allow the focus to leak out of the dialog when the user navigates with the <kbd>Tab</kbd> key. That conflicts with a <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#keyboard-interaction-7" target="_blank">standard accessibility practice</a>.</li>
+          <li>Native dialogs contain messages, which the user needs to perceive. However, if the user depends on a screen reader, the user may never hear those messages. The screen readers JAWS and NVDA when used with the Chrome browser, and the screen reader VoiceOver when used with the Safari browser, fail to announce the message when the dialog opens, and NVDA and JAWS don&rsquo;t give the user any opportunity to hear the message. They leave the user ignorant about what the <q>OK</q> and <q>Cancel</q> buttons confirm or cancel.</li>
+          <li>In case the user automatically or erroneously presses the <kbd>Enter</kbd> or <kbd>Space</kbd> key immediately after the dialog opens, the accessibility standardization community <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#keyboard-interaction-7">recommends</a> that the focus in a confirmation dialog be placed initially on the element that produces the <q>least destructive</q> action. This would be the <q>Cancel</q> button, which would leave the status quo unchanged. But Chrome, Firefox, and Safari place the initial focus on the <q>OK</q> button, the <strong>most</strong> destructive one.</li>
+          <li>When the focus is on an element that can produce an action, such as a button, <a href="https://www.w3.org/TR/WCAG21/#focus-visible">WCAG Success Criterion 2.4.7</a> requires the focus to be visible. But, when the dialog opens, Safari and Chrome make it nearly invisible. A user who presses the <kbd>Enter</kbd> key when the dialog opens confirms the decision, without being reliably informed that this will occur.</li>
+        </ol>
+        <p>These defects show that, even if you code native dialogs correctly, they create a substantial risk of user confusion and error, because of improper behaviors of browsers and screen readers.</p>
+      </section>
+    </section>
+    <section>
+      <header><h2>Custom dialogs</h2></header>
+      <p>By creating custom modal dialogs, you can avoid the implementation defects of native dialogs, thereby achieving better accessibility. Custom dialogs also let you implement locations, styles, and behaviors beyond those that are achievable with native dialogs.</p>
+      <p>For an example of a custom dialog, open <code>ex/dialogs/examples/good/index.html</code> in your local repository (or <a href="https://bitbucket.opst.c1.vanguard.com/pages/~UQXQ/workshops/master/browse/ex/dialogs/examples/good/index.html" target="_blank"> on Bitbucket</a>.) Complete the form and submit it, and a custom dialog will open. Try it out, and verify that it has these accessibility features:</p>
+      <ol>
+        <li>The initial focus is on the first activatable element (the <q>Hide</q> button).</li>
+        <li>When you navigate with <kbd>Tab</kbd> and <kbd>Shift</kbd>-<kbd>Tab</kbd>, the focus cycles through the activatable elements in the dialog but never leaks out.</li>
+        <li>You can&rsquo;t take the focus out of the dialog, or operate any control, by clicking outside the dialog.</li>
+        <li>The dialog can be shrunk, allowing you to review the content that it covers.</li>
+        <li>There are buttons in the dialog that dismiss it.</li>
+        <li>You can dismiss the dialog with the <kbd>Escape</kbd> key, too.</li>
+        <li>You can activate any of the dialog buttons by clicking it, or by focusing it and then pressing the <kbd>Enter</kbd> or <kbd>Space</kbd> key.</li>
+        <li>Each of the click targets (in this case, buttons) is at least 44 pixels in each dimension, for easy targeting.</li>
+        <li>The buttons are sequenced in order of increasing destructiveness.</li>
+        <li>A statement in the dialog reiterates the decision that you are asked to confirm or cancel.</li>
+        <li>After you activate a button that confirms or cancels your decision, a message is displayed stating what you have done.</li>
+        <li>After you dismiss the dialog, the focus returns to the (<q>Submit</q>) button where it was before the dialog opened.</li>
+      </ol>
+      <p>These features are all visible. But what if you couldn&rsquo;t see, or you had limited vision, and you needed to listen to a screen reader? Then, you would benefit from these additional accessibility features, which this custom dialog also has:</p>
+      <ol>
+        <li>The dialog is coded so it will be announced to you when it opens.</li>
+        <li>When you minimize or unminimize the dialog, the resulting state of the dialog (collapsed or expanded) is announced.</li>
+        <li>The dialog has <q>Confirm or cancel?</q> as its accessible name, so it will be announced with that name.</li>
+        <li>The buttons that confirm or cancel your decision are in a group with the reiterating statement as its accessible name, so, before the first button is announced, the statement will be announced, letting you know what question the button will answer.</li>
+        <li>After you confirm or cancel your decision, the message stating what you have done appears in a <q>live region</q> (an element with <code>role="status"</code>), so that it is announced to you.</li>
+      </ol>
+    </section>
+    <section>
+      <header><h2>Dialog accessibility in practice</h2></header>
+      <p>Although a custom dialog can make the user experience better than a native dialog can, you don&rsquo;t control the user experience fully. It depends partly on the operating system, the browser, and any assistive technology (such as a screen reader) on the user&rsquo;s end.</p>
+      <p>If you turn on a screen reader and operate the UI, you will probably notice some non-optimal behaviors. For example, some texts that should be announced may not be announced, or they may be announced multiple times. But in general the result is more accessible than it is with a native dialog.</p>
+    </section>
+    <section>
+      <header><h2>Dubugging dialog accessibility</h2></header>
+      <h3>How to test</h3>
+      <p>Ensuring that your modal dialogs are accessible requires testing.</p>
+      <p>You can test their properties and behaviors by navigating and operating on them as users would do, and you can have real users, including users with disabilities, interact with them. No testing is complete without such human-powered trials.</p>
+      <p>However, human testing is expensive and slow. Efficiency requires automating the testing process to the extent practical.</p>
+      <p>There are generic automated test suites for accessibility that you can easily conduct on any web page. The one most used at Vanguard is Axe, an extension to Chrome and Firefox. Safari has an accessibility audit in its Web Inspector. Numerous others exist. However, none of these generic test suites is designed to catch more than a fraction of all accessibility defects. To verify that, run Axe as follows:</p>
+      <ol>
+        <li>When the <q>Joint Ownership Designation</q> page and its modal dialog are open in Chrome, open the Chrome Developer Tools, go to the Axe panel, and click <q>Analyze</q>. Axe should find no issues.</li>
+        <li>Now open another version of the same page, at <code>ex/dialogs/examples/bad/index.html</code> (or the <a href="https://bitbucket.opst.c1.vanguard.com/pages/~UQXQ/workshops/master/browse/ex/dialogs/examples/bad/index.html">copy on Bitbucket</a>). Make the modal dialog open. Run Axe on that version. Depending on the version of Axe in use, it may likewise find no issues or only a suggestion to check the color contrast (because the dialog background is semi-opaque). But this version of the page contains several defects. They are defects that Axe is not designed to catch.</li>
+      </ol>
+      <p>You can write tests that will reveal accessibility defects that generic test suites don&rsquo;t catch. Whatever testing frameworks you already use, you can write tests within those frameworks to enforce accessibility requirements, too.</p>
+      <h3>Tests in this repository</h3>
+      <p>The repository for this workshop contains a suite of custom tests for properties and behaviors of the dialog in this UI. Most of the tests are for accessibility features. There are 40 tests in the suite. When you run it, it performs the tests on both the good page and the bad page, and it reports the results. The test suite is located in the <code>ex/dialogs/examples/spec.js</code> file. This suite of tests is based on JSDOM, a thin browser emulator also used by Jest. A comprehensive test suite would extend beyond this framework to include full browser automation, but this suite suffices for the purposes of this workshop.</p>
+      <p>In your CLI, execute the command <code>npm run test-dialog</code>. That command executes those tests and outputs the results in your console. The results should show that the good page passes all 40 tests, while the bad page passes 18 tests and fails 22 tests.</p>
+      <h3>Your task</h3>
+      <p>For the debugging part of this workshop, your task is to work on revising the bad versions of <code>index.html</code>, <code>style.css</code>, and <code>nav.js</code> to make the page pass some of the tests that it currently fails. Recommended procedure:</p>
+      <ol>
+        <li>Choose a failing test to work on.</li>
+        <li>Try to figure out a revision (or revisions) that will make it pass.</li>
+        <li>Execute <code>npm run test-dialog</code> to check whether your revisions worked.</li>
+        <li>As needed, inspect the files in the <code>good</code> directory to see how that version passed the test.</li>
+      </ol>
+      <p>Also, please ask questions whenever you wish.</p>
+      <p>Happy debugging!</p>
+    </section>
+  </body>
+</html>
