@@ -1,0 +1,48 @@
+const populatePierLists = () => {
+  const lists = document.body.getElementsByClassName('pier-list');
+  for (let i = 0; i < lists.length; i++) {
+    const list = lists[i];
+    const pierCodes = Object.keys(piers);
+    for (let j = 0; j < pierCodes.length; j++) {
+      const option = document.createElement('option');
+      const code = pierCodes[j];
+      option.value = code;
+      option.textContent = piers[code].name;
+      list.insertAdjacentElement('beforeend', option);
+    }
+  }
+};
+const zeroPad = num => {
+  if (num > 9) {
+    return num;
+  }
+  else {
+    return `0${num}`;
+  }
+};
+const initializeWhen = () => {
+  const soonUTC = new Date(Date.now() + 600000);
+  const soonPAString = soonUTC.toLocaleString({timeZone: 'America/New_York'});
+  const soonPANum = Date.parse(soonPAString);
+  const soonPA = new Date(soonPANum);
+  const year = soonPA.getFullYear();
+  const month = zeroPad(soonPA.getMonth() + 1);
+  const dayNum = zeroPad(soonPA.getDate());
+  const hour = zeroPad(soonPA.getHours());
+  const min = zeroPad(soonPA.getMinutes());
+  document.getElementById('date').value = `${year}-${month}-${dayNum}`;
+  document.getElementById('time').value = `${hour}:${min}`;
+};
+const createSubmitListener = () => {
+  document.getElementById('planForm').addEventListener('submit', event => {
+    event.preventDefault();
+    location.assign('.');
+  });
+};
+const init = () => {
+  populatePierLists();
+  initializeWhen();
+  createSubmitListener();
+  console.log('Trips content is ' + trips[0]);
+};
+window.onload = init;
