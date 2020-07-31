@@ -1,0 +1,425 @@
+# tdd-lab
+
+Building Robust User Interfaces: A Laboratory Course in Test-Driven Angular Development for UI Boot Camp
+
+## Lesson 12: Routing
+
+## Table of contents
+
+- [Introduction](#introduction)
+- [Setup](#setup)
+- [Revise Jest view tests](#revisejest)
+- [Add Jest tests](#addjest)
+- [Revise Cypress tests](#revisecypress)
+- [Add Cypress tests](#addcypress)
+- [Revise, pass](#revise)
+- [Revise model tests](#model)
+- [Completion](#completion)
+
+## <a name="introduction"></a>Introduction
+
+In this lesson you will enhance your application to offer two views on two routes.
+
+In Lesson 11 you replaced sample data with real data from a service and revised your Cypress tests to accommodate variability in results and allow time for results to arrive.
+
+When users search with your application, they currently get only names. But the Vanguard Crewfinder service provides more than names. In this lesson you will make your application provide additional data about selected persons. To do this, you will change the result in the home view, converting a list of names to a list of person links. When a user activates one of the links, the application will switch to another view, where details about the selected person will be displayed. In this detail view, there will also be a link bringing the user back to the home view.
+
+The plan for this lesson is:
+
+1. revise Jest tests
+1. add Jest tests for a new detail component
+1. revise Cypress tests
+1. revise the implementation to include the new feature
+1. ensure that the branch passes all the tests
+1. revise Jest tests on the search-form model
+
+## <a name="setup"></a>Setup
+
+1. Open the `README-switch.md` file and follow the &ldquo;Setup&rdquo; instructions.
+
+## <a name="revisejest"></a>Revise Jest view tests
+
+1. Three of your tests in `app.component.spec.ts` require a top-level heading, with the text content &ldquo;Search Form: Vanguard Crew Search&rdquo;, in a `header` element. These tests will not be appropriate any longer, because there will be two views, each with its own top-level heading. Therefore, copy these three tests and paste them into `search-form.component.spec.ts`. The branch should fail these tests, because the search-form component contains no `header` element yet.
+1. Another Jest test requires the `main` element to have `crewinfo-search-form` as a child element. That component has provided the only view in the application. Now, however, there will be two views. The Angular router will decide which view appears. The standard mechanism for that choice is a `router-outlet` component. Therefore, revise that test so the expected child is a `router-outlet` element. The branch should fail the revised test.
+
+Your tests in `search-form.component.spec.ts` are of two kinds:
+
+- tests of the view before any search result
+- tests of the model
+
+Your Jest tests for the search-form view should all be viable, without change, after you introduce a second view. The result will become links, but the current Jest tests don&rsquo;t deal with the result. Nothing else in the search-form view will change.
+
+On the other hand, you will need to revise the tests of the model, because the model will now handle details, not only names, of persons. But you have not yet revised the model, so you can&rsquo;t yet know how to revise your tests for the model. You will, therefore, revise the model tests after revising the model, just as you created the original model tests after implementing the reactive model.
+
+## <a name="addjest"></a>Add Jest tests
+
+### Preparation
+
+1. You already have Jest tests for the search-form component in that component&rsquo;s directory. Now you will add Jest tests for the detail component. Before you can add those tests, you must create that component. Do that (`npm run ng generate component detail`). The new component will be located in a `detail` directory inside the `app` directory. It will include a `spec.ts` file with one test. However, Jest in watch mode will not notice the addition of that file. To include that file in Jest tests, quit Jest in your bash shell (`CTL`-`c`) and relaunch it (`npm run watch:unit`). The branch should pass the new test.
+1. As you saw in Lesson 10, a new Angular component by default implements the ngOnInit() &ldquo;lifecycle hook&rdquo; method. This `detail` component will not require that. So, as you did in Lesson 10, delete `implements OnInit`, the `ngOnInit()` function declaration, and the importation of `OnInit`. This should not change the test results.
+1. The new component contains an empty constructor. Empty constructors violate one of the currently configured rules of ESLint, so delete the constructor.
+1. Some of your Jest tests are in the `src/app/app.component.spec.ts` file. Just as in Lesson 10, when those tests encounter the `detail` element in the template, they need to interpolate that component. To make that happen, add two things to the file, as you did in Lesson 10:
+   1. under the `SearchFormComponent` import statement, a similar import statement for the detail component
+   1. in the argument to `TestBed.configureTestingModule()`, a third element in the array value of the `declarations` property: `DetailComponent`
+1. In the callback argument to the `describe()` function in `detail.component.spec.ts`, add a declaration for the variable `compiled`, as in `search-form.component.spec.ts`.
+1. In the argument to the `beforeEach()` function, after the initialization of `component` add the same initialization of `compiled` as in `search-form.component.spec.ts`.
+
+### Testing
+
+1. The detail view will need its own `header` element containing an `h1` element with a heading that describes the purpose of the view. To test for that, paste into this component&rsquo;s Jest test file another copy of the same three header tests that you pasted into the file for the search-form component. In this case, change the expected text content to &ldquo;Person Detail: Vanguard Crew Search&rdquo;.
+1. Delete those three tests from the root component&rsquo;s file of Jest tests.
+1. The content in the detail view will depend almost entirely on the user&rsquo;s choice to follow one of the links in the home view. Performing an action in one view and checking the effects in another view is testable with Cypress, not Jest. But the detail view will always contain a link taking the user back to the home view, with `"/"` as a relative URL. Add this Jest test to `detail.component.spec.ts`, requiring that link to exist and to say &ldquo;Home&rdquo;:
+
+   ```typescript
+   it('should contain a link to the home view', () => {
+     const homeLink = compiled.querySelector('a[href="/"]');
+     expect(homeLink && homeLink.textContent).toBe('Home');
+   });
+   ```
+
+   The branch should fail this test.
+
+## <a name="revisecypress"></a>Revise Cypress tests
+
+1. Your Cypress test for the view title expects the search form&rsquo;s view title to be the only title. Ideally, the title should change from one view to another. Making that happen will be a later task, so, for now, revise the test to expect a generic view title that remains the same regardless of the view: &ldquo;Vanguard Crew Search&rdquo;. The branch should fail this revised test.
+1. The existing Cypress tests in the search-results group use the function `checkNames()`. It defines a `shownNames` constant, an array of the names shown in the search result. Now those names will be contained by `a` elements, links, children of `li` elements, rather than being directly contained by `li` elements. Strengthen the tests in that group by revising the `checkNames()` function. Redefine `shownNames` to require that the names be links. Change the selector argument of `find()` from `'li'` to `'li > a'`. For understandability, also change the name of the argument of the `map()` method from `li` to `a`. The new selector should make the branch begin to fail the Cypress test in the search-results group, since the names are not yet links.
+
+## <a name="addcypress"></a>Add Cypress tests
+
+One group of Cypress tests deals with the styles of focusable and hoverable elements. It contains a variable (`styles`) and three functions supporting its tests. The group for search-result tests has not needed that support, because search results have been plain text, which can&rsquo;t be put into focus and don&rsquo;t respond when hovered over. But now search results will contain links, and links **can** be focused and **do** respond when hovered over. So you will need to add Cypress tests to the search-results group that operate the search form, produce search results, and then manipulate the focus and/or hover states of links, to ensure that link styles respond as expected. Therefore, new tests in this group will need access to the support that is now confined to the focus-and-hover group.
+
+1. To make the `styles` variable and the functions in the focus-and-hover group available to tests in the search-results group, move that variable and those functions to the top of the top-level group, `'home view'`, before the call to `beforeEach()`.
+1. The `styles` variable specifies expected focus and hover styles. Focus styles are uniform across element types, so the existing `focus` and `blur` properties can apply to links, too. But the `over` and `out` properties, describing hover styles, apply only to buttons and labels. Therefore, add `links` subproperties to them. An appropriate value for `styles.over.links` is:
+
+   ```typescript
+   link: {
+     color: 'rgb(255, 255, 255)',
+     'background-color': 'rgb(0, 116, 201)',
+     'text-decoration': 'underline'
+   }
+   ```
+
+   It specifies underlined white text on a Vanguard Link Blue background.
+
+   Add a similar `link` property to the value of `styles.out`, but specify Vanguard Link Blue as the text color and white as the background color.
+
+1. Now that the search result will include links to person details, the links must be unique, so each link identifies one person, even if the person shares a name with somebody else. Add code to the search-result test to require shown results to be unambiguous. To make the results unambiguous, require that they have this format: `Familyname,Givenname (01234)`. You can do this in two steps:
+
+   1. Upgrade the `checkNames()` function to check not only for exact strings but also for formats of strings. To do this, change the signature of the function so that the parameters `y` and `n` have lists of two permitted types. Instead of `string[]`, declare their types as `(string | RegExp)[]`. Then change the lines
+
+   ```typescript
+   yesStrings.forEach(yesString => {
+     expect(shownNames.some(name => name.includes(yesString))).equal(
+       true
+     );
+   });
+   ```
+
+   to
+
+   ```typescript
+   yesStrings.forEach(yesString => {
+     const yesType = typeof yesString;
+     expect(shownNames.some(name => {
+       if (yesType === 'string') {
+         return name.includes(yesString as string);
+       }
+       else {
+         return (yesString as RegExp).test(name);
+       }
+     })).equal(true);
+   });
+   ```
+
+   Now you have permitted the `yesString` array to contain both strings and regular expressions. When an item is a string, that string must be found somewhere in the array of link texts. When it is a regular expression, it must match at least one of the link texts.
+
+   Make a similar change to the lines that process the `noStrings` array.
+
+   1. Add 4 lines to the search-result test which:
+      1. Enter a query value, such as `Buckley`, that will have at least 1 matching person record in the current search mode (whole-name).
+      1. Submit the form.
+      1. Check the summary, giving reasonable lower and upper bounds on the count.
+      1. Check the names, requiring the format shown above. An example of such a line is:
+
+      ```typescript
+      checkNames(0, 20, [/^Buckley,.* \(\d{6}\)$/], ['xyz123']);
+      ```
+
+   1. Add a statement to the search-result test to require the application to behave correctly when the user selects the first person link. This statement will do that:
+
+   ```typescript
+   cy.get('form + section[role=status] > ul > li > a')
+     .first()
+     .then($a => {
+       $a.click();
+       const content = cy.get('div');
+       content.should('contain', 'Buckley');
+     });
+   ```
+
+   This statement identifies the first link in the result and triggers a click on it. It then checks whether two expectations are satisfied:
+
+   1. Is the document title now &ldquo;Person Detail: Vanguard Crew Search&rdquo;?
+   1. Is there a `div` element in the view that contains the string that was searched for? (If you don&rsquo;t use `Buckley` as your search term, change it here, too.)
+
+   The branch should not pass any of these new parts of the test.
+
+1. Routing uses the URL to determine the view. The link of a person with ID 012345 will have `'/detail/012345'` as its destination. A user should be able to get to that person&rsquo;s detail view either by searching in the home view and activating the person&rsquo;s link or by directly visiting that URL. On that basis, create this Cypress test group and test, after (not inside) the home-view group:
+
+   ```typescript
+   describe('detail view',() => {
+     it('should include name of person requested', () => {
+       cy.visit('/detail/004852');
+       const list = cy.get('dl');
+       list.should('contain', 'Buckley');
+     });
+   });
+   ```
+
+   (As stated above, you may change the person, and if so you must change the ID accordingly.) The branch should fail this test.
+
+## <a name="revise"></a>Revise, pass
+
+### Jest
+
+1. In the root component&rsquo;s template, replace the `crewinfo-search-form` component with a `router-outlet` component. This should make the branch pass your revised Jest test. Cypress may not notice this change. If it doesn&rsquo;t, quit it (`CTRL`-`c`) and start it again (`npm run watch:e2e`).
+1. Create variables in the search-form and detail components that their templates can use to provide the text contents of their `h1` elements. In the search-form component, at the beginning of the `SearchFormComponent` class declaration, insert:
+
+   ```typescript
+   public title = 'Search Form: Vanguard Crew Search';
+   ```
+
+   Insert a similar statement into the detail component.
+
+1. The templates of the search-form and detail components need `header` elements containing `h1` elements, in order to pass the new Jest tests for headings. Conversely, the template of the root component should no longer contain an `h1` element in its `header` element. So, insert into the tops of the search-form and detail template files `header` elements like the one in the root component, but without the Vanguard logotype, and give each `h1` element the correct text content for its view. Then delete the `h1` element from the `header` element of the root template. This should make the branch pass the header tests in the search-form and detail components.
+1. In the detail template, in place of `<p>detail works!</p>`, insert a link to the home view. Here is an example:
+
+   ```html
+   <p><a href="/">Home</a></p>
+   ```
+
+   Now the branch should again pass all of the Jest tests except the model tests.
+
+1. However, the branch should now fail almost all of your Cypress tests, because the `router-outlet` component has not been told which component to insert into the view. Provide these instructions. They belong in the `app-routing.module.ts` file, which configures the `AppRoutingModule` module. This requires changes in two places in the file:
+
+   1. At the top, add statements importing the two components that the routing module will route to. One statement is:
+
+      ```typescript
+      import { SearchFormComponent } from './search-form/search-form.component';
+      ```
+
+      The other is a similar import statement for the detail component.
+
+   1. Below, there is an empty `routes` array constant. When the array contains routes, each route is expressed as an object with two properties: `path` and `component`. The `path` property&rsquo;s value is the part of the URL **after** the application URL and `/`. Put your two routes into the array. For the first (home) route, the `path` value is an empty string, and the `component` value is `SearchFormComponent`. For the second (detail) route, the `path` value is `detail/:id` and the `component` value is `DetailComponent`. The `:id` route parameter creates a variable named `id` that the `DetailComponent` can use in determining its content.
+
+   After you have given the route specifications to the routing module, the branch should again pass most of your Cypress tests, while continuing to pass all of the Jest tests except the model tests.
+
+### Cypress
+
+1. The branch starts failing Cypress tests when the search-result test submits the form and then checks the names. That is because `checkNames()` now compiles an array of the links inside the items in the list, but the list does not yet contain any links. Its items still contain only plain-text names. To start revising this, open the `search-form.component.ts` file. This is where your application gets crew data from the `crewfinder` service.
+1. At present, the `getRemainingNames()` function discards all the information it receives except the names and assembles those names into an array of strings. Now your application will need the crew IDs for the links, and additional details for the detail view. It will now be helpful to replace the `allNames` array of strings with an `allData` object that can contain properties with object values. For example, `allData[01234]` would be an object with properties such as `mailStop` and `workPhone`. To start this revision, replace the statement declaring and initializing the `allNames` class member with `allData = {}`;
+1. Similarly, replace the `matchingNames` member with a `matchingData` member, defined as `matchingData = this.allData;`.
+1. In the definition of `summary`, replace `this.allNames.length` with `Object.keys(this.matchingData).length` (`this.allData` would be equivalent here).
+1. Similarly, replace the `resultNames` string array with a `resultData` object, initially empty.
+1. This component will need an array of texts for the result links. Initially, it will be empty. So add the definition `linkTexts: string[] = [];`.
+1. Now revise `getRemainingNames()`. It currently contains a call to the `getRecordsByNameStart.subscribe()` method, whose callback function begins with:
+
+   ```typescript
+   this.allNames.push(
+     ...data.map(record => {
+       const name: string = record[`preferredName`].nameLastFirst;
+       return name.replace(', ', ',');
+     }),
+   );
+   ```
+
+   Revise that statement to add records to the `allData` object, replacing the code with:
+
+   ```typescript
+   data.forEach(record => {
+     this.allData[record.crewId] = record;
+   });
+   ```
+
+   Near the end of the callback function, a statement sorts `allNames` once it is complete. But now `allData` is an object, so it is not sortable. Delete that statement.
+
+   Finally, for transparency, change the name of the function to `getRemainingData()`.
+
+1. Likewise, for transparency, make similar changes to the names of `getAndUseNames()` and `getMatchingNames()`.
+1. Before the `getMatchingData()` function, define this new function to get a name from a crew ID:
+
+   ```typescript
+   nameOfKey: (k: string) => string = key => {
+     const record = this.allData[key];
+     return record ? record.preferredName.nameLastFirst.replace(', ', ',') : '';
+   };
+   ```
+
+1. The `getMatchingData()` function contains the statement
+
+   ```typescript
+   return this.allNames.filter(name =>
+     this.modeNameOf(name).includes(lowerCaseQuery)
+   );
+   ```
+
+   Revise it for `allData` as follows:
+
+   ```typescript
+   const lowerCaseQuery = query.toLowerCase();
+   const matchingData = {};
+   Object.keys(this.allData).forEach(key => {
+     if (this.modeNameOf(this.nameOf(key)).includes(lowerCaseQuery)) {
+       matchingData[key] = this.allData[key];
+     }
+   });
+   return matchingData;
+   ```
+
+1. Revise `getSummary()` in the way in which you revised `summary`.
+1. Revise `handleChange()` as follows:
+
+   ```typescript
+   handleChange: () => void = () => {
+     const useData: () => void = () => {
+       this.matchingData = this.getMatchingData();
+       this.summary = this.getSummary();
+       this.resultData = {};
+     };
+     if (Object.keys(this.allData).length) {
+       useData();
+     } else {
+       this.getAndUseData(useData);
+     }
+   };
+   ```
+
+1. Revise `handleFormSubmission()` so it populates `linkTexts`, as follows:
+
+   ```typescript
+   handleFormSubmission: (e: Event) => void = event => {
+     event.preventDefault();
+     this.resultData = this.matchingData;
+     this.linkTexts = Object
+     .keys(this.resultData)
+     .map(key => `${this.nameOf(key)} (${key})`)
+     .sort();
+   };
+   ```
+
+1. To make it easy for this component&rsquo;s template to obtain the ID of each person in the list of results, define two constants after the `import` statements to identify where in each link text the ID can be found:
+
+   ```typescript
+   const IDStart = -7;
+   const IDEnd = -1;
+   ```
+
+1. Then add this function to extract the ID from any link text:
+
+   ```typescript
+   getIDOf: (lt: string) => string = linkText => linkText.slice(
+     IDStart, IDEnd
+   );
+   ```
+
+1. Until now, this component&rsquo;s template has populated its list of matching names by drawing them from the `resultNames` array. Now it will display a list of links and populate them out of the `linkTexts` array instead. It will need the link texts and also the IDs embedded in them. To create a list of matching links in the template, change the `li` element to:
+
+   ```html
+   <li *ngFor="let linkText of linkTexts">
+     <a href="detail/{{ getIDOf(linkText) }}">{{ linkText }}</a>
+   </li>
+   ```
+
+1. The `crewfinder` service has a method used by the search form. Add this method for use by the detail component:
+
+   ```typescript
+   getRecordByCrewID: (i: string) => any = crewID =>
+     this.http.get(`${this.apiURL}/${this.crewfinderURL}/${crewID}`);
+   ```
+
+   This will allow the detail component to display a person&rsquo;s record even when a user directly visits the detail view rather than following a link in the search-form view.
+
+1. Provide a variable in the detail component to store the record that will be displayed in the detail view. Define it as:
+
+   ```typescript
+   recordText = 'The detail record will be here.';
+   ```
+
+1. At the end of the detail template, insert elements that will contain the record. This will work:
+
+   ```html
+   <div>
+     <pre [textContent]="recordText"></pre>
+   </div>
+   ```
+
+1. **ALERT**: It is left as a research problem how to use this method to retrieve a person&rsquo;s record and put it into the detail view, and how to test for success. Until you solve that problem, the detail view will display only the placeholder text. The branch should pass all the Jest tests and all the Cypress tests except the last one, since the expected name substring will not be found in the `div` element.
+
+## <a name="model"></a>Revise model tests
+
+1. The implementation changes that you have just made require revisions in your Jest model tests, since they are implementation-specific. Start by replacing the `names` constant with a `data` constant. Since the new constant is complex, trim it to an object with only three properties, such as this:
+
+   ```typescript
+   const data = {
+     '01234': {
+       crewId: '01234',
+       preferredName: {
+         nameLastFirst: 'Doe, John'
+       },
+       buildingCode: 'AB'
+     },
+     '12345': {
+       crewId: '12345',
+       preferredName: {
+         nameLastFirst: 'Roe, Mary'
+       },
+       buildingCode: 'BC'
+     },
+     '23456': {
+       crewId: '23456',
+       preferredName: {
+         nameLastFirst: 'Roe, Mary'
+       },
+       buildingCode: 'CD'
+     }
+   };
+   ```
+
+1. In the model group&rsquo;s `beforeEach()` function, update the variable names to `component.allData = data;`.
+
+1. In the test for the initial length of the result list, change `resultNames` to `linkTexts`.
+
+1. There are four tests requiring the matching names to be correct. Revise them to reflect the new data and the fact that objects, rather than only name strings, are returned by `getMatchingData()`. As an example, the first of the four tests could be revised to:
+
+   ```typescript
+   it('matching data of a whole query should be correct', () => {
+     setQuery(component.searchForm, 'Doe');
+     expect(component.getMatchingData()['01234'].buildingCode).toBe('AB');
+   });
+   ```
+
+1. Revise the two summary tests to reflect the new data.
+1. Revise the four query- and mode-change tests to reflect the new data, changing `resultNames` to `linkTexts`.
+
+1. Revise the two submission tests to reflect the new data. An example of such a test is:
+
+   ```typescript
+   it('should correctly handle a submission in whole mode', () => {
+     setQuery(component.searchForm, 'Roe');
+     component.handleChange();
+     component.handleFormSubmission(new Event('submit'));
+     expect(component.summary).toBe('Matching name count: 2');
+     expect(component.linkTexts).toEqual([
+       'Roe,Mary (12345)',
+       'Roe,Mary (23456)'
+     ]);
+   });
+   ```
+
+## <a name="completion"></a>Completion
+
+You have now completed the lessons of this course (if you have solved the research problem in this lesson).
+
+This course could be extended. One example of a desirable additional lesson topic is VUI components.
+
+1. Open the `README-switch.md` file and follow the &ldquo;Completion&rdquo; instructions.
