@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>Plan a trip | Pier to Pier | Vanguard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="piers.js"></script>
+    <script src="plan.js"></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Plan a Pier-to-Pier trip</h1>
+      </header>
+      <form id="planForm">
+        <p>
+          <label>
+            From:
+            <select class="pier-list" name="from" size="10" required>
+            </select>
+          </label>
+        </p>
+        <p>
+          <label>
+            To:
+            <select class="pier-list" name="to" size="10" required>
+            </select>
+          </label>
+        </p>
+        <p>
+          <label>
+            Date:
+            <input id="date" name="date" type="date" required>
+          </label>
+        </p>
+        <p>
+          <label>
+            Departure time:
+            <input id="time" name="time" type="time" required>
+          </label>
+        </p>
+        <fieldset>
+          <legend>You:</legend>
+          <p>
+            <label>
+              <input name="role" type="radio" value="drive" required>
+              will be driving
+            </label>
+            <br>
+            <label>
+              <input name="role" type="radio" value="ride">
+              want a ride
+            </label>
+          </p>
+        </fieldset>
+        <p>
+          <label>
+            Your UID:
+            <input
+              id="uid"
+              name="uid"
+              type="text"
+              size="4"
+              maxlength="4"
+              value="u"
+              pattern="^[uU][A-Za-z0-9]{3}$"
+            >
+          </label>
+        </p>
+        <p>
+          <button type="submit">Submit</button>
+        </p>
+      </form>
+      <section class="routelinks">
+        <p><a href="trips.html">Your trips</a></p>
+      </section>
+    </main>
+  </body>
+</html>
