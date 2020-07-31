@@ -1,0 +1,151 @@
+//// Constants
+const tripPartTerms = {ID: 'Trip ID', from: 'Origin', to: 'Destination', date: 'Date', time: 'Time', role: 'Your role'};
+const roleDescriptions = {drive: 'driver', ride: 'rider'};
+const trips = {};
+let tripID = 0;
+let lastUID = '';
+const piers = {
+  "OA": {
+    "name": "Bldg0",
+    "cluster": "Central"
+  }
+};
+//// Utilities
+const zeroPad = num => {
+  if (num > 9) {
+    return num;
+  }
+  else {
+    return `0${num}`;
+  }
+};
+const getDateByTimeZone = (UTCDate, localTimeZone) => {
+  const dateString = UTCDate.toLocaleString({timeZone: localTimeZone});
+  const dateNum = Date.parse(dateString);
+  return new Date(dateNum);
+};
+const dateSubstringsOfDate = date => {
+  const year = date.getFullYear();
+  const month = zeroPad(date.getMonth() + 1);
+  const dayNum = zeroPad(date.getDate());
+  return [year, month, dayNum];
+};
+const timeSubstringsOfDate = date => {
+  const hour = zeroPad(date.getHours());
+  const minute = zeroPad(date.getMinutes());
+  return [hour, minute];
+};
+const showView = sectionID => {
+  const viewSections = document.body.getElementsByClassName('view');
+  for (let i = 0; i < viewSections.length; i++) {
+    viewSections[i].classList.replace('overt', 'covert');
+  }
+  document.getElementById(sectionID).classList.replace('covert', 'overt');
+  if (sectionID === 'plan') {
+    initializeWhen();
+  }
+};
+const getPlanPart = partID => {
+  const partSource = document.getElementById(partID);
+  if (partSource.classList.contains('radioGroup')) {
+    const selection = partSource.querySelector('input[type=radio].checked');
+    return selection ? selection.value : '';
+  }
+  else {
+    return partSource.value;
+  }
+};
+const addPlan = () => {
+  const plan = {};
+  const parts = ['planFrom', 'planTo', 'planDate', 'planTime', 'planRole', 'planUID'];
+  parts.forEach(part => {
+    plan[part] = getPlanPart(part);
+  });
+  trips[++tripID] = plan;
+  lastUID = plan.planUID;
+};
+const addTripListPart = (tripList, UIDTrip, key) => {
+  tripList.insertAdjacentElement('beforeend', 'dt').textContent = tripPartTerms[key];
+  tripList.insertAdjacentElement('beforeend', 'dd').textContent = UIDTrip[key];
+};
+const showTrips = UID => {
+  const UIDTripIDs = Object.keys(trips).filter(ID => trips[ID].planUID === UID);
+  const UIDTrips = UIDTripIDs.map(ID => {
+    trips[ID].ID = ID;
+    return trips[ID];
+  });
+  UIDTrips.sort((a, b) => a[planDate] + a[planTime] < b[planDate] + b[planTime]);
+  const tripListSection = document.getElementById('tripLists');
+  UIDtrips.forEach(UIDTrip => {
+    const tripList = document.createElement('dl');
+    tripPartTerms.keys.forEach(key => addTripListPart(tripList, UIDTrip, key));
+  });
+};
+//// On-view initializers
+// Initialize the date and time inputs when the plan view appears.
+const initializeWhen = () => {
+  const soonUTCDate = new Date(Date.now() + 600000);
+  const soonPADate = getDateByTimeZone(soonUTCDate, 'America/New_York');
+  const dateParts = dateSubstringsOfDate(soonPADate);
+  const timeParts = timeSubstringsOfDate(soonPADate);
+  document.getElementById('planDate').value = `${dateParts[0]}-${dateParts[1]}-${dateParts[2]}`;
+  document.getElementById('planTime').value = `${timeParts[0]}:${timeParts[1]}`;
+};
+const initializeUID = inputID => {
+  document.getElementById(inputID).value = lastUID || 'u';
+};
+//// On-load initializers
+const populatePierLists = () => {
+  const lists = document.body.getElementsByClassName('pierList');
+  for (let i = 0; i < lists.length; i++) {
+    const list = lists[i];
+    const pierCodes = Object.keys(piers);
+    for (let j = 0; j < pierCodes.length; j++) {
+      const option = document.createElement('option');
+      const code = pierCodes[j];
+      option.value = code;
+      option.textContent = piers[code].name;
+      list.insertAdjacentElement('beforeend', option);
+    }
+  }
+};
+const createPlanRequestListener = () => {
+  const buttons = document.getElementsByClassName('planRequest');
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', event => {
+      showView('plan');
+      initializeUID('planUID');
+    });
+  };
+};
+const createPlanSubmitListener = () => {
+  document.getElementById('planForm').addEventListener('submit', event => {
+    event.preventDefault();
+    addPlan();
+    showView('planAck');
+  });
+};
+const createTripsRequestListener = () => {
+  const buttons = document.getElementsByClassName('tripsRequest');
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', event => {
+      showView('trips');
+      initializeUID('tripsUID');
+    });
+  }
+};
+const createTripsUIDSubmitListener = () => {
+  document.getElementById('tripsUIDSubmit').addEventListener('click', event => {
+    event.preventDefault();
+    lastUID = document.getElementById('tripsUID').value;
+    showTrips(lastUID);
+  });
+};
+const init = () => {
+  populatePierLists();
+  createPlanRequestListener();
+  createPlanSubmitListener();
+  createTripsRequestListener();
+  createTripsUIDSubmitListener();
+};
+window.onload = init;
